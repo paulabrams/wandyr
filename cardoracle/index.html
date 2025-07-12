@@ -248,6 +248,29 @@
             font-weight: bold;
         }
         
+        .poker-hand-alert {
+            background: linear-gradient(45deg, #d4af37, #f5e6d3);
+            color: #2c1810;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: none;
+            border: 3px solid #d4af37;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #d4af37;
+            }
+            to {
+                box-shadow: 0 0 20px #d4af37, 0 0 30px #d4af37;
+            }
+        }
+        
         .history-title {
             color: #d4af37;
             margin-bottom: 15px;
@@ -283,6 +306,7 @@
         <div class="controls">
             <button id="drawButton" onclick="drawCard()">Draw Card</button>
             <button id="resetButton" onclick="resetDeck()">Reset Deck</button>
+            <a href="about.html" style="display: inline-block; background: linear-gradient(45deg, #8b4513, #a0522d); color: #f5e6d3; text-decoration: none; padding: 12px 24px; margin: 0 10px; border-radius: 8px; font-size: 16px; font-weight: bold; transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); border: 2px solid #d4af37;">About</a>
         </div>
         
         <div class="deck-count">
@@ -297,6 +321,7 @@
                     </td>
                     <td class="oracle-cell">
                         <div id="oracleText" class="oracle-text"></div>
+                        <div id="pokerHandAlert" class="poker-hand-alert" style="display: none;"></div>
                     </td>
                     <td class="combo-cell">
                         <div class="combo-section">
@@ -320,7 +345,7 @@
                         <th>Code</th>
                         <th>Card Oracle</th>
                         <th>Named Combo</th>
-                        <th>Card Combo</th>
+                        <th>Poker Hand</th>
                     </tr>
                 </thead>
                 <tbody id="cardsTableBody">
@@ -516,11 +541,20 @@
             // Update combo displays
             const comboDisplay = document.getElementById('comboDisplay');
             const namedComboDisplay = document.getElementById('namedComboDisplay');
+            const pokerHandAlert = document.getElementById('pokerHandAlert');
             
             comboDisplay.innerHTML = getCombinationStringWithHighlight(drawnCards, drawnCards.length - 1);
             
             const namedCombo = getNamedCombo(drawnCards);
             namedComboDisplay.textContent = namedCombo || 'No poker hand';
+            
+            // Show prominent poker hand alert
+            if (namedCombo) {
+                pokerHandAlert.textContent = `🎰 ${namedCombo.toUpperCase()}! 🎰`;
+                pokerHandAlert.style.display = 'block';
+            } else {
+                pokerHandAlert.style.display = 'none';
+            }
         }
         
         function createTableRow(card, index) {
@@ -653,60 +687,40 @@
         
         function getCombinationInterpretation(cardSequence) {
             const currentCard = cardSequence[cardSequence.length - 1];
-            const previousCards = cardSequence.slice(0, -1);
+            const namedCombo = getNamedCombo(cardSequence);
             
             let interpretation = getSingleCardInterpretation(currentCard);
             
-            // Check for patterns
-            const cardSuits = cardSequence.map(c => c.suit);
-            const ranks = cardSequence.map(c => c.rank);
-            const colors = cardSequence.map(c => suits[c.suit].color);
-            
-            // Same suit building
-            if (cardSuits.every(s => s === cardSuits[0])) {
-                interpretation += ` — The ${cardSuits[0]} theme intensifies and develops.`;
-            }
-            
-            // Alternating colors
-            else if (cardSequence.length >= 2) {
-                let alternating = true;
-                for (let i = 1; i < colors.length; i++) {
-                    if (colors[i] === colors[i-1]) {
-                        alternating = false;
-                        break;
+            // Poker hand profoundly affects the interpretation
+            if (namedCombo) {
+                const pokerInterpretations = {
+                    'One Pair': ' The paired forces align in perfect symmetry - what was once random now shows purpose. A merchant finds their exact counterpart, or twin threats emerge from opposite directions.',
+                    'Two Pair': ' Dual alliances form as opposing powers recognize mutual benefit. Ancient rivals must unite against a greater threat, creating an uneasy but powerful coalition.',
+                    'Three of a Kind': ' Trinity power manifests as three kingdoms unite, three dragons emerge, or three champions rise. The sacred number brings divine intervention to mortal affairs.',
+                    'Straight': ' Destiny unfolds in perfect sequence as prophesied events cascade inevitably forward. Each action leads precisely to the next in an unbreakable chain of fate.',
+                    'Flush': ' Elemental dominance - all forces align under a single banner. Hearts unite all emotions, Diamonds consolidate all wealth, Clubs command all nature, Spades bring absolute conquest.',
+                    'Full House': ' Royal marriage or powerful merger - strength combines with grace as military might joins with diplomatic wisdom. The kingdom becomes truly complete.',
+                    'Four of a Kind': ' Legendary convergence - four horsemen ride, four corners of the world respond, or four ancient artifacts unite. Reality itself bends to accommodate this cosmic alignment.',
+                    'Straight Flush': ' Perfect harmony between order and power - the ultimate convergence where destiny and dominion become one. Kings bow, gods take notice, and legends are born.',
+                    'High Card': ' Individual excellence rises above mere chance. A single hero steps forward when systems fail, proving that personal valor transcends any combination of lesser forces.'
+                };
+                
+                interpretation += pokerInterpretations[namedCombo] || '';
+            } else {
+                // Standard combination patterns for non-poker hands
+                const cardSuits = cardSequence.map(c => c.suit);
+                const ranks = cardSequence.map(c => c.rank);
+                const colors = cardSequence.map(c => suits[c.suit].color);
+                
+                if (cardSuits.every(s => s === cardSuits[0])) {
+                    interpretation += ` — The ${cardSuits[0]} theme intensifies and develops.`;
+                } else if (colors.every(c => c === colors[0])) {
+                    if (colors[0] === 'red') {
+                        interpretation += ' — Harmony and positive energy flow.';
+                    } else {
+                        interpretation += ' — A foreboding atmosphere grows.';
                     }
                 }
-                if (alternating) {
-                    interpretation += ' — Conflicting forces create tension.';
-                }
-            }
-            
-            // All same color
-            if (colors.every(c => c === colors[0])) {
-                if (colors[0] === 'red') {
-                    interpretation += ' — Harmony and positive energy flow.';
-                } else {
-                    interpretation += ' — A foreboding atmosphere grows.';
-                }
-            }
-            
-            // Sequential numbers
-            const sortedRanks = [...ranks].sort((a, b) => a - b);
-            let sequential = true;
-            for (let i = 1; i < sortedRanks.length; i++) {
-                if (sortedRanks[i] !== sortedRanks[i-1] + 1) {
-                    sequential = false;
-                    break;
-                }
-            }
-            if (sequential && cardSequence.length >= 3) {
-                interpretation += ' — Events unfold in natural progression.';
-            }
-            
-            // Face cards together
-            const faceCards = cardSequence.filter(c => c.rank >= 11);
-            if (faceCards.length >= 2) {
-                interpretation += ' — Important figures shape the situation.';
             }
             
             return interpretation;
