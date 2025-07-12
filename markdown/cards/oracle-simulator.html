@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wåndyr Card Oracle Simulator</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #2c1810, #4a2c1a);
+            color: #f5e6d3;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+        
+        .controls {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            color: #f5e6d3;
+            border: 2px solid #d4af37;
+            padding: 12px 24px;
+            margin: 0 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        button:hover {
+            background: linear-gradient(45deg, #a0522d, #cd853f);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        button:disabled {
+            background: #666;
+            border-color: #888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .cards-display {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .card-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .card-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+        }
+        
+        .card-visual {
+            width: 80px;
+            height: 120px;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            margin-bottom: 10px;
+            position: relative;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .card-visual.red {
+            color: #dc143c;
+        }
+        
+        .card-visual .top-corner {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            font-size: 14px;
+            line-height: 1;
+        }
+        
+        .card-visual .bottom-corner {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            font-size: 14px;
+            line-height: 1;
+            transform: rotate(180deg);
+        }
+        
+        .card-visual .center {
+            font-size: 24px;
+        }
+        
+        .card-description {
+            text-align: center;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 5px;
+        }
+        
+        .card-right {
+            flex: 1;
+        }
+        
+        .interpretation {
+            font-style: italic;
+            line-height: 1.4;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+        
+        .deck-count {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #d4af37;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wåndyr Card Oracle</h1>
+        
+        <div class="controls">
+            <button id="drawButton" onclick="drawCard()">Draw Card</button>
+            <button id="resetButton" onclick="resetDeck()">Reset Deck</button>
+        </div>
+        
+        <div class="deck-count">
+            <span id="deckCount">52 cards remaining</span>
+        </div>
+        
+        <div id="cardsDisplay" class="cards-display">
+            <div class="empty-state">Draw a card to begin the oracle reading...</div>
+        </div>
+    </div>
+
+    <script>
+        let deck = [];
+        let drawnCards = [];
+        
+        const suits = {
+            'hearts': { symbol: '♥', name: 'Hearts', color: 'red' },
+            'diamonds': { symbol: '♦', name: 'Diamonds', color: 'red' },
+            'clubs': { symbol: '♣', name: 'Clubs', color: 'black' },
+            'spades': { symbol: '♠', name: 'Spades', color: 'black' }
+        };
+        
+        const ranks = {
+            1: { display: 'A', name: 'Ace' },
+            2: { display: '2', name: 'Two' },
+            3: { display: '3', name: 'Three' },
+            4: { display: '4', name: 'Four' },
+            5: { display: '5', name: 'Five' },
+            6: { display: '6', name: 'Six' },
+            7: { display: '7', name: 'Seven' },
+            8: { display: '8', name: 'Eight' },
+            9: { display: '9', name: 'Nine' },
+            10: { display: '10', name: 'Ten' },
+            11: { display: 'J', name: 'Jack' },
+            12: { display: 'Q', name: 'Queen' },
+            13: { display: 'K', name: 'King' }
+        };
+        
+        function initializeDeck() {
+            deck = [];
+            for (let suit in suits) {
+                for (let rank = 1; rank <= 13; rank++) {
+                    deck.push({ suit, rank });
+                }
+            }
+            shuffleDeck();
+        }
+        
+        function shuffleDeck() {
+            for (let i = deck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
+        }
+        
+        function drawCard() {
+            if (deck.length === 0) return;
+            
+            const card = deck.pop();
+            drawnCards.push(card);
+            updateDisplay();
+        }
+        
+        function resetDeck() {
+            drawnCards = [];
+            initializeDeck();
+            updateDisplay();
+        }
+        
+        function updateDisplay() {
+            const deckCountEl = document.getElementById('deckCount');
+            const cardsDisplayEl = document.getElementById('cardsDisplay');
+            const drawButtonEl = document.getElementById('drawButton');
+            
+            deckCountEl.textContent = `${deck.length} cards remaining`;
+            drawButtonEl.disabled = deck.length === 0;
+            
+            if (drawnCards.length === 0) {
+                cardsDisplayEl.innerHTML = '<div class="empty-state">Draw a card to begin the oracle reading...</div>';
+                return;
+            }
+            
+            // Clear the display and rebuild all cards to update interpretations
+            cardsDisplayEl.innerHTML = '';
+            
+            drawnCards.forEach((card, index) => {
+                const cardEl = createCardElement(card, index);
+                cardsDisplayEl.appendChild(cardEl);
+            });
+        }
+        
+        function createCardElement(card, index) {
+            const suit = suits[card.suit];
+            const rank = ranks[card.rank];
+            
+            const cardItem = document.createElement('div');
+            cardItem.className = 'card-item';
+            
+            const cardLeft = document.createElement('div');
+            cardLeft.className = 'card-left';
+            
+            const cardVisual = document.createElement('div');
+            cardVisual.className = `card-visual ${suit.color}`;
+            
+            cardVisual.innerHTML = `
+                <div class="top-corner">${rank.display}<br>${suit.symbol}</div>
+                <div class="center">${suit.symbol}</div>
+                <div class="bottom-corner">${rank.display}<br>${suit.symbol}</div>
+            `;
+            
+            const cardDescription = document.createElement('div');
+            cardDescription.className = 'card-description';
+            cardDescription.textContent = `${rank.name} of ${suit.name}`;
+            
+            cardLeft.appendChild(cardVisual);
+            cardLeft.appendChild(cardDescription);
+            
+            const cardRight = document.createElement('div');
+            cardRight.className = 'card-right';
+            
+            const interpretation = document.createElement('div');
+            interpretation.className = 'interpretation';
+            interpretation.textContent = getInterpretation(drawnCards.slice(0, index + 1));
+            
+            cardRight.appendChild(interpretation);
+            
+            cardItem.appendChild(cardLeft);
+            cardItem.appendChild(cardRight);
+            
+            return cardItem;
+        }
+        
+        function getInterpretation(cardSequence) {
+            if (cardSequence.length === 1) {
+                return getSingleCardInterpretation(cardSequence[0]);
+            }
+            
+            return getCombinationInterpretation(cardSequence);
+        }
+        
+        function getSingleCardInterpretation(card) {
+            const suitThemes = {
+                'hearts': 'Social energy, emotions, relationships, community',
+                'diamonds': 'Wealth, trade, material concerns, opportunities', 
+                'clubs': 'Growth, nature, wilderness, organic threats',
+                'spades': 'Conflict, danger, death, sharp challenges'
+            };
+            
+            const intensityLevels = {
+                1: 'New beginnings, subtle hints, first signs',
+                2: 'Building pressure, early manifestation',
+                3: 'Building pressure, early manifestation', 
+                4: 'Building pressure, early manifestation',
+                5: 'Clear presence, active influence',
+                6: 'Clear presence, active influence',
+                7: 'Clear presence, active influence',
+                8: 'Strong impact, demanding attention',
+                9: 'Strong impact, demanding attention',
+                10: 'Strong impact, demanding attention',
+                11: 'Unpredictable element, wild card',
+                12: 'Refined influence, elegant complexity',
+                13: 'Dominant force, major presence'
+            };
+            
+            const quickPhrases = {
+                'hearts': {
+                    1: 'Warmth in the air',
+                    2: 'Voices on the wind', 3: 'Voices on the wind', 4: 'Voices on the wind',
+                    5: 'Gathering crowds', 6: 'Gathering crowds', 7: 'Gathering crowds',
+                    8: 'Celebration or conflict', 9: 'Celebration or conflict', 10: 'Celebration or conflict',
+                    11: 'Important person arrives', 12: 'Important person arrives', 13: 'Important person arrives'
+                },
+                'diamonds': {
+                    1: 'Glint of something valuable',
+                    2: 'Signs of prosperity', 3: 'Signs of prosperity', 4: 'Signs of prosperity',
+                    5: 'Trade opportunities', 6: 'Trade opportunities', 7: 'Trade opportunities',
+                    8: 'Wealth or greed dominant', 9: 'Wealth or greed dominant', 10: 'Wealth or greed dominant',
+                    11: 'Merchant or noble involved', 12: 'Merchant or noble involved', 13: 'Merchant or noble involved'
+                },
+                'clubs': {
+                    1: 'New growth sprouting',
+                    2: 'Nature stirs', 3: 'Nature stirs', 4: 'Nature stirs',
+                    5: 'Wild presence', 6: 'Wild presence', 7: 'Wild presence',
+                    8: 'Overgrown or threatening', 9: 'Overgrown or threatening', 10: 'Overgrown or threatening',
+                    11: 'Druid, ranger, or beast', 12: 'Druid, ranger, or beast', 13: 'Druid, ranger, or beast'
+                },
+                'spades': {
+                    1: 'Shadow on horizon',
+                    2: 'Danger approaches', 3: 'Danger approaches', 4: 'Danger approaches',
+                    5: 'Threat manifests', 6: 'Threat manifests', 7: 'Threat manifests',
+                    8: 'Crisis or violence', 9: 'Crisis or violence', 10: 'Crisis or violence',
+                    11: 'Warrior, enemy, or death', 12: 'Warrior, enemy, or death', 13: 'Warrior, enemy, or death'
+                }
+            };
+            
+            return quickPhrases[card.suit][card.rank];
+        }
+        
+        function getCombinationInterpretation(cardSequence) {
+            const currentCard = cardSequence[cardSequence.length - 1];
+            const previousCards = cardSequence.slice(0, -1);
+            
+            let interpretation = getSingleCardInterpretation(currentCard);
+            
+            // Check for patterns
+            const cardSuits = cardSequence.map(c => c.suit);
+            const ranks = cardSequence.map(c => c.rank);
+            const colors = cardSequence.map(c => suits[c.suit].color);
+            
+            // Same suit building
+            if (cardSuits.every(s => s === cardSuits[0])) {
+                interpretation += ` — The ${cardSuits[0]} theme intensifies and develops.`;
+            }
+            
+            // Alternating colors
+            else if (cardSequence.length >= 2) {
+                let alternating = true;
+                for (let i = 1; i < colors.length; i++) {
+                    if (colors[i] === colors[i-1]) {
+                        alternating = false;
+                        break;
+                    }
+                }
+                if (alternating) {
+                    interpretation += ' — Conflicting forces create tension.';
+                }
+            }
+            
+            // All same color
+            if (colors.every(c => c === colors[0])) {
+                if (colors[0] === 'red') {
+                    interpretation += ' — Harmony and positive energy flow.';
+                } else {
+                    interpretation += ' — A foreboding atmosphere grows.';
+                }
+            }
+            
+            // Sequential numbers
+            const sortedRanks = [...ranks].sort((a, b) => a - b);
+            let sequential = true;
+            for (let i = 1; i < sortedRanks.length; i++) {
+                if (sortedRanks[i] !== sortedRanks[i-1] + 1) {
+                    sequential = false;
+                    break;
+                }
+            }
+            if (sequential && cardSequence.length >= 3) {
+                interpretation += ' — Events unfold in natural progression.';
+            }
+            
+            // Face cards together
+            const faceCards = cardSequence.filter(c => c.rank >= 11);
+            if (faceCards.length >= 2) {
+                interpretation += ' — Important figures shape the situation.';
+            }
+            
+            return interpretation;
+        }
+        
+        // Initialize the deck when page loads
+        initializeDeck();
+        updateDisplay();
+    </script>
+</body>
+</html>

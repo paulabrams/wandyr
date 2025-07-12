@@ -202,6 +202,40 @@
             font-style: italic;
         }
 
+        .insight-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .insight-option {
+            padding: 8px 12px;
+            border: 2px solid #34495e;
+            background: rgba(52, 73, 94, 0.5);
+            color: #ecf0f1;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .insight-option.current {
+            border-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.3);
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .oracle-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
         .oracle-section {
             text-align: center;
         }
@@ -330,7 +364,117 @@
             border-color: #e67e22;
         }
 
+        .oracle-generators {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .generator-section {
+            border: 1px solid #34495e;
+            border-radius: 8px;
+            padding: 15px;
+            background: rgba(44, 62, 80, 0.5);
+        }
+
+        .generator-section h4 {
+            color: #f39c12;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .generator-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .generator-result {
+            min-height: 60px;
+            background: rgba(52, 73, 94, 0.8);
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            border-left: 4px solid #2ecc71;
+            font-style: italic;
+            width: 100%;
+            text-align: left;
+        }
+
+        .generator-result:empty {
+            display: none;
+        }
+
+        .generator-result h5 {
+            color: #f39c12;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .generator-result .tavern-name {
+            font-size: 1.2em;
+            color: #e67e22;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .generator-result .tavern-vibe {
+            color: #bdc3c7;
+            line-height: 1.4;
+        }
+
+        .oracle-browser {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .table-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .table-controls {
+            text-align: center;
+        }
+
+        .dice-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .table-description {
+            font-style: italic;
+            color: #bdc3c7;
+            margin-bottom: 10px;
+            min-height: 20px;
+        }
+
+        #rollButton:disabled {
+            background: #7f8c8d !important;
+            cursor: not-allowed;
+        }
+
+        .oracle-result h5 {
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+
+        .oracle-result .roll-info {
+            color: #95a5a6;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
         @media (max-width: 768px) {
+            .table-selector {
+                grid-template-columns: 1fr;
+            }
             .container {
                 padding: 15px;
             }
@@ -382,6 +526,7 @@
                     <div class="dice-roller">
                         <div class="dice-result" id="insightResult">Roll for Insight</div>
                         <button class="btn btn-success" onclick="rollInsight()">Roll d6</button>
+                        <div class="insight-options" id="insightOptions"></div>
                         <div class="insight-description" id="insightDescription" style="display: none;"></div>
                     </div>
                 </div>
@@ -403,24 +548,73 @@
                                 <button class="target-btn" data-target="12" onclick="setTarget(12)">Extreme (12+)</button>
                             </div>
                             
-                            <button class="btn btn-primary" onclick="rollOracle()">Ask the Oracle (2d6)</button>
+                            <div class="oracle-buttons">
+                                <button class="btn btn-primary" onclick="rollOracle()">Ask the Oracle (2d6)</button>
+                                <button class="btn btn-warning" onclick="rollOracleAdvantage()">Advantage (3d6)</button>
+                                <button class="btn btn-danger" onclick="rollOracleDisadvantage()">Disadvantage (3d6)</button>
+                            </div>
                         </div>
                         
                         <div class="oracle-result" id="oracleResult"></div>
                     </div>
                 </div>
 
-                <!-- Game Status -->
+                <!-- Location & Environment -->
                 <div class="card">
-                    <h3 class="card-title">Game Status</h3>
+                    <h3 class="card-title">Location & Environment</h3>
                     <div class="input-group">
-                        <label for="weather">Weather/Environment:</label>
-                        <input type="text" id="weather" placeholder="Current weather and conditions...">
+                        <label for="worldRegion">World Region:</label>
+                        <select id="worldRegion">
+                            <option value="">-- Select Region --</option>
+                            <option value="Akkar (Draconia)">Akkar (Draconia) - Largest city, major Southmaren port in the southeast</option>
+                            <option value="Alglondor">Alglondor - Holy kingdom with river valleys in the northwest</option>
+                            <option value="Dorthonia">Dorthonia - Vast taiga dominating northwest shores, home to Elenthar</option>
+                            <option value="The Dragon Sea">The Dragon Sea - Vast inland ocean at the heart of the world</option>
+                            <option value="The Drunlands">The Drunlands - Dismal land of twisted forests between Hrivlyggdor and Akkar</option>
+                            <option value="Harnendor">Harnendor - Southmaren Empire of the far south, crown jewel Aquila</option>
+                            <option value="Hrivlyggdor">Hrivlyggdor - Northlands of midnight sun, vast taiga and arctic tundra</option>
+                            <option value="Kitania">Kitania - Thriving kingdom covering fertile midlands</option>
+                            <option value="Lyonesse">Lyonesse - Rugged central coast with free cities, home to Ashenrise</option>
+                            <option value="Nan-Avathar">Nan-Avathar - Grim volcanic ashlands ruled by Vampire Lords</option>
+                            <option value="Rochir Plains">Rochir Plains - Vast arid savanna ruled by nomadic horse lords</option>
+                            <option value="Sepulchre">Sepulchre - Legendary valley ringed by Wintercrown Mountains</option>
+                        </select>
                     </div>
                     <div class="input-group">
                         <label for="location">Current Location:</label>
-                        <input type="text" id="location" placeholder="Where are the adventurers?">
+                        <input type="text" id="location" placeholder="Specific place/settlement/landmark...">
                     </div>
+                    <div class="input-group">
+                        <label for="currentClimate">Climate:</label>
+                        <select id="currentClimate">
+                            <option value="temperate">Temperate</option>
+                            <option value="tropical">Tropical</option>
+                            <option value="arid">Arid/Desert</option>
+                            <option value="cold">Cold/Mountain</option>
+                            <option value="coastal">Coastal</option>
+                            <option value="swamp">Wetland/Swamp</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="currentSeason">Season:</label>
+                        <select id="currentSeason">
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="autumn">Autumn</option>
+                            <option value="winter">Winter</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="currentWeather">Current Weather:</label>
+                        <input type="text" id="currentWeather" placeholder="Current weather conditions...">
+                        <button class="btn btn-warning" onclick="generateWeatherForLocation()" style="margin-top: 10px;">Generate Weather</button>
+                        <div class="oracle-result" id="weatherResult" style="margin-top: 10px;"></div>
+                    </div>
+                </div>
+
+                <!-- Game Status -->
+                <div class="card">
+                    <h3 class="card-title">Game Status</h3>
                     <div class="input-group">
                         <label for="partyLevel">Party Level:</label>
                         <select id="partyLevel">
@@ -435,6 +629,43 @@
                     <div class="input-group">
                         <label for="rumors">Active Rumors:</label>
                         <textarea id="rumors" rows="3" placeholder="Current rumors being followed..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Oracle Table Browser -->
+                <div class="card">
+                    <h3 class="card-title">Oracle Table Browser</h3>
+                    <div class="oracle-browser">
+                        <div class="table-selector">
+                            <div class="input-group">
+                                <label for="tableCategory">Category:</label>
+                                <select id="tableCategory" onchange="updateTableList()">
+                                    <option value="">-- Select Category --</option>
+                                    <option value="taverns">Taverns</option>
+                                    <option value="rumors">Rumors</option>
+                                    <option value="encounters">Encounters</option>
+                                    <option value="loot">Loot & Equipment</option>
+                                    <option value="political">Political Intrigue</option>
+                                    <option value="quests">Quest Hooks</option>
+                                    <option value="worldbuilding">Dragon Isles</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="tableSelect">Table:</label>
+                                <select id="tableSelect" onchange="showTableInfo()">
+                                    <option value="">-- Select Table --</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="table-controls">
+                            <div class="dice-controls">
+                                <span id="tableInfo" class="table-description"></span>
+                                <button class="btn btn-primary" onclick="rollOnTable()" id="rollButton" disabled>Roll on Table</button>
+                            </div>
+                        </div>
+                        
+                        <div class="oracle-result" id="tableResult"></div>
                     </div>
                 </div>
 
@@ -504,27 +735,391 @@
         // Game State
         let gameState = {
             turn: 1,
-            weather: '',
+            worldRegion: '',
             location: '',
+            currentWeather: '',
             partyLevel: 0,
             rumors: '',
             sessionNotes: '',
             currentInsight: '',
-            oracleTarget: 8
+            oracleTarget: 8,
+            currentSeason: 'spring',
+            currentClimate: 'temperate'
         };
 
-        // Insight descriptions
+        // Insight descriptions (corrected from rules)
         const insightDescriptions = {
             1: "TRAIT - Use a helpful Trait. Strong helps open stuck doors or crack heads.",
-            2: "ITEM - Use a helpful item. (Special items require a specialized item Skill)",
-            3: "SKILL - Use a helpful item Skill; requires the item.",
+            2: "ASSET - Use a specific helpful Asset along with the item.",
+            3: "ITEM - Use any helpful item.",
             4: "NAME - Use a relevant Name (personal name, byname, title, or named item).",
             5: "ASSIST - Use an Action previously taken that 'sets up' or 'assists' the current roll.",
             6: "EFFORT - Apply more effort. Not possible if carrying Baggage, stealth, climbing, swimming, etc."
         };
 
+        const insightOptions = [
+            { id: 1, name: "TRAIT", description: "Use a helpful Trait" },
+            { id: 2, name: "ASSET", description: "Use a specific helpful Asset" },
+            { id: 3, name: "ITEM", description: "Use any helpful item" },
+            { id: 4, name: "NAME", description: "Use a relevant Name" },
+            { id: 5, name: "ASSIST", description: "Set up or assist the roll" },
+            { id: 6, name: "EFFORT", description: "Apply more effort" }
+        ];
+
+        // Comprehensive Oracle Tables organized by category
+        const oracleTableData = {
+            taverns: {
+                "Tavern Names": {
+                    dice: "2d6",
+                    description: "Generate evocative tavern names",
+                    table: [
+                        "The Drunken Dragon", "The Rusty Mug", "The Weeping Willow", "The Golden Goblet", "The Crooked Cat", "The King's Head",
+                        "The Foaming Tankard", "The Salty Sailor", "The Miner's Rest", "The Woodcutter's Axe", "The Crossroads Inn", "The Whispering Bones",
+                        "The Dragon's Breath", "The Broken Sword", "The Bottomless Pit", "The Hidden Door", "The Shrine's Blessing", "The Lost Miner's Dream",
+                        "The Restless Spirits", "The Wanderer's Respite", "The Farmer's Daughter", "The Griffin's Roost", "The Holy Well", "The Raven's Tower",
+                        "The Bridge Tender's Tavern", "The Four Winds", "The River's Edge", "The Mountain's Shadow", "The Forest's Heart", "The Wayfarer's Rest",
+                        "The Dusty Quarryman", "The Miner's Lantern", "The Druid's Grove", "The Hunter's Horn", "The Fisherman's Net", "The Spring's Bounty"
+                    ]
+                },
+                "Tavern Vibes": {
+                    dice: "2d6",
+                    description: "Generate tavern atmosphere and clientele",
+                    table: [
+                        "Dark and smoky den frequented by assassins. Conversations in whispers, payment in blood.", "Raucous sailor's pub. Sea shanties, fistfights, and tall tales of sea monsters.", "Mercenary meeting ground. Job boards, scarred veterans, weapon maintenance at tables.", "Wizard's relaxation spot. Strange lights, floating glasses, apprentices practicing cantrips.", "Thieves' fence operation. Stolen goods quietly changing hands, lookouts at every door.", "Gladiator's rest. Fighting pit in the cellar, betting rings, victory celebrations.",
+                        "Smuggler's paradise. False walls, hidden doors, contraband sold in plain sight.", "Poetry den gone wrong. Failed bards, drunken verses, occasional magical mishaps.", "Diplomatic neutral ground. Private booths, multilingual arguing, secret treaties made.", "Monster hunter's lodge. Trophy heads on walls, silver weapons on display, wound-dressing.", "Gambling hall's front. Cards marked with blood, loaded dice, desperate last bets.", "Rebel safehouse. Quiet plotting, coded messages, revolutionary songs at midnight.",
+                        "Cursed nobility's retreat. Fallen aristocrats, expensive tastes, unpayable tabs.", "Undead-run business. Skeletal staff, perfect service, room temperature drinks.", "Alchemist's experiment. Color-changing drinks, transformative snacks, smoking pipes.", "Guard's off-duty haunt. Armor stands, duty rosters, complaints about the watch captain.", "Demon worshipper's club. Pentacles under rugs, cultists in disguise, infernal contracts.", "Arena champion's investment. Fighting stories, practice spars, talent scouts.",
+                        "Retired adventurer's pub. Magic items on walls, dungeon maps as decor, veteran's discounts.", "Foreign quarter landmark. Exotic foods, strange customs, homesick travelers.", "Necromancer's hobby. Zombie waiters, skeletal musicians, fresh graves in the wine cellar.", "Guild politics center. Trade deals, price fixing, apprentice initiations.", "Witch's gathering place. Charm spells, love potions, curse removal services.", "Duelist's preferred spot. Challenge boards, practice space, medical services on call.",
+                        "Forbidden knowledge market. Book deals in dark corners, scroll trading, forbidden tomes.", "Beast tamer's respite. Exotic pets welcome, animal fights, mysterious meats.", "Corrupt official's den. Bribe payments, document forging, blackmail exchanges.", "Planar traveler's rest. Portal in the cellar, otherworldly guests, dimensional anomalies.", "Barbarian tribe's urban base. Strength contests, ritual scarification, tribal politics.", "Executioner's drinking hole. Dark humor, job complaints, surprisingly good food.",
+                        "Religious heretic's refuge. False idols, banned rituals, underground faith.", "Philosopher's debate club. Drunken logic, metaphysical arguments, existential crises.", "Bounty hunter's information exchange. Wanted posters, target spotting, reward collection.", "Artificer's testing ground. Mechanical servants, explosive accidents, invention showcases.", "Poisoner's networking space. Taste testers required, antidote sales, deadly menu items.", "Time-lost warrior's bar. Anachronistic decor, stories of futures/pasts, temporal drinks."
+                    ]
+                }
+            },
+            rumors: {
+                "Gritty Starting Rumors": {
+                    dice: "2d6", 
+                    description: "Dark urban adventure hooks",
+                    table: [
+                        "Tax collector's ledger stolen, guards suspiciously uninterested", "Guild master murdered, rival merchants blamed", "Ship's cargo \"moves and moans,\" dockworkers refuse to unload", "Three guards dead in alley, district locked down", "Something big in north sewers, ratcatchers won't enter", "Prison wagon overturned, inmates loose",
+                        "Plague doctor buying fresh corpses", "Debt collectors vanishing in Old Quarter", "Silver reward for masked vigilante info", "Merchant seeks guards, previous vanished", "Something hunting in night fog", "Temple stockpiling weapons secretly",
+                        "Widow seeks husband's killer", "Watch captain's daughter missing", "Poisoned grain sickens street", "Guild extorting protection money", "Meat spoiling unnaturally fast", "Sewer workers hear screams below",
+                        "Hanged merchants marked with symbols", "Priest's \"blessed\" water buyers vanish", "Gang training child knife-fighters", "Specific corpses stolen from graves", "Suspicious meat at dockside tavern", "Noble seeks \"discreet\" bodyguards",
+                        "Guards avoid Pearl Street nightly", "Missing apprentices, tools remain", "Suspicious warehouse fire kills six", "Dead things in brackish wells", "Tongueless beggar passing messages", "Tortured smuggler found in shop",
+                        "Guild master hoarding grain pre-riots", "Marked corpses floating in harbor", "Preacher selling \"plague prevention\"", "Noble's son running protection racket", "Giant albino stealing sewer children", "Militia recruiting without explanation"
+                    ]
+                }
+            },
+            encounters: {
+                "Gritty City Encounters": {
+                    dice: "2d6",
+                    description: "Urban encounters with gritty realism",
+                    table: [
+                        "2d6 thugs extorting marketplace vendors", "Tax collector with armed guards demands payment", "Pickpocket runs into dead-end alley", "Merchant accuses rival of sabotage", "City watch arrests suspected spy", "Street preacher rallies angry crowd",
+                        "Fire spreads through tenement district", "Wealthy noble's carriage breaks down", "2d6 drunken soldiers pick fights", "Beggar reveals hidden guild tattoo", "Lost child seeks wealthy parents", "Skilled craftsman needs escort home",
+                        "2d6 dock workers unload smuggled goods", "Market seller hawks suspicious meat", "Fortune teller flees angry customer", "Apprentice wizard's spell backfires", "City guard pursues rooftop thief", "Old veteran shares vital information",
+                        "Cutpurse targets distracted crowd", "Street performers cause traffic jam", "Guard checkpoint checks papers", "Merchant caravan seeks guards", "Rat catcher warns of infestation", "Helpful guide offers local knowledge",
+                        "2d6 gang members mark territory", "Building construction blocks road", "Food cart causes mass illness", "Messenger needs urgent delivery", "Escaped horse runs wild", "Honest merchant seeks partners",
+                        "Protest at city gates blocks traffic", "Local festival needs security", "Merchant needs debt collected", "Noble seeks discreet courier", "Guild master offers contract", "City official needs investigators"
+                    ]
+                },
+                "Weird City Encounters": {
+                    dice: "2d6",
+                    description: "Urban encounters with fantastical elements",
+                    table: [
+                        "A sage drops a glowing moonlight map", "2d6 hobgoblin thugs shaking down wizards", "Green flames consume a noble's mansion", "Face-stealing masks infiltrate masquerade", "2d6 ghosts reenact murders nightly", "Master thief steals vampire's dawn-jewel",
+                        "Merchant selling world-ending tome's location", "Thieves' Guild wars with Assassins' Guild", "Brass golem runs fight club", "2d6 imps selling bottled dreams", "Dragon-polymorphed circus performers", "Fool slays serpent-priest with silver",
+                        "Cats flee invisible horror en masse", "Amazon returns with map-tattooed skin", "2d6 orcs plot crown theft", "Dragon manipulates gem market", "2d6 ogres siege Wizard's Guild", "Cobbler enters cinnamon-scented portal",
+                        "Smith forges conscious blade", "Rainbow spores in the streets", "Living shadows steal memories", "Fortune teller speaks in rhyming riddles", "Time merchant buys childhood days", "Fairy market appears at midnight",
+                        "Ghost ships dock in sky-harbor", "Mechanical birds deliver prophecies", "Street artist paints doors to elsewhere", "Animated statues hold court", "Mirror-people seek reflections", "Sky-whales swim above city",
+                        "Dark carnival arrives at moonrise", "Star-gates open in market square", "Angels attend mortal theater", "Rainbow roads appear at dawn", "Dream merchants grant wishes", "Dancing lights lead to treasures"
+                    ]
+                },
+                "Gritty Wilderness Encounters": {
+                    dice: "2d6",
+                    description: "Wilderness encounters with realistic danger",
+                    table: [
+                        "2d6 bandits torture merchant caravan", "Highwaymen with (poisoned) crossbows", "Slavers tracking escaped captives", "Horse thieves raid night camp", "Cannibals butcher recent catch", "Deserters offer temporary alliance",
+                        "Broken axle reveals (trapped) wagon", "Hunters tracking wounded bear", "Woodcutters clear fallen trees", "Shepherds search lost flock", "Trappers check snare lines", "Honest guides share supplies",
+                        "Wolf pack surrounds with (red) eyes", "Bear defends bloodied kill", "Wild boar charges territory", "Rabid dogs harass deer", "Mountain lion stalks prey", "Rangers patrol trade road",
+                        "Fresh graves hide (stolen) goods", "Lost child gathering wood", "Elderly couple needs aid", "Injured traveler begs help", "Herbalist gathers plants", "Pilgrims share warm fire",
+                        "(Raiders') campfire still smolders", "Fresh blood stains road", "Abandoned wagon looted", "Half-eaten livestock found", "Strange tracks in mud", "Kind strangers offer shelter",
+                        "Dark stories lead to sanctuary", "Farmers share fresh food", "Militia protects travelers", "Healer tends wounded free", "Woodsmen guide safely home", "Sacred shrine grants refuge"
+                    ]
+                },
+                "Weird Wilderness Encounters": {
+                    dice: "2d6",
+                    description: "Wilderness encounters with magical elements",
+                    table: [
+                        "Memory merchant trades darkest secrets", "2d6 wolves with (human faces) hunt prey", "Medusa tends (living) statue garden", "2d6 lizardfolk fight (to the death) ritual", "(Cursed) knight's armor consumes him", "Shadow Market sells dreams and nightmares",
+                        "Dark fae trade (binding) promises", "Moonlit dancers enchant travelers", "Crystal stag grants riddles", "Mirror pool shows possible futures", "Wind spirits trade songs", "Star-blessed wayfarers share gifts",
+                        "Chimera speaks (deadly) prophecies", "Ghost legion marches past", "Time rift shows ancient battles", "Rainbow serpent tests wisdom", "Cloud giants cast golden nets", "Dream weavers bless sleepers",
+                        "Witch's hut walks on (bone) legs", "Flower maze changes paths", "Stone eggs hatch memories", "Mist children play games", "Star whales swim overhead", "Phoenix nest grants visions",
+                        "(Blood) tree drinks from travelers", "Living statues seek souls", "Moon deer grant wishes", "Crystal spiders weave fate", "Time flows backwards here", "Sacred grove heals wounds",
+                        "Storm dragon offers wisdom and warning", "Unicorns bless pure hearts", "Angels share divine poetry", "Rainbow road leads to wonder", "Celestial market grants wishes", "Golden tree grows dreams to reality"
+                    ]
+                }
+            },
+            loot: {
+                "Obvious Loot": {
+                    dice: "2d6",
+                    description: "Standard treasure and equipment",
+                    table: [
+                        "Well-crafted sword in decorated leather scabbard", "Heavy coin purse containing 3d6 gold pieces", "Silver merchant's scale with brass weights", "Ornate holy symbol on silver chain", "Leather-bound spellbook with brass corners", "Map case filled with detailed local charts",
+                        "Master's tool set in oiled leather wrap", "Gold signet ring bearing noble crest", "Bronze lantern with matching oil flask", "Lute in polished wooden carrying case", "Healer's satchel of herbs and bandages", "Veteran's medal with silk ribbon",
+                        "Merchant's ledger bound in red leather", "Prayer book with gold-leafed pages", "Guild badge with precious stones", "Carved walking staff with silver cap", "Bundle of fine silk clothing", "Collection of foreign trade coins",
+                        "Holy relic in silver reliquary", "Scholar's journal filled with sketches", "Jeweler's tools in velvet roll", "Astrolabe in brass carrying case", "Bolt of fine dyed wool cloth", "Set of illuminated manuscripts",
+                        "Cartographer's kit with ivory tools", "Ceremonial dagger with jade hilt", "Merchant's scales in wooden box", "Priest's ceremonial vestments", "Traveler's water-proof scroll case", "Artist's case of fine pigments",
+                        "Navigator's compass in brass case", "Scribe's complete writing kit", "Set of masterwork wood chisels", "Alchemist's measuring vessels", "Book of pressed flower specimens", "Silver flute in padded case"
+                    ]
+                },
+                "Minor Magic Loot": {
+                    dice: "2d6",
+                    description: "Useful magical items with minor effects",
+                    table: [
+                        "Kettle of Perfect Tea - Always brews at the right temperature", "Endless Thread - Never runs out, always matches the needed color", "Weather Stone - Grows warm when rain approaches", "Merchant's Scales - Cannot be fooled by false weights", "Wanderer's Socks - Never wear out or get wet", "Carpenter's Pencil - Makes perfectly straight lines",
+                        "Pot of Yesterday's Stew - Always contains leftovers", "Fisher's Hook - Attracts fish when hummed to", "Cobbler's Needle - Stitches align themselves", "Traveler's Blanket - Always the right warmth", "Bar Keepers Rag - Cleans any spill in one wipe", "Garden Trowel - Plants grow twice as fast",
+                        "Cook's Spoon - Food never burns when stirred", "Mason's Level - Whistles when perfectly straight", "Shepherd's Bell - Sleeping sheep hear it for miles", "Weaver's Comb - Detangles any knot", "Campfire Stone - Creates smokeless flames", "Dowsing Fork - Hums near fresh water",
+                        "Miner's Lamp - Brightens as air grows stale", "Messenger's Chalk - Marks only wash in moonlight", "Herbalist's Shears - Cut plants without harm", "Scribe's Quill - Ink never blots", "Seamstress's Pins - Find their way home", "Baker's Timer - Chimes at perfect doneness",
+                        "Cartographer's Compass - Points to newest landmarks", "Nurse's Bandage - Stays clean and fresh", "Painter's Brush - Never needs cleaning", "Miller's Cup - Shows if grain is spoiled", "Farrier's Hammer - Never strikes too hard", "Beekeeper's Veil - Bees always stay calm",
+                        "Priest's Candle - Burns only during prayer", "Toymaker's Tools - Toys fix themselves overnight", "Midwife's Charm - Soothes crying babies", "Hunter's Horn - Echoes guide you home", "Farmer's Almanac - Pages show current weather", "Grandmother's Thimble - Makes perfect stitches"
+                    ]
+                },
+                "Hidden Magical Loot": {
+                    dice: "2d6",
+                    description: "Secretive or dangerous magical items",
+                    table: [
+                        "Map with invisible ink markings to a noble's vault", "Ring with spring-loaded poisoned needle", "Love letters between a queen and royal guard", "Strange powder that turns water to wine", "Masterwork lockpicks in a hollowed book", "List of nobles marked for assassination",
+                        "Perfect counterfeit coin dies", "Key sewn into an old coat's hem", "Cipher disk disguised as a compass", "Cultist medallion wrapped in silk", "Evidence of a mayor's dark dealings", "Smuggler's coded shipping routes",
+                        "Scroll of forbidden transmutation", "Locket with a changeling's true face", "Ring with hidden poison compartment", "Forged deed to a merchant's shop", "Collection from a master pickpocket", "Spy's messages written in lemon juice",
+                        "Witch's doll made of stolen hair", "Pouch of gems worth 2d6×10 coins", "Secret map to thieves' guild vault", "Temple guard's bribed confession", "Gravedigger's record of hidden goods", "Fortune teller's true predictions",
+                        "Recipe for illegal dream powder", "Evidence of royal heir's true birth", "Map to smuggler's hidden cove", "Cursed coin that always returns", "Key to a wizard's secret library", "Proof of dragon's human form",
+                        "Demon summoning ritual, half burnt", "Journal proving hero's dark past", "Last page of a prophetic book", "Map to forgotten fairy road", "Letter explaining royal twins switch", "True name of a bound devil"
+                    ]
+                }
+            },
+            political: {
+                "Noble Houses": {
+                    dice: "2d6",
+                    description: "Great houses and their characteristics",
+                    table: [
+                        "House Ravencrest - Ancient bloodline, declining power", "House Goldmane - Merchant nobles, new wealth", "House Ironhold - Military tradition, honor-bound", "House Shadowmere - Spymasters, hidden agendas", "House Brightwater - Religious influence, moral authority", "House Thornwick - Border lords, frontier pragmatism",
+                        "House Stormwind - Naval power, trade dominance", "House Earthshaker - Mining wealth, underground connections", "House Moonwhisper - Elven allies, arcane knowledge", "House Bloodfang - Warrior culture, feared reputation", "House Silverquill - Scholars, diplomatic immunity", "House Wildcrown - Druidic ties, nature's blessing",
+                        "House Greycloak - Neutral arbiters, trusted mediators", "House Redthorn - Ambitious upstarts, ruthless methods", "House Whitehawk - Royal cousins, legitimate claims", "House Blackwater - Fallen nobles, desperate schemes", "House Goldheart - Charitable reputation, hidden wealth", "House Ironmask - Mysterious leaders, unknown purposes",
+                        "House Drakemoor - Dragon blood, ancient pacts", "House Frostborn - Northern stronghold, winter survival", "House Sunblade - Southern power, desert wisdom", "House Mistral - Island domain, storm callers", "House Deeproot - Forest realm, green magic", "House Starfall - Mountain peak, celestial observatory",
+                        "House Nightfall - Shadow operations, fear tactics", "House Dawnbringer - Hope merchants, popular support", "House Soulforge - Artisan guild, masterwork weapons", "House Truthseeker - Justice advocates, corruption hunters", "House Deathwarden - Undead fighters, grim duty", "House Lifebringer - Healers, mercy missions",
+                        "House Voidwalker - Dimensional travelers, otherworldly knowledge", "House Flameheart - Passion rulers, inspiring leaders", "House Icevein - Cold logic, calculated decisions", "House Earthsong - Harmony seekers, peace negotiations", "House Windchaser - Freedom fighters, rebellion supporters", "House Starhome - Exile house, lost kingdom claims"
+                    ]
+                },
+                "Guild Politics": {
+                    dice: "2d6",
+                    description: "Guild conflicts and power struggles",
+                    table: [
+                        "Merchant Guild hoards grain during famine", "Thieves Guild infiltrates city watch", "Artisan Guild strikes over working conditions", "Mage Guild splits over forbidden research", "Healer Guild charges poor excessively", "Bard Guild spreads political propaganda",
+                        "Competing guilds sabotage each other's work", "Guild master embezzles organization funds", "Apprentice rebellion challenges traditional hierarchy", "Foreign guild attempts hostile takeover", "Religious guild enforces moral compliance", "Military guild questions civilian authority",
+                        "Secret guild operates behind legitimate front", "Guild monopoly crushes independent workers", "Inter-guild marriage creates power alliance", "Guild schism forms rival organization", "Ancient guild charter grants unusual privileges", "Guild curse affects all members",
+                        "Information broker guild sells state secrets", "Assassin guild targets guild leaders", "Spy guild infiltrates all other organizations", "Smuggler guild controls black market", "Fence guild launders stolen goods", "Extortion guild protects other criminals",
+                        "Innovation guild threatens traditional crafters", "Quality control guild enforces standards harshly", "Safety guild prevents dangerous practices", "Training guild controls skill advancement", "Certification guild blocks competition", "Research guild hoards knowledge",
+                        "Supernatural guild serves otherworldly masters", "Prophetic guild predicts guild futures", "Time guild manipulates historical records", "Void guild erases inconvenient truths", "Dream guild influences sleeping minds", "Soul guild trades in spiritual currency"
+                    ]
+                }
+            },
+            quests: {
+                "Mission Types": {
+                    dice: "2d6",
+                    description: "Types of missions and adventures",
+                    table: [
+                        "Escort valuable cargo through dangerous territory", "Investigate mysterious disappearances in village", "Retrieve stolen artifact from thieves' den", "Deliver urgent message to distant ally", "Rescue kidnapped noble from bandits", "Eliminate monster threatening trade routes",
+                        "Explore newly discovered ancient ruins", "Map uncharted wilderness for cartographer", "Establish trade relations with distant people", "Find cure for mysterious plague", "Locate source of corrupting magical influence", "Discover fate of missing expedition",
+                        "Mediate dispute between feuding families", "Gather evidence of noble's corruption", "Infiltrate criminal organization", "Protect witness from assassination attempts", "Expose false prophet deceiving followers", "Prevent war between neighboring kingdoms",
+                        "Recover family heirloom lost to gambling", "Clear family name of false accusations", "Find missing heir to noble house", "Avenge murdered mentor or teacher", "Break curse affecting loved one", "Restore honor lost through cowardice",
+                        "Prevent prophesied catastrophe from occurring", "Gather components for powerful ritual", "Seal dimensional rift before demons emerge", "Defeat ancient evil awakening from slumber", "Restore balance to disrupted magical forces", "Fulfill divine mandate from chosen deity",
+                        "Establish new settlement in wilderness", "Build alliance between diverse peoples", "Create trade network spanning continents", "Found school for magical education", "Establish temple in unconsecrated land", "Unite scattered tribes under single banner"
+                    ]
+                },
+                "Patron Motivations": {
+                    dice: "2d6",
+                    description: "Why patrons seek adventurers",
+                    table: [
+                        "Desperate parent seeking lost child", "Vengeful victim planning elaborate revenge", "Ambitious noble expanding influence", "Guilty noble seeking redemption", "Dying elder preserving family legacy", "Paranoid ruler fearing hidden enemies",
+                        "Scholar pursuing forbidden knowledge", "Collector seeking rare artifacts", "Explorer mapping unknown territories", "Inventor testing new magical devices", "Historian uncovering lost civilization", "Philosopher questioning established truths",
+                        "Merchant protecting business interests", "Guild master eliminating competition", "Crime boss expanding territory", "Smuggler moving illegal goods", "Fence disposing of stolen property", "Information broker gathering secrets",
+                        "Priest fulfilling divine mission", "Cultist serving dark master", "Prophet spreading religious message", "Inquisitor rooting out heresy", "Missionary converting unbelievers", "Zealot enforcing religious law",
+                        "Lover arranging secret romance", "Spouse investigating partner's betrayal", "Parent protecting wayward child", "Sibling competing for inheritance", "Friend honoring deathbed promise", "Enemy seeking elaborate humiliation",
+                        "Time traveler preventing disaster", "Shapeshifter maintaining disguise", "Divine avatar testing mortals", "Demon seeking soul contracts", "Fey creature playing elaborate game", "Undead pursuing unfinished business"
+                    ]
+                }
+            },
+            worldbuilding: {
+                "Dragon Isles Regions": {
+                    dice: "d12",
+                    description: "Major regions of the Dragon Isles",
+                    table: [
+                        "Draconia - Ancient dragon kingdom in the north", "Aquila - Imperial trading city-state", "The Shattered Coast - Archipelago of broken kingdoms", "Verdant Reaches - Elven forest realm", 
+                        "The Iron Hills - Dwarven mountain strongholds", "Shadowmere - Mysterious southern marshlands", "The Burning Sands - Desert nomad territories", "Frosthold - Northern barbarian lands",
+                        "The Sunken Lands - Partially flooded ancient empire", "Stormbreak Islands - Pirate havens and sea fortresses", "The Twilight Marches - Border realm of undead", "The Dragon's Backbone - Central mountain range"
+                    ]
+                },
+                "Northmaren Names": {
+                    dice: "d48",
+                    description: "Norse-inspired names from northern cultures",
+                    table: [
+                        "Aelred", "Beorn", "Cynric", "Dunstan", "Eadric", "Gareth", "Hadwin", "Ingvar", "Joren", "Kendrick", "Leofric", "Magnus",
+                        "Nolan", "Osric", "Piers", "Quinn", "Ragnar", "Sigurd", "Thane", "Ulric", "Wulfric", "Yorick", "Alaric", "Bjorn",
+                        "Adelheid", "Brenna", "Cordelia", "Dara", "Elsa", "Freya", "Giselle", "Helga", "Ingrid", "Jora", "Katja", "Linnea",
+                        "Mara", "Nora", "Olga", "Petra", "Raina", "Sigrid", "Thora", "Ursula", "Vera", "Willa", "Ysabel", "Zelda"
+                    ]
+                },
+                "Southmaren Names": {
+                    dice: "d48", 
+                    description: "Spanish-inspired names from southern cultures",
+                    table: [
+                        "Adriano", "Basilio", "Carlos", "Diego", "Eduardo", "Fernando", "Gabriel", "Hector", "Ignacio", "Javier", "Lorenzo", "Miguel",
+                        "Nicolas", "Orlando", "Pablo", "Rafael", "Salvador", "Teodoro", "Valentino", "Xavier", "Ysidro", "Zacarias", "Alejandro", "Benito",
+                        "Alicia", "Beatriz", "Carmen", "Dolores", "Elena", "Francisca", "Gracia", "Helena", "Isabel", "Juana", "Lucia", "Mercedes",
+                        "Natalia", "Olivia", "Paloma", "Rosa", "Sofia", "Teresa", "Valeria", "Ximena", "Yolanda", "Esperanza", "Catalina", "Soledad"
+                    ]
+                }
+            }
+        };
+
+        // Keep legacy oracle tables for backward compatibility
+        const oracleTables = {
+            tavernNames: [
+                "The Howling Wolf", "The Soaring Eagle", "The Prowling Tiger", "The Roaring Lion", "The Galloping Horse", "The Swimming Swan",
+                "The Burning Flame", "The Flowing River", "The Standing Stone", "The Falling Star", "The Rising Sun", "The Setting Moon"
+            ],
+            
+            tavernVibes: [
+                "Smoke-filled common room echoes with drunken laughter and clinking tankards", "Quiet corner tables host whispered conversations over flickering candles", "Traveling merchants display exotic wares while haggling loudly with locals", "Grizzled veterans share war stories over pints of dark ale", "Local farmers gather after harvest, celebrating with song and dance", "Mysterious hooded figures sit alone, watching newcomers with keen interest",
+                "The barkeep polishes glasses while eyeing suspicious patrons warily", "A traveling minstrel entertains crowds with tales of distant lands", "Card games and dice rolls echo from shadowy gaming tables", "The hearth crackles warmly as travelers dry rain-soaked cloaks", "Serving wenches weave between tables carrying platters of roasted meat", "A brawl recently ended, with broken furniture hastily pushed aside",
+                "Pilgrims rest their weary feet while discussing sacred journeys", "Thieves' cant echoes from dark corners where rogues plan jobs", "The stable boy rushes in with news of riders approaching at speed", "Local militia members drink heavily, boasting of recent victories", "A wedding celebration fills the room with joy and festive music", "Refugee families huddle together, sharing meager coins for warm soup",
+                "The town gossip holds court, spreading rumors with dramatic flair", "Apprentices sneak drinks while their masters conduct business upstairs", "A funeral wake transforms grief into stories of the departed", "Foreign sailors sing shanties in their native tongue", "The night watch stops by for their traditional pre-patrol drink", "A merchant caravan leader recruits guards for dangerous roads ahead",
+                "Local nobles slum it with commoners, causing nervous whispers", "A traveling priest offers blessings in exchange for donations", "Gamblers argue over marked cards while tensions rise dangerously", "The blacksmith's wife serves her famous stew to hungry travelers", "Bounty hunters compare wanted posters while sharpening weapons", "A royal messenger drinks alone, guarding sealed documents carefully",
+                "Dock workers share tales of strange cargo and foreign ports", "The mayor's son causes trouble, protected by his father's influence", "A scholar researches local legends, interviewing elderly patrons", "Smugglers toast successful runs while watching for tax collectors", "The healer's apprentice tends to wounded adventurers for coin", "Fortune tellers read palms and bones for superstitious locals"
+            ],
+
+            grittyRumors: [
+                "Tax collector's ledger stolen, guards suspiciously uninterested", "Guild master murdered, rival merchants blamed", "Ship's cargo moves and moans, dockworkers refuse to unload", "Three guards dead in alley, district locked down", "Something big in north sewers, ratcatchers won't enter", "Prison wagon overturned, inmates loose",
+                "Plague doctor buying fresh corpses", "Debt collectors vanishing in Old Quarter", "Silver reward for masked vigilante info", "Merchant seeks guards, previous vanished", "Something hunting in night fog", "Temple stockpiling weapons secretly",
+                "Widow seeks husband's killer", "Watch captain's daughter missing", "Poisoned grain sickens street", "Guild extorting protection money", "Meat spoiling unnaturally fast", "Sewer workers hear screams below",
+                "Hanged merchants marked with symbols", "Priest's blessed water buyers vanish", "Gang training child knife-fighters", "Specific corpses stolen from graves", "Suspicious meat at dockside tavern", "Noble seeks discreet bodyguards",
+                "Guards avoid Pearl Street nightly", "Missing apprentices, tools remain", "Suspicious warehouse fire kills six", "Dead things in brackish wells", "Tongueless beggar passing messages", "Tortured smuggler found in shop",
+                "Guild master hoarding grain pre-riots", "Marked corpses floating in harbor", "Preacher selling plague prevention", "Noble's son running protection racket", "Giant albino stealing sewer children", "Militia recruiting without explanation"
+            ],
+
+            weirdRumors: [
+                "Moonlit stones dance at midnight crossroads", "Shadow market sells bottled memories", "Silver mist devours travelers' dreams", "Singing bones rise from desert sands", "Iron trees drink wanderers' blood", "Mirrored pool shows moment of death",
+                "Rainbow serpent guards crystal eggs", "Wind spirits trade songs for secrets", "Clockwork birds deliver prophecies", "Cloud giants cast golden nets", "Glass forest echoes lost voices", "Star-paths lead to dream cities",
+                "Witch's kettle brews stolen time", "Ghost ship trades with shadow crew", "Crystal spiders weave fate-threads", "Moon-deer grant wishes to poets", "Living statues seek their souls", "Storm dragons dance in lightning",
+                "Mist children steal adult shadows", "Paper birds carry forbidden spells", "Twin moons whisper to dreamers", "Stone eggs hatch memory-beasts", "Butterfly swarm steals voices", "Flower maze leads to yesterday",
+                "Bone merchant trades in destinies", "Time flows backwards in brass tower", "Salt circle traps morning light", "Mirror door opens to starlight", "Rose thorns bleed golden wine", "Cloud castle seeks earth-bride",
+                "Dawn birds weave sunbeam bridges", "Autumn leaves grant true dreams", "Star whales swim through night sky", "Crystal tree grows wish-fruits", "Rainbow road leads to moon-fair", "Butterfly princess grants hearts' desire"
+            ],
+
+            terrain: [
+                "Forest - Deep Woods", "Forest - Old Growth", "Forest - Birch Grove", "Forest - Pine Forest", "Forest - Jungle", "Forest - Other",
+                "Flat - Grasslands", "Flat - Prairie", "Flat - Farmland", "Flat - Scrubland", "Flat - Barren", "Flat - Other",
+                "Arid - Desert Cold", "Arid - Desert Coastal", "Arid - Desert Rocky", "Arid - Badlands", "Arid - Steppe", "Arid - Other",
+                "Wetlands - Bog", "Wetlands - Marsh", "Wetlands - Swamp", "Wetlands - Moor", "Wetlands - River", "Wetlands - Tundra",
+                "Mountains - Small", "Mountains - Tall", "Mountains - Snow-capped", "Mountains - Forested", "Mountains - Transitional", "Mountains - Volcano",
+                "Hills - Barren", "Hills - Grassy", "Hills - Forested", "Hills - Shrubland", "Hills - Jungle", "Hills - Transitional"
+            ],
+
+            startingLocations: [
+                "Town - Market Town", "Town - River Port", "Town - Walled Town", "Town - Shrine Town", "Town - Crossroads", "Town - Capital",
+                "Village - Farming Village", "Village - Fishing Village", "Village - Mining Village", "Village - Logging Village", "Village - Waystation", "Village - Abandoned Village",
+                "Dungeon Entrance - Cave Mouth", "Dungeon Entrance - Ruined Keep", "Dungeon Entrance - Sinkhole", "Dungeon Entrance - Hidden Door", "Dungeon Entrance - Ancient Shrine", "Dungeon Entrance - Lost Mine",
+                "Abandoned Structure - Ruined Tower", "Abandoned Structure - Ghost Town", "Abandoned Structure - Broken Bridge", "Abandoned Structure - Old Mill", "Abandoned Structure - Crumbling Castle", "Abandoned Structure - Forgotten Temple",
+                "Road Feature - Crossroads", "Road Feature - Stone Bridge", "Road Feature - Toll Gate", "Road Feature - Waystone", "Road Feature - Inn", "Road Feature - Bandit Territory",
+                "Resource Location - Mine", "Resource Location - Quarry", "Resource Location - Logging Camp", "Resource Location - Fresh Spring", "Resource Location - Salt Deposits", "Resource Location - Herb Garden"
+            ],
+
+            weatherByClimate: {
+                temperate: {
+                    spring: ["Gentle rain showers", "Warm sunshine with clouds", "Cool morning mist", "Light winds with flowers blooming", "Variable clouds and sun", "Fresh breeze with bird song"],
+                    summer: ["Hot sunny days", "Afternoon thunderstorms", "Warm gentle breeze", "Clear starlit nights", "Humid but pleasant", "Occasional cooling rain"],
+                    autumn: ["Crisp clear days", "Colorful leaf-fall with light winds", "Cool morning fog", "Harvest season warmth", "Early frost warnings", "Gray overcast skies"],
+                    winter: ["Snow flurries", "Bitter cold winds", "Frozen ground and ice", "Short gray days", "Deep snow drifts", "Clear cold starry nights"]
+                },
+                tropical: {
+                    spring: ["Warm trade winds", "Growing humidity", "Brief rain squalls", "Lush green growth", "Gentle morning showers", "Rising temperatures"],
+                    summer: ["Intense tropical heat", "Daily thunderstorms", "Oppressive humidity", "Monsoon rains", "Steamy jungle air", "Brief cooling downpours"],
+                    autumn: ["Hurricane season storms", "High humidity persists", "Tropical deluges", "Warm but stormy", "Flash flood rains", "Violent wind and rain"],
+                    winter: ["Mild tropical warmth", "Dry season begins", "Clear sunny days", "Gentle ocean breezes", "Perfect sailing weather", "Cool evening temperatures"]
+                },
+                arid: {
+                    spring: ["Scorching desert heat", "Rare precious rain", "Sandstorms on horizon", "Blazing sun, no clouds", "Mirages in distance", "Cool desert nights"],
+                    summer: ["Killing heat waves", "No relief from sun", "Deadly midday temperatures", "Dust devils swirling", "Parched earth and stone", "Brief violent sandstorms"],
+                    autumn: ["Harsh but cooling", "Dust storms diminish", "Clear dry air", "Comfortable night temperatures", "Occasional desert rain", "Rocky terrain visible"],
+                    winter: ["Cold desert nights", "Surprisingly chilly", "Clear starry skies", "Frost on rocky ground", "Bright but cold sun", "Bone-dry air"]
+                },
+                cold: {
+                    spring: ["Slow mountain thaw", "Icy streams running", "Patches of snow remain", "Crisp thin air", "Avalanche warnings", "Brief warming spells"],
+                    summer: ["Cool mountain air", "Afternoon thunderheads", "Short growing season", "Clear alpine views", "Sudden weather changes", "Pleasant hiking weather"],
+                    autumn: ["Early mountain snow", "Bitter winds arrive", "Trees losing leaves quickly", "Frost comes early", "Preparing for winter", "Gray overcast days"],
+                    winter: ["Deep mountain snow", "Howling blizzards", "Impassable mountain passes", "Bone-chilling winds", "Frozen waterfalls", "Survival conditions"]
+                },
+                coastal: {
+                    spring: ["Fresh sea breezes", "Moderate temperatures", "Salt air and seagulls", "Tidal pools active", "Fishing season begins", "Pleasant ocean views"],
+                    summer: ["Ocean cooling effect", "Sea fog in morning", "Perfect sailing winds", "Warm beach weather", "Regular sea breezes", "Storm clouds on horizon"],
+                    autumn: ["Storm season approaches", "High seas and waves", "Coastal winds strengthen", "Fishing boats take shelter", "Gray stormy seas", "Salt spray and mist"],
+                    winter: ["Harsh coastal storms", "Dangerous high seas", "Freezing ocean spray", "Ships avoid the coast", "Lighthouse beacons vital", "Rocky shores treacherous"]
+                },
+                swamp: {
+                    spring: ["Rising swamp waters", "Mosquitoes emerge", "Thick humid air", "Bog mists linger", "Amphibians active", "Dense vegetation growing"],
+                    summer: ["Oppressive swamp heat", "Thick choking humidity", "Poisonous vapors rise", "Dangerous bog gas", "Pestilent insects swarm", "Stagnant fetid air"],
+                    autumn: ["Swamp waters recede", "Mists become toxic", "Decay and rot scents", "Fewer but meaner insects", "Treacherous footing", "Disease-carrying air"],
+                    winter: ["Frozen swamp surface", "Thin ice over bog", "Cold mists hang low", "Dormant but dangerous", "Deceptively peaceful", "Hidden depths still warm"]
+                }
+            },
+
+            // Dragon Isles Worldbuilding
+            dragonIslesRegions: [
+                "Draconia - Ancient dragon kingdom in the north", "Aquila - Imperial trading city-state", "The Shattered Coast - Archipelago of broken kingdoms", "Verdant Reaches - Elven forest realm", 
+                "The Iron Hills - Dwarven mountain strongholds", "Shadowmere - Mysterious southern marshlands", "The Burning Sands - Desert nomad territories", "Frosthold - Northern barbarian lands",
+                "The Sunken Lands - Partially flooded ancient empire", "Stormbreak Islands - Pirate havens and sea fortresses", "The Twilight Marches - Border realm of undead", "The Dragon's Backbone - Central mountain range"
+            ],
+
+            northmarenNames: [
+                "Aelred", "Beorn", "Cynric", "Dunstan", "Eadric", "Gareth", "Hadwin", "Ingvar", "Joren", "Kendrick", "Leofric", "Magnus",
+                "Nolan", "Osric", "Piers", "Quinn", "Ragnar", "Sigurd", "Thane", "Ulric", "Wulfric", "Yorick", "Alaric", "Bjorn",
+                "Adelheid", "Brenna", "Cordelia", "Dara", "Elsa", "Freya", "Giselle", "Helga", "Ingrid", "Jora", "Katja", "Linnea",
+                "Mara", "Nora", "Olga", "Petra", "Raina", "Sigrid", "Thora", "Ursula", "Vera", "Willa", "Ysabel", "Zelda"
+            ],
+
+            southmarenNames: [
+                "Adriano", "Basilio", "Carlos", "Diego", "Eduardo", "Fernando", "Gabriel", "Hector", "Ignacio", "Javier", "Lorenzo", "Miguel",
+                "Nicolas", "Orlando", "Pablo", "Rafael", "Salvador", "Teodoro", "Valentino", "Xavier", "Ysidro", "Zacarias", "Alejandro", "Benito",
+                "Alicia", "Beatriz", "Carmen", "Dolores", "Elena", "Francisca", "Gracia", "Helena", "Isabel", "Juana", "Lucia", "Mercedes",
+                "Natalia", "Olivia", "Paloma", "Rosa", "Sofia", "Teresa", "Valeria", "Ximena", "Yolanda", "Esperanza", "Catalina", "Soledad"
+            ],
+
+            dragonIslesDeities: [
+                "Solaris the Sun King - God of justice, law, and righteous authority", "Terra the Earth Mother - Goddess of nature, harvest, and fertility", 
+                "Mercurius the Winged Messenger - God of trade, travel, and communication", "Luna the Veiled Maiden - Goddess of mysteries, secrets, and magic",
+                "Mortis the Winter King - God of death, judgment, and the underworld", "Chronos the Voiceless Keeper - God of time, memory, and preservation",
+                "Void the Voice in the Dark - Entity of chaos, madness, and the unknown", "Ignis the Fire Bearer - God of war, passion, and destruction",
+                "Aqua the Deep Singer - Goddess of seas, storms, and emotional depths", "Ventus the Sky Dancer - God of winds, freedom, and change",
+                "Ferrum the Iron Forger - God of craftsmanship, loyalty, and strength", "Sylva the Green Walker - Goddess of forests, growth, and wild beasts",
+                "Stella the Star Weaver - Goddess of fate, prophecy, and divine will", "Umbra the Shadow Keeper - God of thieves, spies, and hidden knowledge",
+                "Lux the Dawn Bringer - Goddess of hope, healing, and new beginnings", "Nox the Night Cloaked - God of dreams, sleep, and peaceful rest"
+            ],
+
+            npcThemes: [
+                "Knight - Honorable warrior bound by oaths", "Noble - Aristocrat with wealth and influence", "Thief - Cunning criminal and shadow-dweller",
+                "Merchant - Shrewd trader and deal-maker", "Wizard - Scholar of arcane mysteries", "Priest - Servant of divine powers",
+                "Soldier - Professional warrior and guard", "Artisan - Skilled craftsperson and creator", "Peasant - Common folk and laborers",
+                "Sailor - Sea-faring adventurer and traveler", "Hunter - Tracker and wilderness survivor", "Scholar - Keeper of knowledge and lore",
+                "Bard - Storyteller and keeper of songs", "Healer - Tender of wounds and ailments", "Spy - Information gatherer and infiltrator",
+                "Outlaw - Rebel against authority and law", "Hermit - Solitary seeker of truth", "Refugee - Displaced person seeking shelter"
+            ]
+        };
+
+        // Oracle state
+        let rumorTone = 'gritty';
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            updateInsightDisplay(); // Show all insight options initially
             loadGameState();
             updatePlayerView();
         });
@@ -574,8 +1169,118 @@
             document.getElementById('insightDescription').style.display = 'block';
             
             gameState.currentInsight = `${roll} - ${description.split(' - ')[0]}`;
+            updateInsightDisplay(roll);
             updatePlayerView();
             saveGameState();
+        }
+
+        function updateInsightDisplay(currentRoll = null) {
+            const container = document.getElementById('insightOptions');
+            container.innerHTML = '';
+            
+            insightOptions.forEach(option => {
+                const div = document.createElement('div');
+                div.className = 'insight-option';
+                if (currentRoll === option.id) {
+                    div.classList.add('current');
+                }
+                div.innerHTML = `<strong>${option.id}. ${option.name}</strong><br><small>${option.description}</small>`;
+                container.appendChild(div);
+            });
+        }
+
+        function rollOracleAdvantage() {
+            const dice = [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1];
+            
+            // Sort dice to find best two, but never remove 1s
+            const sortedDice = [...dice].sort((a, b) => b - a);
+            let keptDice = [];
+            let discardedDice = [];
+            
+            // Keep all 1s first
+            const ones = dice.filter(d => d === 1);
+            keptDice = [...ones];
+            
+            // If we have space for more dice (less than 2 total), add the highest non-1s
+            const nonOnes = dice.filter(d => d !== 1).sort((a, b) => b - a);
+            while (keptDice.length < 2 && nonOnes.length > 0) {
+                keptDice.push(nonOnes.shift());
+            }
+            
+            // Handle case where we have more than 2 dice total due to multiple 1s
+            if (keptDice.length > 2) {
+                // Keep all 1s, then best of remaining to make exactly 2
+                const finalKept = ones.concat(nonOnes.slice(0, 2 - ones.length));
+                keptDice = finalKept;
+            }
+            
+            const total = keptDice.reduce((sum, die) => sum + die, 0);
+            const target = gameState.oracleTarget;
+            const success = total >= target;
+            
+            let result = `<div class="dice-display">Advantage: [${dice.join(', ')}] → Kept: ${keptDice.join(' + ')} = ${total}</div>`;
+            result += `<div class="result-text ${success ? 'yes' : 'no'}">${success ? 'YES' : 'NO'}</div>`;
+            
+            // Check for Sweet (6) or Spicy (1) in kept dice
+            const hasSix = keptDice.includes(6);
+            const hasOne = keptDice.includes(1);
+            
+            if (hasSix && hasOne) {
+                result += '<div class="sweet-spicy sweet">Sweet</div><div class="sweet-spicy spicy">Spicy</div>';
+            } else if (hasSix) {
+                result += '<div class="sweet-spicy sweet">Sweet</div>';
+            } else if (hasOne) {
+                result += '<div class="sweet-spicy spicy">Spicy</div>';
+            }
+            
+            document.getElementById('oracleResult').innerHTML = result;
+        }
+
+        function rollOracleDisadvantage() {
+            const dice = [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1];
+            
+            // Sort dice to find worst two, but never remove 1s
+            const sortedDice = [...dice].sort((a, b) => a - b);
+            let keptDice = [];
+            let discardedDice = [];
+            
+            // Keep all 1s first
+            const ones = dice.filter(d => d === 1);
+            keptDice = [...ones];
+            
+            // If we have space for more dice (less than 2 total), add the lowest non-1s
+            const nonOnes = dice.filter(d => d !== 1).sort((a, b) => a - b);
+            while (keptDice.length < 2 && nonOnes.length > 0) {
+                keptDice.push(nonOnes.shift());
+            }
+            
+            // Handle case where we have more than 2 dice total due to multiple 1s
+            if (keptDice.length > 2) {
+                // Keep all 1s, then worst of remaining to make exactly 2
+                const finalKept = ones.concat(nonOnes.slice(0, 2 - ones.length));
+                keptDice = finalKept;
+            }
+            
+            const total = keptDice.reduce((sum, die) => sum + die, 0);
+            const target = gameState.oracleTarget;
+            const success = total >= target;
+            
+            let result = `<div class="dice-display">Disadvantage: [${dice.join(', ')}] → Kept: ${keptDice.join(' + ')} = ${total}</div>`;
+            result += `<div class="result-text ${success ? 'yes' : 'no'}">${success ? 'YES' : 'NO'}</div>`;
+            
+            // Check for Sweet (6) or Spicy (1) in kept dice
+            const hasSix = keptDice.includes(6);
+            const hasOne = keptDice.includes(1);
+            
+            if (hasSix && hasOne) {
+                result += '<div class="sweet-spicy sweet">Sweet</div><div class="sweet-spicy spicy">Spicy</div>';
+            } else if (hasSix) {
+                result += '<div class="sweet-spicy sweet">Sweet</div>';
+            } else if (hasOne) {
+                result += '<div class="sweet-spicy spicy">Spicy</div>';
+            }
+            
+            document.getElementById('oracleResult').innerHTML = result;
         }
 
         function setTarget(target) {
@@ -637,18 +1342,27 @@
             document.getElementById('playerTurnDisplay').textContent = gameState.turn;
             document.getElementById('playerPartyLevel').textContent = gameState.partyLevel;
             document.getElementById('playerInsight').textContent = gameState.currentInsight || 'Roll for Insight';
-            document.getElementById('playerWeather').textContent = gameState.weather || 'Unknown';
-            document.getElementById('playerLocation').textContent = gameState.location || 'Unknown';
+            
+            // Combine region and location for player display
+            const locationDisplay = gameState.worldRegion && gameState.location 
+                ? `${gameState.location} (${gameState.worldRegion})`
+                : gameState.location || gameState.worldRegion || 'Unknown';
+            
+            document.getElementById('playerWeather').textContent = gameState.currentWeather || 'Unknown';
+            document.getElementById('playerLocation').textContent = locationDisplay;
             document.getElementById('playerRumors').textContent = gameState.rumors || 'None';
         }
 
         function saveGameState() {
             // Get values from inputs
-            gameState.weather = document.getElementById('weather').value;
+            gameState.worldRegion = document.getElementById('worldRegion').value;
             gameState.location = document.getElementById('location').value;
+            gameState.currentWeather = document.getElementById('currentWeather').value;
             gameState.partyLevel = parseInt(document.getElementById('partyLevel').value);
             gameState.rumors = document.getElementById('rumors').value;
             gameState.sessionNotes = document.getElementById('sessionNotes').value;
+            gameState.currentSeason = document.getElementById('currentSeason').value;
+            gameState.currentClimate = document.getElementById('currentClimate').value;
             
             // Save to localStorage
             localStorage.setItem('wandyrGameState', JSON.stringify(gameState));
@@ -674,28 +1388,259 @@
                 
                 // Update displays
                 updateClockDisplay();
-                document.getElementById('weather').value = gameState.weather || '';
+                document.getElementById('worldRegion').value = gameState.worldRegion || '';
                 document.getElementById('location').value = gameState.location || '';
+                document.getElementById('currentWeather').value = gameState.currentWeather || '';
                 document.getElementById('partyLevel').value = gameState.partyLevel || 0;
                 document.getElementById('rumors').value = gameState.rumors || '';
                 document.getElementById('sessionNotes').value = gameState.sessionNotes || '';
+                document.getElementById('currentSeason').value = gameState.currentSeason || 'spring';
+                document.getElementById('currentClimate').value = gameState.currentClimate || 'temperate';
                 
                 // Set oracle target
                 setTarget(gameState.oracleTarget);
                 
                 // Update insight if available
                 if (gameState.currentInsight) {
-                    const insightNum = gameState.currentInsight.split(' - ')[0];
+                    const insightNum = parseInt(gameState.currentInsight.split(' - ')[0]);
                     document.getElementById('insightResult').textContent = insightNum;
                     document.getElementById('insightDescription').textContent = insightDescriptions[insightNum];
                     document.getElementById('insightDescription').style.display = 'block';
+                    updateInsightDisplay(insightNum);
+                } else {
+                    updateInsightDisplay();
                 }
             }
         }
 
+        // Oracle Generator Functions
+        function roll2d6() {
+            const die1 = Math.floor(Math.random() * 6) + 1;
+            const die2 = Math.floor(Math.random() * 6) + 1;
+            return [die1, die2];
+        }
+
+        function rollFromArray(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function generateTavern() {
+            const name = rollFromArray(oracleTables.tavernNames);
+            const vibe = rollFromArray(oracleTables.tavernVibes);
+            
+            const result = `
+                <div class="tavern-name">${name}</div>
+                <div class="tavern-vibe">${vibe}</div>
+            `;
+            
+            document.getElementById('tavernResult').innerHTML = result;
+        }
+
+        function setRumorTone(tone) {
+            rumorTone = tone;
+            document.querySelectorAll('[data-tone]').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-tone="${tone}"]`).classList.add('active');
+        }
+
+        function generateRumor() {
+            const rumors = rumorTone === 'gritty' ? oracleTables.grittyRumors : oracleTables.weirdRumors;
+            const rumor = rollFromArray(rumors);
+            
+            const result = `
+                <h5>${rumorTone.charAt(0).toUpperCase() + rumorTone.slice(1)} Rumor:</h5>
+                <div>${rumor}</div>
+            `;
+            
+            document.getElementById('rumorResult').innerHTML = result;
+        }
+
+        function generateTerrain() {
+            const terrain = rollFromArray(oracleTables.terrain);
+            
+            const result = `
+                <h5>Terrain:</h5>
+                <div>${terrain}</div>
+            `;
+            
+            document.getElementById('terrainResult').innerHTML = result;
+        }
+
+        function generateLocation() {
+            const location = rollFromArray(oracleTables.startingLocations);
+            
+            const result = `
+                <h5>Location:</h5>
+                <div>${location}</div>
+            `;
+            
+            document.getElementById('terrainResult').innerHTML = result;
+        }
+
+        function generateWeatherForLocation() {
+            const season = document.getElementById('currentSeason').value;
+            const climate = document.getElementById('currentClimate').value;
+            
+            console.log('Generating weather for:', { season, climate });
+            
+            if (!oracleTables.weatherByClimate[climate] || !oracleTables.weatherByClimate[climate][season]) {
+                console.error('No weather data found for climate:', climate, 'season:', season);
+                const fallbackWeather = `${season} weather in ${climate} climate`;
+                document.getElementById('currentWeather').value = fallbackWeather;
+                document.getElementById('weatherResult').innerHTML = `
+                    <h5>Generated Weather:</h5>
+                    <div>${fallbackWeather}</div>
+                `;
+                return;
+            }
+            
+            const weatherOptions = oracleTables.weatherByClimate[climate][season];
+            const weather = rollFromArray(weatherOptions);
+            
+            console.log('Generated weather:', weather);
+            
+            // Update the weather field and show result
+            document.getElementById('currentWeather').value = weather;
+            document.getElementById('weatherResult').innerHTML = `
+                <h5>Generated Weather (${season.charAt(0).toUpperCase() + season.slice(1)} in ${climate.charAt(0).toUpperCase() + climate.slice(1)} climate):</h5>
+                <div>${weather}</div>
+            `;
+            
+            // Trigger save
+            saveGameState();
+        }
+
+        // Dragon Isles Worldbuilding Generators
+        function generateRegion() {
+            const region = rollFromArray(oracleTables.dragonIslesRegions);
+            
+            const result = `
+                <h5>Dragon Isles Region:</h5>
+                <div>${region}</div>
+            `;
+            
+            document.getElementById('worldbuildingResult').innerHTML = result;
+        }
+
+        function generateNPC() {
+            const culture = Math.random() < 0.5 ? 'northmaren' : 'southmaren';
+            const name = culture === 'northmaren' 
+                ? rollFromArray(oracleTables.northmarenNames) 
+                : rollFromArray(oracleTables.southmarenNames);
+            const theme = rollFromArray(oracleTables.npcThemes);
+            const deity = rollFromArray(oracleTables.dragonIslesDeities);
+            
+            const result = `
+                <h5>Dragon Isles NPC:</h5>
+                <div><strong>${name}</strong> (${culture.charAt(0).toUpperCase() + culture.slice(1)})</div>
+                <div><em>Role:</em> ${theme}</div>
+                <div><em>Patron Deity:</em> ${deity.split(' - ')[0]}</div>
+            `;
+            
+            document.getElementById('worldbuildingResult').innerHTML = result;
+        }
+
+        function generateDeity() {
+            const deity = rollFromArray(oracleTables.dragonIslesDeities);
+            const [name, description] = deity.split(' - ');
+            
+            const result = `
+                <h5>Dragon Isles Deity:</h5>
+                <div><strong>${name}</strong></div>
+                <div><em>${description}</em></div>
+            `;
+            
+            document.getElementById('worldbuildingResult').innerHTML = result;
+        }
+
+        // Oracle Table Browser Functions
+        function updateTableList() {
+            console.log('updateTableList() called');
+            
+            const categoryElement = document.getElementById('tableCategory');
+            const tableSelect = document.getElementById('tableSelect');
+            const rollButton = document.getElementById('rollButton');
+            const tableInfo = document.getElementById('tableInfo');
+            
+            if (!categoryElement || !tableSelect || !rollButton || !tableInfo) {
+                console.error('Missing elements:', {
+                    categoryElement: !!categoryElement,
+                    tableSelect: !!tableSelect,
+                    rollButton: !!rollButton,
+                    tableInfo: !!tableInfo
+                });
+                return;
+            }
+            
+            const category = categoryElement.value;
+            console.log('Selected category:', category);
+            
+            // Clear table list
+            tableSelect.innerHTML = '<option value="">-- Select Table --</option>';
+            rollButton.disabled = true;
+            tableInfo.textContent = '';
+            
+            console.log('oracleTableData exists:', !!oracleTableData);
+            if (oracleTableData) {
+                console.log('Available categories:', Object.keys(oracleTableData));
+            }
+            
+            if (category && oracleTableData && oracleTableData[category]) {
+                console.log('Found category data, tables available:', Object.keys(oracleTableData[category]));
+                
+                Object.keys(oracleTableData[category]).forEach(tableName => {
+                    const option = document.createElement('option');
+                    option.value = tableName;
+                    option.textContent = tableName;
+                    tableSelect.appendChild(option);
+                    console.log('Added table option:', tableName);
+                });
+                
+                console.log('Finished adding', Object.keys(oracleTableData[category]).length, 'tables to dropdown');
+            } else {
+                console.log('No data found for category:', category, 'or oracleTableData not available');
+            }
+        }
+
+        function showTableInfo() {
+            const category = document.getElementById('tableCategory').value;
+            const tableName = document.getElementById('tableSelect').value;
+            const rollButton = document.getElementById('rollButton');
+            const tableInfo = document.getElementById('tableInfo');
+            
+            if (category && tableName && oracleTableData[category] && oracleTableData[category][tableName]) {
+                const table = oracleTableData[category][tableName];
+                tableInfo.textContent = `${table.description} (${table.dice})`;
+                rollButton.disabled = false;
+            } else {
+                tableInfo.textContent = '';
+                rollButton.disabled = true;
+            }
+        }
+
+        function rollOnTable() {
+            const category = document.getElementById('tableCategory').value;
+            const tableName = document.getElementById('tableSelect').value;
+            
+            if (!category || !tableName || !oracleTableData[category] || !oracleTableData[category][tableName]) {
+                return;
+            }
+            
+            const table = oracleTableData[category][tableName];
+            const result = rollFromArray(table.table);
+            const roll = Math.floor(Math.random() * table.table.length) + 1;
+            
+            const resultHtml = `
+                <h5>${tableName}</h5>
+                <div class="roll-info">Rolled ${roll} on ${table.dice}</div>
+                <div>${result}</div>
+            `;
+            
+            document.getElementById('tableResult').innerHTML = resultHtml;
+        }
+
         // Auto-save when inputs change
         document.addEventListener('input', function(e) {
-            if (e.target.matches('#weather, #location, #partyLevel, #rumors, #sessionNotes')) {
+            if (e.target.matches('#worldRegion, #location, #currentWeather, #partyLevel, #rumors, #sessionNotes, #currentSeason, #currentClimate')) {
                 setTimeout(saveGameState, 500); // Debounce saves
             }
         });
