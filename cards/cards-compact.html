@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wåndyr Card Oracle Simulator - Compact Table</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #2c1810, #4a2c1a);
+            color: #f5e6d3;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+        
+        .controls {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            color: #f5e6d3;
+            border: 2px solid #d4af37;
+            padding: 12px 24px;
+            margin: 0 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        button:hover {
+            background: linear-gradient(45deg, #a0522d, #cd853f);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        button:disabled {
+            background: #666;
+            border-color: #888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .deck-count {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #d4af37;
+        }
+        
+        .table-container {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0,0,0,0.2);
+            table-layout: auto;
+        }
+        
+        th, td {
+            border: 1px solid #d4af37;
+            padding: 8px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        tr:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .card-symbol {
+            display: inline;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+        
+        .card-symbol.red {
+            color: #dc143c;
+        }
+        
+        .card-code {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .combination-cell {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #d4af37;
+            word-break: break-all;
+        }
+        
+        .newest-card {
+            font-weight: bold;
+            color: #f5e6d3;
+        }
+        
+        .current-card-display {
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .card-visual-large {
+            width: 120px;
+            height: 180px;
+            background: white;
+            border: 3px solid #333;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            position: relative;
+            color: black;
+            font-weight: bold;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .card-visual-large.red {
+            color: #dc143c;
+        }
+        
+        .card-visual-large .top-corner {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-size: 16px;
+            line-height: 1;
+        }
+        
+        .card-visual-large .bottom-corner {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-size: 16px;
+            line-height: 1;
+            transform: rotate(180deg);
+        }
+        
+        .card-visual-large .center {
+            font-size: 36px;
+        }
+        
+        .oracle-section {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .oracle-section h3 {
+            margin: 0 0 10px 0;
+            color: #d4af37;
+            font-size: 20px;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f5e6d3;
+            margin-bottom: 10px;
+        }
+        
+        .oracle-text {
+            font-style: italic;
+            line-height: 1.4;
+            font-size: 14px;
+            color: #f5e6d3;
+            background: rgba(0,0,0,0.3);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #d4af37;
+        }
+        
+        .combo-section {
+            text-align: right;
+            min-width: 200px;
+        }
+        
+        .combo-section h4 {
+            margin: 0 0 8px 0;
+            color: #d4af37;
+            font-size: 16px;
+        }
+        
+        .combo-display {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            color: #f5e6d3;
+            margin-bottom: 8px;
+        }
+        
+        .named-combo-display {
+            font-size: 12px;
+            color: #d4af37;
+            font-weight: bold;
+        }
+        
+        .history-title {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .interpretation-cell {
+            font-style: italic;
+            line-height: 1.3;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            margin: 40px 0;
+        }
+        
+        .copy-hint {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wåndyr Card Oracle - Compact Table</h1>
+        
+        <div class="controls">
+            <button id="drawButton" onclick="drawCard()">Draw Card</button>
+            <button id="resetButton" onclick="resetDeck()">Reset Deck</button>
+        </div>
+        
+        <div class="deck-count">
+            <span id="deckCount">52 cards remaining</span>
+        </div>
+        
+        <div id="currentCardDisplay" class="current-card-display" style="display: none;">
+            <div id="cardVisualLarge" class="card-visual-large"></div>
+            <div class="oracle-section">
+                <h3>Card Oracle</h3>
+                <div id="cardTitle" class="card-title"></div>
+                <div id="oracleText" class="oracle-text"></div>
+            </div>
+            <div class="combo-section">
+                <h4>Current Hand</h4>
+                <div id="comboDisplay" class="combo-display"></div>
+                <div id="namedComboDisplay" class="named-combo-display"></div>
+            </div>
+        </div>
+        
+        <div id="tableContainer" class="table-container" style="display: none;">
+            <div class="history-title">Draw History</div>
+            <table id="cardsTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>Card Oracle</th>
+                        <th>Named Combo</th>
+                        <th>Card Combo</th>
+                    </tr>
+                </thead>
+                <tbody id="cardsTableBody">
+                </tbody>
+            </table>
+            <div class="copy-hint">
+                Tip: Select and copy the table to paste into a spreadsheet
+            </div>
+        </div>
+        
+        <div id="emptyState" class="empty-state">
+            Draw a card to begin the oracle reading...
+        </div>
+    </div>
+
+    <script>
+        let deck = [];
+        let drawnCards = [];
+        
+        const suits = {
+            'hearts': { symbol: '♥', name: 'Hearts', color: 'red' },
+            'diamonds': { symbol: '♦', name: 'Diamonds', color: 'red' },
+            'clubs': { symbol: '♣', name: 'Clubs', color: 'black' },
+            'spades': { symbol: '♠', name: 'Spades', color: 'black' }
+        };
+        
+        const ranks = {
+            1: { display: 'A', name: 'Ace' },
+            2: { display: '2', name: 'Two' },
+            3: { display: '3', name: 'Three' },
+            4: { display: '4', name: 'Four' },
+            5: { display: '5', name: 'Five' },
+            6: { display: '6', name: 'Six' },
+            7: { display: '7', name: 'Seven' },
+            8: { display: '8', name: 'Eight' },
+            9: { display: '9', name: 'Nine' },
+            10: { display: '10', name: 'Ten' },
+            11: { display: 'J', name: 'Jack' },
+            12: { display: 'Q', name: 'Queen' },
+            13: { display: 'K', name: 'King' }
+        };
+        
+        function initializeDeck() {
+            deck = [];
+            for (let suit in suits) {
+                for (let rank = 1; rank <= 13; rank++) {
+                    deck.push({ suit, rank });
+                }
+            }
+            shuffleDeck();
+        }
+        
+        function shuffleDeck() {
+            for (let i = deck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
+        }
+        
+        function drawCard() {
+            if (deck.length === 0) return;
+            
+            const card = deck.pop();
+            drawnCards.push(card);
+            updateDisplay();
+        }
+        
+        function resetDeck() {
+            drawnCards = [];
+            initializeDeck();
+            updateDisplay();
+        }
+        
+        function getCardCode(card) {
+            return `${ranks[card.rank].display}${card.suit.charAt(0).toUpperCase()}`;
+        }
+        
+        function getCombinationString(cardSequence) {
+            return cardSequence.map(card => getCardCode(card)).join('+');
+        }
+        
+        function getCombinationStringWithHighlight(cardSequence, highlightIndex) {
+            return cardSequence.map((card, index) => {
+                const code = getCardCode(card);
+                return index === highlightIndex ? `<span class="newest-card">${code}</span>` : code;
+            }).join('+');
+        }
+        
+        function getNamedCombo(cardSequence) {
+            if (cardSequence.length < 2) return '';
+            
+            const ranks = cardSequence.map(c => c.rank).sort((a, b) => a - b);
+            const suits = cardSequence.map(c => c.suit);
+            const rankCounts = {};
+            const suitCounts = {};
+            
+            ranks.forEach(rank => rankCounts[rank] = (rankCounts[rank] || 0) + 1);
+            suits.forEach(suit => suitCounts[suit] = (suitCounts[suit] || 0) + 1);
+            
+            const counts = Object.values(rankCounts).sort((a, b) => b - a);
+            const isFlush = Object.keys(suitCounts).length === 1;
+            const isStraight = cardSequence.length >= 5 && isSequential(ranks.slice(-5));
+            
+            if (cardSequence.length >= 5) {
+                if (isStraight && isFlush) return 'Straight Flush';
+                if (counts[0] === 4) return 'Four of a Kind';
+                if (counts[0] === 3 && counts[1] === 2) return 'Full House';
+                if (isFlush) return 'Flush';
+                if (isStraight) return 'Straight';
+                if (counts[0] === 3) return 'Three of a Kind';
+                if (counts[0] === 2 && counts[1] === 2) return 'Two Pair';
+                if (counts[0] === 2) return 'One Pair';
+                return 'High Card';
+            } else if (cardSequence.length === 4) {
+                if (counts[0] === 4) return 'Four of a Kind';
+                if (counts[0] === 3) return 'Three of a Kind';
+                if (counts[0] === 2 && counts[1] === 2) return 'Two Pair';
+                if (counts[0] === 2) return 'One Pair';
+            } else if (cardSequence.length === 3) {
+                if (counts[0] === 3) return 'Three of a Kind';
+                if (counts[0] === 2) return 'One Pair';
+            } else if (cardSequence.length === 2) {
+                if (counts[0] === 2) return 'One Pair';
+            }
+            
+            return '';
+        }
+        
+        function isSequential(sortedRanks) {
+            for (let i = 1; i < sortedRanks.length; i++) {
+                if (sortedRanks[i] !== sortedRanks[i-1] + 1) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        function updateDisplay() {
+            const deckCountEl = document.getElementById('deckCount');
+            const tableContainer = document.getElementById('tableContainer');
+            const currentCardDisplay = document.getElementById('currentCardDisplay');
+            const emptyState = document.getElementById('emptyState');
+            const cardsTableBody = document.getElementById('cardsTableBody');
+            const drawButtonEl = document.getElementById('drawButton');
+            
+            deckCountEl.textContent = `${deck.length} cards remaining`;
+            drawButtonEl.disabled = deck.length === 0;
+            
+            if (drawnCards.length === 0) {
+                tableContainer.style.display = 'none';
+                currentCardDisplay.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            tableContainer.style.display = 'block';
+            currentCardDisplay.style.display = 'block';
+            emptyState.style.display = 'none';
+            
+            // Update current card display
+            updateCurrentCardDisplay();
+            
+            // Clear and rebuild the table
+            cardsTableBody.innerHTML = '';
+            
+            drawnCards.slice().reverse().forEach((card, reverseIndex) => {
+                const originalIndex = drawnCards.length - 1 - reverseIndex;
+                const row = createTableRow(card, originalIndex);
+                cardsTableBody.appendChild(row);
+            });
+        }
+        
+        function updateCurrentCardDisplay() {
+            if (drawnCards.length === 0) return;
+            
+            const latestCard = drawnCards[drawnCards.length - 1];
+            const suit = suits[latestCard.suit];
+            const rank = ranks[latestCard.rank];
+            
+            // Update card visual
+            const cardVisualLarge = document.getElementById('cardVisualLarge');
+            cardVisualLarge.className = `card-visual-large ${suit.color}`;
+            cardVisualLarge.innerHTML = `
+                <div class="top-corner">${rank.display}<br>${suit.symbol}</div>
+                <div class="center">${suit.symbol}</div>
+                <div class="bottom-corner">${rank.display}<br>${suit.symbol}</div>
+            `;
+            
+            // Update card title
+            const cardTitle = document.getElementById('cardTitle');
+            cardTitle.textContent = `${rank.name} of ${suit.name}`;
+            
+            // Update oracle text
+            const oracleText = document.getElementById('oracleText');
+            oracleText.textContent = getInterpretation(drawnCards);
+            
+            // Update combo displays
+            const comboDisplay = document.getElementById('comboDisplay');
+            const namedComboDisplay = document.getElementById('namedComboDisplay');
+            
+            comboDisplay.innerHTML = getCombinationStringWithHighlight(drawnCards, drawnCards.length - 1);
+            
+            const namedCombo = getNamedCombo(drawnCards);
+            namedComboDisplay.textContent = namedCombo || 'No poker hand';
+        }
+        
+        function createTableRow(card, index) {
+            const suit = suits[card.suit];
+            const rank = ranks[card.rank];
+            const cardSequence = drawnCards.slice(0, index + 1);
+            
+            const row = document.createElement('tr');
+            
+            // Draw number
+            const drawCell = document.createElement('td');
+            drawCell.textContent = index + 1;
+            row.appendChild(drawCell);
+            
+            // Card symbol
+            const symbolCell = document.createElement('td');
+            const cardSymbol = document.createElement('span');
+            cardSymbol.className = `card-symbol ${suit.color}`;
+            cardSymbol.textContent = `${rank.display}${suit.symbol}`;
+            symbolCell.appendChild(cardSymbol);
+            row.appendChild(symbolCell);
+            
+            // Card name
+            const nameCell = document.createElement('td');
+            nameCell.textContent = `${rank.name} of ${suit.name}`;
+            row.appendChild(nameCell);
+            
+            // Card code
+            const codeCell = document.createElement('td');
+            codeCell.className = 'card-code';
+            codeCell.textContent = getCardCode(card);
+            row.appendChild(codeCell);
+            
+            // Card Oracle
+            const oracleCell = document.createElement('td');
+            oracleCell.className = 'interpretation-cell';
+            oracleCell.textContent = getInterpretation(cardSequence);
+            row.appendChild(oracleCell);
+            
+            // Named Combo
+            const namedComboCell = document.createElement('td');
+            namedComboCell.textContent = getNamedCombo(cardSequence);
+            namedComboCell.style.fontWeight = 'bold';
+            namedComboCell.style.color = getNamedCombo(cardSequence) ? '#d4af37' : '#888';
+            row.appendChild(namedComboCell);
+            
+            // Combination (last column)
+            const combinationCell = document.createElement('td');
+            combinationCell.className = 'combination-cell';
+            combinationCell.innerHTML = getCombinationStringWithHighlight(cardSequence, index);
+            row.appendChild(combinationCell);
+            
+            return row;
+        }
+        
+        function getInterpretation(cardSequence) {
+            if (cardSequence.length === 1) {
+                return getSingleCardInterpretation(cardSequence[0]);
+            }
+            
+            return getCombinationInterpretation(cardSequence);
+        }
+        
+        function getSingleCardInterpretation(card) {
+            const detailedInterpretations = {
+                'hearts': {
+                    1: 'A new friendship blooms or an old love rekindles. The hospitable innkeeper welcomes weary travelers with warm bread and stories of distant lands.',
+                    2: 'Voices carry on the wind - perhaps 2d6 drunk patrons starting a friendly argument over old war stories, or information brokers selling valuable secrets.',
+                    3: 'Gathering energy builds as people come together. A mercenary captain might be recruiting able warriors, or a traveling sage shares wisdom by the fireside.',
+                    4: 'Social bonds strengthen through shared hardship. An honest merchant seeks trustworthy guards for the dangerous road ahead.',
+                    5: 'Community celebration or festival atmosphere. The tavern fills with laughter as a diplomatic negotiation succeeds and alliances are forged.',
+                    6: 'Harmony prevails as conflicts resolve. A friendly local guide offers assistance, and celestial beings bless the establishment with good fortune.',
+                    7: 'Deep emotional connections form. Pilgrims share camp stories that reveal hidden truths about the journey ahead.',
+                    8: 'Passionate emotions run high - either celebration turns to revelry or disagreement escalates to heated debate among noble houses.',
+                    9: 'Emotional intensity peaks. A doppelganger might be replacing someone close, testing the bonds of trust and friendship.',
+                    10: 'Hearts unite in common cause. 2d6 holy warriors gather to face a great evil threatening the realm.',
+                    11: 'A charismatic stranger arrives who will change everything. Perhaps a dragon in human form or an avatar walking among mortals.',
+                    12: 'Refined social grace and diplomatic solutions. A diplomat conducts secret meetings that will reshape political alliances.',
+                    13: 'Love conquers all obstacles. The queen of hearts rules through compassion, uniting disparate factions under a banner of hope.'
+                },
+                'diamonds': {
+                    1: 'A glint of something valuable catches the eye. Perhaps a well-crafted sword in a decorated leather scabbard or silver merchant scales.',
+                    2: 'Early signs of prosperity emerge. A heavy coin purse containing 3d6 gold pieces suggests profitable ventures ahead.',
+                    3: 'Trade opportunities present themselves. An ornate holy symbol on a silver chain might unlock religious patronage or merchant connections.',
+                    4: 'Material concerns demand attention. A master\'s tool set in oiled leather wrap represents the foundation of honest craft and trade.',
+                    5: 'Wealth flows freely through skilled hands. A gold signet ring bearing a noble crest opens doors to high society and profitable contracts.',
+                    6: 'Prosperity is shared generously. A healer\'s satchel of herbs and bandages shows wealth invested in helping others rather than hoarding.',
+                    7: 'Trade networks expand and flourish. A merchant\'s ledger bound in red leather contains valuable information about profitable routes.',
+                    8: 'Greed or generosity reaches its peak. A guild badge with precious stones represents either corrupt influence or righteous prosperity.',
+                    9: 'Material desires consume rational thought. A holy relic in a silver reliquary tempts both the faithful and the avaricious.',
+                    10: 'Wealth brings both power and responsibility. A set of illuminated manuscripts contains knowledge worth more than gold.',
+                    11: 'A merchant prince or noble dealer arrives. Their cartographer\'s kit with ivory tools maps new territories ripe for exploitation.',
+                    12: 'Elegant wealth and refined taste. A ceremonial dagger with jade hilt represents power wielded with precision and grace.',
+                    13: 'Ultimate material success achieved. A navigator\'s compass in a brass case points toward untold riches across uncharted seas.'
+                },
+                'clubs': {
+                    1: 'New growth stirs in the wilderness. Brown bears forage for berries while ancient secrets awaken in forgotten groves.',
+                    2: 'Nature\'s presence grows stronger. Wild boars with 1d6 piglets remind travelers that the forest has its own rules and rhythms.',
+                    3: 'The wild calls to those who listen. A helpful druid tends plants that hold medicinal secrets, offering aid to respectful visitors.',
+                    4: 'Organic threats emerge from overgrowth. Giant spiders spin webs in tree-covered paths, while wise elders share ancient forest lore.',
+                    5: 'Primal forces demand respect. An owlbear defends its territory fiercely, teaching that some boundaries should never be crossed.',
+                    6: 'Nature\'s wisdom guides the worthy. A friendly ranger offers guidance through treacherous paths, reading signs invisible to city dwellers.',
+                    7: 'The wilderness tests resolve and character. Ancient treants awaken to judge whether travelers deserve safe passage through sacred groves.',
+                    8: 'Savage beauty and terrible danger intertwine. A dire wolf with glowing eyes hunts beneath moonlight, following instincts older than civilization.',
+                    9: 'Natural order asserts dominance over human ambition. 2d6 goblins raid supply caches, claiming resources for their forest kingdom.',
+                    10: 'The wild reclaims what was taken. Vines burst through castle walls as nature reclaims ancient ruins long forgotten.',
+                    11: 'A creature of legend emerges from deep wilderness. Perhaps a unicorn drinking from a pure stream or a griffon soaring majestically overhead.',
+                    12: 'Refined harmony between civilization and nature. A wise elder shares woodland lore that bridges human needs with natural balance.',
+                    13: 'The forest king holds absolute dominion. Every creature from the smallest stirge to the mightiest treant acknowledges this ancient authority.'
+                },
+                'spades': {
+                    1: 'A shadow appears on the horizon, barely visible but unmistakably present. 2d6 bandits set roadside ambushes in the gathering dusk.',
+                    2: 'Danger approaches with deliberate intent. 1d6 thieves plan their heist while assassins sharpen blades in darkened rooms.',
+                    3: 'Hidden threats reveal themselves gradually. A spy master recruits agents for missions that will determine the fate of kingdoms.',
+                    4: 'Conflict becomes inevitable as tensions rise. Mountain lions stalk from rocks while death cults prepare their dark rituals.',
+                    5: 'Open warfare erupts as peace negotiations fail. 1d6 orcs return from raids carrying bloodied weapons and stolen goods.',
+                    6: 'Battle lines are drawn as enemies mass for assault. A paladin investigates evil presence while preparing for righteous combat.',
+                    7: 'Steel rings against steel in deadly combat. A troll lurks under the bridge, demanding toll in blood rather than coin.',
+                    8: 'Violence reaches its crescendo as mercy becomes weakness. 2d6 necromancers discuss forbidden magic that will reshape the battlefield.',
+                    9: 'Death stalks the living with relentless purpose. A lich in human disguise walks among mortals, plotting eternal dominion.',
+                    10: 'Ultimate sacrifice becomes necessary for victory. Vampire spawn recruit new soldiers for their undead army\'s final campaign.',
+                    11: 'A warrior of legend takes the field. Their presence alone shifts the balance between light and darkness, hope and despair.',
+                    12: 'Elegant precision in the art of war. Strategic brilliance turns certain defeat into crushing victory through superior tactics.',
+                    13: 'Death itself commands the battlefield. All combatants - living and undead alike - acknowledge the ultimate authority of the grave.'
+                }
+            };
+            
+            return detailedInterpretations[card.suit][card.rank];
+        }
+        
+        function getCombinationInterpretation(cardSequence) {
+            const currentCard = cardSequence[cardSequence.length - 1];
+            const previousCards = cardSequence.slice(0, -1);
+            
+            let interpretation = getSingleCardInterpretation(currentCard);
+            
+            // Check for patterns
+            const cardSuits = cardSequence.map(c => c.suit);
+            const ranks = cardSequence.map(c => c.rank);
+            const colors = cardSequence.map(c => suits[c.suit].color);
+            
+            // Same suit building
+            if (cardSuits.every(s => s === cardSuits[0])) {
+                interpretation += ` — The ${cardSuits[0]} theme intensifies and develops.`;
+            }
+            
+            // Alternating colors
+            else if (cardSequence.length >= 2) {
+                let alternating = true;
+                for (let i = 1; i < colors.length; i++) {
+                    if (colors[i] === colors[i-1]) {
+                        alternating = false;
+                        break;
+                    }
+                }
+                if (alternating) {
+                    interpretation += ' — Conflicting forces create tension.';
+                }
+            }
+            
+            // All same color
+            if (colors.every(c => c === colors[0])) {
+                if (colors[0] === 'red') {
+                    interpretation += ' — Harmony and positive energy flow.';
+                } else {
+                    interpretation += ' — A foreboding atmosphere grows.';
+                }
+            }
+            
+            // Sequential numbers
+            const sortedRanks = [...ranks].sort((a, b) => a - b);
+            let sequential = true;
+            for (let i = 1; i < sortedRanks.length; i++) {
+                if (sortedRanks[i] !== sortedRanks[i-1] + 1) {
+                    sequential = false;
+                    break;
+                }
+            }
+            if (sequential && cardSequence.length >= 3) {
+                interpretation += ' — Events unfold in natural progression.';
+            }
+            
+            // Face cards together
+            const faceCards = cardSequence.filter(c => c.rank >= 11);
+            if (faceCards.length >= 2) {
+                interpretation += ' — Important figures shape the situation.';
+            }
+            
+            return interpretation;
+        }
+        
+        // Initialize the deck when page loads
+        initializeDeck();
+        updateDisplay();
+    </script>
+</body>
+</html>

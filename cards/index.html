@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wåndyr Card Oracle - Methodology</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #2c1810, #4a2c1a);
+            color: #f5e6d3;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #c4a582;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+        
+        .oracle-link {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+        }
+        
+        .oracle-link a {
+            display: inline-block;
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            color: #f5e6d3;
+            text-decoration: none;
+            padding: 15px 30px;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .oracle-link a:hover {
+            background: linear-gradient(45deg, #a0522d, #cd853f);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+        
+        h2 {
+            color: #d4af37;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #c4a582;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .suit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .suit-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .suit-symbol {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .suit-name {
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+        
+        .suit-description {
+            font-size: 0.9em;
+            color: #c4a582;
+        }
+        
+        .number-ranges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .number-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .number-range {
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 5px;
+        }
+        
+        .number-meaning {
+            font-size: 0.9em;
+            color: #c4a582;
+        }
+        
+        .example {
+            background: rgba(0,0,0,0.2);
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .technique {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .red { color: #dc143c; }
+        .black { color: #333; }
+        
+        .highlight {
+            color: #d4af37;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wåndyr Card Oracle</h1>
+        <div class="subtitle">A Dynamic Storytelling Tool for Adventure Games</div>
+        
+        <div class="oracle-link">
+            <a href="cards.html">🎴 Launch the Card Oracle Simulator</a>
+        </div>
+        
+        <div class="section">
+            <h2>📖 What is the Card Oracle?</h2>
+            <p>The Card Oracle is a dynamic storytelling tool that uses a standard deck of 52 playing cards to generate atmospheric elements, environmental changes, and narrative developments for tabletop adventure games. Each card drawn adds layers of meaning that build upon previous draws, creating a rich tapestry of interconnected story elements.</p>
+            
+            <p>Unlike rigid random tables, the Card Oracle encourages <span class="highlight">emergent storytelling</span> where the meaning of each card is influenced by the cards that came before it, creating natural narrative flow and surprising story developments.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🎯 Core Methodology</h2>
+            
+            <h3>The Drawing Process</h3>
+            <p>Cards are drawn one at a time and placed in a visible line. Each new card is interpreted both individually and in combination with all previously drawn cards. This creates a <span class="highlight">living story</span> that evolves with each draw.</p>
+            
+            <h3>Two-Layer Interpretation</h3>
+            <div class="suit-grid">
+                <div>
+                    <strong>Suits = Themes</strong>
+                    <p>Each suit represents a different aspect of the world and story</p>
+                </div>
+                <div>
+                    <strong>Numbers = Intensity</strong>
+                    <p>The card value determines how strongly that theme manifests</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>♠️♥️♦️♣️ The Four Suits</h2>
+            
+            <div class="suit-grid">
+                <div class="suit-card">
+                    <div class="suit-symbol red">♥️</div>
+                    <div class="suit-name">Hearts</div>
+                    <div class="suit-description">Social energy, emotions, relationships, community, warmth</div>
+                </div>
+                <div class="suit-card">
+                    <div class="suit-symbol red">♦️</div>
+                    <div class="suit-name">Diamonds</div>
+                    <div class="suit-description">Wealth, trade, material concerns, opportunities, value</div>
+                </div>
+                <div class="suit-card">
+                    <div class="suit-symbol black">♣️</div>
+                    <div class="suit-name">Clubs</div>
+                    <div class="suit-description">Growth, nature, wilderness, organic threats, life force</div>
+                </div>
+                <div class="suit-card">
+                    <div class="suit-symbol black">♠️</div>
+                    <div class="suit-name">Spades</div>
+                    <div class="suit-description">Conflict, danger, death, sharp challenges, adversity</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔢 Intensity & Development</h2>
+            
+            <div class="number-ranges">
+                <div class="number-card">
+                    <div class="number-range">Ace (1)</div>
+                    <div class="number-meaning">New beginnings, subtle hints, first signs</div>
+                </div>
+                <div class="number-card">
+                    <div class="number-range">2-4</div>
+                    <div class="number-meaning">Building pressure, early manifestation</div>
+                </div>
+                <div class="number-card">
+                    <div class="number-range">5-7</div>
+                    <div class="number-meaning">Clear presence, active influence</div>
+                </div>
+                <div class="number-card">
+                    <div class="number-range">8-10</div>
+                    <div class="number-meaning">Strong impact, demanding attention</div>
+                </div>
+                <div class="number-card">
+                    <div class="number-range">Jack</div>
+                    <div class="number-meaning">Unpredictable element, wild card</div>
+                </div>
+                <div class="number-card">
+                    <div class="number-range">Queen</div>
+                    <div class="number-meaning">Refined influence, elegant complexity</div>
+                </div>
+                <div class="number-card">
+                    <div class="number-range">King</div>
+                    <div class="number-meaning">Dominant force, major presence</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔮 Combination Patterns</h2>
+            
+            <p>The true power of the Card Oracle emerges when cards are read in combination:</p>
+            
+            <ul>
+                <li><strong>Same Suit Sequences:</strong> The theme intensifies and develops naturally</li>
+                <li><strong>Alternating Colors:</strong> Conflicting forces create tension and drama</li>
+                <li><strong>Sequential Numbers:</strong> Events unfold in natural progression</li>
+                <li><strong>Face Cards Together:</strong> Important NPCs or major events emerge</li>
+                <li><strong>All Red/All Black:</strong> Harmony and flow vs. foreboding atmosphere</li>
+            </ul>
+            
+            <div class="example">
+                <strong>Example Sequence:</strong> Hearts 2 → Hearts 5 → Clubs 7<br>
+                <em>"Voices on the wind" → "Gathering crowds" → "Wild presence"</em><br>
+                Interpretation: Distant travelers' voices lead to a gathering that attracts the attention of forest creatures.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎨 Storytelling Techniques</h2>
+            
+            <div class="technique">
+                <h3>Foreshadowing with Low Numbers</h3>
+                <p>Start with Aces and low numbers to plant narrative seeds. Let higher numbers and face cards bring these elements to dramatic fruition.</p>
+            </div>
+            
+            <div class="technique">
+                <h3>Trust Your Instincts</h3>
+                <p>The cards provide <span class="highlight">texture and inspiration</span>, not rigid outcomes. Let the combinations spark your creativity rather than dictate exact events.</p>
+            </div>
+            
+            <div class="technique">
+                <h3>Build on Previous Elements</h3>
+                <p>Always consider how new cards relate to what's already been established. This creates satisfying narrative callbacks and interconnections.</p>
+            </div>
+        </div>
+        
+        <div class="oracle-link">
+            <a href="cards.html">🎴 Try the Interactive Oracle Simulator</a>
+        </div>
+    </div>
+</body>
+</html>

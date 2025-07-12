@@ -14,6 +14,12 @@
         body {
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #2c3e50, #3a5a7a);
+            background-image: url('../images/Dragon Isles Map.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: 40%;
+            background-blend-mode: soft-light;
             color: #ecf0f1;
             min-height: 100vh;
             padding: 20px;
@@ -29,23 +35,23 @@
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
             border-bottom: 2px solid #34495e;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            background: rgba(52, 73, 94, 0.3);
         }
 
         .title {
-            font-size: 2.5em;
+            font-size: 1.8em;
             color: #f39c12;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 10px;
+            margin: 0;
         }
 
         .subtitle {
-            font-size: 1.2em;
-            color: #bdc3c7;
-            font-style: italic;
+            display: none;
         }
 
         .view-switcher {
@@ -203,9 +209,9 @@
         }
 
         .insight-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
             margin: 15px 0;
         }
 
@@ -215,9 +221,8 @@
             background: rgba(52, 73, 94, 0.5);
             color: #ecf0f1;
             border-radius: 6px;
-            text-align: center;
+            text-align: left;
             font-size: 0.9em;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
 
@@ -515,21 +520,16 @@
                         <div class="clock-display" id="clockDisplay">1</div>
                         <div class="clock-controls">
                             <button class="btn btn-primary" onclick="advanceClock()">Advance Turn</button>
-                            <button class="btn btn-warning" onclick="resetClock()">Reset Clock</button>
                         </div>
+                    </div>
+                    
+                    <!-- Insight -->
+                    <div style="margin-top: 30px;">
+                        <h4 style="color: #f39c12; text-align: center; margin-bottom: 15px;">Insight</h4>
+                        <div class="insight-options" id="insightOptions"></div>
                     </div>
                 </div>
 
-                <!-- Insight Roller -->
-                <div class="card">
-                    <h3 class="card-title">Insight</h3>
-                    <div class="dice-roller">
-                        <div class="dice-result" id="insightResult">Roll for Insight</div>
-                        <button class="btn btn-success" onclick="rollInsight()">Roll d6</button>
-                        <div class="insight-options" id="insightOptions"></div>
-                        <div class="insight-description" id="insightDescription" style="display: none;"></div>
-                    </div>
-                </div>
 
                 <!-- Oracle -->
                 <div class="card">
@@ -541,7 +541,33 @@
                                 <input type="text" id="oracleQuestion" placeholder="Ask a yes/no question...">
                             </div>
                             
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                                <div class="input-group">
+                                    <label for="partyLevel">Party Level:</label>
+                                    <select id="partyLevel" onchange="updateOracleTarget()">
+                                        <option value="0">0 (Starting)</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="threatLevel">Threat Level:</label>
+                                    <select id="threatLevel" onchange="updateOracleTarget()">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <div class="target-selector">
+                                <span id="dynamicTarget" style="color: #f39c12; font-weight: bold; margin-bottom: 10px; display: block; text-align: center;">Target: 8+</span>
                                 <button class="target-btn" data-target="6" onclick="setTarget(6)">Easy (6+)</button>
                                 <button class="target-btn active" data-target="8" onclick="setTarget(8)">Normal (8+)</button>
                                 <button class="target-btn" data-target="10" onclick="setTarget(10)">Hard (10+)</button>
@@ -582,7 +608,29 @@
                     </div>
                     <div class="input-group">
                         <label for="location">Current Location:</label>
-                        <input type="text" id="location" placeholder="Specific place/settlement/landmark...">
+                        <input type="text" id="location" placeholder="Specific place/settlement/landmark..." list="locationSuggestions">
+                        <datalist id="locationSuggestions">
+                            <option value="Elenthar">Elenthar - Major city in Dorthonia</option>
+                            <option value="Ashenrise">Ashenrise - Major city in Lyonesse</option>
+                            <option value="Aquila">Aquila - Crown jewel of Harnendor</option>
+                            <option value="Akkar">Akkar - Largest city, major port in Draconia</option>
+                            <option value="Draconia">Draconia - Southeastern region</option>
+                            <option value="Wintercrown Mountains">Wintercrown Mountains - Northern mountain range</option>
+                            <option value="Baradjin">Baradjin - Eastern region</option>
+                            <option value="Borrazun">Borrazun - Southern area</option>
+                            <option value="The Trackless Sea">The Trackless Sea - Western ocean</option>
+                            <option value="Port Sorrow">Port Sorrow - Coastal settlement</option>
+                            <option value="The Deadlands">The Deadlands - Desolate region</option>
+                            <option value="The Thornwood">The Thornwood - Dark forest</option>
+                            <option value="Greyhold">Greyhold - Mountain fortress</option>
+                            <option value="Mistral Bay">Mistral Bay - Coastal region</option>
+                            <option value="Shadowmere">Shadowmere - Dark waters</option>
+                            <option value="Ironhold">Ironhold - Mountain stronghold</option>
+                            <option value="Goldspring">Goldspring - Prosperous town</option>
+                            <option value="Ravenshollow">Ravenshollow - Dark settlement</option>
+                            <option value="Brighthaven">Brighthaven - Coastal city</option>
+                            <option value="Thornwall">Thornwall - Fortified border</option>
+                        </datalist>
                     </div>
                     <div class="input-group">
                         <label for="currentClimate">Climate:</label>
@@ -615,17 +663,6 @@
                 <!-- Game Status -->
                 <div class="card">
                     <h3 class="card-title">Game Status</h3>
-                    <div class="input-group">
-                        <label for="partyLevel">Party Level:</label>
-                        <select id="partyLevel">
-                            <option value="0">0 (Starting)</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
                     <div class="input-group">
                         <label for="rumors">Active Rumors:</label>
                         <textarea id="rumors" rows="3" placeholder="Current rumors being followed..."></textarea>
@@ -739,6 +776,7 @@
             location: '',
             currentWeather: '',
             partyLevel: 0,
+            threatLevel: 0,
             rumors: '',
             sessionNotes: '',
             currentInsight: '',
@@ -1119,9 +1157,15 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            updateInsightDisplay(); // Show all insight options initially
             loadGameState();
+            updateInsightDisplay(); // Show all insight options initially
+            updateDynamicTargetDisplay();
             updatePlayerView();
+            
+            // Ensure insight is rolled on first load if none exists
+            if (!gameState.currentInsight) {
+                rollInsight();
+            }
         });
 
         function switchView(view) {
@@ -1142,8 +1186,8 @@
             gameState.turn++;
             if (gameState.turn > 6) {
                 gameState.turn = 1;
-                rollInsight();
             }
+            rollInsight(); // Always roll insight when advancing turn
             updateClockDisplay();
             updatePlayerView();
             saveGameState();
@@ -1164,14 +1208,12 @@
             const roll = Math.floor(Math.random() * 6) + 1;
             const description = insightDescriptions[roll];
             
-            document.getElementById('insightResult').textContent = roll;
-            document.getElementById('insightDescription').textContent = description;
-            document.getElementById('insightDescription').style.display = 'block';
-            
             gameState.currentInsight = `${roll} - ${description.split(' - ')[0]}`;
             updateInsightDisplay(roll);
             updatePlayerView();
-            saveGameState();
+            
+            // Save state silently without button feedback
+            localStorage.setItem('wandyrGameState', JSON.stringify(gameState));
         }
 
         function updateInsightDisplay(currentRoll = null) {
@@ -1184,7 +1226,7 @@
                 if (currentRoll === option.id) {
                     div.classList.add('current');
                 }
-                div.innerHTML = `<strong>${option.id}. ${option.name}</strong><br><small>${option.description}</small>`;
+                div.innerHTML = `<strong>${option.id}. ${option.name}</strong> - ${option.description}`;
                 container.appendChild(div);
             });
         }
@@ -1287,6 +1329,67 @@
             gameState.oracleTarget = target;
             document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelector(`[data-target="${target}"]`).classList.add('active');
+            updateDynamicTargetDisplay();
+        }
+
+        function updateOracleTarget() {
+            const partyLevel = parseInt(document.getElementById('partyLevel').value);
+            const threatLevel = parseInt(document.getElementById('threatLevel').value);
+            
+            gameState.partyLevel = partyLevel;
+            gameState.threatLevel = threatLevel;
+            
+            let target;
+            const difference = partyLevel - threatLevel;
+            if (difference === 0) {
+                target = 8; // Equal levels = Normal difficulty
+            } else if (difference === 1) {
+                target = 7; // Party 1 higher = Easier
+            } else if (difference === -1) {
+                target = 9; // Threat 1 higher = Harder
+            } else if (difference > 1) {
+                target = 6; // Party much higher = Very easy
+            } else {
+                target = 10; // Threat much higher = Very hard
+            }
+            
+            gameState.oracleTarget = target;
+            
+            // Update target button selection
+            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('active'));
+            const targetBtn = document.querySelector(`[data-target="${target}"]`);
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+            }
+            
+            updateDynamicTargetDisplay();
+            updatePlayerView();
+            localStorage.setItem('wandyrGameState', JSON.stringify(gameState));
+        }
+
+        function updateDynamicTargetDisplay() {
+            const target = gameState.oracleTarget;
+            const partyLevel = gameState.partyLevel || 0;
+            const threatLevel = gameState.threatLevel || 0;
+            const difference = partyLevel - threatLevel;
+            
+            let description = `Target: ${target}+`;
+            if (difference === 0) {
+                description += ' (Balanced)';
+            } else if (difference === 1) {
+                description += ' (Party +1)';
+            } else if (difference === -1) {
+                description += ' (Threat +1)';
+            } else if (difference > 1) {
+                description += ' (Party Advantage)';
+            } else {
+                description += ' (Threat Advantage)';
+            }
+            
+            const targetElement = document.getElementById('dynamicTarget');
+            if (targetElement) {
+                targetElement.textContent = description;
+            }
         }
 
         function rollOracle() {
@@ -1359,6 +1462,7 @@
             gameState.location = document.getElementById('location').value;
             gameState.currentWeather = document.getElementById('currentWeather').value;
             gameState.partyLevel = parseInt(document.getElementById('partyLevel').value);
+            gameState.threatLevel = parseInt(document.getElementById('threatLevel').value);
             gameState.rumors = document.getElementById('rumors').value;
             gameState.sessionNotes = document.getElementById('sessionNotes').value;
             gameState.currentSeason = document.getElementById('currentSeason').value;
@@ -1392,6 +1496,8 @@
                 document.getElementById('location').value = gameState.location || '';
                 document.getElementById('currentWeather').value = gameState.currentWeather || '';
                 document.getElementById('partyLevel').value = gameState.partyLevel || 0;
+                document.getElementById('threatLevel').value = gameState.threatLevel || 0;
+                updateOracleTarget();
                 document.getElementById('rumors').value = gameState.rumors || '';
                 document.getElementById('sessionNotes').value = gameState.sessionNotes || '';
                 document.getElementById('currentSeason').value = gameState.currentSeason || 'spring';
@@ -1403,9 +1509,6 @@
                 // Update insight if available
                 if (gameState.currentInsight) {
                     const insightNum = parseInt(gameState.currentInsight.split(' - ')[0]);
-                    document.getElementById('insightResult').textContent = insightNum;
-                    document.getElementById('insightDescription').textContent = insightDescriptions[insightNum];
-                    document.getElementById('insightDescription').style.display = 'block';
                     updateInsightDisplay(insightNum);
                 } else {
                     updateInsightDisplay();
@@ -1640,7 +1743,7 @@
 
         // Auto-save when inputs change
         document.addEventListener('input', function(e) {
-            if (e.target.matches('#worldRegion, #location, #currentWeather, #partyLevel, #rumors, #sessionNotes, #currentSeason, #currentClimate')) {
+            if (e.target.matches('#worldRegion, #location, #currentWeather, #partyLevel, #threatLevel, #rumors, #sessionNotes, #currentSeason, #currentClimate')) {
                 setTimeout(saveGameState, 500); // Debounce saves
             }
         });
