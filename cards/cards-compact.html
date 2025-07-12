@@ -140,9 +140,31 @@
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
+            width: 100%;
+        }
+        
+        .card-layout-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 20px;
+        }
+        
+        .card-layout-table td {
+            vertical-align: top;
+            border: none;
+            padding: 0;
+        }
+        
+        .card-cell {
+            width: 140px;
+        }
+        
+        .oracle-cell {
+            width: auto;
+        }
+        
+        .combo-cell {
+            width: 220px;
         }
         
         .card-visual-large {
@@ -188,33 +210,17 @@
             font-size: 36px;
         }
         
-        .oracle-section {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .oracle-section h3 {
-            margin: 0 0 10px 0;
-            color: #d4af37;
-            font-size: 20px;
-        }
-        
-        .card-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #f5e6d3;
-            margin-bottom: 10px;
-        }
         
         .oracle-text {
             font-style: italic;
-            line-height: 1.4;
-            font-size: 14px;
+            line-height: 1.5;
+            font-size: 18px;
             color: #f5e6d3;
             background: rgba(0,0,0,0.3);
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 3px solid #d4af37;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+            margin: 0;
         }
         
         .combo-section {
@@ -284,17 +290,23 @@
         </div>
         
         <div id="currentCardDisplay" class="current-card-display" style="display: none;">
-            <div id="cardVisualLarge" class="card-visual-large"></div>
-            <div class="oracle-section">
-                <h3>Card Oracle</h3>
-                <div id="cardTitle" class="card-title"></div>
-                <div id="oracleText" class="oracle-text"></div>
-            </div>
-            <div class="combo-section">
-                <h4>Current Hand</h4>
-                <div id="comboDisplay" class="combo-display"></div>
-                <div id="namedComboDisplay" class="named-combo-display"></div>
-            </div>
+            <table class="card-layout-table">
+                <tr>
+                    <td class="card-cell">
+                        <div id="cardVisualLarge" class="card-visual-large"></div>
+                    </td>
+                    <td class="oracle-cell">
+                        <div id="oracleText" class="oracle-text"></div>
+                    </td>
+                    <td class="combo-cell">
+                        <div class="combo-section">
+                            <h4>Current Hand</h4>
+                            <div id="comboDisplay" class="combo-display"></div>
+                            <div id="namedComboDisplay" class="named-combo-display"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
         
         <div id="tableContainer" class="table-container" style="display: none;">
@@ -496,10 +508,6 @@
                 <div class="center">${suit.symbol}</div>
                 <div class="bottom-corner">${rank.display}<br>${suit.symbol}</div>
             `;
-            
-            // Update card title
-            const cardTitle = document.getElementById('cardTitle');
-            cardTitle.textContent = `${rank.name} of ${suit.name}`;
             
             // Update oracle text
             const oracleText = document.getElementById('oracleText');

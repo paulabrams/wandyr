@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wåndyr Game Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,16 +14,11 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #2c3e50, #3a5a7a);
-            background-image: url('../images/Dragon Isles Map.png');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: 40%;
-            background-blend-mode: soft-light;
-            color: #ecf0f1;
+            background: #f4f1e8;
+            color: #2c1810;
+            margin: 0;
+            padding: 0;
             min-height: 100vh;
-            padding: 20px;
         }
 
         .container {
@@ -38,16 +34,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            border-bottom: 2px solid #34495e;
-            margin-bottom: 20px;
-            background: rgba(52, 73, 94, 0.3);
+            padding: 8px 20px;
+            border-bottom: 2px solid #8b4513;
+            background: rgba(139, 69, 19, 0.1);
         }
 
         .title {
             font-size: 1.8em;
-            color: #f39c12;
+            color: #8b4513;
             margin: 0;
+            text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.3);
         }
 
         .subtitle {
@@ -93,33 +89,72 @@
             display: block;
         }
 
-        .game-grid {
+        .main-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: 300px 1fr 300px;
+            grid-template-rows: auto 1fr;
+            height: calc(100vh - 60px);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .left-panel {
+            grid-column: 1;
+            grid-row: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+        }
+
+        .right-panel {
+            grid-column: 3;
+            grid-row: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+        }
+
+        .map-container {
+            grid-column: 2;
+            grid-row: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('../images/Dragon Isles Map.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            min-height: 600px;
+            border: 3px solid #8b4513;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
         }
 
         .card {
-            background: rgba(52, 73, 94, 0.8);
-            border-radius: 10px;
-            padding: 20px;
-            border: 2px solid #34495e;
+            background: rgba(255, 248, 230, 0.95);
+            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid #d2b48c;
+            box-shadow: 0 2px 8px rgba(139, 69, 19, 0.2);
             transition: transform 0.2s ease;
         }
 
         .card:hover {
-            transform: translateY(-2px);
-            border-color: #e67e22;
+            transform: translateY(-1px);
+            border-color: #8b4513;
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
         }
 
         .card-title {
-            font-size: 1.3em;
-            color: #f39c12;
-            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #8b4513;
+            margin-bottom: 12px;
             text-align: center;
-            border-bottom: 1px solid #34495e;
-            padding-bottom: 10px;
+            border-bottom: 1px solid #d2b48c;
+            padding-bottom: 8px;
+            font-weight: bold;
         }
 
         .turn-clock {
@@ -153,35 +188,51 @@
         }
 
         .btn-primary {
-            background: #3498db;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.15) 0%, rgba(70, 130, 180, 0.2) 100%);
+            border-color: #4169e1;
+            color: #2e4bc7;
         }
 
         .btn-primary:hover {
-            background: #2980b9;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.25) 0%, rgba(70, 130, 180, 0.3) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
         }
 
         .btn-success {
-            background: #27ae60;
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.15) 0%, rgba(46, 125, 50, 0.2) 100%);
+            border-color: #2e7d32;
+            color: #1b5e20;
         }
 
         .btn-success:hover {
-            background: #229954;
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.25) 0%, rgba(46, 125, 50, 0.3) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
         }
 
         .btn-danger {
-            background: #e74c3c;
+            background: linear-gradient(135deg, rgba(183, 28, 28, 0.15) 0%, rgba(198, 40, 40, 0.2) 100%);
+            border-color: #c62828;
+            color: #b71c1c;
         }
 
         .btn-danger:hover {
-            background: #c0392b;
+            background: linear-gradient(135deg, rgba(183, 28, 28, 0.25) 0%, rgba(198, 40, 40, 0.3) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
         }
 
         .btn-warning {
-            background: #f39c12;
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.15) 0%, rgba(251, 140, 0, 0.2) 100%);
+            border-color: #f57c00;
+            color: #e65100;
         }
 
         .btn-warning:hover {
-            background: #e67e22;
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.25) 0%, rgba(251, 140, 0, 0.3) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
         }
 
         .dice-roller {
@@ -260,19 +311,21 @@
         }
 
         .target-btn {
-            padding: 8px 16px;
-            border: 2px solid #34495e;
-            background: transparent;
-            color: #ecf0f1;
-            border-radius: 6px;
+            padding: 6px 12px;
+            border: 2px solid #d2b48c;
+            background: rgba(255, 248, 230, 0.8);
+            color: #2c1810;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 0.85em;
             transition: all 0.3s ease;
         }
 
         .target-btn.active {
-            border-color: #e67e22;
-            background: #e67e22;
-            color: white;
+            background: rgba(139, 69, 19, 0.2);
+            border-color: #8b4513;
+            color: #8b4513;
+            font-weight: bold;
         }
 
         .oracle-result {
@@ -350,23 +403,26 @@
 
         .input-group label {
             display: block;
-            margin-bottom: 5px;
-            color: #bdc3c7;
+            margin-bottom: 4px;
+            color: #5d4037;
+            font-weight: 500;
+            font-size: 0.9em;
         }
 
         .input-group input, .input-group textarea, .input-group select {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #34495e;
-            border-radius: 5px;
-            background: rgba(44, 62, 80, 0.8);
-            color: #ecf0f1;
-            font-size: 1em;
+            padding: 8px;
+            border: 1px solid #d2b48c;
+            border-radius: 4px;
+            background: rgba(255, 248, 230, 0.9);
+            color: #2c1810;
+            font-size: 0.9em;
         }
 
         .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
             outline: none;
-            border-color: #e67e22;
+            border-color: #8b4513;
+            box-shadow: 0 0 4px rgba(139, 69, 19, 0.3);
         }
 
         .oracle-generators {
@@ -512,7 +568,8 @@
 
         <!-- Guide View -->
         <div id="guide-view" class="view active">
-            <div class="game-grid">
+            <div class="main-container">
+                <div class="left-panel">
                 <!-- Turn Clock -->
                 <div class="card">
                     <h3 class="card-title">Turn Clock</h3>
@@ -567,7 +624,7 @@
                             </div>
                             
                             <div class="target-selector">
-                                <span id="dynamicTarget" style="color: #f39c12; font-weight: bold; margin-bottom: 10px; display: block; text-align: center;">Target: 8+</span>
+                                <span id="dynamicTarget" style="color: #8b4513; font-weight: bold; margin-bottom: 10px; display: block; text-align: center;">Target: 8+</span>
                                 <button class="target-btn" data-target="6" onclick="setTarget(6)">Easy (6+)</button>
                                 <button class="target-btn active" data-target="8" onclick="setTarget(8)">Normal (8+)</button>
                                 <button class="target-btn" data-target="10" onclick="setTarget(10)">Hard (10+)</button>
@@ -660,59 +717,66 @@
                     </div>
                 </div>
 
-                <!-- Game Status -->
-                <div class="card">
-                    <h3 class="card-title">Game Status</h3>
-                    <div class="input-group">
-                        <label for="rumors">Active Rumors:</label>
-                        <textarea id="rumors" rows="3" placeholder="Current rumors being followed..."></textarea>
-                    </div>
-                </div>
 
-                <!-- Oracle Table Browser -->
-                <div class="card">
-                    <h3 class="card-title">Oracle Table Browser</h3>
-                    <div class="oracle-browser">
-                        <div class="table-selector">
-                            <div class="input-group">
-                                <label for="tableCategory">Category:</label>
-                                <select id="tableCategory" onchange="updateTableList()">
-                                    <option value="">-- Select Category --</option>
-                                    <option value="taverns">Taverns</option>
-                                    <option value="rumors">Rumors</option>
-                                    <option value="encounters">Encounters</option>
-                                    <option value="loot">Loot & Equipment</option>
-                                    <option value="political">Political Intrigue</option>
-                                    <option value="quests">Quest Hooks</option>
-                                    <option value="worldbuilding">Dragon Isles</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="tableSelect">Table:</label>
-                                <select id="tableSelect" onchange="showTableInfo()">
-                                    <option value="">-- Select Table --</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="table-controls">
-                            <div class="dice-controls">
-                                <span id="tableInfo" class="table-description"></span>
-                                <button class="btn btn-primary" onclick="rollOnTable()" id="rollButton" disabled>Roll on Table</button>
-                            </div>
-                        </div>
-                        
-                        <div class="oracle-result" id="tableResult"></div>
-                    </div>
                 </div>
-
-                <!-- Quick Notes -->
-                <div class="card">
-                    <h3 class="card-title">Session Notes</h3>
-                    <div class="input-group">
-                        <textarea id="sessionNotes" rows="6" placeholder="Keep track of important events, NPCs, discoveries..."></textarea>
+                
+                <div class="map-container"></div>
+                
+                <div class="right-panel">
+                    <!-- Game Status -->
+                    <div class="card">
+                        <h3 class="card-title">Game Status</h3>
+                        <div class="input-group">
+                            <label for="rumors">Active Rumors:</label>
+                            <textarea id="rumors" rows="3" placeholder="Current rumors being followed..."></textarea>
+                        </div>
                     </div>
-                    <button class="btn btn-success" onclick="saveGameState()">Save Game State</button>
+
+                    <!-- Oracle Table Browser -->
+                    <div class="card">
+                        <h3 class="card-title">Oracle Table Browser</h3>
+                        <div class="oracle-browser">
+                            <div class="table-selector">
+                                <div class="input-group">
+                                    <label for="tableCategory">Category:</label>
+                                    <select id="tableCategory" onchange="updateTableList()">
+                                        <option value="">-- Select Category --</option>
+                                        <option value="taverns">Taverns</option>
+                                        <option value="rumors">Rumors</option>
+                                        <option value="encounters">Encounters</option>
+                                        <option value="loot">Loot & Equipment</option>
+                                        <option value="political">Political Intrigue</option>
+                                        <option value="quests">Quest Hooks</option>
+                                        <option value="worldbuilding">Dragon Isles</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="tableSelect">Table:</label>
+                                    <select id="tableSelect" onchange="showTableInfo()">
+                                        <option value="">-- Select Table --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="table-controls">
+                                <div class="dice-controls">
+                                    <span id="tableInfo" class="table-description"></span>
+                                    <button class="btn btn-primary" onclick="rollOnTable()" id="rollButton" disabled>Roll on Table</button>
+                                </div>
+                            </div>
+                            
+                            <div class="oracle-result" id="tableResult"></div>
+                        </div>
+                    </div>
+
+                    <!-- Session Notes -->
+                    <div class="card">
+                        <h3 class="card-title">Session Notes</h3>
+                        <div class="input-group">
+                            <textarea id="sessionNotes" rows="4" placeholder="Keep track of important events, NPCs, discoveries..."></textarea>
+                        </div>
+                        <button class="btn btn-success" onclick="saveGameState()">Save Game State</button>
+                    </div>
                 </div>
             </div>
         </div>
