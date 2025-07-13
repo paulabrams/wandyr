@@ -13,12 +13,31 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background: #f4f1e8;
-            color: #2c1810;
+            font-family: 'Cinzel', 'Georgia', serif;
+            background: linear-gradient(45deg, rgba(247, 243, 233, 0.85) 0%, rgba(240, 230, 210, 0.9) 50%, rgba(232, 220, 192, 0.95) 100%);
+            background-attachment: fixed;
+            color: #3a2a1a;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/Dragon Isles Map.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            background-attachment: fixed;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container {
@@ -32,11 +51,10 @@
 
         .header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 8px 20px;
             border-bottom: 2px solid #8b4513;
-            background: rgba(139, 69, 19, 0.1);
         }
 
         .title {
@@ -50,11 +68,19 @@
             display: none;
         }
 
-        .view-switcher {
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 20px 0;
+            padding: 15px;
+            background: rgba(139, 69, 19, 0.1);
+            backdrop-filter: blur(3px);
+            border-top: 2px solid rgba(139, 69, 19, 0.6);
+            z-index: 1000;
         }
 
         .view-btn {
@@ -91,25 +117,31 @@
 
         .main-container {
             display: grid;
-            grid-template-columns: 300px 1fr 300px;
-            grid-template-rows: auto 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             height: calc(100vh - 60px);
-            gap: 10px;
-            padding: 10px;
+            gap: 15px;
+            padding: 15px;
+            align-items: start;
         }
 
-        .left-panel {
+        .turn-panel {
             grid-column: 1;
-            grid-row: 1 / -1;
             display: flex;
             flex-direction: column;
             gap: 15px;
             overflow-y: auto;
         }
 
-        .right-panel {
+        .oracle-panel {
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+        }
+
+        .location-panel {
             grid-column: 3;
-            grid-row: 1 / -1;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -117,34 +149,24 @@
         }
 
         .map-container {
-            grid-column: 2;
-            grid-row: 1 / -1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('../images/Dragon Isles Map.png');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: contain;
-            min-height: 600px;
-            border: 3px solid #8b4513;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+            display: none;
         }
 
         .card {
-            background: rgba(255, 248, 230, 0.95);
-            border-radius: 8px;
-            padding: 15px;
-            border: 2px solid #d2b48c;
-            box-shadow: 0 2px 8px rgba(139, 69, 19, 0.2);
-            transition: transform 0.2s ease;
+            background: rgba(255, 248, 230, 0.75);
+            backdrop-filter: blur(3px);
+            border-radius: 12px;
+            padding: 18px;
+            border: 2px solid rgba(205, 133, 63, 0.5);
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.15), inset 0 1px 3px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-1px);
-            border-color: #8b4513;
-            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+            transform: translateY(-2px);
+            background: rgba(255, 248, 230, 0.9);
+            border-color: rgba(205, 133, 63, 0.8);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.25), inset 0 1px 3px rgba(255, 255, 255, 0.3);
         }
 
         .card-title {
@@ -413,18 +435,21 @@
 
         .input-group input, .input-group textarea, .input-group select {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #d2b48c;
-            border-radius: 4px;
-            background: rgba(255, 248, 230, 0.9);
-            color: #2c1810;
-            font-size: 0.9em;
+            padding: 10px;
+            border: 2px solid rgba(205, 133, 63, 0.5);
+            border-radius: 6px;
+            background: rgba(255, 248, 230, 0.7);
+            backdrop-filter: blur(1px);
+            color: #3a2a1a;
+            font-size: 0.95em;
+            font-family: 'Georgia', serif;
         }
 
         .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
             outline: none;
-            border-color: #8b4513;
-            box-shadow: 0 0 4px rgba(139, 69, 19, 0.3);
+            border-color: rgba(139, 69, 19, 0.8);
+            box-shadow: 0 0 8px rgba(139, 69, 19, 0.3);
+            background: rgba(255, 252, 240, 0.9);
         }
 
         .oracle-generators {
@@ -561,170 +586,172 @@
         <div class="header">
             <h1 class="title">Wåndyr</h1>
             <p class="subtitle">Game Master's Digital Companion</p>
-            
-            <div class="view-switcher">
-                <button class="view-btn active" onclick="switchView('guide')">Guide View</button>
-                <button class="view-btn" onclick="switchView('player')">Player View</button>
-            </div>
         </div>
 
         <!-- Guide View -->
         <div id="guide-view" class="view active">
             <div class="main-container">
-                <div class="left-panel">
-                <!-- Turn Clock -->
-                <div class="card">
-                    <h3 class="card-title">Turn Clock</h3>
-                    <div class="turn-clock">
-                        <div class="clock-display" id="clockDisplay">1</div>
-                        <div class="clock-controls">
-                            <button class="btn btn-primary" onclick="advanceClock()">Advance Turn</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Insight -->
-                    <div style="margin-top: 30px;">
-                        <h4 style="color: #f39c12; text-align: center; margin-bottom: 15px;">Insight</h4>
-                        <div class="insight-options" id="insightOptions"></div>
-                    </div>
-                </div>
-
-
-                <!-- Oracle -->
-                <div class="card">
-                    <h3 class="card-title">The Oracle</h3>
-                    <div class="oracle-section">
-                        <div class="oracle-controls">
-                            <div class="input-group">
-                                <label for="oracleQuestion">Question:</label>
-                                <input type="text" id="oracleQuestion" placeholder="Ask a yes/no question...">
-                            </div>
-                            
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
-                                <div class="input-group">
-                                    <label for="partyLevel">Party Level:</label>
-                                    <select id="partyLevel" onchange="updateOracleTarget()">
-                                        <option value="0">0 (Starting)</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                                <div class="input-group">
-                                    <label for="threatLevel">Threat Level:</label>
-                                    <select id="threatLevel" onchange="updateOracleTarget()">
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="target-selector">
-                                <span id="dynamicTarget" style="color: #8b4513; font-weight: bold; margin-bottom: 10px; display: block; text-align: center;">Target: 8+</span>
-                                <button class="target-btn" data-target="6" onclick="setTarget(6)">Easy (6+)</button>
-                                <button class="target-btn active" data-target="8" onclick="setTarget(8)">Normal (8+)</button>
-                                <button class="target-btn" data-target="10" onclick="setTarget(10)">Hard (10+)</button>
-                                <button class="target-btn" data-target="12" onclick="setTarget(12)">Extreme (12+)</button>
-                            </div>
-                            
-                            <div class="oracle-buttons">
-                                <button class="btn btn-primary" onclick="rollOracle()">Ask the Oracle (2d6)</button>
-                                <button class="btn btn-warning" onclick="rollOracleAdvantage()">Advantage (3d6)</button>
-                                <button class="btn btn-danger" onclick="rollOracleDisadvantage()">Disadvantage (3d6)</button>
+                <div class="turn-panel">
+                    <!-- Turn Clock -->
+                    <div class="card">
+                        <h3 class="card-title">Wåndyr Turn Clock</h3>
+                        <div class="turn-clock">
+                            <div class="clock-display" id="clockDisplay">1</div>
+                            <div class="clock-controls">
+                                <button class="btn btn-primary" onclick="advanceClock()">Advance Turn</button>
                             </div>
                         </div>
                         
-                        <div class="oracle-result" id="oracleResult"></div>
+                        <!-- Insight -->
+                        <div style="margin-top: 30px;">
+                            <h4 style="color: #8b4513; text-align: center; margin-bottom: 15px;">Insight</h4>
+                            <div class="insight-options" id="insightOptions"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Session Notes -->
+                    <div class="card">
+                        <h3 class="card-title">Session Notes</h3>
+                        <div class="input-group">
+                            <textarea id="sessionNotes" rows="6" placeholder="Keep track of important events, NPCs, discoveries..."></textarea>
+                        </div>
+                        <button class="btn btn-success" onclick="saveGameState()">Save Game State</button>
                     </div>
                 </div>
-
-                <!-- Location & Environment -->
-                <div class="card">
-                    <h3 class="card-title">Location & Environment</h3>
-                    <div class="input-group">
-                        <label for="worldRegion">World Region:</label>
-                        <select id="worldRegion">
-                            <option value="">-- Select Region --</option>
-                            <option value="Akkar (Draconia)">Akkar (Draconia) - Largest city, major Southmaren port in the southeast</option>
-                            <option value="Alglondor">Alglondor - Holy kingdom with river valleys in the northwest</option>
-                            <option value="Dorthonia">Dorthonia - Vast taiga dominating northwest shores, home to Elenthar</option>
-                            <option value="The Dragon Sea">The Dragon Sea - Vast inland ocean at the heart of the world</option>
-                            <option value="The Drunlands">The Drunlands - Dismal land of twisted forests between Hrivlyggdor and Akkar</option>
-                            <option value="Harnendor">Harnendor - Southmaren Empire of the far south, crown jewel Aquila</option>
-                            <option value="Hrivlyggdor">Hrivlyggdor - Northlands of midnight sun, vast taiga and arctic tundra</option>
-                            <option value="Kitania">Kitania - Thriving kingdom covering fertile midlands</option>
-                            <option value="Lyonesse">Lyonesse - Rugged central coast with free cities, home to Ashenrise</option>
-                            <option value="Nan-Avathar">Nan-Avathar - Grim volcanic ashlands ruled by Vampire Lords</option>
-                            <option value="Rochir Plains">Rochir Plains - Vast arid savanna ruled by nomadic horse lords</option>
-                            <option value="Sepulchre">Sepulchre - Legendary valley ringed by Wintercrown Mountains</option>
-                        </select>
+                
+                <div class="oracle-panel">
+                    <!-- Oracle -->
+                    <div class="card">
+                        <h3 class="card-title">The Oracle</h3>
+                        <div class="oracle-section">
+                            <div class="oracle-controls">
+                                <div class="input-group">
+                                    <label for="oracleQuestion">Question:</label>
+                                    <input type="text" id="oracleQuestion" placeholder="Ask a yes/no question...">
+                                </div>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                                    <div class="input-group">
+                                        <label for="partyLevel">Party Level:</label>
+                                        <select id="partyLevel" onchange="updateOracleTarget()">
+                                            <option value="0">0 (Starting)</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="threatLevel">Threat Level:</label>
+                                        <select id="threatLevel" onchange="updateOracleTarget()">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-selector">
+                                    <span id="dynamicTarget" style="color: #8b4513; font-weight: bold; margin-bottom: 10px; display: block; text-align: center;">Target: 8+</span>
+                                    <button class="target-btn" data-target="6" onclick="setTarget(6)">Easy (6+)</button>
+                                    <button class="target-btn active" data-target="8" onclick="setTarget(8)">Normal (8+)</button>
+                                    <button class="target-btn" data-target="10" onclick="setTarget(10)">Hard (10+)</button>
+                                    <button class="target-btn" data-target="12" onclick="setTarget(12)">Extreme (12+)</button>
+                                </div>
+                                
+                                <div class="oracle-buttons">
+                                    <button class="btn btn-primary" onclick="rollOracle()">Ask the Oracle (2d6)</button>
+                                    <button class="btn btn-warning" onclick="rollOracleAdvantage()">Advantage (3d6)</button>
+                                    <button class="btn btn-danger" onclick="rollOracleDisadvantage()">Disadvantage (3d6)</button>
+                                </div>
+                            </div>
+                            
+                            <div class="oracle-result" id="oracleResult"></div>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="location">Current Location:</label>
-                        <input type="text" id="location" placeholder="Specific place/settlement/landmark..." list="locationSuggestions">
-                        <datalist id="locationSuggestions">
-                            <option value="Elenthar">Elenthar - Major city in Dorthonia</option>
-                            <option value="Ashenrise">Ashenrise - Major city in Lyonesse</option>
-                            <option value="Aquila">Aquila - Crown jewel of Harnendor</option>
-                            <option value="Akkar">Akkar - Largest city, major port in Draconia</option>
-                            <option value="Draconia">Draconia - Southeastern region</option>
-                            <option value="Wintercrown Mountains">Wintercrown Mountains - Northern mountain range</option>
-                            <option value="Baradjin">Baradjin - Eastern region</option>
-                            <option value="Borrazun">Borrazun - Southern area</option>
-                            <option value="The Trackless Sea">The Trackless Sea - Western ocean</option>
-                            <option value="Port Sorrow">Port Sorrow - Coastal settlement</option>
-                            <option value="The Deadlands">The Deadlands - Desolate region</option>
-                            <option value="The Thornwood">The Thornwood - Dark forest</option>
-                            <option value="Greyhold">Greyhold - Mountain fortress</option>
-                            <option value="Mistral Bay">Mistral Bay - Coastal region</option>
-                            <option value="Shadowmere">Shadowmere - Dark waters</option>
-                            <option value="Ironhold">Ironhold - Mountain stronghold</option>
-                            <option value="Goldspring">Goldspring - Prosperous town</option>
-                            <option value="Ravenshollow">Ravenshollow - Dark settlement</option>
-                            <option value="Brighthaven">Brighthaven - Coastal city</option>
-                            <option value="Thornwall">Thornwall - Fortified border</option>
-                        </datalist>
-                    </div>
-                    <div class="input-group">
-                        <label for="currentClimate">Climate:</label>
-                        <select id="currentClimate">
-                            <option value="temperate">Temperate</option>
-                            <option value="tropical">Tropical</option>
-                            <option value="arid">Arid/Desert</option>
-                            <option value="cold">Cold/Mountain</option>
-                            <option value="coastal">Coastal</option>
-                            <option value="swamp">Wetland/Swamp</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="currentSeason">Season:</label>
-                        <select id="currentSeason">
-                            <option value="spring">Spring</option>
-                            <option value="summer">Summer</option>
-                            <option value="autumn">Autumn</option>
-                            <option value="winter">Winter</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="currentWeather">Current Weather:</label>
-                        <input type="text" id="currentWeather" placeholder="Current weather conditions...">
-                        <button class="btn btn-warning" onclick="generateWeatherForLocation()" style="margin-top: 10px;">Generate Weather</button>
-                        <div class="oracle-result" id="weatherResult" style="margin-top: 10px;"></div>
-                    </div>
-                </div>
-
 
                 </div>
                 
-                <div class="map-container"></div>
-                
-                <div class="right-panel">
+                <div class="location-panel">
+                    <!-- Location & Environment -->
+                    <div class="card">
+                        <h3 class="card-title">Location & Environment</h3>
+                        <div class="input-group">
+                            <label for="worldRegion">World Region:</label>
+                            <select id="worldRegion">
+                                <option value="">-- Select Region --</option>
+                                <option value="Akkar (Draconia)">Akkar (Draconia) - Largest city, major Southmaren port in the southeast</option>
+                                <option value="Alglondor">Alglondor - Holy kingdom with river valleys in the northwest</option>
+                                <option value="Dorthonia">Dorthonia - Vast taiga dominating northwest shores, home to Elenthar</option>
+                                <option value="The Dragon Sea">The Dragon Sea - Vast inland ocean at the heart of the world</option>
+                                <option value="The Drunlands">The Drunlands - Dismal land of twisted forests between Hrivlyggdor and Akkar</option>
+                                <option value="Harnendor">Harnendor - Southmaren Empire of the far south, crown jewel Aquila</option>
+                                <option value="Hrivlyggdor">Hrivlyggdor - Northlands of midnight sun, vast taiga and arctic tundra</option>
+                                <option value="Kitania">Kitania - Thriving kingdom covering fertile midlands</option>
+                                <option value="Lyonesse">Lyonesse - Rugged central coast with free cities, home to Ashenrise</option>
+                                <option value="Nan-Avathar">Nan-Avathar - Grim volcanic ashlands ruled by Vampire Lords</option>
+                                <option value="Rochir Plains">Rochir Plains - Vast arid savanna ruled by nomadic horse lords</option>
+                                <option value="Sepulchre">Sepulchre - Legendary valley ringed by Wintercrown Mountains</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="location">Current Location:</label>
+                            <input type="text" id="location" placeholder="Specific place/settlement/landmark..." list="locationSuggestions">
+                            <datalist id="locationSuggestions">
+                                <option value="Elenthar">Elenthar - Major city in Dorthonia</option>
+                                <option value="Ashenrise">Ashenrise - Major city in Lyonesse</option>
+                                <option value="Aquila">Aquila - Crown jewel of Harnendor</option>
+                                <option value="Akkar">Akkar - Largest city, major port in Draconia</option>
+                                <option value="Draconia">Draconia - Southeastern region</option>
+                                <option value="Wintercrown Mountains">Wintercrown Mountains - Northern mountain range</option>
+                                <option value="Baradjin">Baradjin - Eastern region</option>
+                                <option value="Borrazun">Borrazun - Southern area</option>
+                                <option value="The Trackless Sea">The Trackless Sea - Western ocean</option>
+                                <option value="Port Sorrow">Port Sorrow - Coastal settlement</option>
+                                <option value="The Deadlands">The Deadlands - Desolate region</option>
+                                <option value="The Thornwood">The Thornwood - Dark forest</option>
+                                <option value="Greyhold">Greyhold - Mountain fortress</option>
+                                <option value="Mistral Bay">Mistral Bay - Coastal region</option>
+                                <option value="Shadowmere">Shadowmere - Dark waters</option>
+                                <option value="Ironhold">Ironhold - Mountain stronghold</option>
+                                <option value="Goldspring">Goldspring - Prosperous town</option>
+                                <option value="Ravenshollow">Ravenshollow - Dark settlement</option>
+                                <option value="Brighthaven">Brighthaven - Coastal city</option>
+                                <option value="Thornwall">Thornwall - Fortified border</option>
+                            </datalist>
+                        </div>
+                        <div class="input-group">
+                            <label for="currentClimate">Climate:</label>
+                            <select id="currentClimate">
+                                <option value="temperate">Temperate</option>
+                                <option value="tropical">Tropical</option>
+                                <option value="arid">Arid/Desert</option>
+                                <option value="cold">Cold/Mountain</option>
+                                <option value="coastal">Coastal</option>
+                                <option value="swamp">Wetland/Swamp</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="currentSeason">Season:</label>
+                            <select id="currentSeason">
+                                <option value="spring">Spring</option>
+                                <option value="summer">Summer</option>
+                                <option value="autumn">Autumn</option>
+                                <option value="winter">Winter</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="currentWeather">Current Weather:</label>
+                            <input type="text" id="currentWeather" placeholder="Current weather conditions...">
+                            <button class="btn btn-warning" onclick="generateWeatherForLocation()" style="margin-top: 10px;">Generate Weather</button>
+                            <div class="oracle-result" id="weatherResult" style="margin-top: 10px;"></div>
+                        </div>
+                    </div>
+
                     <!-- Game Status -->
                     <div class="card">
                         <h3 class="card-title">Game Status</h3>
@@ -769,15 +796,6 @@
                             
                             <div class="oracle-result" id="tableResult"></div>
                         </div>
-                    </div>
-
-                    <!-- Session Notes -->
-                    <div class="card">
-                        <h3 class="card-title">Session Notes</h3>
-                        <div class="input-group">
-                            <textarea id="sessionNotes" rows="4" placeholder="Keep track of important events, NPCs, discoveries..."></textarea>
-                        </div>
-                        <button class="btn btn-success" onclick="saveGameState()">Save Game State</button>
                     </div>
                 </div>
             </div>
@@ -1814,5 +1832,10 @@
             }
         });
     </script>
+    
+    <div class="footer">
+        <button class="view-btn active" onclick="switchView('guide')">Guide View</button>
+        <button class="view-btn" onclick="switchView('player')">Player View</button>
+    </div>
 </body>
 </html>

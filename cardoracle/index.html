@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wåndyr Card Oracle Simulator - Compact Table</title>
+    <title>Wandyr Card Oracle</title>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -74,6 +74,8 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             overflow-x: auto;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         table {
@@ -141,6 +143,7 @@
             padding: 20px;
             margin-bottom: 20px;
             width: 100%;
+            box-sizing: border-box;
         }
         
         .card-layout-table {
@@ -251,15 +254,45 @@
         .poker-hand-alert {
             background: linear-gradient(45deg, #d4af37, #f5e6d3);
             color: #2c1810;
-            padding: 15px;
+            padding: 10px;
             margin-top: 15px;
             border-radius: 8px;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
             text-align: center;
             text-shadow: none;
             border: 3px solid #d4af37;
             animation: glow 2s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .poker-hand-text {
+            margin: 0 10px;
+        }
+        
+        .mini-card {
+            width: 20px;
+            height: 30px;
+            background: white;
+            border: 1px solid #333;
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: black;
+            margin: 0 1px;
+        }
+        
+        .mini-card.red {
+            color: #dc143c;
         }
         
         @keyframes glow {
@@ -301,7 +334,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Wåndyr Card Oracle - Compact Table</h1>
+        <h1>Wandyr Card Oracle</h1>
         
         <div class="controls">
             <button id="drawButton" onclick="drawCard()">Draw Card</button>
@@ -321,7 +354,6 @@
                     </td>
                     <td class="oracle-cell">
                         <div id="oracleText" class="oracle-text"></div>
-                        <div id="pokerHandAlert" class="poker-hand-alert" style="display: none;"></div>
                     </td>
                     <td class="combo-cell">
                         <div class="combo-section">
@@ -329,6 +361,7 @@
                             <div id="comboDisplay" class="combo-display"></div>
                             <div id="namedComboDisplay" class="named-combo-display"></div>
                         </div>
+                        <div id="pokerHandAlert" class="poker-hand-alert" style="display: none;"></div>
                     </td>
                 </tr>
             </table>
@@ -446,8 +479,19 @@
             suits.forEach(suit => suitCounts[suit] = (suitCounts[suit] || 0) + 1);
             
             const counts = Object.values(rankCounts).sort((a, b) => b - a);
-            const isFlush = Object.keys(suitCounts).length === 1;
-            const isStraight = cardSequence.length >= 5 && isSequential(ranks.slice(-5));
+            const isFlush = cardSequence.length >= 5 && Object.values(suitCounts).some(count => count >= 5);
+            let isStraight = false;
+            
+            // Check for straight in 5+ card sequences
+            if (cardSequence.length >= 5) {
+                const sortedUniqueRanks = [...new Set(ranks)].sort((a, b) => a - b);
+                for (let i = 0; i <= sortedUniqueRanks.length - 5; i++) {
+                    if (isSequential(sortedUniqueRanks.slice(i, i + 5))) {
+                        isStraight = true;
+                        break;
+                    }
+                }
+            }
             
             if (cardSequence.length >= 5) {
                 if (isStraight && isFlush) return 'Straight Flush';
@@ -481,6 +525,70 @@
                 }
             }
             return true;
+        }
+        
+        function createMiniCard(card) {
+            const suit = suits[card.suit];
+            const rank = ranks[card.rank];
+            const miniCard = document.createElement('div');
+            miniCard.className = `mini-card ${suit.color}`;
+            miniCard.innerHTML = `${rank.display}<br>${suit.symbol}`;
+            return miniCard;
+        }
+        
+        function getPokerHandCards(cardSequence, handType) {
+            // Return the specific cards that make up the poker hand
+            const ranks = cardSequence.map(c => c.rank);
+            const suits = cardSequence.map(c => c.suit);
+            const rankCounts = {};
+            const suitCounts = {};
+            
+            ranks.forEach(rank => rankCounts[rank] = (rankCounts[rank] || 0) + 1);
+            suits.forEach(suit => suitCounts[suit] = (suitCounts[suit] || 0) + 1);
+            const sortedRanks = Object.keys(rankCounts).map(r => parseInt(r)).sort((a, b) => rankCounts[b] - rankCounts[a] || b - a);
+            
+            switch(handType) {
+                case 'Four of a Kind':
+                    return cardSequence.filter(c => c.rank === sortedRanks[0]);
+                    
+                case 'Full House':
+                    // Show the three of a kind + the pair
+                    return cardSequence.filter(c => rankCounts[c.rank] >= 2);
+                    
+                case 'Three of a Kind':
+                    return cardSequence.filter(c => c.rank === sortedRanks[0]);
+                    
+                case 'Two Pair':
+                    // Show all cards that are part of pairs
+                    return cardSequence.filter(c => rankCounts[c.rank] === 2);
+                    
+                case 'One Pair':
+                    return cardSequence.filter(c => rankCounts[c.rank] === 2);
+                    
+                case 'Straight':
+                case 'Straight Flush':
+                    // Find the 5-card straight
+                    const sortedCards = cardSequence.slice().sort((a, b) => a.rank - b.rank);
+                    for (let i = 0; i <= sortedCards.length - 5; i++) {
+                        const fiveCards = sortedCards.slice(i, i + 5);
+                        if (isSequential(fiveCards.map(c => c.rank))) {
+                            return fiveCards;
+                        }
+                    }
+                    return cardSequence.slice(-5); // fallback
+                    
+                case 'Flush':
+                    // Find the 5 cards of the same suit
+                    const flushSuit = Object.keys(suitCounts).find(suit => suitCounts[suit] >= 5);
+                    return cardSequence.filter(c => c.suit === flushSuit).slice(-5);
+                    
+                case 'High Card':
+                    // Show the highest 5 cards
+                    return cardSequence.slice().sort((a, b) => b.rank - a.rank).slice(0, 5);
+                    
+                default:
+                    return cardSequence.slice(-5); // Show last 5 cards as fallback
+            }
         }
         
         function updateDisplay() {
@@ -550,8 +658,21 @@
             
             // Show prominent poker hand alert
             if (namedCombo) {
-                pokerHandAlert.textContent = `🎰 ${namedCombo.toUpperCase()}! 🎰`;
-                pokerHandAlert.style.display = 'block';
+                pokerHandAlert.innerHTML = '';
+                
+                // Add poker hand cards
+                const handCards = getPokerHandCards(drawnCards, namedCombo);
+                handCards.forEach(card => {
+                    pokerHandAlert.appendChild(createMiniCard(card));
+                });
+                
+                // Add text
+                const textSpan = document.createElement('span');
+                textSpan.className = 'poker-hand-text';
+                textSpan.textContent = `${namedCombo.toUpperCase()}!`;
+                pokerHandAlert.appendChild(textSpan);
+                
+                pokerHandAlert.style.display = 'flex';
             } else {
                 pokerHandAlert.style.display = 'none';
             }
