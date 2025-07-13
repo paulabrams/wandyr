@@ -26,6 +26,11 @@
             margin-bottom: 30px;
         }
         
+        .mode-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
         .controls {
             text-align: center;
             margin-bottom: 30px;
@@ -336,6 +341,15 @@
     <div class="container">
         <h1>Wandyr Card Oracle</h1>
         
+        <div class="mode-selector">
+            <label for="locationMode" style="color: #d4af37; font-weight: bold; margin-right: 10px;">Location Mode:</label>
+            <select id="locationMode" onchange="updateMode()" style="background: linear-gradient(45deg, #8b4513, #a0522d); color: #f5e6d3; border: 2px solid #d4af37; padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: bold;">
+                <option value="city">City</option>
+                <option value="wilderness">Wilderness</option>
+                <option value="dungeon">Dungeon</option>
+            </select>
+        </div>
+        
         <div class="controls">
             <button id="drawButton" onclick="drawCard()">Draw Card</button>
             <button id="resetButton" onclick="resetDeck()">Reset Deck</button>
@@ -397,6 +411,7 @@
     <script>
         let deck = [];
         let drawnCards = [];
+        let currentMode = 'city';
         
         const suits = {
             'hearts': { symbol: '♥', name: 'Hearts', color: 'red' },
@@ -739,7 +754,217 @@
             return getCombinationInterpretation(cardSequence);
         }
         
+        function getCityInterpretation(card) {
+            const cityInterpretations = {
+                'hearts': {
+                    1: 'A stranger\'s smile seems genuine, but their eyes dart toward the shadows. Weather: Light drizzle begins, dampening more than just cobblestones.',
+                    2: 'Two children whisper excitedly about something they saw near the temple. Neighborhood: Upper-class district, but curtains twitch nervously.',
+                    3: 'Guards exchange meaningful glances when certain names are mentioned. A priest blesses travelers with unusual urgency.',
+                    4: 'Merchants speak in hushed tones about delayed shipments. Weather: Morning mist lingers longer than usual.',
+                    5: 'Noble families attend ceremony, but several important houses are notably absent. Servants carry themselves with tension.',
+                    6: 'Dock workers pause their labor to stare at distant sails on the horizon. Harbor officials count ships repeatedly.',
+                    7: 'Hooded figures dissolve into crowds when approached. Blacksmith works late into the night on mysterious orders.',
+                    8: 'City watch patrol patterns have subtly changed. Weather: Evening breeze carries unfamiliar scents.',
+                    9: 'Citizens disperse quickly after hearing announcements. Nervous energy spreads through gathering crowds.',
+                    10: 'Palace guards wear ceremonial armor, but their hands rest near weapon hilts. Foreign carriages bear unfamiliar heraldry.',
+                    11: 'A young noble practices with particular intensity. Tutors speak in urgent whispers about "preparation".',
+                    12: 'Evening prayers include unusual supplications. Bell towers ring out of sequence, as if signaling.',
+                    13: 'The city lord\'s audience chamber sees more petitioners than usual. Justice dispensed carries undertones of preparation.'
+                },
+                'diamonds': {
+                    1: 'A merchant palms a coin, but glances nervously at the empty money pouch. Trade quarter activity seems forced, desperate.',
+                    2: 'Money changers argue over fluctuating rates. Weather: Clear skies, but storm clouds gather on distant horizons.',
+                    3: 'Gem merchants pack their wares early. Guards patrol more frequently, hands near sword hilts.',
+                    4: 'Caravans depart ahead of schedule. Neighborhood: Commercial district buzzes with urgent preparations.',
+                    5: 'Noble marriage negotiations stall over "security concerns." Dowry discussions include military provisions.',
+                    6: 'Guild masters meet behind closed doors. Weather: Overcast skies mirror the mood of worried craftsmen.',
+                    7: 'Treasure hunters offer artifacts at below-market prices. Thieves\' guild members ask pointed questions about buyers.',
+                    8: 'Wealthy patrons bid aggressively, as if building stockpiles. Rare defensive items draw particular attention.',
+                    9: 'Tax collectors work overtime, gathering funds for "emergency measures." Citizens pay with growing resentment.',
+                    10: 'Merchant princes discuss trade routes closing. Harbor master studies defensive positions more than shipping schedules.',
+                    11: 'Royal treasurer requisitions unusual supplies. Scribes work by candlelight, documenting military expenditures.',
+                    12: 'Trade disputes involve more than commerce. Guild mistress mediates while watching for spies.',
+                    13: 'New trade agreements include mutual defense clauses. Economic prosperity masks military preparations.'
+                },
+                'clubs': {
+                    1: 'Herb garden withers despite careful tending. Weather: Morning dew carries an acrid smell.',
+                    2: 'Park rangers whisper about trees dying in the royal gardens. Nature retreats from stone walls.',
+                    3: 'Druids depart the sacred grove earlier than planned. Urban wildlife flees toward city outskirts.',
+                    4: 'Groundskeepers struggle with diseased topiary. Neighborhood: Wealthy gardens show signs of blight.',
+                    5: 'Street cats yowl and pace restlessly in warehouse alleys. Rats emerge in unprecedented numbers.',
+                    6: 'Messenger birds return exhausted, some bearing injuries. Weather: Flying conditions deteriorate mysteriously.',
+                    7: 'Wild dogs gather in packs near outer walls. Guards report increased howling during night watches.',
+                    8: 'Horses refuse shoeing, stamping nervously at the blacksmith\'s. Travel plans face unexpected delays.',
+                    9: 'Ravens mass on cathedral spires in unusual numbers. Clergy interpret omens with growing alarm.',
+                    10: 'Hunting hounds refuse to leave the city gates. Noble hunting parties cancel expeditions.',
+                    11: 'Druid emissary brings warnings of "disturbance in natural order." Environmental crisis approaches.',
+                    12: 'Palace menagerie animals pace frantically in cages. Beast master reports aggressive behavioral changes.',
+                    13: 'Forest lord\'s tribute demands include "protection from what comes." Ancient woods prepare for siege.'
+                },
+                'spades': {
+                    1: 'Fresh blood stains harbor cobblestones. Weather: Fog thickens unnaturally, hiding more than ships.',
+                    2: 'Guards find scratches on doors - claw marks, not tools. Break-ins follow no pattern thieves recognize.',
+                    3: 'Executioner\'s axe chips on ordinary necks. Gallows rope frays without explanation.',
+                    4: 'Grave diggers refuse night work. Neighborhood: Cemetery grounds show signs of disturbance.',
+                    5: 'Mercenaries sharpen blades that dull overnight. Weapons require blessed oils to hold edges.',
+                    6: 'Prisoners babble about shadows in daylit cells. Dungeon guards report unexplained cold spots.',
+                    7: 'Plague spreads despite quarantine measures. Victims whisper about "darkness in the blood."',
+                    8: 'Soldiers see movement beyond the walls - not scouts, but shapes that don\'t move like men.',
+                    9: 'Cultists found dead in ritual circles. City watch discovers symbols that hurt to look upon.',
+                    10: 'Festival security reports attendees with no reflections. Royal guards check mirrors compulsively.',
+                    11: 'Diplomatic immunity questioned when temperature drops around foreign visitor. Witnesses avoid eye contact.',
+                    12: 'Executioner\'s sentences increasingly target "corruption of the blood." Fear spreads through noble families.',
+                    13: 'Death\'s tribute involves the living. City rulers make preparations they refuse to discuss publicly.'
+                }
+            };
+            
+            return cityInterpretations[card.suit][card.rank];
+        }
+        
+        function getWildernessInterpretation(card) {
+            const wildernessInterpretations = {
+                'hearts': {
+                    1: 'A lone traveler\'s campfire burns blue at the edges. Weather: Clear night, but stars seem dimmer than usual.',
+                    2: 'Two rangers speak in hushed tones about paths that "weren\'t there yesterday." Terrain: Rolling hills where flowers wilt in patches.',
+                    3: 'Three pilgrims kneel at a woodland shrine, but their prayers seem urgent. Animals: Deer watch from unusual distances.',
+                    4: 'Four merchants build their camp walls higher than normal. Weather: Rainfall tastes of metal and leaves rust stains.',
+                    5: 'Five druids perform seasonal rituals ahead of schedule. Terrain: Ancient oaks drop leaves out of season.',
+                    6: 'Six refugees huddle in hidden valley, speaking of "shadows that walk." Animals: Even songbirds fall silent.',
+                    7: 'Seven nomads\' cooking fires require constant rekindling. Weather: Warm evening, but cold spots drift through camp.',
+                    8: 'Eight travelers hurry through mountain pass despite exhaustion. Terrain: High meadows show unexplained brown patches.',
+                    9: 'Nine villagers abandon homes, leaving livestock behind. Animals: Domestic animals refuse to follow their owners.',
+                    10: 'Ten soldiers establish camp with triple watches. Weather: Morning mist moves against the wind.',
+                    11: 'Hermit\'s guidance includes warnings about "times between times." Terrain: Deep wilderness where compasses spin wildly.',
+                    12: 'Elven ranger insists on blessed arrows for the journey ahead. Animals: Mountain goats flee to impossible heights.',
+                    13: 'Forest king\'s passage comes with warnings of "ancient stirrings." Weather: Aurora appears in wrong season and direction.'
+                },
+                'diamonds': {
+                    1: 'Ore veins glitter strangely, colors that shouldn\'t exist in nature. Terrain: Mineral deposits show recent disturbance.',
+                    2: 'Prospectors abandon profitable claims without explanation. Weather: Cool morning carries whispers of underground movement.',
+                    3: 'Gemstones lie scattered - not dropped, but fleeing something below. Animals: Raccoons refuse to touch the shiny objects.',
+                    4: 'Trading posts display "closed until further notice" signs. Terrain: Well-traveled paths show signs of hasty evacuation.',
+                    5: 'Treasure hunters\' maps lead to empty holes in badlands. Weather: Scorching sun reveals ancient excavations.',
+                    6: 'Merchant caravans converge but refuse to continue past crossroads. Animals: Pack animals balk at certain directions.',
+                    7: 'Abandoned cache suggests highwayman fled mid-robbery. Terrain: Cave systems echo with sounds that aren\'t quite wind.',
+                    8: 'Silver ingots tarnish black despite purity. Weather: Thunderstorm brings rain that stains everything touched.',
+                    9: 'Excavated artifacts crumble when exposed to air. Animals: Bats emerge in daylight, fleeing underground disturbances.',
+                    10: 'Trade goods sit untouched - even desperate bandits avoid them. Terrain: Way-station\'s fortifications face inward, not out.',
+                    11: 'New supply routes avoid areas marked on older maps. Weather: Perfect conditions everywhere except certain valleys.',
+                    12: 'Resource rights disputed not for profit, but for containment. Animals: Exotic guardians abandon their posts.',
+                    13: 'Ancient hoards show signs of recent theft from within. Terrain: Volcanic activity increases where none existed before.'
+                },
+                'clubs': {
+                    1: 'Seedling sprouts through stone overnight - too fast, too large. Terrain: Rocky wasteland shows aggressive reclamation.',
+                    2: 'Ancient trees\' archway now blocks passage that was open yesterday. Weather: Rain nourishes some plants while killing others.',
+                    3: 'Bears abandon salmon run mid-season without apparent reason. Animals: Forest ecosystem reorganizes around new apex predator.',
+                    4: 'Wolf howls carry harmonics that hurt human ears. Terrain: Game trails converge on areas maps show as empty.',
+                    5: 'Owl calls include sounds no living bird should make. Weather: Fog carries spores that cause unnatural dreams.',
+                    6: 'Deer bound in perfect geometric patterns across clearings. Animals: Herbivore behavior suggests invisible barriers.',
+                    7: 'Ravens spell words in their formations overhead. Terrain: Windswept plateau reveals crop circles in wild grass.',
+                    8: 'Wild horses gallop in perfect synchronization toward unknown destination. Weather: Wind patterns form spirals visible from above.',
+                    9: 'Vultures circle areas where nothing has died. Animals: Scavengers prepare for feast that hasn\'t happened yet.',
+                    10: 'Eagles nest in formations that spell ancient runes. Terrain: Cliff faces show tool marks from inhuman hands.',
+                    11: 'Great stag\'s antlers bear symbols that weren\'t there yesterday. Weather: Mists carry voices speaking dead languages.',
+                    12: 'Forest creatures coordinate defenses against threat not yet arrived. Animals: Wildlife evacuation follows predetermined routes.',
+                    13: 'Nature\'s reclamation accelerates beyond natural law. Terrain: Primordial growth devours human settlements overnight.'
+                },
+                'spades': {
+                    1: 'Arrow shaft bears fletching from extinct bird species. Weather: Storm clouds gather in impossible spirals.',
+                    2: 'Skeletons show tooth marks from no known predator. Terrain: Bog preserves things that should have rotted centuries ago.',
+                    3: 'Wolf eyes reflect light that isn\'t there. Animals: Predators hunt prey that casts no shadow.',
+                    4: 'Bandit ambush sites remain empty - but weapons are warm. Weather: Fog moves with purpose, herding rather than drifting.',
+                    5: 'Giant footprints fill with water that boils without heat. Terrain: Devastation follows patterns of ritual significance.',
+                    6: 'Snakes guard poisoned water source from something beneath surface. Animals: Venomous creatures flee their own territory.',
+                    7: 'Smoke from raids rises in columns that defy wind patterns. Weather: Destruction creates its own weather systems.',
+                    8: 'Dire wolf pack hunts in formations taught by intelligence. Terrain: Snow falls only where blood was spilled.',
+                    9: 'Marshland undead move with coordination suggesting command. Animals: Living creatures develop immunity to fear.',
+                    10: 'Dragon territorial dispute scorches earth in geometric patterns. Weather: Unnatural heat melts metal, flash-freezes water.',
+                    11: 'Death knight\'s patrol route traces symbols visible from great height. Terrain: Blight spreads in perfect mathematical progression.',
+                    12: 'Skeletal armies march toward battlefields that don\'t exist yet. Weather: Winter arrives where calendar says it\'s spring.',
+                    13: 'Regional destruction follows ancient ritual requirements. Terrain: Devastation prepares ground for something\'s arrival.'
+                }
+            };
+            
+            return wildernessInterpretations[card.suit][card.rank];
+        }
+        
+        function getDungeonInterpretation(card) {
+            const dungeonInterpretations = {
+                'hearts': {
+                    1: 'Lone prisoner scratches countdown marks on cell wall. Room: Holding cell with straw that rustles without wind.',
+                    2: 'Two guards whisper about "the schedule being moved up." Monster: Kobold hoards information, demands increasingly desperate payment.',
+                    3: 'Three carved hearts bleed when touched. Treasure: Love letters written in ink that fades as you read.',
+                    4: 'Four healing potions bubble without heat. Room: Chapel where altar shows recent, unexplained use.',
+                    5: 'Five spirits appear more solid each night. Monster: "Benevolent" ghost grows possessive of living visitors.',
+                    6: 'Six refugees speak of "the reason we came here." Treasure: Holy symbol grows warm when evil approaches.',
+                    7: 'Seven candles burn down to different lengths despite lighting simultaneously. Room: Memorial chamber where portraits\' eyes follow movement.',
+                    8: 'Eight prisoners plan escape for "before the conjunction." Monster: Minotaur sharpens horns against walls with increasing frequency.',
+                    9: 'Nine martyrs\' bones hum in harmony during certain hours. Treasure: Blessed relic pulses with warning light.',
+                    10: 'Ten paladins\' spirits solidify at midnight each night. Room: Sacred crypt where entombed heroes shift position.',
+                    11: 'Celestial guardian speaks of "the time of choosing." Monster: Angel\'s halo dims when discussing certain topics.',
+                    12: 'High priest\'s ghost performs blessings for "what comes after." Treasure: Healing staff charges drain faster near certain areas.',
+                    13: 'Saint\'s preserved heart beats faster each day. Room: Reliquary\'s holy energy fluctuates with unknown rhythm.'
+                },
+                'diamonds': {
+                    1: 'Single coin gleams too brightly, as if recently minted. Treasure: Gold pieces that grow warm to touch.',
+                    2: 'Two gems pulse with inner light on timers. Trap: Removing gems starts countdown visible in crystal facets.',
+                    3: 'Three goblets refill with wine overnight. Room: Dining hall where feast rots faster than natural decay.',
+                    4: 'Four rings tighten on skeletal fingers. Monster: Wight counts jewelry obsessively, preparing for "payment day."',
+                    5: 'Five idols turn to face entrance when unobserved. Treasure: Religious artifacts hum with building energy.',
+                    6: 'Six chests rearrange themselves nightly. Trap: Mimics coordinate feeding schedule with unseen intelligence.',
+                    7: 'Seven crystals grow visibly larger each day. Room: Cave mineral deposits form geometric patterns.',
+                    8: 'Eight platinum pieces move to complete ritual patterns. Monster: Demon grows more solid with each offering.',
+                    9: 'Nine diamonds crack in sequence, releasing stored power. Trap: Ward system counts down to catastrophic discharge.',
+                    10: 'Ten emerald eyes blink in synchronized patterns. Treasure: Statue eyes track movement, value increasing nightly.',
+                    11: 'Master thief\'s vault shows signs of recent activity from inside. Trap: Locks reset themselves to higher difficulty.',
+                    12: 'Treasure room wealth diminishes despite sealed entrances. Room: Riches drain away through unknown mechanism.',
+                    13: 'Dragon hoard rearranges itself for ritual significance. Treasure: Ancient wealth prepares for its owner\'s return.'
+                },
+                'clubs': {
+                    1: 'Single mushroom spreads spores that glow brighter nightly. Room: Fungal growth accelerates beyond natural pace.',
+                    2: 'Two root systems pulse with synchronized heartbeat rhythm. Monster: Shambling mound grows more intelligent daily.',
+                    3: 'Three bears pace restlessly, unable to hibernate. Room: Animal dens show signs of unnatural alertness.',
+                    4: 'Four centipedes scuttle in formation toward hidden destination. Trap: Creatures gather for coordinated assault.',
+                    5: 'Five owlbear cubs grow to adult size overnight. Monster: Protective parents sense approaching threat.',
+                    6: 'Six rats organize into military formations. Room: Gnawed supplies arranged in defensive patterns.',
+                    7: 'Seven spiders weave message symbols into web patterns. Trap: Web placement follows architectural blueprints.',
+                    8: 'Eight stirges drain blood but leave victims alive. Monster: Vampiric creatures collect specific blood types.',
+                    9: 'Nine worm tunnels form mystical geometry underground. Room: Foundation destabilizes according to ritual design.',
+                    10: 'Ten demons spread corruption in expanding circles. Monster: Fiendish influence follows mathematical progression.',
+                    11: 'Treant roots breakthrough follows ancient ley lines. Room: Nature reclaims stonework with supernatural purpose.',
+                    12: 'Wood transformation creates runic patterns in living timber. Monster: Awakened trees coordinate defense preparations.',
+                    13: 'Toxic garden grows ingredients for specific alchemical purpose. Room: Dragon-breath poison serves greater plan.'
+                },
+                'spades': {
+                    1: 'Single blade bears fresh blood despite ancient placement. Trap: Spear trap resets itself after each triggering.',
+                    2: 'Two skeletons face entrance with increasing alertness. Monster: Animated bones sharpen their own weapons.',
+                    3: 'Three spikes show wear patterns from repeated use. Trap: Pit refills itself with new victims\' remains.',
+                    4: 'Four armor suits turn toward sounds with mechanical precision. Monster: Animated guardians patrol with growing efficiency.',
+                    5: 'Five axes swing in rhythm counting down to zero. Room: Torture implements activate on predetermined schedule.',
+                    6: 'Six zombies shamble in increasingly complex patterns. Monster: Undead workers prepare chamber for specific purpose.',
+                    7: 'Seven dart mechanisms reload themselves nightly. Trap: Hallway defenses anticipate intruder movement patterns.',
+                    8: 'Eight wraiths grow more substantial with each feeding. Monster: Incorporeal undead prepare for physical manifestation.',
+                    9: 'Nine shadows merge into larger, more complex forms. Monster: Level-draining creatures combine powers.',
+                    10: 'Ten death knights march in formation toward sealed door. Monster: Undead patrol awaits signal to advance.',
+                    11: 'Lich experiments reach critical phases of completion. Room: Laboratory equipment operates without supervision.',
+                    12: 'Vampire court prepares throne room for approaching coronation. Room: Undead courtiers practice ceremonies.',
+                    13: 'Death god\'s manifestation grows stronger with each sacrifice. Monster: Divine avatar approaches full incarnation.'
+                }
+            };
+            
+            return dungeonInterpretations[card.suit][card.rank];
+        }
+        
         function getSingleCardInterpretation(card) {
+            if (currentMode === 'city') {
+                return getCityInterpretation(card);
+            } else if (currentMode === 'wilderness') {
+                return getWildernessInterpretation(card);
+            } else if (currentMode === 'dungeon') {
+                return getDungeonInterpretation(card);
+            }
+            
+            // Fallback to original interpretations
             const detailedInterpretations = {
                 'hearts': {
                     1: 'A new friendship blooms or an old love rekindles. The hospitable innkeeper welcomes weary travelers with warm bread and stories of distant lands.',
@@ -814,17 +1039,45 @@
             
             // Poker hand profoundly affects the interpretation
             if (namedCombo) {
-                const pokerInterpretations = {
-                    'One Pair': ' The paired forces align in perfect symmetry - what was once random now shows purpose. A merchant finds their exact counterpart, or twin threats emerge from opposite directions.',
-                    'Two Pair': ' Dual alliances form as opposing powers recognize mutual benefit. Ancient rivals must unite against a greater threat, creating an uneasy but powerful coalition.',
-                    'Three of a Kind': ' Trinity power manifests as three kingdoms unite, three dragons emerge, or three champions rise. The sacred number brings divine intervention to mortal affairs.',
-                    'Straight': ' Destiny unfolds in perfect sequence as prophesied events cascade inevitably forward. Each action leads precisely to the next in an unbreakable chain of fate.',
-                    'Flush': ' Elemental dominance - all forces align under a single banner. Hearts unite all emotions, Diamonds consolidate all wealth, Clubs command all nature, Spades bring absolute conquest.',
-                    'Full House': ' Royal marriage or powerful merger - strength combines with grace as military might joins with diplomatic wisdom. The kingdom becomes truly complete.',
-                    'Four of a Kind': ' Legendary convergence - four horsemen ride, four corners of the world respond, or four ancient artifacts unite. Reality itself bends to accommodate this cosmic alignment.',
-                    'Straight Flush': ' Perfect harmony between order and power - the ultimate convergence where destiny and dominion become one. Kings bow, gods take notice, and legends are born.',
-                    'High Card': ' Individual excellence rises above mere chance. A single hero steps forward when systems fail, proving that personal valor transcends any combination of lesser forces.'
-                };
+                let pokerInterpretations = {};
+                
+                if (currentMode === 'city') {
+                    pokerInterpretations = {
+                        'One Pair': ' Paired interests align - two merchants form partnership, twin guards coordinate patrol, or matching bribes ensure cooperation.',
+                        'Two Pair': ' Dual alliances emerge - noble houses and merchant guilds unite, while thieves and corrupt officials form parallel agreements.',
+                        'Three of a Kind': ' Trinity of power manifests - city council, temple hierarchy, and merchant princes unite in common cause.',
+                        'Straight': ' Sequential events unfold - market day leads to festival, which triggers political ceremony, culminating in royal decree.',
+                        'Flush': ' Single faction dominance - one guild controls all trade, one noble house rules politics, or one criminal organization owns the streets.',
+                        'Full House': ' Perfect political marriage - military might backs diplomatic wisdom as guard captain and high priestess unite their influences.',
+                        'Four of a Kind': ' Legendary convergence - four city districts unite, four guilds merge, or four noble families form unbreakable alliance.',
+                        'Straight Flush': ' Ultimate urban harmony - all social classes, from beggar to king, work in perfect coordination toward common prosperity.',
+                        'High Card': ' Individual authority rises - a single leader emerges to guide city through crisis using personal charisma over institutional power.'
+                    };
+                } else if (currentMode === 'wilderness') {
+                    pokerInterpretations = {
+                        'One Pair': ' Natural symmetry emerges - twin peaks frame the valley, paired predators hunt together, or two weather fronts converge.',
+                        'Two Pair': ' Balanced ecosystems - predator and prey, summer and winter patterns, or mountain and forest terrains complement each other.',
+                        'Three of a Kind': ' Primal trinity manifests - earth, air, and water unite; or past, present, and future reveal themselves through natural signs.',
+                        'Straight': ' Natural progression unfolds - seasons change in perfect sequence, animal migrations follow ancient paths, terrain shifts predictably.',
+                        'Flush': ' Elemental dominance - fire consumes forest, water floods plains, earth avalanches mountainside, or wind storms across grasslands.',
+                        'Full House': ' Perfect wilderness balance - predator populations control prey numbers while terrain provides exactly the resources needed.',
+                        'Four of a Kind': ' Legendary natural convergence - four sacred groves unite, four elemental forces align, or four ancient beasts awaken simultaneously.',
+                        'Straight Flush': ' Ultimate natural harmony - all creatures, weather, and terrain work in perfect ecological balance.',
+                        'High Card': ' Apex emergence - single alpha predator, dominant weather pattern, or master of wilderness rises above all other natural forces.'
+                    };
+                } else if (currentMode === 'dungeon') {
+                    pokerInterpretations = {
+                        'One Pair': ' Matched threats emerge - twin guardians protect chamber, paired traps work together, or two treasure caches complement each other.',
+                        'Two Pair': ' Dual defense systems - magical and mechanical traps combine, while undead and construct guardians coordinate attacks.',
+                        'Three of a Kind': ' Trinity of dungeon power - trap, monster, and treasure form perfect deadly triangle in chamber design.',
+                        'Straight': ' Sequential challenges unfold - each chamber leads logically to next, traps build in complexity, guardians increase in power.',
+                        'Flush': ' Unified dungeon theme - all elements serve single purpose: undead dominion, draconic hoard protection, or elemental containment.',
+                        'Full House': ' Perfect dungeon design - architectural strength combines with magical complexity as physical and supernatural defenses unite.',
+                        'Four of a Kind': ' Legendary dungeon convergence - four keystones unlock final chamber, four guardian types unite, or four treasure hoards merge.',
+                        'Straight Flush': ' Ultimate dungeon mastery - all chambers, traps, monsters, and treasures work in perfect harmony toward single grand purpose.',
+                        'High Card': ' Supreme dungeon authority - single powerful entity (lich lord, dragon, demon prince) dominates all lesser dungeon elements.'
+                    };
+                }
                 
                 interpretation += pokerInterpretations[namedCombo] || '';
             } else {
@@ -845,6 +1098,12 @@
             }
             
             return interpretation;
+        }
+        
+        function updateMode() {
+            currentMode = document.getElementById('locationMode').value;
+            // Refresh the display to show new interpretations
+            updateDisplay();
         }
         
         // Initialize the deck when page loads
