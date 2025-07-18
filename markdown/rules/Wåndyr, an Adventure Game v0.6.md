@@ -15,11 +15,9 @@ Date: May 13, 2025
 
 About the Name: Wåndyr is “wander” as in travel about, but also “wonder” as in finding wondrous things in your travels, and maybe bringing them back.
 
-###
+## Contents
 
-#### Contents
-
-[**Welcome to Wåndyr\! 2**](#welcome-to-wåndyr!)
+[**Welcome to Wåndyr! 2**](#welcome-to-wåndyr!)
 
 [**Starting a Game 4**](#starting-a-game)
 
@@ -57,19 +55,19 @@ About the Name: Wåndyr is “wander” as in travel about, but also “wonder�
 
 [**Insight 19**](#insight)
 
-# Welcome to Wåndyr\! {#welcome-to-wåndyr!}
+## Welcome to Wåndyr! {#welcome-to-wåndyr!}
 
 **Wåndyr** is an adventure game about a band of adventurers wandering through a pulp fantasy world. The focus is on exploration, following rumors, discovering new places, finding magic, treasure hunting, camping, singing, storytelling, cleverly overcoming impossible odds, and coming back alive with tales to tell. In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again.
 
 The stories and songs of your characters emerge during play, filled with wonder and surprises that even the Guide doesn't anticipate.
 
-#### Sandbox
+### Sandbox
 
 The Guide describes the world but doesn't create a story beforehand. The local area remains wide open and undefined, even if some aspects of the wider world are known. This "sandbox" style allows everyone at the table to discover the unexpected together.
 
 The Guide uses dice rolls and random tables to determine what happens rather than telling a predetermined story. Each new discovery adds to the growing lore of your campaign world.
 
-#### The Oracle
+### The Oracle
 
 The **Oracle** answers any yes/no question instantly, often adding unexpected "sweet" or "spicy" flavor to keep adventures surprising. Both Guide and players consult the Oracle during play.
 
@@ -77,36 +75,36 @@ For deeper questions, the Oracle excels at "20 questions" to reveal mysteries pi
 
 Wåndyr is compatible with most Old School Roleplaying (OSR) games, but with fresh mechanics. Thus, the Guide has a wealth of material to augment the Oracle.
 
-# Starting a Game {#starting-a-game}
+## Starting a Game {#starting-a-game}
 
 Wåndyr is a game played with friends. Select one person to be the Guide; the other people are players.
 
-#### 1 \- Starting Location
+### 1 - Starting Location
 
 The Guide describes the starting location for the adventure, such as a medieval tavern in a town on the borderlands. The Guide can place this into a larger fantasy world, or let that be a mystery for now.
 
-#### 2 \- Create Characters
+### 2 - Create Characters
 
 Each player needs three characters. A character has two Traits and two Skills, for example:  
 Lindon: brave, strong | poleax, armor
 
-#### 2 \- Select a Rumor
+### 2 - Select a Rumor
 
 The Guide then lists a few rumors that hint about troublesome events in the area or interesting places to explore. The players choose a rumor to follow.
 
-#### 3 \- Muster a Character
+### 3 - Muster a Character
 
 Each player rolls 2d6 Hearts for each of their characters and chooses one to “Muster” (play). From now on, each player becomes their mustered character. The Guide gives new characters 1-4 basic “hand me down” items for weapons, armor, tools, spellbooks, etc.
 
-#### 4 \- Pack for the Journey
+### 4 - Pack for the Journey
 
 The Guide should provide a landmark or general directions so the path of the journey is clear, and provide or suggest basic travel supplies (e.g. food, water, traveling cloak). Players can swap items amongst themselves, but must leave unnecessary items behind with their other characters.
 
-#### 5 \- Embark
+### 5 - Embark
 
 Start play on the road. Each player plays their mustered character; the Guide handles everything else.
 
-### Character Creation  
+## Character Creation
 
 Characters start with two Traits and two Skills. Use your own words, but keep it clear and simple. Example:
 
@@ -114,15 +112,15 @@ Rook: agile, cunning | knife, (lockpicks)
 
 “Rook” is “agile” and “cunning” (Traits). Rook knows how to use a knife and *secretly* *lockpicks* (Skills).
 
-#### Traits
+### Traits
 
 A Trait is a keyword that describes a personal quality, talent, or background. Examples: agile, bold, strong, tough, intelligent, clever, sneaky. A Trait must be a single word, or a common compound word like *man-at-arms, horse-thief, second-story-man, or witch-hunter*.
 
-#### Skills
+### Skills
 
 A Skill is an item proficiency. Examples: dagger, longsword, bow, lockpicks, shield, armor,  type of animal, spellbook, wand, arcane staff, etc. Skills can be broad or narrow, but broad skills just cover the most basic items of that kind, so “sword” does not provide skill in a specialized sword type such as “greatsword”.
 
-#### Magic Traits
+### Magic Traits
 
 A Trait related to magic costs one Skill. For example, a magic-user taking Trait for their magic school has one less Skill.
 
@@ -130,7 +128,7 @@ Vesper: scholar “illusione” | spellbook
 Hezerek: ambitious “Umbrakalla“ | orb  
 Talin: Hallow “Vitae” | rod
 
-#### New Characters
+### New Characters
 
 Characters start as unproven, untested novices with no prior experience or heroic deeds. *All this must develop during the game*.
 
@@ -139,9 +137,7 @@ A character’s appearance might affect how NPCs perceive the character, but not
 
 The Guide will provide 1-4 “hand me down” items to new characters when they first Muster. This is inferred by their Traits and Skills.
 
-####
-
-#### Example Characters
+### Example Characters
 
 Choose or roll d66, or mix n’ match parts.
 
@@ -188,17 +184,17 @@ Alias: traits | skills
 **6.5**  Bear: strong, protective | maul, bearskin cloak
 **6.6**  Thalia: hallow, keen-eyed | bow, sword
 
-# The Muster {#the-muster}
+## The Muster {#the-muster}
 
 *Ok boys, check your kit, check your weapons, it’s today. You get a pint and a chaser, no more. Let’s go.*
 
 During the Muster, each player takes on the role of one character adventuring today. The Guide provides new characters with 1-4 basic “hand me down” items.
 
-#### Hearts
+### Hearts
 
 Players roll 2d6 Hearts for each of their three characters, and choose one who answers the Muster and will be played today.
 
-#### 10 Item Slots
+### 10 Item Slots
 
 Each character has 10 Item Slots to hold gear they have “equipped” and can access and use easily.
 
@@ -212,11 +208,11 @@ Larger items use 1-4 Item Slots:
 * **Armor:** gauntlets 1, helm 2, gambeson 3, haubergeon 4  
 * **Musical Instrument:** pipe 1, lute 2, guitar 3, war drums 4
 
-#### Baggage
+### Baggage
 
 Characters can carry gear outside of their 10 Item Slots but must keep a separate list called “Baggage” (big bags or rucksacks). Accessing an item from Baggage takes d6 Turns. Baggage halves movement and causes safety issues when swimming, leaping, climbing, etc.
 
-#### Home Base
+### Home Base
 
 The characters are part of an “adventuring party” with a “home base”. Party Level adds to Hearts when Mustering from “home base”, but it starts at level zero. *They might be an adventurers guild, warband, canting crew, etc. Their base could be a tavern, flat house, hideout, etc.*
 
@@ -224,11 +220,11 @@ The characters are part of an “adventuring party” with a “home base”. Pa
 
 In Wåndyr, each game starts with a Muster and ends in Camp. When the adventuring party decides to stop and rest, they must choose whether to make a temporary camp or return home.
 
-#### Downtime
+### Downtime
 
 Camping is downtime. Each character exits play until the next time they Muster. The game is essentially “paused”, allowing the players and Guide to openly and rapidly discuss topics that might be more difficult to do when actively playing a character. For example, at this time the Guide awards XP and players can spend XP. The party may also fast-forward in time.
 
-#### Comforts
+### Comforts
 
 *The comforts of home are cheerful companions. A wheel of cheese, a crusty bread, mead, wine, or a good smoke can make even the most dismal dungeon feel fine.*
 
@@ -246,11 +242,11 @@ The adventuring party has a Party Level, which starts at zero but can grow over 
 
 Characters can advance their Party Level to Level 1 by paying 2,000 gp; the cost doubles for each Level. *The gold is presumed spent on improvements to “home base”, hiring trainers, throwing parties, etc*.
 
-# Game Play {#game-play}
+## Game Play {#game-play}
 
 The game mostly consists of a conversation around the table, where people take turns to ask questions and attempt actions.
 
-#### Facts
+### Facts
 
 When a player asks a question about a *fact* yet unknown, the Guide asks the Oracle for truth:
 
@@ -258,7 +254,7 @@ When a player asks a question about a *fact* yet unknown, the Guide asks the Ora
 * "Is there a trail in the woods?"  
 * “Do they seem friendly?”
 
-#### Actions
+### Actions
 
 When a player takes an action, they ask the Oracle for the result:
 
@@ -272,7 +268,7 @@ Conversations may resemble a game of “20 questions”; the answer will be a su
 
 Speak a question such as “does my spear hit the foe?” and roll 2d6: if the total is 8 or higher the answer is “Yes”, otherwise "No".
 
-#### Advantage/Disadvantage
+### Advantage/Disadvantage
 
 With Advantage, roll 3d6 and keep the two best dice; on Disadvantage roll 3d6 and keep the two worst. Never remove a 1 from the roll (e.g. 1, 1, 6 \= 8 and 1, 6, 6 \= 13).
 
@@ -280,11 +276,11 @@ A character can have Advantage with clever planning or **Insight**.
 
 Disadvantages may apply for poor positioning, unarmed, in bad terrain, poor visibility, using a bow in close combat, etc. Advantage cancels Disadvantage, simply roll 2d6.
 
-#### Easy / Hard
+### Easy / Hard
 
 The Guide sets the Oracle target number as easy (6), normal (8), hard (10), or extreme (12). When possible, the Guide should compare Party Level with the Level of an opponent, monster, or challenge.
 
-#### Sweet and Spicy
+### Sweet and Spicy
 
 When any die rolls a 6, the outcome is "Sweet," adding a stylistic flair. Double 6s indicate a bonus or benefit. Conversely, if any die rolls a 1, the outcome is "Spicy," also adding style. Double 1s signify a penalty or complication.
 
@@ -298,21 +294,21 @@ The Guide can either describe these effects or allow the player to provide their
 
 The game uses Turns so each player has a chance to speak. A Turn is the amount of time needed for each player to move and take an action or ask a question. The amount of time depends on context: from days of travel to a few seconds in combat.
 
-#### Turn Clock
+### Turn Clock
 
 The Guide marks the passage of time on the “Turn Clock”. A metal bowl and glass beads or other tokens is ideal. Advance the Clock by 1 at the start of each Turn or whenever the players do something time-consuming. Roll Insight at the same time. When the Clock would strike 7 the Guide clears the Clock and restarts at 1\. *Perhaps a random encounter or event will occur?*
 
-# Names {#names}
+## Names {#names}
 
 Characters can earn Names in play, such as epithets, songs, and spells.
 
 Once earned, the character can pay XP to take the Name. The player records the Name as a byname, or on a list of Names (songs, stories, spells) along with its Level, which its power tier and XP cost. The character may alternatively *Name an item* (see Named Items).
 
-#### Using Names
+### Using Names
 
 Names are helpful for Insight and may influence NPCs. The character can also invoke a Name to reenact the heroic feat where they earned the Name; each attempt costs its Level in Hearts. This may sound simple but is quite significant\!
 
-#### Named Items
+### Named Items
 
 A **Named Item** has at least one Name (and at most one per item slot). If kept equipped at all times, the character may use each Name once per Muster, at no Hearts cost.
 Characters may hire an artisan to inscribe items with their Names and decorations (inlays, etchings, gems, gold leaf, etc.), creating a legacy.
@@ -321,7 +317,7 @@ Characters may hire an artisan to inscribe items with their Names and decoration
 
 *Music is important because it makes everything better.* A character can *perform* once per Muster for each music instrument **Skill** and song **Name**. A performance takes at least 10 minutes and can influence NPC reactions or raise party morale. Each performance reaches an audience size up to the song Name Level plus the musical instrument item slots. Quality instruments may have a “plus” bonus such as a “guitar \+1”. If the Oracle agrees, each person in the audience is *restored* 1 Heart (i.e. not to exceed Hearts at Muster). Group performances are more fun and reach more listeners.
 
-# Mågįc {#mågįc}
+## Mågįc {#mågįc}
 
 Wåndyr is full of magic, and much of the game is about exploring and meddling with magical secrets.
 
@@ -333,11 +329,11 @@ All magic items and magical objects bear mystical inscriptions: sharp dwarven ru
 
 Most magic items function as their mundane counterparts plus a magical enhancement. Elven boots silence footsteps, a hero's belt bestows strength, and a “shield \+1” is extra protective. This often grants a Trait or Skill. Anyone with an appropriate Skill may discover their function through use (i.e. the qualities may be overlooked by the unskilled) and some items even require a Skill.
 
-#### Spell Names
+### Spell Names
 
 Spells can be found written in spellbooks and on Arcana; they are only usable by magic-users.
 
-#### Sentient Items
+### Sentient Items
 
 Sentient items contain a bound soul of a magic-user, elemental, *d'jinn, ifr'it, kha'din*, dragon, eldar, deep one, or other entity. Bound spirits are notoriously capricious, jealous, and unhinged from confinement, their original dreams and ambitions maybe twisted by madness.
 
@@ -345,17 +341,19 @@ Sentient items are temperamental; when a character first attempts to use one, as
 
 A character who carries a sentient item grows in *alignment* and may discover deeper mysteries. They might take a personal Name such as “Wielder of Duskbringer”.  It’s petty, but they *hate* anyone who offends their fragile egos, such as carrying them after being rejected, refusing to follow their agenda, abandoning, or "cheating” on them with a rival item.
 
+The bound spirit can use Names inscribed on the item (as determined by the Guide). Each Name can only be used once per Muster, regardless of whether the character or the spirit uses it first. This creates interesting dynamics where the character may find themselves unable to use a Name because the spirit has already used it, or compelled to use it in ways that align with the spirit's nature.
+
 ## Magic-Users {#magic-users}
 
 Magic is classified by “school”, such as Vitae (life), Elementalis, Thaumaturgy (control), Illusione (illusions & mental), Umbrakala (shadows & gates), or Necromantia.
 
 A character with a Trait for a **Magic School** is a “magic-user” of that school, literate in its otherwise secret arcane magic language. All words are magical to a degree, and all true magic is made of words, runes, glyphs, or arcane script.
 
-#### Spellbooks
+### Spellbooks
 
 A spellbook is an item using 1-4 item slots, with one spell per slot.
 
-#### Spell Casting
+### Spell Casting
 
 Casting a spell requires an item with the spell Name such as a Spellbook or Arcana. A magic-user who has learned the spell Name no longer needs an item.
 
@@ -363,16 +361,16 @@ The magic-user needs at least one free hand and must say the magic power words l
 
 Upon casting a spell, the magic-user loses Hearts equal to the Spell Level. Consuming a *Magic Component* reduces the cost by 1 Heart per item slot (max one component per spell). Magic components can be found in strange magical places.
 
-#### Magic Oracle
+### Magic Oracle
 
 The player must always ask the Oracle if the spell casting outcome matches their *intention*. On “NO” *something* *unintended* happens (Sweet is close but flawed and Spicy is wildly different or dangerous) Ask the Oracle a question or two about what happened, and add to Lore.
 
-#### Spell Duration
+### Spell Duration
 
 **Instant** **spells** are one-shot, instantaneous effects.  
 **Active** **spells** last for the current encounter (e.g. a combat or scene). When the Turn Clock clears, Active spells expire unless the encounter is still going strong.
 
-#### Spell are True Names
+### Spell are True Names
 
 Magic-users may learn spells as **Names** by paying the spell Level in XP, and then they no longer need an item to cast the spell.
 
@@ -380,7 +378,7 @@ A magic-user can only take a spell Name after they have cast it from a spellbook
 
 The magic-user may alternatively choose to enchant the spell Name into an item, creating an **Arcana**.
 
-#### Arcana
+### Arcana
 
 An Arcana is an item with one or more True Names of spell written on it. Arcana can be any kind of item (even tattoos) and have magic-user “drip” based on their spell Names,
 
@@ -388,7 +386,7 @@ If kept equipped at all times, a magic-user can use each Name in an Arcana once 
 
 If a weapon is an Arcana the magic-user can cast one of its spells on a “hit” instead of damage.
 
-#### Magic-User Spell Lists
+### Magic-User Spell Lists
 
 ##### 1 Vitae (Life)
 
@@ -574,7 +572,7 @@ Perception, thought, and dreams. The subtle magic of the Belerions, woven from p
 **4.6.5** *Visual Illusion* \- Static images  
 **4.6.6** *X-Ray Vision* \- See through matter
 
-##### 5 Umbrakallo (Shadow Gates)
+##### 5 Umbrakalla (Shadow Gates)
 
 Shadows, thresholds, and dimensional paths. The secret magic of the Alu, written in darkness and void. Practitioners create Kalla gates, walk between shadows, craft dimensional spaces, and traverse the boundaries between realms.
 
@@ -666,17 +664,15 @@ Death, spirits, and decay. The forbidden magic of the Avathars, inscribed in blo
 **6.6.5** *Wizard Mark* \- Death runes  
 **6.6.6** *Perfect Death* \- Ultimate end
 
-####
-
 ## Invocations {#invocations}
 
 Otherworldly beings can be called on by speaking their *True* *Names*.
 
-#### Lore
+### Lore
 
 When the name of an otherworldly being is first found, randomly generate it. The players may also ask the Oracle questions such as “have we heard of this being before?” or “is this being aligned with Law?”. Anything learned becomes part of the known Lore of the True Name, which can help shape future interactions.
 
-#### Invocations
+### Invocations
 
 A character can make an Invocation by loudly and formally calling the True Name *thrice* and making a request.
 
@@ -684,15 +680,21 @@ The player rolls the Oracle to ask if the request is fulfilled. On Sweet the bei
 
 If the Oracle says the request is fulfilled, the Guide follows existing Lore and asks the Oracle how that plays out. Character alignment to the True Name matters.
 
-#### Alignment
+### Alignment
 
 After an Invocation, the character must offer d6 XP and ask the Oracle how they are spent.
 
-#### Relics
+### Relics
 
 Relics are objects with connections to otherworldly beings. They are conduits for alignment, and have even been known to make Invocations or whisper mystical secrets. Relics are often mistaken for “cursed” magic items.
 
-# Monsters {#monsters}
+Relics work mechanically like Sentient Items: when a character first encounters a Relic, ask the Oracle if the otherworldly being accepts them as the bearer. The character will intuitively feel whether they have been accepted or rejected. If rejected, continuing to carry the Relic will feel profoundly wrong. On Sweet or Spicy, the being might make a more direct connection, such as blessing/smiting the character or communicating with them.
+
+As with Sentient Items, the otherworldly being connected to a Relic can use Names inscribed on the item (as determined by the Guide). Each Name can only be used once per Muster, regardless of whether the character or the being uses it first. This creates interesting dynamics: the character may find themselves unable to use a Name because the being has already used it, or compelled to use it in ways that align with the being's nature. Sometimes the being's intervention might be advantageous, such as healing when the character is down, or it might feel like a "cursed" magic item if the being acts against the character's wishes.
+
+*Note: Relics and Sentient Items are mechanically similar—both can use Names on the item, and both can influence alignment or communicate with the bearer. The key difference is that a Sentient Item contains a being bound or trapped inside, while a Relic is a conduit to a being that exists elsewhere and is not confined within the item.*
+
+## Monsters {#monsters}
 
 Each monster (or trap, etc.) has a **Level** comparable to **Party Level**. The Oracle is “hard” if this is higher than Party Level; or “easy” if lower.
 
@@ -711,23 +713,23 @@ For more detail, the Guide can use OSR monsters or wing it as follows.
 
 Weak pack/tribal monsters have d6 Hearts; leaders 2d6. A solitary “apex predator” monster has 2d6 or 3d6 Hearts per HD, multiple attacks, plus a deadly attack of 2d6 or 3d6, or d6 Hearts per Turn for HD+2 Turns (for paralysis, poison, petrification, etc).
 
-# Fighting {#fighting}
+## Fighting {#fighting}
 
 In a single Turn, each character can move up to 40’ and take one action.
 
 **Base Move** is 40’ (40 feet). Each impediment (e.g. Baggage, bad terrain, darkness, readying weapons) cuts this in half.
 
-#### Attack
+### Attack
 
 When a character attacks, the player asks the Oracle if they “hit”. Each “hit” deals d6 Hearts. More lethal weapons may have a “plus” bonus, such as a “greatsword \+1”.
 
 Attacks leave the attacker open to a counter attack.
 
-#### Defend
+### Defend
 
 When a character is attacked, the player asks the Oracle if they avoid getting “hit”. Armor and shields provide 1 “iron” Heart per item slot, usable vs weapons. More protective armor may have a “plus” bonus, such as “shield \+1”.
 
-#### Initiative
+### Initiative
 
 The Guide determines the “initiative order” in which characters and monsters take their turns. Attacks and counter attacks are often simultaneous.
 
@@ -735,19 +737,19 @@ However, when enemies approach from a distance, the weapon with the better reach
 
 In close quarters combat (less than 10 feet of fighting space) the smaller weapon is better.
 
-#### Melee
+### Melee
 
 A character is “in Melee” if they are within reach (\~10 feet) of an enemy who is making a melee attack. The character has Disadvantage unless they attempt an attack with a close combat weapon (e.g. dagger, sword, spear, pistol).
 
-#### Hearts
+### Hearts
 
 Hearts act as plot armor; a character is not injured while they have Hearts. A character at 0 Hearts is injured but can recover in Camp. A character below 0 Hearts is *dying* and needs magic healing; when the Turn Clock clears, anyone below 0 Hearts immediately dies.
 
-#### Saving Throws
+### Saving Throws
 
 When someone is exposed to a special effect (poison, petrification, breath, magic, paralyzation, etc.), ask the Oracle if they somehow avoid the “worst half” of the effect. On YES they take half the effect.
 
-# The Oracle {#the-oracle}
+## The Oracle {#the-oracle}
 
 Ask a question and roll 2d6: if the total is 8 or higher the answer is “Yes”, otherwise "No".
 
@@ -758,36 +760,36 @@ Always phrase the question for yes/no where the characters *want* to hear “Yes
 * "Do I hit the monster?"  
 * "Do I avoid the trap?
 
-#### Sweet & Spicy
+### Sweet & Spicy
 
 If any die rolls 6 the answer is “Sweet”, and if any die rolls a 1 the answer is “Spicy”. The player asks a question on Sweet; the Guide asks a question on Spicy.
 
 *The Oracle also knows how to play 20 questions.*
 
-# Insight {#insight}
+## Insight {#insight}
 
 Insight is an opportunity to claim advantage. Players who follow Insight on a roll have Advantage. Roll d6 for Insight each Turn.
 
-#### 1 \- TRAIT
+### 1 - TRAIT
 
 Use a helpful Trait. Strong helps open stuck doors or crack heads.
 
-#### 2 \- ITEM
+### 2 - ITEM
 
 Use a helpful item. (Special items require a specialized item Skill, e.g. longbow, lockpicks, greatsword, spellbooks, wand, etc.)
 
-#### 3 \- SKILL
+### 3 - SKILL
 
 Use a helpful item Skill; requires the item.
 
-#### 4 \- NAME
+### 4 - NAME
 
 Use a relevant Name (personal name, byname, title, or named item). “Dragon Slayer” helps with dragon stuff.
 
-#### 5 \- ASSIST
+### 5 - ASSIST
 
 Use an Action previously taken that “sets up” or “assists” the current roll. A “parry” helps defend. Characters can assist each other if they sequence their actions.
 
-#### 6 \- EFFORT
+### 6 - EFFORT
 
 Apply more effort. Thus, not possible if carrying Baggage, making something look easy, maintaining stealth or subtlety, climbing, swimming, wrestling, etc.
