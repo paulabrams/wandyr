@@ -406,7 +406,7 @@ If a weapon is an Arcana the magic-user can cast one of its spells on a â€œhitâ€
 
 ![][image10]
 
-#### 
+####
 
 #### Magic-User Spell Lists
 
@@ -698,19 +698,17 @@ When the name of an otherworldly being is first found, randomly generate it. The
 
 #### Invocations
 
-A character can make an Invocation by loudly and formally calling the True Name *thrice* with a request.
+A character can make an Invocation by loudly and formally calling the True Name of the being *thrice* and stating a request. The player asks the Oracle if they feel the being notices the request (on Sweet the being *likes* the request and on Spicy they *dislike* it).
 
-The player rolls the Oracle to ask if the request is fulfilled. On Sweet the being *likes* the request, and on Spicy they *dislike* it. The character loses d6 Hearts (half on Sweet, double on Spicy). If they run out of Hearts something weird happens.
-
-If the Oracle says the request is fulfilled, the Guide follows existing Lore and asks the Oracle how that plays out. Factors such as alignment to the being matters.
+If the being notices the request, the Guide follows existing Lore and asks the Oracle what the being does, if anything, and when, how, etc. The personality of the being and alignment of the character to the being matter a great deal.
 
 #### Alignment
 
-After an Invocation, the character must offer d6 XP and ask the Oracle how they are spent.
+Upon making an Invocation, the character loses d6 Hearts and XP. The being spends the XP to bring the character further into alignment with them (ask the Oracle what happens).
 
 #### Relics
 
-Relics are sentient, named objects that serve as conduits to otherworldly beings. While they have powers similar to magical writings (e.g. a Name for each power), magic-users cannot explain them due to their lack of proper magical inscriptions.
+Relics are sacred objects that serve as conduits to otherworldly beings. They can have Names, and speaking a Name with correct alignment activates a sacred power (once per Muster per Name, as with other Named items). Similar to a sentient item, the being might also speak a Name. These Names are often oral tradition rather than written on the item, so a character may need to learn Lore about the being to discover the Names.
 
 # Monsters {#monsters}
 
