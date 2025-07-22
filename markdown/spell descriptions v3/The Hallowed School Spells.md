@@ -1,7 +1,6 @@
-# The High School Spells
+# The Hallowed School Spells
 
-*Nobility, wisdom, and divine authority. The ancient magic of the High Elves and White Wizards, written in celestial silver script that glows with inner light. These spells channel the power of righteousness, embody the wisdom of ages, and manifest the authority of lawful good.*
-
+*Nobility, wisdom, and divine authority. The ancient magic of the hallow - living saints in communion with heaven. Written in celestial silver script that glows with inner light, these spells channel the power of righteousness, embody the wisdom of ages, and manifest the authority of the divine realm.*
 
 **5.1.1** *Authority* - Project aura of natural authority that compels recognition. **Instant** Create a brief moment of commanding presence that forces one creature within 30 feet to acknowledge your authority for their next action. **Active** Maintain a sustained aura of leadership throughout the encounter, making it difficult for others to oppose your reasonable requests or ignore your guidance. The effect works best on those who respect legitimate authority and lawful order. **Level** Additional creatures affected.
 
