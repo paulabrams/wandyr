@@ -752,15 +752,13 @@ When a character attacks, ask the Oracle if they “hit”. Each “hit” deals
 
 When a character is attacked or otherwise endangered, ask the Oracle if they avoid getting “hit”. Armor and shields provide 1 “iron” Heart per item slot, usable vs weapons. More protective armor may have a “plus” bonus, such as “shield \+1”.
 
+When two opponents make melee attacks against each other, reduce the damage they deal to each other by 1 Heart.
+
 #### Initiative
 
 The Guide determines Turn order based on the situation, e.g. characters near the front of the party might be called before those in the rear or who need to move to see what is happening.
 
 Melee attacks go first and are usually simultaneous. However, when enemies approach from a distance, the weapon with the better reach (by item slots) has the “right of way” to attack first. Conversely, in close quarters combat (less than 10 feet of fighting space per person) the smaller weapon attacks first.
-
-#### Melee
-
-A melee attack creates an opening. If the target doesn't make a melee counter-attack during the Turn, the attacker can exploit this opening with a free melee attack at the end of the Turn. (At most doubling  attacks per Turn.)
 
 #### Hearts
 
