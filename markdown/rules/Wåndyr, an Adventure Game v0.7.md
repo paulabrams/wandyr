@@ -405,7 +405,7 @@ If a weapon is an Arcana the magic-user can cast one of its spells on a “hit�
 
 ![][image10]
 
-#### 
+####
 
 #### Magic-User Spell Lists
 
@@ -748,7 +748,7 @@ When two opponents attempt melee attacks against each other, reduce hits to each
 
 #### Initiative
 
-The Guide determines Turn order based on the situation, e.g. characters near the front of the party might be called before those in the rear or who need to move to see what is happening.
+The Guide determines Turn order based on the situation, e.g. characters near the front of the party might be called before those in the rear, or characters who need to move to see what is happening.
 
 Melee attacks go first and are usually simultaneous. However, when enemies approach from a distance, the weapon with the better reach (by item slots) has the “right of way” to attack first. Conversely, in close quarters combat (less than 10 feet of fighting space per person) the smaller weapon attacks first.
 
