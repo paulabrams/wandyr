@@ -321,7 +321,13 @@ Once earned, the character can pay XP to take the Name. The player records the N
 
 #### Using Names
 
-Names are helpful for Insight and may influence NPCs. The character can also invoke a Name to reenact the heroic feat where they earned the Name; each attempt costs its Level in Hearts. This may sound simple but is quite significant\!
+Names are helpful for Insight and may influence NPCs. The character can also invoke a Name to reenact the heroic feat where they earned the Name; each attempt costs its Level in Hearts. This may sound simple but is quite significant!
+
+**Name Types:**
+
+* **Action:** Uses the character's action for the turn
+* **Defense:** Used when defending against attacks  
+* **Move:** Used during movement or positioning
 
 #### Named Items
 
@@ -374,7 +380,7 @@ A spellbook is an item using 1-4 item slots, with one spell per slot.
 
 Casting a spell requires a Spellbook and at least one free hand. The caster must say the magic power words loudly and precisely.
 
-Casting a spell costs Hearts equal to the Spell Level. A *Magic Component* reduces the cost by 1 Heart per item slot consumed, but only one component can be used per Turn. Magic components can be found in strange magical places.
+Casting a spell costs Hearts equal to the Spell Level. Consuming a *Magic Component* reduces the cost by 1 Heart per item slot. Magic components can be found in strange magical places.
 
 ### ![][image9]
 
@@ -383,10 +389,11 @@ Casting a spell costs Hearts equal to the Spell Level. A *Magic Component* reduc
 When casting a spell, ask the Oracle if the outcome matches the magic-user’s *intention*.
 a “NO” is not a failure--*something* *unintended* happens (Sweet is close but flawed and Spicy is wildly different or dangerous). Ask the Oracle a question about what happened, and add to Lore.
 
-#### Spell Duration
+#### Spell Effects
 
-**Instant** **spells** use one Action and are one-shot, instantaneous effects.  
-**Active** **spells** need two Actions but last for the current scene (e.g. a combat encounter or cutscene). When the Turn Clock clears, Active spells end when the scene transitions.
+Spell effects are applied at the end of the Turn. For example, a "fireball" spell cast on the player's action can be seen arcing towards its impact area, but the explosion occurs at the end of the Turn.
+
+Some spells can be cast as an "Instant Spell" so that their effect is applied immediately. However, these tend to be weaker or short-lived spells.
 
 #### Spell are True Names
 
@@ -747,15 +754,13 @@ When a character is attacked or otherwise endangered, ask the Oracle if they avo
 
 #### Initiative
 
-The Guide determines the “initiative order” in which characters and monsters take their turns. Attacks and counter attacks are often simultaneous.
+The Guide determines Turn order based on the situation, e.g. characters near the front of the party might be called before those in the rear or who need to move to see what is happening.
 
-However, when enemies approach from a distance, the weapon with the better reach (by item slots) has the “right of way” to attack first.
-
-In close quarters combat (less than 10 feet of fighting space) the smaller weapon is better.
+Melee attacks go first and are usually simultaneous. However, when enemies approach from a distance, the weapon with the better reach (by item slots) has the “right of way” to attack first. Conversely, in close quarters combat (less than 10 feet of fighting space per person) the smaller weapon attacks first.
 
 #### Melee
 
-A character is “in Melee” if they are within reach (\~10 feet) of an enemy who is making a melee attack. The character has Disadvantage on all rolls unless they attempt an attack with a close combat weapon (e.g. dagger, sword, spear, pistol).
+A melee attack creates an opening. If the target doesn't make a melee counter-attack during the Turn, the attacker can exploit this opening with a free melee attack at the end of the Turn. (At most doubling  attacks per Turn.)
 
 #### Hearts
 
@@ -780,7 +785,7 @@ Always phrase the question for yes/no where the characters *want* to hear “Yes
 
 #### Sweet & Spicy
 
-If any die rolls 6 the answer is “Sweet”, and if any die rolls a 1 the answer is “Spicy”. The player asks a question on Sweet; the Guide asks a question on Spicy.
+If any die rolls 6 the answer is “Sweet”, and if any die rolls a 1 the answer is “Spicy”. Usually a single sweet or spicy is just "style", not "substance". However based on circumstances this might change, for example, attacking in a crowded space (such as firing into a melee) can hit the wrong target on "spicy". Ask the Oracle to confirm any "substance".
 
 *The Oracle also knows how to play 20 questions.*
 
