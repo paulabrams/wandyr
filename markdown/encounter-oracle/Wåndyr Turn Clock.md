@@ -1,4 +1,4 @@
-# Turn Clock
+# Wåndyr Turn Clock
 
 The Turn Clock counts the passage of time in the game. It is a tool for the Guide to manage the pace of the game and to help players feel more aware of the passage of in-game time and the weight of their actions. This uses the OSR time scale where one "turn" is about ten minutes of in-game time. So typical actions each take one "turn", such as searching a room, picking a lock, checking for traps or secret doors, looting a body, etc.
 
