@@ -2,16 +2,24 @@
 
 The Guide should ask the Encounter Oracle every 15 minutes of real time play in dangerous environments OR when the characters linger in one place or perform actions that could reveal themselves (such as fighting, making noise, casting spells, playing music, preparing food, etc.).
 
-Secretly roll d6 on the main Encounter Oracle Table. Then roll a second die on the corresponding detail table (e.g. on a roll of 1: "Creatures" roll on the "Creatures" table). Any 1 is spicy and any 6 is sweet.
+Secretly roll d6 on the main Encounter Oracle Table. Make additional rolls for encounter distance or sub-tables as necessary.
+
+The simplest method is to roll d6, where 1 is the worst case scenario and 6 is the best case scenario. For example, a 1 is an ambush, while a 6 is a friendly NPC or beneficial encounter.
+
+More detailed methods are below.
+
+## Tension Pool (d6)
+
+Every 15 minutes of real time play, the Guide should add one die to the Tension Pool and then roll all dice. Any dice rolling 1 indicate an encounter and are removed.
 
 ## Encounter Oracle Table (d6)
 
-1. **Surprised** - A Monster has surprised the party
-2. **Hunted** - A monster has detected the party and is actively hunting them
-3. **Signs of Nearby Life** - Immediate threat indicators
-4. **Signs of Faraway Life** - Distant atmospheric signs
-5. **Environmental Change** - Hazardous or beneficial environmental effects
-6. **Best Case Scenario** - Wounded monster, surprised monster, or beneficial encounter
+1. **Ambushed** - A monster has ambushed the party
+2. **Hunted** - A monster has detected the party and is hunting them
+3. **Signs of Nearby Life**
+4. **Signs of Faraway Life**
+5. **Environmental Change**
+6. **Ask a player a question**
 
 When helpful, roll the on Encounter Distance table.
 
@@ -84,21 +92,15 @@ The monster can reach the party in d6 moves. Most monsters can move 30-90 feet p
 
 ## 5: Environmental Change (d6)
 
-1. **Light Fades** - Torch dims or lantern flickers (spicy: goes out completely)
-2. **Temperature Drops** - Air becomes noticeably colder (spicy: freezing, sweet: slight chill)
-3. **Strange Sounds** - Unusual noises from the environment (spicy: loud and threatening, sweet: soft and curious)
-4. **Odor Change** - Air takes on a different smell (spicy: foul and dangerous, sweet: pleasant and fresh)
-5. **Vibration** - Ground or walls begin to tremble (spicy: violent shaking, sweet: gentle tremor)
-6. **Atmospheric Shift** - Air pressure or humidity changes (sweet: refreshing breeze, invigorating)
-
-## 6: Resources Found (d6)
-
-1. **Abandoned Supplies** - Food, water, or equipment left behind
-2. **Natural Resources** - Herbs, minerals, or other valuable materials
-3. **Hidden Cache** - Concealed stash of useful items
-4. **Fresh Water** - Clean water source or spring
-5. **Shelter** - Safe place to rest or take cover
-6. **Treasure** - Valuable items or currency
+1. **Temperature Drops** - Air becomes noticeably colder (spicy: freezing, sweet: slight chill)
+2. **Weather Worsens** - Rain, snow, or storm approaches (spicy: severe storm, sweet: light drizzle)
+3. **Wounded Monster** - Injured creature, easier to defeat or avoid
+4. **Hunting Animal** - Game animal that can be hunted for food
+5. **Lost Traveler** - Roll for NPC Reaction
+    - 1-2: Hostile
+    - 3-4: Neutral
+    - 5-6: Friendly
+6. **Weather Improves** - Storm clears, temperature moderates, or conditions become favorable
 
 ## Monster Tables
 
