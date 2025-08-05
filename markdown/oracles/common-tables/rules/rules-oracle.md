@@ -13,7 +13,3 @@ Phrase the question for yes/no:
 The Oracle knows how to play 20 questions.
 
 If any die is 1 then the answer is more “spicy”. If any die is 6 the answer is more “sweet”. Combinations are possible.
-
-# 
-
-# 

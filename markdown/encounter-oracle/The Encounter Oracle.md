@@ -2,34 +2,30 @@
 
 The Guide should ask the Encounter Oracle every 15 minutes of real time play in dangerous environments OR when the characters linger in one place or perform actions that could reveal themselves (such as fighting, making noise, casting spells, playing music, preparing food, etc.).
 
-Secretly roll d6 on the main Encounter Oracle Table. Then roll a second die on the corresponding detail table (e.g. on a roll of 1: "Creatures" roll on the "Creatures" table). Any 1 is spicy and any 6 is sweet.
+Secretly roll d6 on the main Encounter Oracle Table. Make additional rolls for encounter distance or sub-tables as necessary.
+
+The simplest method is to roll d6, where 1 is the worst case scenario and 6 is the best case scenario. For example, a 1 is an ambush, while a 6 is a friendly NPC or beneficial encounter.
+
+More detailed methods are below.
+
+## Tension Pool (d6)
+
+Every 15 minutes of real time play, the Guide should add one die to the Tension Pool and then roll all dice. Any dice rolling 1 indicate an encounter and are removed.
 
 ## Encounter Oracle Table (d6)
 
-1. **Danger** - Roll on Danger table
-2. **Foreshadow** - Roll on Foreshadow table
-3. **Signs of Nearby Life** - Roll on Signs table
-4. **Signs of Faraway Life** - Roll on Signs table
-5. **Environmental Change** - Roll on Environment table
-6. **Time Passes** - Roll on Time table
+1. **Ambushed** - A monster has ambushed the party
+2. **Hunted** - A monster has detected the party and is hunting them
+3. **Signs of Nearby Life**
+4. **Signs of Faraway Life**
+5. **Environmental Change**
+6. **Ask a player a question**
 
-## 1: Creatures (d6)
+When helpful, roll the on Encounter Distance table.
 
-1. **Ambush** - Monster appears within 1 move distance (double spicy: immediate attack)
-2. **Close Encounter** - Monster within 40 feet (spicy: aggressive, sweet: cautious)
-3. **Nearby** - Monster within 60 feet (spicy: approaching, sweet: retreating)
-4. **Distant** - Monster within 120 feet (spicy: noticed you, sweet: unaware)
-5. **Far Away** - Monster beyond 120 feet (spicy: heading your way, sweet: moving away)
-6. **Near Miss** - Monster just passed by or you just missed it (double sweet: completely unaware)
+## 1: Enounter Distance (d6)
 
-## 2: Trap (d6)
-
-1. **Hall Trap** - Affects entire party (double spicy: deadly)
-2. **Room Trap** - Affects entire party (spicy: complex, sweet: simple)
-3. **Single Target** - Affects one character (spicy: lethal, sweet: annoying)
-4. **Environmental** - Natural hazard affects party (spicy: severe, sweet: mild)
-5. **Magical** - Enchanted trap affects party (spicy: powerful, sweet: weak)
-6. **Already Sprung** - Trap was triggered by something else; roll again (double sweet: harmless)
+The monster can reach the party in d6 moves. Most monsters can move 30-90 feet per move. For example, a monster with a move of 40 feet that is 2 moves away is within 80 feet of the party.
 
 ## 3: Signs of Nearby Life (d6)
 
@@ -39,6 +35,51 @@ Secretly roll d6 on the main Encounter Oracle Table. Then roll a second die on t
 4. **Body Odor** - Rancid smell of unwashed creatures (spicy: strong, sweet: faint)
 5. **Knocking** - Sound from behind a closed door (spicy: urgent, sweet: gentle)
 6. **Cry of Pain** - Distressed sound nearby (sweet: old echo, no immediate threat)
+
+### Forest/Woodland
+
+1. **Colorful Flowers** - Bright wildflowers, harmless but vibrant
+2. **Rustling Leaves** - Wind through the trees, natural sounds
+3. **Distant Animal Calls** - Howls, hoots, or other forest sounds (spicy: predators, sweet: prey)
+4. **Rich Earth Smells** - Loam, pine, and growing things (spicy: decay, sweet: fresh growth)
+5. **Small Animals** - Squirrels, rabbits, or other forest creatures
+6. **Forest Chimerae** - Small creatures with plant and animal features
+
+### Mountains/Hills
+
+1. **Alpine Flowers** - Hardy mountain flowers, colorful despite harsh conditions
+2. **Rock Slides** - Distant sound of falling rocks, natural but concerning
+3. **Echoing Winds** - Strong winds through mountain passes (spicy: howling, sweet: gentle)
+4. **Thin Air Smells** - Crisp, clean mountain air (spicy: ozone, sweet: fresh snow)
+5. **Mountain Goats** - Sure-footed creatures on distant slopes
+6. **Mountain Chimerae** - Small creatures with stone and animal features
+
+### Swamp/Marsh
+
+1. **Strange Fungi** - Unusual mushrooms and fungi, some glow
+2. **Frogs and Toads** - Croaking sounds from nearby pools
+3. **Rising Mist** - Fog or mist rolling in, atmospheric
+4. **Rich Marsh Smells** - Wet earth, decaying vegetation (spicy: rot, sweet: fresh water)
+5. **Water Sounds** - Bubbling, dripping, or flowing water
+6. **Swamp Chimerae** - Small creatures with amphibian and plant features
+
+### Desert/Arid
+
+1. **Desert Flowers** - Hardy desert blooms, rare but beautiful
+2. **Wind Through Canyons** - Echoing wind sounds, natural
+3. **Distant Heat Waves** - Shimmering air on the horizon (spicy: mirage, sweet: clear view)
+4. **Dry Air Smells** - Dust, sage, and hot stone (spicy: scorched earth, sweet: cool breeze)
+5. **Tumbleweeds** - Rolling vegetation, harmless movement
+6. **Desert Chimerae** - Small creatures with reptile and insect features
+
+### Urban/Ruins
+
+1. **Strange Architecture** - Unusual building features or decorations
+2. **Distant Voices** - Echoes of past inhabitants or current activity
+3. **Urban Echoes** - Sounds bouncing off walls and streets (spicy: footsteps, sweet: wind)
+4. **City Smells** - Stone, metal, and human activity (spicy: decay, sweet: cooking)
+5. **Urban Wildlife** - Rats, pigeons, or other city creatures
+6. **Urban Chimerae** - Small creatures adapted to city environments
 
 ## 4: Signs of Faraway Life (d6)
 
@@ -51,21 +92,15 @@ Secretly roll d6 on the main Encounter Oracle Table. Then roll a second die on t
 
 ## 5: Environmental Change (d6)
 
-1. **Light Fades** - Torch dims or lantern flickers (spicy: goes out completely)
-2. **Temperature Drops** - Air becomes noticeably colder (spicy: freezing, sweet: slight chill)
-3. **Strange Sounds** - Unusual noises from the environment (spicy: loud and threatening, sweet: soft and curious)
-4. **Odor Change** - Air takes on a different smell (spicy: foul and dangerous, sweet: pleasant and fresh)
-5. **Vibration** - Ground or walls begin to tremble (spicy: violent shaking, sweet: gentle tremor)
-6. **Atmospheric Shift** - Air pressure or humidity changes (sweet: refreshing breeze, invigorating)
-
-## 6: Time Passes (d6)
-
-1. **Fatigue** - Lose 1 Heart if in difficult terrain
-2. **Exhaustion** - Lose 1 Heart if carrying heavy baggage
-3. **Light Consumption** - Use up light source (torch, lantern, etc.)
-4. **Lost** - Lose 1 Heart if not actively navigating
-5. **Uneventful** - Time passes quietly, no immediate danger
-6. **Brief Rest** - Regain 1 Heart if able to rest, eat, and drink
+1. **Temperature Drops** - Air becomes noticeably colder (spicy: freezing, sweet: slight chill)
+2. **Weather Worsens** - Rain, snow, or storm approaches (spicy: severe storm, sweet: light drizzle)
+3. **Wounded Monster** - Injured creature, easier to defeat or avoid
+4. **Hunting Animal** - Game animal that can be hunted for food
+5. **Lost Traveler** - Roll for NPC Reaction
+    - 1-2: Hostile
+    - 3-4: Neutral
+    - 5-6: Friendly
+6. **Weather Improves** - Storm clears, temperature moderates, or conditions become favorable
 
 ## Monster Tables
 
