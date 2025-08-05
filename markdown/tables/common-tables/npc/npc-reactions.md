@@ -1,8 +1,6 @@
-# NPCs
+# NPC REACTIONS
 
-## NPC REACTIONS
-
- Roll 2d6
+Roll 2d6
 
 2 - Hostile
 3 - Suspicious
