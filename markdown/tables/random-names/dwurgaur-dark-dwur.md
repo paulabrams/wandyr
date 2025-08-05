@@ -1,47 +1,63 @@
 # Dwürgaur (Dark Dwur) Names
 
-**d20 Names:**
+**d20 Rollable Lists for Dwürgaur characters - corrupted dwarves who tunneled deep and away from the light**
 
-1. Morgrim
-2. Thrain
-3. Dain
-4. Nain
-5. Fundin
-6. Groin
-7. Farin
-8. Thorin
-9. Frerin
-10. Thrain
-11. Thror
-12. Fundin
-13. Groin
-14. Farin
-15. Nain
-16. Dain
-17. Thrain
-18. Frerin
-19. Thorin
-20. Thror
+---
 
-**d20 Titles:**
+## Names (Roll 1d20)
 
-1. Dark Dwarf
-2. Shadow Forge
-3. Night Smith
-4. Dark Heart
-5. Shadow Walker
-6. Night Dancer
-7. Dark Singer
-8. Shadow Heart
-9. Night Walker
-10. Dark Dancer
-11. Shadow Singer
-12. Night Heart
-13. Dark Walker
-14. Shadow Dancer
-15. Night Singer
-16. Dark Heart
-17. Shadow Walker
-18. Night Dancer
-19. Dark Singer
-20. Shadow Heart
+1. Athan (The Corrupted)
+2. Davon (The Deep)
+3. Durgir (The Dark)
+4. Rugrir (The Fallen)
+5. Runon (The Cursed)
+6. Thovil (The Shadow)
+7. Bador (The Lost)
+8. Adiel (The Damned)
+9. Rura (The Dark)
+10. Runa (The Cursed)
+11. Athan (The Corrupted)
+12. Davon (The Deep)
+13. Durgir (The Dark)
+14. Rugrir (The Fallen)
+15. Runon (The Cursed)
+16. Thovil (The Shadow)
+17. Bador (The Lost)
+18. Adiel (The Damned)
+19. Rura (The Dark)
+20. Runa (The Cursed)
+
+## Dark Epithets (Roll 1d20)
+
+1. The Corrupted
+2. The Deep-Dweller
+3. The Dark One
+4. The Fallen
+5. The Cursed
+6. The Shadow
+7. The Lost
+8. The Damned
+9. The Dark
+10. The Cursed
+11. The Corrupted
+12. The Deep
+13. The Dark
+14. The Fallen
+15. The Cursed
+16. The Shadow
+17. The Lost
+18. The Damned
+19. The Dark
+20. The Cursed
+
+## Homelands
+
+- Deep underground realms
+- Abandoned Dwur halls
+- The depths beneath the surface world
+
+## Cultural Notes
+
+The Dwürgaur represent the fallen aspect of the Dwür, those who have been corrupted by the depths and turned against their kin. They maintain similar naming conventions to their light-aligned cousins but often take on darker epithets and titles that reflect their corrupted nature.
+
+Their societies are hidden deep underground, operating in the abandoned halls and tunnels of their ancestors, maintaining ancient grudges against the surface world and their former kin. 
