@@ -13,6 +13,7 @@ collections:
   tables:
     output: true
     permalink: /tables/:name/
+    layout: table
 
 # Plugins
 plugins:
