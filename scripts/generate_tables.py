@@ -91,11 +91,10 @@ def create_jekyll_collection_item(md_file_path, output_dir):
     
     # Create front matter
     front_matter = f"""---
-layout: default
+layout: table
 title: "{title}"
 category: "{category}"
 description: "{description or 'Random table for Wåndyr adventures'}"
-url: "/tables/{Path(md_file_path).stem}/"
 ---
 
 {content}
