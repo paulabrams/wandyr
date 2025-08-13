@@ -128,21 +128,32 @@ This directory contains organized oracle tables for the Wåndyr RPG system. File
 
 - `Wåndyr World Oracle.md` - Complete world oracle system with comprehensive tables
 
-### World Generation Tables
+### Reorganized World Oracle Tables
 
-- `world-oracle/celestial-events.md` - Celestial phenomena that affect the world
-- `world-oracle/natural-disasters.md` - Natural disasters that reshape landscapes
-- `world-oracle/historical-events.md` - Historical events that shaped civilizations
-- `world-oracle/festivals-celebrations.md` - Local festivals and celebrations
-- `world-oracle/customs-traditions.md` - Local customs and traditions
-- `world-oracle/seasonal-changes.md` - Seasonal effects on the world
-- `world-oracle/weather-patterns.md` - Weather conditions and their effects
-- `world-oracle/mysterious-discoveries.md` - Mysterious findings that spark adventure
-- `world-oracle/strange-phenomena.md` - Unexplained events that need investigation
-- `world-oracle/architectural-styles.md` - Building styles and construction methods
-- `world-oracle/cultural-artifacts.md` - Important cultural objects and their significance
-- `world-oracle/dwur-weapons.md` - Traditional Dwur weapons and tools
-- `world-oracle/weapon-armor-quality.md` - Quality levels for weapons and armor
+**Travel & Weather:**
+
+- `travel/weather-patterns.md` - Weather conditions and their effects
+- `travel/seasonal-changes.md` - Seasonal effects on the world
+
+**Encounters & Events:**
+
+- `encounters/celestial-events.md` - Celestial phenomena that affect the world
+- `encounters/natural-disasters.md` - Natural disasters that reshape landscapes
+- `encounters/historical-events.md` - Historical events that shaped civilizations
+- `encounters/mysterious-discoveries.md` - Mysterious findings that spark adventure
+- `encounters/strange-phenomena.md` - Unexplained events that need investigation
+
+**Settlements & Culture:**
+
+- `settlements/festivals-celebrations.md` - Local festivals and celebrations
+- `settlements/customs-traditions.md` - Local customs and traditions
+- `settlements/architectural-styles.md` - Building styles and construction methods
+
+**Equipment & Treasure:**
+
+- `equipment/dwur-weapons.md` - Traditional Dwur weapons and tools
+- `equipment/weapon-armor-quality.md` - Quality levels for weapons and armor (simplified 1d6)
+- `treasure/cultural-artifacts.md` - Important cultural objects and their significance
 
 ### Magical World Oracle Tables
 
@@ -159,7 +170,7 @@ This directory contains organized oracle tables for the Wåndyr RPG system. File
 
 - **Total files:** 89 oracle tables
 - **Categories:** 13 main categories
-- **Most populated:** encounters/ (32 files), treasure/ (13 files), wilderness/ (8 files)
-- **World Oracle:** 21 individual world generation tables
+- **Most populated:** encounters/ (37 files), treasure/ (14 files), travel/ (10 files)
+- **World Oracle:** 13 reorganized world generation tables
 
 This organization makes it easy to find specific types of tables for different aspects of the game, from character generation to wilderness exploration to treasure hunting, with comprehensive world oracle systems for rich world-building.

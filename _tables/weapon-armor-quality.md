@@ -1,3 +1,11 @@
+---
+layout: default
+title: "Weapon and Armor Quality"
+category: "Equipment"
+description: "Roll d6 utility, d6 for style."
+url: "/tables/weapon-armor-quality/"
+---
+
 # Weapon and Armor Quality
 
 Roll d6 utility, d6 for style.
@@ -13,3 +21,4 @@ Roll d6 utility, d6 for style.
 **1 Spicy:** The item has an unusual feature, exotic materials, or distinctive appearance that makes it memorable.
 **2-5 Normal** The item is unremarkable, munitions-grade
 **6 Sweet:** The item is well-crafted with attention to detail, comfortable to use, and aesthetically pleasing.  
+
