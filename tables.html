@@ -11,74 +11,86 @@ title: Random Tables
 
 {% assign grouped_tables = table_pages | group_by_exp: "item", "item.path | split: '/' | slice: 2, 1 | join: ''" %}
 
-<div class="row">
 {% for group in grouped_tables %}
   {% assign category_name = group.name | replace: '-', ' ' | replace: '_', ' ' | capitalize %}
   {% if category_name == "" %}
     {% assign category_name = "General Tables" %}
   {% endif %}
   
-  <div class="col-md-6 col-lg-4 mb-4">
-    <div class="card h-100">
-      <div class="card-header">
-        <h3 class="card-title h5 mb-0">{{ category_name }}</h3>
-      </div>
-      <div class="card-body">
-        <ul class="list-unstyled">
-        {% for table in group.items %}
-          {% assign table_title = table.title | default: table.name | replace: '.md', '' | replace: '-', ' ' | replace: '_', ' ' | capitalize %}
-          <li class="mb-2">
-            <a href="{{ table.url | default: table.path | replace: '.md', '.html' }}" class="text-decoration-none">
-              📋 {{ table_title }}
-            </a>
-          </li>
-        {% endfor %}
-        </ul>
-      </div>
-    </div>
+  <div class="table-category">
+    <h2>{{ category_name }}</h2>
+    <ul class="table-list">
+    {% for table in group.items %}
+      {% assign table_title = table.title | default: table.name | replace: '.md', '' | replace: '-', ' ' | replace: '_', ' ' | capitalize %}
+      <li>
+        <a href="{{ table.url }}">📋 {{ table_title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
   </div>
 {% endfor %}
+
+<!-- Debug: Show table files and URLs -->
+<div class="debug-section">
+  <h3>Debug: Found {{ table_pages | size }} table files</h3>
+  <ul>
+  {% for page in table_pages limit:10 %}
+    <li>{{ page.path }} - URL: {{ page.url }} - Title: {{ page.title | default: "No title" }}</li>
+  {% endfor %}
+  </ul>
 </div>
 
-<!-- Debug: Show table files found -->
-<h3>Debug: Found {{ table_pages | size }} table files</h3>
-<ul>
-{% for page in table_pages limit:10 %}
-  <li>{{ page.path }} - Title: {{ page.title | default: "No title" }}</li>
-{% endfor %}
-</ul>
-
 <style>
-  .card {
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
-  
-  .card-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border-bottom: none;
-    border-radius: 8px 8px 0 0 !important;
-  }
-  
-  .card-body {
+  .table-category {
+    margin-bottom: 2rem;
     background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #dee2e6;
   }
   
-  .card-body a {
+  .table-category h2 {
     color: var(--primary-color);
-    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
   }
   
-  .card-body a:hover {
+  .table-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .table-list li {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .table-list li:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .table-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  
+  .table-list a:hover {
     color: var(--accent-color);
-    text-decoration: underline !important;
+    text-decoration: underline;
+  }
+  
+  .debug-section {
+    margin-top: 3rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-size: 0.9rem;
   }
 </style>
