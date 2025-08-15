@@ -1,40 +1,9 @@
-# Site settings
 title: Wåndyr
 description: A tabletop RPG system with interactive random tables
-baseurl: ""
-url: ""
-
-# Build settings
 markdown: kramdown
-highlighter: rouge
-permalink: pretty
 
-# Defaults
 defaults:
   - scope:
       path: "markdown/tables"
     values:
       layout: "table"
-      permalink: /tables/:basename/
-
-# Include/exclude
-include:
-  - _pages
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-
-# Table processing
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
