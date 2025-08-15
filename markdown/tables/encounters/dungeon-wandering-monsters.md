@@ -496,3 +496,111 @@ Roll d6 for monster type, then d6 for specific creature. Some entries marked (sp
 **1.4** 1d3 ancient death lords  
 **1.5** 1d4 cursed kingdoms  
 **1.6** 1d3 eternal tombs (sp, sw)
+
+## Sunken Cities (d6)
+
+### Level 1-3: Flooded Streets
+
+**1.1** 2d6 sahuagin scouts patrolling  
+**1.2** 1d4 giant octopi in buildings  
+**1.3** 1d6 lacedons hunting prey  
+**1.4** 1d3 merrow raiding parties  
+**1.5** 1d4 sea spawn scavenging  
+**1.6** 1d6 animated ship parts (sp, sw)  
+
+**2.1** 1d3 chuuls lurking in darkness  
+**2.2** 1d4 water elementals swirling  
+**2.3** 1d6 giant crabs scuttling  
+**2.4** 1d3 kuo-toa establishing shrine  
+**2.5** 1d4 giant sea horses grazing  
+**2.6** 1d6 bioluminescent plankton  
+
+### Level 4-6: Deep Districts
+
+**1.1** 1d4 aboleths controlling territory  
+**1.2** 1d6 sea hags brewing potions  
+**1.3** 1d3 dragon turtles patrolling  
+**1.4** 1d4 storm giants exploring ruins  
+**1.5** 1d6 marid seeking artifacts  
+**1.6** 1d3 ancient sea temples (sp, sw)  
+
+### Level 7-9: Abyssal Depths
+
+**1.1** 1d3 ancient sea dragons  
+**1.2** 1d4 aboleth overlords  
+**1.3** 1d6 primordial water beings  
+**1.4** 1d3 leviathan spawn  
+**1.5** 1d4 ancient mer empires  
+**1.6** 1d3 sunken divine palaces (sp, sw)  
+
+## Shadowfell Incursions (d6)
+
+### Level 1-3: Shadow Seepage
+
+**1.1** 2d6 shadow demons whisping  
+**1.2** 1d4 shadow mastiffs hunting  
+**1.3** 1d6 dark ones prowling  
+**1.4** 1d3 sorrow sworn wandering  
+**1.5** 1d4 shadar-kai scouts  
+**1.6** 1d6 animated shadows (sp, sw)  
+
+**2.1** 1d3 shadow dragons young  
+**2.2** 1d4 nightmares galloping  
+**2.3** 1d6 shadow spiders weaving  
+**2.4** 1d3 umbral stalkers hunting  
+**2.5** 1d4 dark fey tricksters  
+**2.6** 1d6 shadowstuff pools  
+
+### Level 4-6: Shadow Dominions
+
+**1.1** 1d4 shadow dragons adult  
+**1.2** 1d6 sorrowsworn legions  
+**1.3** 1d3 nightwalkers stalking  
+**1.4** 1d4 shadow nobles holding court  
+**1.5** 1d6 shadar-kai warbands  
+**1.6** 1d3 shadow fortress ruins (sp, sw)  
+
+### Level 7-9: Shadowfell Convergence
+
+**1.1** 1d3 ancient shadow dragons  
+**1.2** 1d4 shadow lords commanding  
+**1.3** 1d6 nightwalker armies  
+**1.4** 1d3 raven queen agents  
+**1.5** 1d4 shadowfell cities  
+**1.6** 1d3 shadow divine realms (sp, sw)  
+
+## Feywild Crossings (d6)
+
+### Level 1-3: Wild Magic Zones
+
+**1.1** 2d6 pixies playing pranks  
+**1.2** 1d4 dryads seeking mortals  
+**1.3** 1d6 sprites warning travelers  
+**1.4** 1d3 satyrs hosting revels  
+**1.5** 1d4 blink dogs appearing  
+**1.6** 1d6 dancing lights (sp, sw)  
+
+**2.1** 1d3 centaurs offering wisdom  
+**2.2** 1d4 unicorns testing purity  
+**2.3** 1d6 treant saplings growing  
+**2.4** 1d3 fey knights questing  
+**2.5** 1d4 awakened beasts speaking  
+**2.6** 1d6 emotion-shifting flowers  
+
+### Level 4-6: Fey Courts
+
+**1.1** 1d4 fey nobles judging  
+**1.2** 1d6 seelie court members  
+**1.3** 1d3 unseelie provocateurs  
+**1.4** 1d4 archfey avatars  
+**1.5** 1d6 wild hunt riders  
+**1.6** 1d3 faerie ring portals (sp, sw)  
+
+### Level 7-9: Primordial Fey
+
+**1.1** 1d3 archfey in grand courts  
+**1.2** 1d4 first fey of creation  
+**1.3** 1d6 seasonal court lords  
+**1.4** 1d3 wild magic incarnates  
+**1.5** 1d4 feywild city-states  
+**1.6** 1d3 time-twisted groves (sp, sw)
