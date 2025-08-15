@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Festivals and Celebrations"
+---
+
 # Festivals and Celebrations
 
 Roll 2d6 for local festivals and celebrations:

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Creature Behavior & Reactions"
+---
+
 # Creature Behavior & Reactions
 
 ## MONSTER REACTIONS

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird Dungeon Encounters"
+---
+
 # Weird Dungeon Encounters
 
 **1.1** Zone of magical silence, footsteps echo oddly   **1.2** 2d6 animated stone guardians protect ancient door   **1.3** Room where time flows backwards   **1.4** Ancient fountain leaking golden water   **1.5** Intelligent chains binding important prisoner   **1.6** Water elementals flooding lower chamber (sp, sw)

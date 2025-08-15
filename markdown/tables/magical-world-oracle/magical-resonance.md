@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Magical Resonance"
+---
+
 # Magical Resonance
 
 Roll 2d6 for how magic interacts with the world:

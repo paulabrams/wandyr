@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Male Names"
+---
+
 # Male Names
 
 **1.1** Aldric the Bold   **1.2** Baelor of the Valley   **1.3** Cedric Ironhand   **1.4** Dorian Swiftblade   **1.5** Edmund the Wise   **1.6** Fenris Stormcaller

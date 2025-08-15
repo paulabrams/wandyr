@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty Rumors (Detailed Version)"
+---
+
 # Gritty Rumors (Detailed Version)
 
 **1.1** Tax collector's ledger has gone missing, with significant sums unaccounted for. The city guard shows unusual disinterest in its recovery. A minor clerk offers a reward for its return, claiming it contains evidence of widespread corruption. Several merchants have been seen leaving town hurriedly.

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Pjörc (Pig Orc) Names"
+---
+
 # Pjörc (Pig Orc) Names
 
 **1.1** Truffle Trouble   **1.2** Mud Muffin   **1.3** Snout Scout   **1.4** Bacon Breakin'   **1.5** Ham Handler   **1.6** Oinkmaster Prime (sp, sw)

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Fumble Effects"
+---
+
 # Fumble Effects
 
 **1.1** Trip and fall prone   **1.2** Drop weapon at feet   **1.3** Stumble backward 5 feet   **1.4** Attack hits random ally instead   **1.5** Lose balance for 1 round   **1.6** Accidentally step on caltrops

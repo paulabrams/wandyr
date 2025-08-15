@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dwur Culture - Daily Life Details"
+---
+
 # Dwur Culture - Daily Life Details
 
 ## Household Items (Roll 1d20)

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Weather - Mountain Conditions"
+---
+
 # Random Weather - Mountain Conditions
 
 *Roll 1d20 for weather during mountain travel.*

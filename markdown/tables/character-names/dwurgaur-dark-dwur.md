@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dwürgaur (Dark Dwur) Names"
+---
+
 # Dwürgaur (Dark Dwur) Names
 
 **d20 Rollable Lists for Dwürgaur characters - corrupted dwarves who tunneled deep and away from the light**

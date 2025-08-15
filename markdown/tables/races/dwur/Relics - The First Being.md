@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Relics - The First Being"
+---
+
 # Relics - The First Being
 
 ## The Entity Behind the Gold

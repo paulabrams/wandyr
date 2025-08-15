@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Architectural Styles"
+---
+
 # Architectural Styles
 
 Roll 2d6 for building styles and construction methods:

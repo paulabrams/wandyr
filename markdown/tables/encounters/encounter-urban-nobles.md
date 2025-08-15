@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Noble District Encounters"
+---
+
 # Noble District Encounters
 
 **1.1** 2d6 house guards on patrol   **1.2** Noble's carriage with escort   **1.3** Servant running household errand   **1.4** Gardener tending estate grounds   **1.5** Butler managing daily affairs   **1.6** Gracious noble host

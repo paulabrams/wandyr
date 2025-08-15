@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty Wilderness Encounters"
+---
+
 # Gritty Wilderness Encounters
 
 **1.1** 2d6 bandits torture merchant caravan   **1.2** Highwaymen with (poisoned) crossbows   **1.3** Slavers tracking escaped captives   **1.4** Horse thieves raid night camp   **1.5** Cannibals butcher recent catch   **1.6** Deserters offer temporary alliance  

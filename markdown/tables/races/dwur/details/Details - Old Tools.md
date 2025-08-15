@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Details - Old Tools & Equipment"
+---
+
 # Random Details - Old Tools & Equipment
 
 *Roll 1d20 for abandoned Dwur tools and workshop remnants.*

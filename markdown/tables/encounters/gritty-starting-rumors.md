@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty Starting Rumors"
+---
+
 # Gritty Starting Rumors
 
 **1.1** Tax collector's ledger stolen, guards suspiciously uninterested  

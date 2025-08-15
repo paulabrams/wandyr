@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Treasure - Major Items"
+---
+
 # Random Treasure - Major Items
 
 *Roll 1d20 for significant finds and magical items.*

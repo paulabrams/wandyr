@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Hidden Magical Loots"
+---
+
 # Hidden Magical Loots
 
 **1.1** Map with invisible ink markings to a noble's vault   **1.2** Ring with spring-loaded poisoned needle   **1.3** Love letters between a queen and royal guard   **1.4** Strange powder that turns water to wine   **1.5** Masterwork lockpicks in a hollowed book   **1.6** List of nobles marked for assassination (sp, sw)

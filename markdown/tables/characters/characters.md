@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Characters"
+---
+
 # Characters
 
 ## 1. Fighting Men (Warriors, Soldiers, Knights)

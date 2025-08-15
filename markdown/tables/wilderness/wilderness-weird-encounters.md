@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird Wilderness Encounters"
+---
+
 # Weird Wilderness Encounters
 
 Roll 2d6, first die is row (1-6), second die is column (1-6)

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Insight"
+---
+
 # Insight
 
 Roll d6 for Insight every turn:

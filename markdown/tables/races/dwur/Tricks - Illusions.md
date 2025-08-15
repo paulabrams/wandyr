@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Tricks - Illusions & Puzzles"
+---
+
 # Random Tricks - Illusions & Puzzles
 
 *Roll 1d20 for non-harmful but confusing challenges.*

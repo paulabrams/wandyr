@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Tavern Names"
+---
+
 # Tavern Names
 
 **1.1** The Drunken Dragon  

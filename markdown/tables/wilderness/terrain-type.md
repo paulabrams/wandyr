@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Terrain Type"
+---
+
 # Terrain Type
 
 **1.1** Forest - Light Coniferous  

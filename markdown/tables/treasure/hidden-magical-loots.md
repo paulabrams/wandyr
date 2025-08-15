@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Hidden Magical Loots"
+---
+
 # Hidden Magical Loots
 
 **1.1** Map with invisible ink markings to a noble's vault  

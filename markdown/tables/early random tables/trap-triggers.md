@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Trap Triggers"
+---
+
 # Trap Triggers
 
 **1.1** Stepping on specific floor tile   **1.2** Opening door or chest   **1.3** Touching cursed object   **1.4** Speaking aloud in chamber   **1.5** Lighting torch near trigger   **1.6** Moving too quickly

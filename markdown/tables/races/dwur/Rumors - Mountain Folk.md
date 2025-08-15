@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Rumors - Mountain Folk Tales"
+---
+
 # Random Rumors - Mountain Folk Tales
 
 *Roll 1d20 for rumors and legends from local people.*

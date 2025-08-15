@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Details - Atmospheric Elements"
+---
+
 # Random Details - Atmospheric Elements
 
 *Roll 1d20 for evocative details to enhance immersion.*

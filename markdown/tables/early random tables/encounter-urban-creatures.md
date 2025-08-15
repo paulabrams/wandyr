@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Urban Encounters"
+---
+
 # Urban Encounters
 
 ## CITY STREET ENCOUNTERS

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "PC Items - Confirmed Relics"
+---
+
 # PC Items - Confirmed Relics
 
 ## The Three Keys of Making (PC-Owned Items)

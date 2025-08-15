@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Hazards - Environmental"
+---
+
 # Random Hazards - Environmental
 
 *Roll 1d20 for natural and mining-related hazards.*

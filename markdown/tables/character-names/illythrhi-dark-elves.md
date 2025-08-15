@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Illythrhi (Dark Elf) Names"
+---
+
 # Illythrhi (Dark Elf) Names
 
 **d20 Rollable Lists for Illythrhi characters - fallen elves who turned away from the light**

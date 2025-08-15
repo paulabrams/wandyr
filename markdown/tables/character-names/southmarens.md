@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Southmaren Names"
+---
+
 # Southmaren Names
 
 **d20 Rollable Lists for Southmaren characters from the seafaring cities of Aquila and the Empire of Harnendor**

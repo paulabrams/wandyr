@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Traps - Mechanical"
+---
+
 # Random Traps - Mechanical
 
 *Roll 1d20 for Dwur-engineered mechanical traps.*

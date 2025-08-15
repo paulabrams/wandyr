@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Hex Crawling"
+---
+
 # Hex Crawling
 
 ## TERRAIN TYPE

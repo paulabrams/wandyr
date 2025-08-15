@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Wilderness Encounters"
+---
+
 # Wilderness Encounters
 
 ## COMMON WILDERNESS CREATURES

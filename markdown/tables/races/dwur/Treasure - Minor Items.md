@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Treasure - Minor Items"
+---
+
 # Random Treasure - Minor Items
 
 *Roll 1d20 for small finds and personal effects.*

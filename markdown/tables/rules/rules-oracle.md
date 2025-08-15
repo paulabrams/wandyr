@@ -1,3 +1,8 @@
+---
+layout: table
+title: "The Oracle"
+---
+
 # The Oracle
 
 The Oracle can answer yes/no questions, and Insight determines which approach will be most advantageous.

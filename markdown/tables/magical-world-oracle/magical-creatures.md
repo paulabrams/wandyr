@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Magical Creatures"
+---
+
 # Magical Creatures
 
 Roll 2d6 for supernatural beings:

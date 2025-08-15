@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Animal Behavior"
+---
+
 # Animal Behavior
 
 **1.1** Territorial - Defends area aggressively   **1.2** Protective - Guards young or mate   **1.3** Hunting - Stalking prey actively   **1.4** Feeding - Distracted by food source   **1.5** Resting - Sleeping or lounging   **1.6** Playing - Young animals frolicking

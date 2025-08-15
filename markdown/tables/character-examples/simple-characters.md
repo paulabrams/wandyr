@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Simple Characters"
+---
+
 # Simple Characters
 
 Roll two d6, first die is row (1-6), second die is column (1-6)

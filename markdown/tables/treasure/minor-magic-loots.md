@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Minor Magic Loots"
+---
+
 # Minor Magic Loots
 
 **1.1** Kettle of Perfect Tea - Always brews at the right temperature  

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dwur Culture - Food & Drink"
+---
+
 # Dwur Culture - Food & Drink
 
 ## Preserved Foods (Roll 1d20)

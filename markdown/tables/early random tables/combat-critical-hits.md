@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Critical Hit Effects"
+---
+
 # Critical Hit Effects
 
 **1.1** Double damage plus bleeding wound   **1.2** Triple damage to vital organ   **1.3** Weapon lodges causing ongoing pain   **1.4** Strike severs minor appendage   **1.5** Blow causes temporary blindness   **1.6** Hit staggers target backward

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weapon and Armor Quality"
+---
+
 # Weapon and Armor Quality
 
 Roll d6 utility, d6 for style.

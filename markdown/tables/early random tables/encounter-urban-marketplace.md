@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Marketplace Encounters"
+---
+
 # Marketplace Encounters
 
 **1.1** 2d6 pickpockets working crowd   **1.2** Merchant hawking fake goods   **1.3** Street magician performing tricks   **1.4** Town crier announcing news   **1.5** Customer arguing over prices   **1.6** Honest trader offering deals

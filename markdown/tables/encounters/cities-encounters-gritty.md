@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty City Encounters"
+---
+
 # Gritty City Encounters
 
 **1.1** 2d6 thugs extorting marketplace vendors   **1.2** Tax collector with armed guards demands payment   **1.3** Pickpocket runs into dead-end alley   **1.4** Merchant accuses rival of sabotage   **1.5** City watch arrests suspected spy   **1.6** Street preacher rallies angry crowd (sp, sw)

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Alu Names"
+---
+
 # Alu Names
 
 **d20 Rollable Lists for Alu characters - Eldar shadow warriors and demon binders**

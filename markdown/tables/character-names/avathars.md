@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Avathar Names"
+---
+
 # Avathar Names
 
 **d20 Rollable Lists for Avathar characters - Eldar demi-vampires with stolen Elven blood**

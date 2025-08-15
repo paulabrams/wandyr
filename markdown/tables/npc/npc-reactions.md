@@ -1,3 +1,8 @@
+---
+layout: table
+title: "NPC Reactions"
+---
+
 # NPC Reactions
 
 Roll 2d6

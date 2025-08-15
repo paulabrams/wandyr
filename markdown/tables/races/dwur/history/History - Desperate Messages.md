@@ -1,3 +1,8 @@
+---
+layout: table
+title: "History - Desperate Messages"
+---
+
 # History - Desperate Messages
 
 ## Blood-Written Messages (Roll 1d20)

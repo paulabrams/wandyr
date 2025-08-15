@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dwur Weapons"
+---
+
 # Dwur Weapons
 
 Roll 2d6 for traditional Dwur weapons and tools:

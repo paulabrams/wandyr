@@ -1,3 +1,8 @@
+---
+layout: table
+title: "History - Vault Intruders & Tomb Robbers"
+---
+
 # History - Vault Intruders & Tomb Robbers
 
 ## Intruder Types (Roll 1d8)

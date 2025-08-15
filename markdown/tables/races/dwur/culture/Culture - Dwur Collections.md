@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dwur Culture - Collections & Hobbies"
+---
+
 # Dwur Culture - Collections & Hobbies
 
 ## Rock & Mineral Collections (Roll 1d20)

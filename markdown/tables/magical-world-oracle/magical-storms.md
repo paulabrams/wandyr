@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Magical Storms"
+---
+
 # Magical Storms
 
 Roll 2d6 for magical weather phenomena:

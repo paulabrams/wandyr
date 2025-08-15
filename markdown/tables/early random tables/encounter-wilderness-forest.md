@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Forest Creatures"
+---
+
 # Forest Creatures
 
 **1.1** 2d6 giant spiders in webbed grove   **1.2** Shambling mound in boggy clearing   **1.3** 1d6 dryads protecting sacred grove   **1.4** Awakened trees blocking path   **1.5** 2d6 pixies playing pranks   **1.6** Archdruid teaching forest ways

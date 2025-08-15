@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Seasonal Changes"
+---
+
 # Seasonal Changes
 
 Roll 2d6 for seasonal effects on the world:

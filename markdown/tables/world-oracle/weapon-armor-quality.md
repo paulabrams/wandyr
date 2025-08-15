@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weapon and Armor Quality"
+---
+
 # Weapon and Armor Quality
 
 Roll d66 for the quality level of weapons and armor:

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Treasure Values"
+---
+
 # Treasure Values
 
 ## COIN AMOUNTS

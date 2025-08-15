@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird Dungeon Encounters"
+---
+
 # Weird Dungeon Encounters
 
 **1.1** Zone of magical silence, footsteps echo oddly  

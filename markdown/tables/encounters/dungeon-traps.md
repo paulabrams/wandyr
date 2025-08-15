@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Trap Generation"
+---
+
 # Trap Generation
 
 ## TRAP TYPES

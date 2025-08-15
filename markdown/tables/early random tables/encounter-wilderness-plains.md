@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Plains Creatures"
+---
+
 # Plains Creatures
 
 **1.1** 2d6 wild horses galloping free   **1.2** Giant vulture circling carrion   **1.3** 1d6 dire wolves hunting herd   **1.4** Aurochs bull charging territory   **1.5** 2d6 giant eagles soaring **1.6** Nomad guide offering directions

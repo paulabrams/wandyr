@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weather Patterns"
+---
+
 # Weather Patterns
 
 Roll 2d6 for weather conditions and their effects:

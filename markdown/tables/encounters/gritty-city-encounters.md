@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty City Encounters"
+---
+
 # Gritty City Encounters
 
 **1.1** 2d6 thugs extorting marketplace vendors  

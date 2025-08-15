@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Road Journey Equipment"
+---
+
 # Road Journey Equipment
 
 **1.1** traveling cloak with (hidden a pocket & poison)   **1.2** wool blanket with (weapon wrap)   **1.3** canvas tent with (false bottom)   **1.4** cookpot with (secret compartment)   **1.5** tinderbox with (poison storage)   **1.6** leather satchel with (blade sheath) (sp, sw)

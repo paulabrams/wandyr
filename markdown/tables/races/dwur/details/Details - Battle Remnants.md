@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Details - Battle Remnants"
+---
+
 # Random Details - Battle Remnants
 
 *Roll 1d20 for evidence of ancient conflicts.*

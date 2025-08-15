@@ -1,3 +1,8 @@
+---
+layout: table
+title: "NPCs"
+---
+
 # NPCs
 
 ## NPC REACTIONS

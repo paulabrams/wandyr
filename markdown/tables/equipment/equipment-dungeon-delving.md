@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dungeon Delving Equipment"
+---
+
 # Dungeon Delving Equipment
 
 **1.1** brass lantern with (hidden blade) & (poison) compartment   **1.2** oil flask with (toxic) reservoir - 1 quart   **1.3** bundle of (hollow) torches with (darts) - 6 count   **1.4** ball of (garrote) cord - 100 feet   **1.5** mapping kit with (poison ink)   **1.6** marked candle shows both light and shadow  

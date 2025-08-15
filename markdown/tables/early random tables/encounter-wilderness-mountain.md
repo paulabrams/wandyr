@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Mountain Creatures"
+---
+
 # Mountain Creatures
 
 **1.1** 2d6 mountain goats on ledges   **1.2** Giant eagle soaring peaks   **1.3** 1d6 stone giants throwing boulders   **1.4** Roc circling high above   **1.5** 2d6 dwarven miners working   **1.6** Experienced mountain guide

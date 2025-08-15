@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Wilderness Features & Terrain"
+---
+
 # Wilderness Features & Terrain
 
 ## TERRAIN TYPES

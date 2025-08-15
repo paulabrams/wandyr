@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Tavern Vibes"
+---
+
 # Tavern Vibes
 
 **1.1** Dark and smoky den frequented by assassins. Conversations in whispers, payment in blood.  

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Additional World Oracle Tables"
+---
+
 # Additional World Oracle Tables
 
 This document contains additional world oracle tables that complement the main Wåndyr World Oracle. These tables provide additional tools for world generation, exploration, and storytelling.

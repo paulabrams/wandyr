@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dwür (Dwarf) Names"
+---
+
 # Dwür (Dwarf) Names
 
 **d20 Rollable Lists for Dwür characters - master craftsmen and gunners**

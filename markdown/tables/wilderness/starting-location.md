@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Starting Location"
+---
+
 # Starting Location
 
 **1.1** Town - Market Town  

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Aethiiri (Elf) Names"
+---
+
 # Aethiiri (Elf) Names
 
 **d20 Rollable Lists for Aethiiri characters - beautiful hallowed Eldar of light**

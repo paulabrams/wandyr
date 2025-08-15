@@ -1,3 +1,8 @@
+---
+layout: table
+title: "History - The First Vein Discovery"
+---
+
 # History - The First Vein Discovery
 
 ## Discovery Clues (Roll 1d20)

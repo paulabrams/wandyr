@@ -1,3 +1,8 @@
+---
+layout: table
+title: "History - Failed Expeditions & Dead Adventurers"
+---
+
 # History - Failed Expeditions & Dead Adventurers
 
 ## Recent Expeditions (Roll 1d10)

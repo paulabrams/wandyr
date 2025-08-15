@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Simple Weather"
+---
+
 # Simple Weather
 
 Roll d6:

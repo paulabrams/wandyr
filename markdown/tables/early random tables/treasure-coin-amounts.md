@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Coin Amounts"
+---
+
 # Coin Amounts
 
 **1.1** 1d6 copper pieces   **1.2** 2d6 copper pieces   **1.3** 3d6 copper pieces   **1.4** 1d6 silver pieces   **1.5** 2d6 silver pieces   **1.6** 3d6 silver pieces

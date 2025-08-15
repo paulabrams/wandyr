@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Historical Events"
+---
+
 # Historical Events
 
 Roll 2d6 for historical events that shaped the world:

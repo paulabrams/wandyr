@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Road Journey Equipment"
+---
+
 # Road Journey Equipment
 
 **1.1** traveling cloak with (hidden a pocket & poison)  

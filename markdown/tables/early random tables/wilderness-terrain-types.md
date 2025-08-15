@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Terrain Types"
+---
+
 # Terrain Types
 
 **1.1** Dense forest with thick canopy   **1.2** Open grassland stretching endlessly   **1.3** Rocky hills with sparse vegetation   **1.4** Sandy desert with shifting dunes   **1.5** Frozen tundra with permafrost   **1.6** Coastal cliffs overlooking sea

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Forest Ambushes"
+---
+
 # Forest Ambushes
 
 **1.1** bandits with (poisoned blades) ambush from trees  

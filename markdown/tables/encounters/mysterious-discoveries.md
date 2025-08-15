@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Mysterious Discoveries"
+---
+
 # Mysterious Discoveries
 
 Roll 2d6 for mysterious findings that spark adventure:

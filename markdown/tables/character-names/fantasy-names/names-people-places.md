@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Names"
+---
+
 # Random Names
 
 ## MALE NAMES

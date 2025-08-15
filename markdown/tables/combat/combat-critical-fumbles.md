@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Critical Hits & Fumbles"
+---
+
 # Critical Hits & Fumbles
 
 ## CRITICAL HIT EFFECTS

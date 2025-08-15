@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Enchanted Weapons"
+---
+
 # Enchanted Weapons
 
 ## GRIM ENCHANTED WEAPONS

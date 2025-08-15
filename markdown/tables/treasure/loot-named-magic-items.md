@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Named Magic Items"
+---
+
 # Named Magic Items
 
 1. *Dawnbreaker* - An elven sword that glows white in the presence of evil creatures  

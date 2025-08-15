@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Starting the Game"
+---
+
 # Starting the Game
 
 ## SIMPLE CHARACTERS

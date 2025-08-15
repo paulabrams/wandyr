@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Trap Types"
+---
+
 # Trap Types
 
 **1.1** Pit trap with spikes   **1.2** Falling block from ceiling   **1.3** Poison dart from wall   **1.4** Tripwire releasing arrow   **1.5** Pressure plate crushing walls   **1.6** Hidden blade from floor

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Spell Consequences"
+---
+
 # Spell Consequences
 
 Roll 2d6 for unexpected magical side effects:

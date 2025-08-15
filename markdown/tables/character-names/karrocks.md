@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Karrock Names"
+---
+
 # Karrock Names
 
 **d20 Rollable Lists for Karrock characters - living stone warriors created by the Dwur**

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Taverns"
+---
+
 # Taverns
 
 ## TAVERN NAMES

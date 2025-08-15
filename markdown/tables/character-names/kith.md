@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Kith Names"
+---
+
 # Kith Names
 
 **d20 Rollable Lists for Kith characters - the rarest and grimmest of warriors, feared the world over**

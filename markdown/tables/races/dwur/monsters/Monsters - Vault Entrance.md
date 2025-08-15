@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Encounters - Vault Entrance Area"
+---
+
 # Random Encounters - Vault Entrance Area
 
 *Roll 1d20. Check every 2 turns, encounter on 6.*

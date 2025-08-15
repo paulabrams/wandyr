@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Natural Landmarks"
+---
+
 # Natural Landmarks
 
 **1.1** Ancient oak tree centuries old   **1.2** Natural stone arch formation   **1.3** Waterfall cascading down cliff   **1.4** Hot springs with healing properties   **1.5** Standing stones in circle   **1.6** Deep cave with echoing chambers

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Encounters - Mountain Foothills"
+---
+
 # Random Encounters - Mountain Foothills
 
 *Roll 1d20. Check every 4 hours travel, encounter on 6.*

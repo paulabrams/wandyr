@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty Starting Locations"
+---
+
 # Gritty Starting Locations
 
 **1.1** A seedy tavern beneath gallows hill, where hangmen drink before dawn  

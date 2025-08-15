@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Family Names"
+---
+
 # Family Names
 
 **1.1** Blackwood   **1.2** Goldstein   **1.3** Silverhorn   **1.4** Ironforge   **1.5** Thornfield   **1.6** Brightblade

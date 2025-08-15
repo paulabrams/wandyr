@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dramatic Weather Patterns"
+---
+
 # Dramatic Weather Patterns
 
 **1.1** killing heat wave, air burns lungs  

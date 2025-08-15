@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty Dungeon Encounters"
+---
+
 # Gritty Dungeon Encounters
 
 **1.1** 2d6 goblins setting crude tripwire trap  

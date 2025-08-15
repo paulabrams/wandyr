@@ -1,3 +1,8 @@
+---
+layout: table
+title: "NPC Reaction Oracle"
+---
+
 # NPC Reaction Oracle
 
 Roll 1d20. Note sweet and spicy.

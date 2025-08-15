@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Government Type"
+---
+
 # Government Type
 
 **1.1** Village elder council   **1.2** Hereditary mayor family   **1.3** Elected town council   **1.4** Appointed governor   **1.5** Self-governing commune   **1.6** Anarchist collective

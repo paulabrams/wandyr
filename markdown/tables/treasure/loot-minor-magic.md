@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Minor Magic Loots"
+---
+
 # Minor Magic Loots
 
 **1.1** Kettle of Perfect Tea - Always brews at the right temperature   **1.2** Endless Thread - Never runs out, always matches the needed color   **1.3** Weather Stone - Grows warm when rain approaches   **1.4** Merchant's Scales - Cannot be fooled by false weights   **1.5** Wanderer's Socks - Never wear out or get wet   **1.6** Carpenter's Pencil - Makes perfectly straight lines (sp, sw)

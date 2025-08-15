@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Customs and Traditions"
+---
+
 # Customs and Traditions
 
 Roll 2d6 for local customs and traditions:

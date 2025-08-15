@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Strange Phenomena"
+---
+
 # Strange Phenomena
 
 Roll 2d6 for unexplained events that need investigation:

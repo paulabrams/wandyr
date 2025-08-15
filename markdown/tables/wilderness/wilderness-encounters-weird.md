@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird Wilderness Encounters"
+---
+
 # Weird Wilderness Encounters
 
 **1.1** Memory merchant trades darkest secrets   **1.2** 2d6 wolves with (human faces) hunt prey   **1.3** Medusa tends (living) statue garden   **1.4** 2d6 lizardfolk fight (to the death) ritual   **1.5** (Cursed) knight's armor consumes him   **1.6** Shadow Market sells dreams and nightmares  

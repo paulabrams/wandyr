@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Magical Anomalies"
+---
+
 # Magical Anomalies
 
 Roll 2d6 for strange magical phenomena:

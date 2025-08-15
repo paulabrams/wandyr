@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Names of Songs"
+---
+
 # Names of Songs
 
 **1.1** The Merry Morning Walk  

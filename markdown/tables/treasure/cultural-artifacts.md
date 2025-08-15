@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Cultural Artifacts"
+---
+
 # Cultural Artifacts
 
 Roll 2d6 for important cultural objects and their significance:

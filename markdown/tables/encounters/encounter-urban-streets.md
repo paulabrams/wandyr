@@ -1,3 +1,8 @@
+---
+layout: table
+title: "City Street Encounters"
+---
+
 # City Street Encounters
 
 **1.1** 2d6 city guards on patrol   **1.2** Pickpocket targeting wealthy merchant   **1.3** Street performer gathering coins   **1.4** Beggar asking for alms   **1.5** Messenger running urgent errand   **1.6** Helpful city watch captain

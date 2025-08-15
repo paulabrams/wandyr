@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Obvious Loots"
+---
+
 # Obvious Loots
 
 **1.1** Well-crafted sword in decorated leather scabbard  

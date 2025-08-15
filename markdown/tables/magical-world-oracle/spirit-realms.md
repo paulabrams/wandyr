@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Spirit Realms"
+---
+
 # Spirit Realms
 
 Roll 2d6 for otherworldly dimensions:

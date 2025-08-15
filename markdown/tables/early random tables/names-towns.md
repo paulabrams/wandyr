@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Place Names - Towns"
+---
+
 # Place Names - Towns
 
 **1.1** Millhaven   **1.2** Bridgewater   **1.3** Thorndale   **1.4** Goldbrook   **1.5** Silverfall   **1.6** Ironhall

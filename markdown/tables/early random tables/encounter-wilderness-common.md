@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Common Wilderness Creatures"
+---
+
 # Common Wilderness Creatures
 
 **1.1** 2d6 wolves hunting in pack formation   **1.2** Brown bear foraging for berries   **1.3** Wild boar with 1d6 piglets   **1.4** Mountain lion stalking from rocks   **1.5** 2d6 deer grazing peacefully   **1.6** Eagle circling overhead

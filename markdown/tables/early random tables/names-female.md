@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Female Names"
+---
+
 # Female Names
 
 **1.1** Aerith Moonweaver   **1.2** Brianna Wildrose   **1.3** Celestine Starborn   **1.4** Diana Shadowdancer   **1.5** Evangeline the Pure   **1.6** Fiona Brightblade

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Encounters - Deep Galleries (Lower Level)"
+---
+
 # Random Encounters - Deep Galleries (Lower Level)
 
 *Roll 1d20. Check every 2 turns, encounter on 5-6.*

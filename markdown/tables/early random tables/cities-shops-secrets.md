@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Ye Olde Shoppes & Their Secrets"
+---
+
 # Ye Olde Shoppes & Their Secrets
 
 ## Row 1: Market Square Shops

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird Wilderness Encounters"
+---
+
 # Weird Wilderness Encounters
 
 **1.1** Memory merchant trades darkest secrets  

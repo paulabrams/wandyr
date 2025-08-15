@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Magical Places"
+---
+
 # Magical Places
 
 Roll 2d6 for supernatural locations:

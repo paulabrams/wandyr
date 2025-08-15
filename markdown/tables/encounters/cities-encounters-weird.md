@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird City Encounters"
+---
+
 # Weird City Encounters
 
 **1.1** A sage drops a glowing moonlight map   **1.2** 2d6 hobgoblin thugs shaking down wizards   **1.3** Green flames consume a noble's mansion   **1.4** Face-stealing masks infiltrate masquerade   **1.5** 2d6 ghosts reenact murders nightly   **1.6** Master thief steals vampire's dawn-jewel (sp, sw)

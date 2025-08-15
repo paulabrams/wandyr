@@ -1,3 +1,8 @@
+---
+layout: table
+title: "PJÖRC (PIG ORC) NAMES"
+---
+
 # PJÖRC (PIG ORC) NAMES
 
 **1.1** Truffle Trouble  

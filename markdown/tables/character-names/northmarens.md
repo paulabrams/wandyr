@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Northmaren Names"
+---
+
 # Northmaren Names
 
 **d20 Rollable Lists for Northmaren characters from the northwestern shores of the Dragon Sea**

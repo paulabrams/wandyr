@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Vôzen Names"
+---
+
 # Vôzen Names
 
 **d20 Rollable Lists for Vôzen characters - doppelgängers who can take on the appearance and mannerisms of other people**

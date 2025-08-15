@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Camping"
+---
+
 # Camping
 
 ## NAMES OF SONGS

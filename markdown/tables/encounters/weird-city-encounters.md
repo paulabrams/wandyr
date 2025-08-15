@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird City Encounters"
+---
+
 # Weird City Encounters
 
 **1.1** A sage drops a glowing moonlight map  

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Settlement Size"
+---
+
 # Settlement Size
 
 **1.1** Isolated farmstead (1-4 people)   **1.2** Tiny hamlet (5-20 people)   **1.3** Small village (21-100 people)   **1.4** Large village (101-300 people)   **1.5** Small town (301-1000 people)   **1.6** Large town (1001-3000 people)

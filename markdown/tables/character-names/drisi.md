@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Drisi Names"
+---
+
 # Drisi Names
 
 **d20 Rollable Lists for Drisi characters - Eldar serpent-men, servants of the Gorgonae serpent gods**

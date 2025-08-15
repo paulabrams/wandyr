@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird Starting Locations"
+---
+
 # Weird Starting Locations
 
 **1.1** Crystal tower drinking moonlight, its walls pulse with stolen stars  

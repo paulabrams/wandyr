@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Trap Effects"
+---
+
 # Trap Effects
 
 **1.1** 1d6 piercing damage from spikes   **1.2** 2d6 bludgeoning from falling block   **1.3** 1d4 poison damage plus save vs death   **1.4** 1d8 piercing from arrow   **1.5** 3d6 crushing damage   **1.6** 1d6 slashing from blade

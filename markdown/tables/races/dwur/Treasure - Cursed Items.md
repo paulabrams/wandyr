@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Treasure - Cursed Items"
+---
+
 # Random Treasure - Cursed Items
 
 *Roll 1d20 for items with dangerous properties.*

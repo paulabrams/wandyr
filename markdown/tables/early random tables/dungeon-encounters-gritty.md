@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty Dungeon Encounters"
+---
+
 # Gritty Dungeon Encounters
 
 **1.1** 2d6 goblins setting crude tripwire trap   **1.2** Ogre cooking captured merchant in pot   **1.3** Kobold tunnelers weakening ceiling   **1.4** Orc patrol returning with plunder   **1.5** Carrion crawler dragging fresh kill   **1.6** Giant spider spinning web across corridor (sp, sw)

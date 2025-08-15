@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Natural Disasters"
+---
+
 # Natural Disasters
 
 Roll 2d6 for natural disasters that reshape the landscape:

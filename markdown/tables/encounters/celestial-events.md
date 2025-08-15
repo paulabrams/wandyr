@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Celestial Events"
+---
+
 # Celestial Events
 
 Roll 2d6 for celestial phenomena that affect the world:

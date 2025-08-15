@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Encounters - High Mountains"
+---
+
 # Random Encounters - High Mountains
 
 *Roll 1d20. Check every 6 hours travel, encounter on 6.*

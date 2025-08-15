@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Encounters - Workshop Halls (Upper Level)"
+---
+
 # Random Encounters - Workshop Halls (Upper Level)
 
 *Roll 1d20. Check every 3 turns, encounter on 6.*

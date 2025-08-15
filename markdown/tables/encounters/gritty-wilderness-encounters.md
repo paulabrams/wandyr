@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty Wilderness Encounters"
+---
+
 # Gritty Wilderness Encounters
 
 **1.1** 2d6 bandits torture merchant caravan  

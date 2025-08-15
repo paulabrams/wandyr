@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Dungeon Delving Equipment"
+---
+
 # Dungeon Delving Equipment
 
 **1.1** brass lantern with (hidden blade) & (poison) compartment  

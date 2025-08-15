@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Weird Starting Rumors"
+---
+
 # Weird Starting Rumors
 
 **1.1** Moonlit stones dance at midnight crossroads  

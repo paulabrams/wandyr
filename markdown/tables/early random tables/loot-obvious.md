@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Obvious Loots"
+---
+
 # Obvious Loots
 
 **1.1** Well-crafted sword in decorated leather scabbard   **1.2** Heavy coin purse containing 3d6 gold pieces   **1.3** Silver merchant's scale with brass weights   **1.4** Ornate holy symbol on silver chain   **1.5** Leather-bound spellbook with brass corners   **1.6** Map case filled with detailed local charts (sp, sw)

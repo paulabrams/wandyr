@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Settlement Details"
+---
+
 # Settlement Details
 
 ## SETTLEMENT SIZE

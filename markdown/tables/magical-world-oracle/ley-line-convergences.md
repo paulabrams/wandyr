@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Ley Line Convergences"
+---
+
 # Ley Line Convergences
 
 Roll 2d6 for magical power nodes where ley lines intersect:

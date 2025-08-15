@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Minor Magic Loot"
+---
+
 # Minor Magic Loot
 
 Roll 2d6, first die is row (1-6), second die is column (1-6)

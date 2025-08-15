@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Monster Reactions"
+---
+
 # Monster Reactions
 
 Roll 2d6:

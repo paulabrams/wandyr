@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gritty City Encounters"
+---
+
 # Gritty City Encounters
 
 Roll 2d6, first die is row (1-6), second die is column (1-6)

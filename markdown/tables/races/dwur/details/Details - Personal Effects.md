@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Random Details - Personal Effects"
+---
+
 # Random Details - Personal Effects
 
 *Roll 1d20 for intimate glimpses into Dwur daily life.*

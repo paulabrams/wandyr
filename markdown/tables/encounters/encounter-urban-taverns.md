@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Tavern Encounters"
+---
+
 # Tavern Encounters
 
 **1.1** 2d6 drunk patrons starting fight   **1.2** Gambling den in back room   **1.3** Information broker selling secrets   **1.4** Bounty hunter seeking quarry   **1.5** Mercenary captain recruiting   **1.6** Hospitable innkeeper

@@ -1,3 +1,8 @@
+---
+layout: table
+title: "![][image1]"
+---
+
 # ![][image1]
 
 # Wåndyr World Oracle

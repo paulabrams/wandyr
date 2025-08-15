@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Gem Values"
+---
+
 # Gem Values
 
 **1.1** Rough quartz: 1 silver   **1.2** Polished agate: 5 silver   **1.3** Small amber: 1 gold   **1.4** Carnelian stone: 2 gold   **1.5** Bloodstone: 3 gold   **1.6** Jasper: 5 gold

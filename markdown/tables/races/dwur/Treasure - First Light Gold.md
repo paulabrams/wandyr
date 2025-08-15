@@ -1,3 +1,8 @@
+---
+layout: table
+title: "Treasure - First Light Gold"
+---
+
 # Treasure - First Light Gold
 
 ## Cursed Gold Items (Roll 1d20)
