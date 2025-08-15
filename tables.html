@@ -7,34 +7,44 @@ title: Random Tables
 
 <p>Interactive random tables for the Wåndyr tabletop RPG system. Click any table to view it with an integrated die roller.</p>
 
+{% assign table_pages = site.pages | where_exp: "page", "page.path contains 'markdown/tables/'" | where_exp: "page", "page.name != 'README.md'" | sort: "path" %}
+
+{% assign grouped_tables = table_pages | group_by_exp: "item", "item.path | split: '/' | slice: 2, 1 | join: ''" %}
+
 <div class="row">
+{% for group in grouped_tables %}
+  {% assign category_name = group.name | replace: '-', ' ' | replace: '_', ' ' | capitalize %}
+  {% if category_name == "" %}
+    {% assign category_name = "General Tables" %}
+  {% endif %}
+  
   <div class="col-md-6 col-lg-4 mb-4">
     <div class="card h-100">
       <div class="card-header">
-        <h3 class="card-title h5 mb-0">Test Tables</h3>
+        <h3 class="card-title h5 mb-0">{{ category_name }}</h3>
       </div>
       <div class="card-body">
         <ul class="list-unstyled">
+        {% for table in group.items %}
+          {% assign table_title = table.title | default: table.name | replace: '.md', '' | replace: '-', ' ' | replace: '_', ' ' | capitalize %}
           <li class="mb-2">
-            <a href="markdown/tables/magical-world-oracle.html" class="text-decoration-none">
-              📋 Magical World Oracle
+            <a href="{{ table.url | default: table.path | replace: '.md', '.html' }}" class="text-decoration-none">
+              📋 {{ table_title }}
             </a>
           </li>
+        {% endfor %}
         </ul>
       </div>
     </div>
   </div>
+{% endfor %}
 </div>
 
-<!-- Debug info -->
-<h3>Debug Info</h3>
-<p>Site pages count: {{ site.pages | size }}</p>
-<p>Site time: {{ site.time }}</p>
-
-<h4>All pages:</h4>
+<!-- Debug: Show table files found -->
+<h3>Debug: Found {{ table_pages | size }} table files</h3>
 <ul>
-{% for page in site.pages limit:10 %}
-  <li>{{ page.path }} - {{ page.name }}</li>
+{% for page in table_pages limit:10 %}
+  <li>{{ page.path }} - Title: {{ page.title | default: "No title" }}</li>
 {% endfor %}
 </ul>
 
