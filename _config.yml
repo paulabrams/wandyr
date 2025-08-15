@@ -1,5 +1,7 @@
 title: Wåndyr
 description: A tabletop RPG system with interactive random tables
+baseurl: "/wandyr"
+url: "https://paulabrams.github.io"
 markdown: kramdown
 
 defaults:
