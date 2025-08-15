@@ -1,0 +1,123 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<button class="roll-button" onclick="rollRandomEntry()">🎲 Roll Random Entry</button>
+
+<div id="table-content">
+  {{ content }}
+</div>
+
+<script>
+function rollRandomEntry() {
+  // Clear any previous highlights
+  document.querySelectorAll('.table-entry').forEach(entry => {
+    entry.classList.remove('highlighted');
+  });
+  
+  // Find all table entries (looking for common patterns)
+  let entries = [];
+  
+  // Look for entries that start with dice notation (e.g., "1.1", "2.3", etc.)
+  const dicePattern = /^\s*\*?\*?(\d+\.\d+)\*?\*?\s+(.+)/gm;
+  const content = document.getElementById('table-content').textContent;
+  let match;
+  
+  while ((match = dicePattern.exec(content)) !== null) {
+    entries.push({
+      dice: match[1],
+      text: match[2],
+      fullText: match[0]
+    });
+  }
+  
+  // If no dice notation found, look for list items or paragraphs
+  if (entries.length === 0) {
+    const listItems = document.querySelectorAll('#table-content li, #table-content p');
+    listItems.forEach((item, index) => {
+      if (item.textContent.trim().length > 10) { // Ignore very short items
+        entries.push({
+          dice: (index + 1).toString(),
+          text: item.textContent.trim(),
+          element: item
+        });
+      }
+    });
+  }
+  
+  if (entries.length === 0) {
+    alert('No table entries found to roll on!');
+    return;
+  }
+  
+  // Pick a random entry
+  const randomIndex = Math.floor(Math.random() * entries.length);
+  const selectedEntry = entries[randomIndex];
+  
+  // Highlight the selected entry
+  if (selectedEntry.element) {
+    selectedEntry.element.classList.add('highlighted');
+    selectedEntry.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    // For dice notation entries, highlight by finding the text in the content
+    const contentDiv = document.getElementById('table-content');
+    const walker = document.createTreeWalker(
+      contentDiv,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+    
+    let node;
+    while (node = walker.nextNode()) {
+      if (node.textContent.includes(selectedEntry.dice) && node.textContent.includes(selectedEntry.text.substring(0, 20))) {
+        const parent = node.parentElement;
+        if (parent) {
+          parent.classList.add('table-entry');
+          parent.classList.add('highlighted');
+          parent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          break;
+        }
+      }
+    }
+  }
+  
+  // Show result in an alert as backup
+  setTimeout(() => {
+    alert(`Rolled: ${selectedEntry.dice} - ${selectedEntry.text.substring(0, 100)}${selectedEntry.text.length > 100 ? '...' : ''}`);
+  }, 500);
+}
+
+// Auto-wrap table entries for better highlighting
+document.addEventListener('DOMContentLoaded', function() {
+  const content = document.getElementById('table-content');
+  
+  // Find and wrap dice notation entries
+  const html = content.innerHTML;
+  const wrappedHtml = html.replace(
+    /(\*?\*?\d+\.\d+\*?\*?\s+[^\n]+)/g,
+    '<div class="table-entry">$1</div>'
+  );
+  
+  if (wrappedHtml !== html) {
+    content.innerHTML = wrappedHtml;
+  } else {
+    // If no dice notation, wrap list items
+    const listItems = content.querySelectorAll('li, p');
+    listItems.forEach(item => {
+      if (item.textContent.trim().length > 10) {
+        item.classList.add('table-entry');
+      }
+    });
+  }
+});
+
+// Roll on page load if requested
+if (window.location.hash === '#roll') {
+  window.addEventListener('load', () => {
+    setTimeout(rollRandomEntry, 1000);
+  });
+}
+</script>
