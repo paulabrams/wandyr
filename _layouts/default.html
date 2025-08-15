@@ -101,8 +101,8 @@
   <body>
     <div class="container">
       <nav class="breadcrumb">
-        <a href="{{ site.baseurl }}/">Home</a> / 
-        {% if page.layout == 'table' %}<a href="{{ site.baseurl }}/tables.html">Tables</a> / {% endif %}
+        <a href="{{ '/' | relative_url }}">Home</a> / 
+        {% if page.layout == 'table' %}<a href="{{ '/tables.html' | relative_url }}">Tables</a> / {% endif %}
         {{ page.title | default: page.name }}
       </nav>
       

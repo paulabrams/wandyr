@@ -23,7 +23,7 @@ title: Random Tables
     {% for table in group.items %}
       {% assign table_title = table.title | default: table.name | replace: '.md', '' | replace: '-', ' ' | replace: '_', ' ' | capitalize %}
       <li>
-        <a href="{{ table.url }}">📋 {{ table_title }}</a>
+        <a href="{{ table.url | relative_url }}">📋 {{ table_title }}</a>
       </li>
     {% endfor %}
     </ul>
@@ -33,9 +33,15 @@ title: Random Tables
 <!-- Debug: Show table files and URLs -->
 <div class="debug-section">
   <h3>Debug: Found {{ table_pages | size }} table files</h3>
+  <p>Site baseurl: "{{ site.baseurl }}"</p>
+  <p>Site url: "{{ site.url }}"</p>
   <ul>
-  {% for page in table_pages limit:10 %}
-    <li>{{ page.path }} - URL: {{ page.url }} - Title: {{ page.title | default: "No title" }}</li>
+  {% for page in table_pages limit:5 %}
+    <li>{{ page.path }}<br>
+        Raw URL: {{ page.url }}<br>
+        Relative URL: {{ page.url | relative_url }}<br>
+        Title: {{ page.title | default: "No title" }}
+    </li>
   {% endfor %}
   </ul>
 </div>
