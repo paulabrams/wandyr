@@ -1,0 +1,83 @@
+---
+layout: default
+title: Magic
+---
+
+<h1>Wåndyr Magic</h1>
+
+<p>
+  Welcome to the magical arts of Wåndyr. Here you'll find everything related to
+  the mystical forces that shape the world.
+</p>
+
+{% assign magic_pages = site.pages | where_exp: "page", "page.path contains
+'markdown/magic/'" | where_exp: "page", "page.name != 'README.md'" | sort:
+"path" %} {% assign grouped_magic = magic_pages | group_by_exp: "item",
+"item.path | split: '/' | slice: 2, 1 | join: ''" %} {% for group in
+grouped_magic %} {% assign category_name = group.name | replace: '-', ' ' |
+replace: '_', ' ' | capitalize %} {% if category_name == "Magic Schools" %} {%
+assign category_name = "Magic Schools" %} {% elsif category_name == "Spell
+Descriptions" %} {% assign category_name = "Spell Descriptions" %} {% elsif
+category_name == "Spell Lists" %} {% assign category_name = "Spell Lists" %} {%
+endif %}
+
+<div class="magic-category">
+  <h2>{{ category_name }}</h2>
+  <ul class="magic-list">
+    {% for magic in group.items %} {% assign magic_title = magic.title |
+    default: magic.name | replace: '.md', '' | replace: '-', ' ' | replace: '_',
+    ' ' | capitalize %}
+    <li>
+      <a href="{{ magic.url | relative_url }}">✨ {{ magic_title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endfor %}
+
+<style>
+  .magic-category {
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #dee2e6;
+  }
+
+  .magic-category h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+  }
+
+  .magic-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .magic-list li {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .magic-list li:hover {
+    background-color: #f8f9fa;
+  }
+
+  .magic-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  .magic-list a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+</style>

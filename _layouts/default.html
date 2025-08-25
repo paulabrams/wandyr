@@ -40,7 +40,9 @@
         line-height: 1.6;
       }
 
-      h1, h2, h3 {
+      h1,
+      h2,
+      h3 {
         font-family: "Aniron", "Metamorphous", cursive;
         color: var(--primary-color);
         margin-bottom: 1.5rem;
@@ -64,9 +66,15 @@
       }
 
       @keyframes highlight-pulse {
-        0% { transform: scale(1.02) rotate(0deg); }
-        50% { transform: scale(1.05) rotate(0.5deg); }
-        100% { transform: scale(1.02) rotate(0deg); }
+        0% {
+          transform: scale(1.02) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.05) rotate(0.5deg);
+        }
+        100% {
+          transform: scale(1.02) rotate(0deg);
+        }
       }
 
       .roll-button {
@@ -83,7 +91,7 @@
 
       .roll-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
       .container {
@@ -110,11 +118,15 @@
   <body>
     <div class="container">
       <nav class="breadcrumb">
-        <a href="{{ '/' | relative_url }}">Home</a> / 
-        {% if page.layout == 'table' %}<a href="{{ '/tables.html' | relative_url }}">Tables</a> / {% endif %}
-        {{ page.title | default: page.name }}
+        <a href="{{ '/' | relative_url }}">Home</a> / {% if page.layout ==
+        'table' %}<a href="{{ '/tables.html' | relative_url }}">Tables</a> / {%
+        endif %} {% if page.path contains 'markdown/magic' %}<a
+          href="{{ '/magic.html' | relative_url }}"
+          >Magic</a
+        >
+        / {% endif %} {{ page.title | default: page.name }}
       </nav>
-      
+
       {{ content }}
     </div>
   </body>

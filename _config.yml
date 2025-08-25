@@ -9,3 +9,7 @@ defaults:
       path: "markdown/tables"
     values:
       layout: "table"
+  - scope:
+      path: "markdown/magic"
+    values:
+      layout: "default"
