@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Wåndyr Solo Adventure Resources
+title: Wåndyr Solo Play
 ---
 
-<h1>Wåndyr Solo Adventure Resources</h1>
+<h1>Wåndyr Solo Play</h1>
 
 <p>
   <em
@@ -17,11 +17,11 @@ title: Wåndyr Solo Adventure Resources
   <p>Essential rules and mechanics for playing Wåndyr:</p>
   <ul>
     {% for file in site.static_files %} {% if file.path contains
-    '/markdown/rules' and file.extname == '.md' %} {% assign filename =
+    '/markdown/core-rules' and file.extname == '.md' %} {% assign filename =
     file.name | remove: '.md' %}
     <li>
       <a
-        href="{{ '/markdown/rules/' | append: filename | append: '.html' | relative_url }}"
+        href="{{ '/markdown/core-rules/' | append: filename | append: '.html' | relative_url }}"
         >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</a
       >
     </li>
