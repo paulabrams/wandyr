@@ -1,171 +1,294 @@
----
-layout: default
-title: Wåndyr Solo Play
----
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wåndyr Solo Play</title>
+    <meta charset="UTF-8" />
 
-<h1>Wåndyr Solo Play</h1>
+    <!-- make the page look nice -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Aniron&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #34495e;
+        --accent-color: #c0392b;
+        --text-color: #2c3e50;
+        --light-bg: #f8f9fa;
+        --dark-bg: #2c3e50;
+      }
 
-<p>
-  <em
-    >Welcome to solo adventures in Wåndyr! These resources are designed for
-    playing with an AI Game Master or for solo exploration of the world.</em
-  >
-</p>
+      body {
+        background-color: #f5f5f5;
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.9)
+          ),
+          url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4c4a8' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"),
+          linear-gradient(to right, #f3e7d3, #e6d5b8);
+        color: var(--text-color);
+        font-family: "Crimson Text", serif;
+        line-height: 1.6;
+      }
 
-<section class="rules-section">
-  <h2>📖 Game Rules</h2>
-  <p>Essential rules and mechanics for playing Wåndyr:</p>
-  <ul>
-    {% for file in site.static_files %} {% if file.path contains
-    '/markdown/core-rules' and file.extname == '.md' %} {% assign filename =
-    file.name | remove: '.md' %}
-    <li>
-      <a
-        href="{{ '/markdown/core-rules/' | append: filename | append: '.html' | relative_url }}"
-        >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</a
-      >
-    </li>
-    {% endif %} {% endfor %}
-  </ul>
-</section>
+      h1,
+      h2,
+      h3 {
+        font-family: "Aniron", "Metamorphous", cursive;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.05em;
+      }
 
-<section class="solo-section">
-  <h2>🎲 Solo Adventures</h2>
-  <p>Adventures and scenarios designed for solo play:</p>
-  <ul>
-    {% for file in site.static_files %} {% if file.path contains
-    '/markdown/solo/' and file.extname == '.md' %} {% assign filename =
-    file.name | remove: '.md' %}
-    <li>
-      <a
-        href="{{ '/markdown/solo/' | append: filename | append: '.html' | relative_url }}"
-        >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</a
-      >
-    </li>
-    {% endif %} {% endfor %}
-  </ul>
-</section>
+      .container {
+        max-width: 900px;
+        padding: 2rem 1rem;
+      }
 
-<section class="worldbuilding-section">
-  <h2>🌍 Worldbuilding</h2>
-  <p>Lore, locations, and world details to enrich your adventures:</p>
-  <ul>
-    {% for file in site.static_files %} {% if file.path contains
-    '/markdown/worldbuilding/' and file.extname == '.md' %} {% assign filename =
-    file.name | remove: '.md' %}
-    <li>
-      <a
-        href="{{ '/markdown/worldbuilding/' | append: filename | append: '.html' | relative_url }}"
-        >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</a
-      >
-    </li>
-    {% endif %} {% endfor %}
-  </ul>
-</section>
+      .jumbotron {
+        background-color: rgba(255, 255, 255, 0.95);
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.97),
+            rgba(255, 255, 255, 0.97)
+          ),
+          url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
+        padding: 2.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease-in-out;
+      }
 
-<section class="tables-section">
-  <h2>🎯 Game Tables</h2>
-  <p>Random tables for generating content and making decisions:</p>
-  <ul>
-    <li><a href="{{ '/tables.html' | relative_url }}">Random Tables</a></li>
-  </ul>
-</section>
+      .jumbotron:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      }
 
-<section class="getting-started">
-  <h2>🚀 Getting Started with Solo Play</h2>
-  <ol>
-    <li>
-      <strong>Read the Rules:</strong> Start with the core game rules above
-    </li>
-    <li>
-      <strong>Create Characters:</strong> Make 3 characters using the rules
-    </li>
-    <li>
-      <strong>Choose an Adventure:</strong> Pick from the solo adventures or ask
-      your AI GM to create one
-    </li>
-    <li>
-      <strong>Use the Oracle:</strong> Roll 2d6 for yes/no questions (8+ = Yes)
-    </li>
-    <li>
-      <strong>Consult Tables:</strong> Use random tables when you need
-      inspiration
-    </li>
-  </ol>
-</section>
+      .jumbotron h1 {
+        color: var(--accent-color);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+      }
 
-<style>
-  body {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    font-family: Georgia, serif;
-    line-height: 1.6;
-  }
+      .jumbotron h2 {
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
 
-  h1 {
-    text-align: center;
-    color: #2c3e50;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 1rem;
-  }
+      .jumbotron p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
 
-  section {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #3498db;
-  }
+      .jumbotron .lead {
+        font-size: 1.4rem;
+        color: var(--secondary-color);
+        font-weight: 600;
+        font-family: "Aniron", "Crimson Text", serif;
+      }
 
-  h2 {
-    color: #2c3e50;
-    margin-top: 0;
-  }
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+        font-size: 1.2rem;
+        font-weight: 500;
+        display: inline-block;
+        padding: 0.2rem 0;
+      }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
+      a:hover {
+        color: #a93226;
+        text-decoration: underline;
+      }
 
-  li {
-    margin: 0.5rem 0;
-  }
+      .file-list {
+        list-style-type: none;
+        padding: 0;
+      }
 
-  a {
-    display: block;
-    padding: 0.75rem;
-    text-decoration: none;
-    color: #2980b9;
-    background: white;
-    border-radius: 4px;
-    border: 1px solid #e9ecef;
-    transition: all 0.2s;
-  }
+      .file-list li {
+        margin: 0.5rem 0;
+      }
 
-  a:hover {
-    background-color: #e3f2fd;
-    border-color: #2980b9;
-    text-decoration: none;
-  }
+      .file-list a {
+        display: block;
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+        font-size: 1.1rem;
+      }
 
-  .getting-started ol {
-    padding-left: 1.5rem;
-  }
+      .file-list a:hover {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: var(--accent-color);
+        text-decoration: none;
+        transform: translateX(5px);
+      }
 
-  .getting-started li {
-    display: list-item;
-    list-style-type: decimal;
-    margin: 1rem 0;
-  }
+      .getting-started ol {
+        padding-left: 1.5rem;
+      }
 
-  p {
-    color: #5a6c7d;
-    margin-bottom: 1rem;
-  }
+      .getting-started li {
+        margin: 1rem 0;
+        font-size: 1.1rem;
+      }
 
-  em {
-    color: #7f8c8d;
-    font-style: italic;
-  }
-</style>
+      footer {
+        background-color: var(--dark-bg);
+        color: white;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        border-radius: 0.5rem;
+        text-align: center;
+      }
+
+      footer p {
+        margin-bottom: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .jumbotron {
+          padding: 1.5rem;
+        }
+
+        .jumbotron h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Wåndyr Solo Play</h1>
+        <p class="lead">
+          Welcome to solo adventures in Wåndyr! These resources are designed for
+          playing with an AI Game Master or for solo exploration of the world.
+        </p>
+      </div>
+
+      <div class="jumbotron">
+        <h2>📖 Game Rules</h2>
+        <p>Essential rules and mechanics for playing Wåndyr:</p>
+        <ul class="file-list">
+          {% for file in site.static_files %} {% if file.path contains
+          '/markdown/core-rules' and file.extname == '.md' %} {% assign filename
+          = file.name | remove: '.md' %}
+          <li>
+            <a
+              href="{{ '/markdown/core-rules/' | append: filename | append: '.html' | relative_url }}"
+              >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize
+              }}</a
+            >
+          </li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+
+      <div class="jumbotron">
+        <h2>🎲 Solo Adventures</h2>
+        <p>Adventures and scenarios designed for solo play:</p>
+        <ul class="file-list">
+          {% for file in site.static_files %} {% if file.path contains
+          '/markdown/solo/' and file.extname == '.md' %} {% assign filename =
+          file.name | remove: '.md' %}
+          <li>
+            <a
+              href="{{ '/markdown/solo/' | append: filename | append: '.html' | relative_url }}"
+              >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize
+              }}</a
+            >
+          </li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+
+      <div class="jumbotron">
+        <h2>🌍 Worldbuilding</h2>
+        <p>Lore, locations, and world details to enrich your adventures:</p>
+        <ul class="file-list">
+          {% for file in site.static_files %} {% if file.path contains
+          '/markdown/worldbuilding/' and file.extname == '.md' %} {% assign
+          filename = file.name | remove: '.md' %}
+          <li>
+            <a
+              href="{{ '/markdown/worldbuilding/' | append: filename | append: '.html' | relative_url }}"
+              >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize
+              }}</a
+            >
+          </li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+
+      <div class="jumbotron">
+        <h2>🎯 Game Tables</h2>
+        <p>Random tables for generating content and making decisions:</p>
+        <ul class="file-list">
+          <li>
+            <a href="{{ '/tables.html' | relative_url }}">Random Tables</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="jumbotron">
+        <h2>🚀 Getting Started with Solo Play</h2>
+        <div class="getting-started">
+          <ol>
+            <li>
+              <strong>Read the Rules:</strong> Start with the core game rules
+              above
+            </li>
+            <li>
+              <strong>Create Characters:</strong> Make 3 characters using the
+              rules
+            </li>
+            <li>
+              <strong>Choose an Adventure:</strong> Pick from the solo
+              adventures or ask your AI GM to create one
+            </li>
+            <li>
+              <strong>Use the Oracle:</strong> Roll 2d6 for yes/no questions (8+
+              = Yes)
+            </li>
+            <li>
+              <strong>Consult Tables:</strong> Use random tables when you need
+              inspiration
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <footer>
+        <p>Copyright © 2025 Paul Abrams</p>
+        <p>
+          All rights reserved. No part of this work may be reproduced or
+          transmitted in any form or by any means whatsoever without express
+          written permission from the author, except in the case of brief
+          quotations embodied in critical articles and reviews. Please refer all
+          pertinent questions to the publisher.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
