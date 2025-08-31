@@ -1,0 +1,171 @@
+---
+layout: default
+title: Wåndyr Solo Adventure Resources
+---
+
+<h1>Wåndyr Solo Adventure Resources</h1>
+
+<p>
+  <em
+    >Welcome to solo adventures in Wåndyr! These resources are designed for
+    playing with an AI Game Master or for solo exploration of the world.</em
+  >
+</p>
+
+<section class="rules-section">
+  <h2>📖 Game Rules</h2>
+  <p>Essential rules and mechanics for playing Wåndyr:</p>
+  <ul>
+    {% for file in site.static_files %} {% if file.path contains
+    '/markdown/rules' and file.extname == '.md' %} {% assign filename =
+    file.name | remove: '.md' %}
+    <li>
+      <a
+        href="{{ '/markdown/rules/' | append: filename | append: '.html' | relative_url }}"
+        >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</a
+      >
+    </li>
+    {% endif %} {% endfor %}
+  </ul>
+</section>
+
+<section class="solo-section">
+  <h2>🎲 Solo Adventures</h2>
+  <p>Adventures and scenarios designed for solo play:</p>
+  <ul>
+    {% for file in site.static_files %} {% if file.path contains
+    '/markdown/solo/' and file.extname == '.md' %} {% assign filename =
+    file.name | remove: '.md' %}
+    <li>
+      <a
+        href="{{ '/markdown/solo/' | append: filename | append: '.html' | relative_url }}"
+        >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</a
+      >
+    </li>
+    {% endif %} {% endfor %}
+  </ul>
+</section>
+
+<section class="worldbuilding-section">
+  <h2>🌍 Worldbuilding</h2>
+  <p>Lore, locations, and world details to enrich your adventures:</p>
+  <ul>
+    {% for file in site.static_files %} {% if file.path contains
+    '/markdown/worldbuilding/' and file.extname == '.md' %} {% assign filename =
+    file.name | remove: '.md' %}
+    <li>
+      <a
+        href="{{ '/markdown/worldbuilding/' | append: filename | append: '.html' | relative_url }}"
+        >{{ filename | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</a
+      >
+    </li>
+    {% endif %} {% endfor %}
+  </ul>
+</section>
+
+<section class="tables-section">
+  <h2>🎯 Game Tables</h2>
+  <p>Random tables for generating content and making decisions:</p>
+  <ul>
+    <li><a href="{{ '/tables.html' | relative_url }}">Random Tables</a></li>
+  </ul>
+</section>
+
+<section class="getting-started">
+  <h2>🚀 Getting Started with Solo Play</h2>
+  <ol>
+    <li>
+      <strong>Read the Rules:</strong> Start with the core game rules above
+    </li>
+    <li>
+      <strong>Create Characters:</strong> Make 3 characters using the rules
+    </li>
+    <li>
+      <strong>Choose an Adventure:</strong> Pick from the solo adventures or ask
+      your AI GM to create one
+    </li>
+    <li>
+      <strong>Use the Oracle:</strong> Roll 2d6 for yes/no questions (8+ = Yes)
+    </li>
+    <li>
+      <strong>Consult Tables:</strong> Use random tables when you need
+      inspiration
+    </li>
+  </ol>
+</section>
+
+<style>
+  body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: Georgia, serif;
+    line-height: 1.6;
+  }
+
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 1rem;
+  }
+
+  section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+  }
+
+  h2 {
+    color: #2c3e50;
+    margin-top: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 0.5rem 0;
+  }
+
+  a {
+    display: block;
+    padding: 0.75rem;
+    text-decoration: none;
+    color: #2980b9;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #e9ecef;
+    transition: all 0.2s;
+  }
+
+  a:hover {
+    background-color: #e3f2fd;
+    border-color: #2980b9;
+    text-decoration: none;
+  }
+
+  .getting-started ol {
+    padding-left: 1.5rem;
+  }
+
+  .getting-started li {
+    display: list-item;
+    list-style-type: decimal;
+    margin: 1rem 0;
+  }
+
+  p {
+    color: #5a6c7d;
+    margin-bottom: 1rem;
+  }
+
+  em {
+    color: #7f8c8d;
+    font-style: italic;
+  }
+</style>
