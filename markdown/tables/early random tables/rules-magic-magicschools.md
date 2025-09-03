@@ -1,8 +1,3 @@
----
-layout: table
-title: "Magic-Users"
----
-
 # Magic-Users
 
 ## 

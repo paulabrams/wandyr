@@ -1,8 +1,3 @@
----
-layout: table
-title: "Magical World Oracle"
----
-
 # Magical World Oracle
 
 This document contains specialized world oracle tables for magical phenomena, ley lines, and supernatural elements that shape the Wåndyr setting.

@@ -1,8 +1,3 @@
----
-layout: table
-title: "![][image1]"
----
-
 # ![][image1]
 
 # Wåndyr World Oracle
@@ -11,7 +6,7 @@ title: "![][image1]"
 
 **Wåndyr World Oracle**
 
-Copyright © 2025 Paul Abrams   
+Copyright © 2025 Paul Abrams
 All rights reserved. No part of this book may be reproduced or transmitted in any form or by any means whatsoever without express written permission from the author, except in the case of brief quotations embodied in critical articles and reviews. Please refer all pertinent questions to the publisher.
 
 Author: Paul Abrams  
@@ -20,9 +15,9 @@ Illustrations: public domain
 Version: 0.2  
 Date: January 18, 2025
 
-### 
+###
 
-# 
+#
 
 # Welcome to Wåndyr\! {#welcome-to-wåndyr!}
 
@@ -30,11 +25,11 @@ Date: January 18, 2025
 
 ### Sandbox
 
-In Wåndyr, the characters wander the world. Their stories and songs emerge during play, and include wonder and surprises around every turn, even for the Guide. 
+In Wåndyr, the characters wander the world. Their stories and songs emerge during play, and include wonder and surprises around every turn, even for the Guide.
 
 To play the game as intended, the Guide should not create a story ahead of time, and the local area should be wide open and undefined even if something is known about the world as a whole.
 
-Random dice rolls such as the Oracle determine the path the game takes. The Guide in this journey is expected to make use of dice to learn what happens and enjoy the thrill of discovering the unexpected just like the players.   
+Random dice rolls such as the Oracle determine the path the game takes. The Guide in this journey is expected to make use of dice to learn what happens and enjoy the thrill of discovering the unexpected just like the players.
 Each new “fact” learned becomes part of the lore of the campaign.  
 This style of play is often referred to as a “sandbox campaign” or "West Marches campaign".
 
@@ -50,113 +45,113 @@ When the Guide needs to generate a new fact for the world, ask the **World Oracl
 
 ### Contents
 
-[**Welcome to Wåndyr\!	2**](#welcome-to-wåndyr!)
+[**Welcome to Wåndyr\! 2**](#welcome-to-wåndyr!)
 
-[**Starting the Game	5**](#starting-the-game)
+[**Starting the Game 5**](#starting-the-game)
 
-[SIMPLE CHARACTERS	5](#simple-characters)
+[SIMPLE CHARACTERS 5](#simple-characters)
 
-[CHARACTERS	6](#characters)
+[CHARACTERS 6](#characters)
 
-[**Taverns	8**](#taverns)
+[**Taverns 8**](#taverns)
 
-[TAVERN NAMES	8](#tavern-names)
+[TAVERN NAMES 8](#tavern-names)
 
-[TAVERN VIBES	8](#tavern-vibes)
+[TAVERN VIBES 8](#tavern-vibes)
 
-[GRITTY STARTING LOCATIONS	10](#gritty-starting-locations)
+[GRITTY STARTING LOCATIONS 10](#gritty-starting-locations)
 
-[WEIRD STARTING LOCATIONS	11](#weird-starting-locations)
+[WEIRD STARTING LOCATIONS 11](#weird-starting-locations)
 
-[GRITTY STARTING RUMORS	12](#gritty-starting-rumors)
+[GRITTY STARTING RUMORS 12](#gritty-starting-rumors)
 
-[WEIRD STARTING RUMORS	13](#weird-starting-rumors)
+[WEIRD STARTING RUMORS 13](#weird-starting-rumors)
 
-[GRITTY RUMORS (DETAILED VERSION)	14](#gritty-rumors-\(detailed-version\))
+[GRITTY RUMORS (DETAILED VERSION) 14](#gritty-rumors-(detailed-version))
 
-[**Hex Crawling	18**](#hex-crawling)
+[**Hex Crawling 18**](#hex-crawling)
 
-[TERRAIN TYPE	18](#terrain-type)
+[TERRAIN TYPE 18](#terrain-type)
 
-[STARTING LOCATION	19](#starting-location)
+[STARTING LOCATION 19](#starting-location)
 
-[**The Muster	20**](#the-muster)
+[**The Muster 20**](#the-muster)
 
-[ROAD JOURNEY EQUIPMENT	20](#road-journey-equipment)
+[ROAD JOURNEY EQUIPMENT 20](#road-journey-equipment)
 
-[DUNGEON DELVING EQUIPMENT	21](#dungeon-delving-equipment)
+[DUNGEON DELVING EQUIPMENT 21](#dungeon-delving-equipment)
 
-[**NPCs	22**](#npcs)
+[**NPCs 22**](#npcs)
 
-[NPC REACTIONS	22](#npc-reactions)
+[NPC REACTIONS 22](#npc-reactions)
 
-[**On the Road	23**](#on-the-road)
+[**On the Road 23**](#on-the-road)
 
-[SIMPLE WEATHER	23](#simple-weather)
+[SIMPLE WEATHER 23](#simple-weather)
 
-[DRAMATIC WEATHER PATTERNS	24](#dramatic-weather-patterns)
+[DRAMATIC WEATHER PATTERNS 24](#dramatic-weather-patterns)
 
-[**Cities	25**](#cities)
+[**Cities 25**](#cities)
 
-[GRITTY CITY ENCOUNTERS	25](#gritty-city-encounters)
+[GRITTY CITY ENCOUNTERS 25](#gritty-city-encounters)
 
-[WEIRD CITY ENCOUNTERS	26](#weird-city-encounters)
+[WEIRD CITY ENCOUNTERS 26](#weird-city-encounters)
 
-[YE OLDE SHOPPES & THEIR SECRETS	27](#ye-olde-shoppes-&-their-secrets)
+[YE OLDE SHOPPES & THEIR SECRETS 27](#ye-olde-shoppes-&-their-secrets)
 
-[**The Wilderlands	35**](#the-wilderlands)
+[**The Wilderlands 35**](#the-wilderlands)
 
-[GRITTY WILDERNESS ENCOUNTERS	36](#gritty-wilderness-encounters)
+[GRITTY WILDERNESS ENCOUNTERS 36](#gritty-wilderness-encounters)
 
-[WEIRD WILDERNESS ENCOUNTERS	37](#weird-wilderness-encounters)
+[WEIRD WILDERNESS ENCOUNTERS 37](#weird-wilderness-encounters)
 
-[FOREST AMBUSHES	38](#forest-ambushes)
+[FOREST AMBUSHES 38](#forest-ambushes)
 
-[**The Dungeon	39**](#the-dungeon)
+[**The Dungeon 39**](#the-dungeon)
 
-[GRITTY DUNGEON ENCOUNTERS	40](#gritty-dungeon-encounters)
+[GRITTY DUNGEON ENCOUNTERS 40](#gritty-dungeon-encounters)
 
-[WEIRD DUNGEON ENCOUNTERS	41](#weird-dungeon-encounters)
+[WEIRD DUNGEON ENCOUNTERS 41](#weird-dungeon-encounters)
 
-[PJÖRC (PIG ORC) NAMES	42](#pjörc-\(pig-orc\)-names)
+[PJÖRC (PIG ORC) NAMES 42](#pjörc-(pig-orc)-names)
 
-[**Camping	43**](#camping)
+[**Camping 43**](#camping)
 
-[NAMES OF SONGS	43](#names-of-songs)
+[NAMES OF SONGS 43](#names-of-songs)
 
-[**Loot	44**](#loot)
+[**Loot 44**](#loot)
 
-[OBVIOUS LOOTS	44](#obvious-loots)
+[OBVIOUS LOOTS 44](#obvious-loots)
 
-[MINOR MAGIC LOOTS	45](#minor-magic-loots)
+[MINOR MAGIC LOOTS 45](#minor-magic-loots)
 
-[HIDDEN MAGICAL LOOTS	46](#hidden-magical-loots)
+[HIDDEN MAGICAL LOOTS 46](#hidden-magical-loots)
 
-[NAMED MAGIC ITEMS	47](#named-magic-items)
+[NAMED MAGIC ITEMS 47](#named-magic-items)
 
-[**Enchanted Weapons	48**](#enchanted-weapons)
+[**Enchanted Weapons 48**](#enchanted-weapons)
 
-[GRIM ENCHANTED WEAPONS	48](#grim-enchanted-weapons)
+[GRIM ENCHANTED WEAPONS 48](#grim-enchanted-weapons)
 
-[TALKATIVE ENCHANTED WEAPONS	49](#talkative-enchanted-weapons)
+[TALKATIVE ENCHANTED WEAPONS 49](#talkative-enchanted-weapons)
 
-[**Magic-Users	50**](#heading)
+[**Magic-Users 50**](#heading)
 
-[MAGIC SCHOOLS	51](#heading=h.e21eiihxbnvv)
+[MAGIC SCHOOLS 51](#heading=h.e21eiihxbnvv)
 
-[MAGIC SPELLS	52](#heading=h.9ma6ksix1nk)
+[MAGIC SPELLS 52](#heading=h.9ma6ksix1nk)
 
-[MAGIC-USER NAMES	55](#heading=h.umuftqm7ucvf)
+[MAGIC-USER NAMES 55](#heading=h.umuftqm7ucvf)
 
-[MAGIC SCHOOL SPECIALIZATIONS	56](#heading=h.wawcinfppeyt)
+[MAGIC SCHOOL SPECIALIZATIONS 56](#heading=h.wawcinfppeyt)
 
-[MOONS OF THE DRAGON ISLES	58](#moons-of-the-dragon-isles)
+[MOONS OF THE DRAGON ISLES 58](#moons-of-the-dragon-isles)
 
-[**The Oracle	59**](#the-oracle)
+[**The Oracle 59**](#the-oracle)
 
-[**Insight	59**](#insight)
+[**Insight 59**](#insight)
 
-### 
+###
 
 # Starting the Game {#starting-the-game}
 
@@ -212,7 +207,7 @@ Entry Format: alias: 2 traits | 2 assets
 
 **6.2.1** Caruel "Willow": elf, graceful | staff, silks **6.2.2** Nerdanye "Oak": strong, enduring | quarterstaff, rope **6.2.3** Ealoth "Leaf": quiet, swift | dagger, rope **6.2.4** Finerdil "Forge": dwarf, steadfast | hammer, shield **6.2.5** Lominor "Stone": dwarf, immovable | pickaxe, chisel **6.2.6** Elror "Reed": flexible, graceful | staff, flute
 
-# 
+#
 
 # Taverns {#taverns}
 
@@ -244,7 +239,7 @@ Entry Format: alias: 2 traits | 2 assets
 
 **6.1** Religious heretic's refuge. False idols, banned rituals, underground faith. **6.2** Philosopher's debate club. Drunken logic, metaphysical arguments, existential crises. **6.3** Bounty hunter's information exchange. Wanted posters, target spotting, reward collection. **6.4** Artificer's testing ground. Mechanical servants, explosive accidents, invention showcases. **6.5** Poisoner's networking space. Taste testers required, antidote sales, deadly menu items. **6.6** Time-lost warrior's bar. Anachronistic decor, stories of futures/pasts, temporal drinks.
 
-## 
+##
 
 ## GRITTY STARTING LOCATIONS {#gritty-starting-locations}
 
@@ -258,9 +253,9 @@ Entry Format: alias: 2 traits | 2 assets
 
 **5.1** Prison cart on dark road, guards drinking heavily   **5.2** Rat-infested sewers echo with strange sounds **5.3** Crumbling city wall where sentries once walked **5.4** Muddy refugee camp outside city gates **5.5** Plague doctor's house marked with red crosses **5.6** Wandering healer's tent welcomes all who suffer  
 
-**6.1** Criminal hideout helps townsfolk survive harsh winter   **6.2** Local militia barracks trains village youth   **6.3** Temple healing house never turns away sick   **6.4** Town watch station keeps peace in troubled times   **6.5** Peaceful monastery shares bread with travelers   **6.6** Sacred shrine of refuge protects all who enter its walls   
+**6.1** Criminal hideout helps townsfolk survive harsh winter   **6.2** Local militia barracks trains village youth   **6.3** Temple healing house never turns away sick   **6.4** Town watch station keeps peace in troubled times   **6.5** Peaceful monastery shares bread with travelers   **6.6** Sacred shrine of refuge protects all who enter its walls
 
-# 
+#
 
 ## WEIRD STARTING LOCATIONS {#weird-starting-locations}
 
@@ -274,9 +269,9 @@ Entry Format: alias: 2 traits | 2 assets
 
 **5.1** Nightmare carnival grounds where fears come out to play   **5.2** Time-twisted ruins where past and future collide **5.3** Living library of souls bound in memory-leather **5.4** Rainbow serpent's coils form bridges through void **5.5** Mist children's playground echoes with silver laughter **5.6** Sacred grove of healing where nature mends all wounds  
 
-**6.1** Dark market selling bright dreams at twilight prices   **6.2** Celestial garden blooming stars and moonflower petals   **6.3** Phoenix nest in sunbeams where hope is reborn daily   **6.4** Unicorn's blessed grove where pure springs flow eternal   **6.5** Angel's rainbow bridge spanning heaven and earth   **6.6** Temple of eternal dawn where darkness never enters   
+**6.1** Dark market selling bright dreams at twilight prices   **6.2** Celestial garden blooming stars and moonflower petals   **6.3** Phoenix nest in sunbeams where hope is reborn daily   **6.4** Unicorn's blessed grove where pure springs flow eternal   **6.5** Angel's rainbow bridge spanning heaven and earth   **6.6** Temple of eternal dawn where darkness never enters
 
-## 
+##
 
 ## GRITTY STARTING RUMORS {#gritty-starting-rumors}
 
@@ -290,9 +285,9 @@ Entry Format: alias: 2 traits | 2 assets
 
 **5.1** Guards avoid Pearl Street nightly   **5.2** Missing apprentices, tools remain **5.3** Suspicious warehouse fire kills six **5.4** Dead things in brackish wells **5.5** Tongueless beggar passing messages **5.6** Tortured smuggler found in shop  
 
-**6.1** Guild master hoarding grain pre-riots   **6.2** Marked corpses floating in harbor   **6.3** Preacher selling "plague prevention"   **6.4** Noble's son running protection racket   **6.5** Giant albino stealing sewer children   **6.6** Militia recruiting without explanation   
+**6.1** Guild master hoarding grain pre-riots   **6.2** Marked corpses floating in harbor   **6.3** Preacher selling "plague prevention"   **6.4** Noble's son running protection racket   **6.5** Giant albino stealing sewer children   **6.6** Militia recruiting without explanation
 
-## 
+##
 
 ## WEIRD STARTING RUMORS {#weird-starting-rumors}
 
@@ -306,10 +301,9 @@ Entry Format: alias: 2 traits | 2 assets
 
 **5.1** Bone merchant trades in destinies   **5.2** Time flows backwards in brass tower **5.3** Salt circle traps morning light **5.4** Mirror door opens to starlight **5.5** Rose thorns bleed golden wine **5.6** Cloud castle seeks earth-bride  
 
-**6.1** Dawn birds weave sunbeam bridges   **6.2** Autumn leaves grant true dreams   **6.3** Star whales swim through night sky   **6.4** Crystal tree grows wish-fruits   **6.5** Rainbow road leads to moon-fair   **6.6** Butterfly princess grants hearts' desire 
+**6.1** Dawn birds weave sunbeam bridges   **6.2** Autumn leaves grant true dreams   **6.3** Star whales swim through night sky   **6.4** Crystal tree grows wish-fruits   **6.5** Rainbow road leads to moon-fair   **6.6** Butterfly princess grants hearts' desire
 
-
-## 
+##
 
 ## GRITTY RUMORS (DETAILED VERSION) {#gritty-rumors-(detailed-version)}
 
@@ -385,25 +379,25 @@ Entry Format: alias: 2 traits | 2 assets
 
 **6.6** Militia recruiting heavily without explanation. Weapon shipments arrive nightly. Training conducted in secret. Some recruits vanish during night watches.
 
-# 
+#
 
 # Hex Crawling {#hex-crawling}
 
 ## TERRAIN TYPE {#terrain-type}
 
-**1.1** Forest \- Light Coniferous **1.2** Forest \- Heavy Coniferous **1.3** Forest \- Light Deciduous **1.4** Forest \- Heavy Deciduous **1.5** Forest \- Light Mixed **1.6** Forest \- Heavy Mixed 
+**1.1** Forest \- Light Coniferous **1.2** Forest \- Heavy Coniferous **1.3** Forest \- Light Deciduous **1.4** Forest \- Heavy Deciduous **1.5** Forest \- Light Mixed **1.6** Forest \- Heavy Mixed
 
-**2.1** Flat \- Prairie **2.2** Flat \- Farmland **2.3** Flat \- Shrublands **2.4** Flat \- Savanna **2.5** Flat \- Flats **2.6** Flat \- Other 
+**2.1** Flat \- Prairie **2.2** Flat \- Farmland **2.3** Flat \- Shrublands **2.4** Flat \- Savanna **2.5** Flat \- Flats **2.6** Flat \- Other
 
-**3.1** Arid \- Desert Cold **3.2** Arid \- Desert Coastal **3.3** Arid \- Desert Rocky **3.4** Arid \- Badlands **3.5** Arid \- Steppe **3.6** Arid \- Other 
+**3.1** Arid \- Desert Cold **3.2** Arid \- Desert Coastal **3.3** Arid \- Desert Rocky **3.4** Arid \- Badlands **3.5** Arid \- Steppe **3.6** Arid \- Other
 
-**4.1** Wetlands \- Bog **4.2** Wetlands \- Marsh **4.3** Wetlands \- Swamp **4.4** Wetlands \- Moor **4.5** Wetlands \- River **4.6** Wetlands \- Tundra 
+**4.1** Wetlands \- Bog **4.2** Wetlands \- Marsh **4.3** Wetlands \- Swamp **4.4** Wetlands \- Moor **4.5** Wetlands \- River **4.6** Wetlands \- Tundra
 
-**5.1** Mountains \- Small **5.2** Mountains \- Tall **5.3** Mountains \- Snow-capped Year-round **5.4** Mountains \- Forested **5.5** Mountains \- Transitional **5.6** Mountains \- Volcano 
+**5.1** Mountains \- Small **5.2** Mountains \- Tall **5.3** Mountains \- Snow-capped Year-round **5.4** Mountains \- Forested **5.5** Mountains \- Transitional **5.6** Mountains \- Volcano
 
 **6.1** Hills \- Barren **6.2** Hills \- Grassy **6.3** Hills \- Forested **6.4** Hills \- Shrubland **6.5** Hills \- Jungle **6.6** Hills \- Transitional
 
-## 
+##
 
 ## STARTING LOCATION  {#starting-location}
 
@@ -419,7 +413,7 @@ Entry Format: alias: 2 traits | 2 assets
 
 **6.1** Resource Location \- Quarry **6.2** Resource Location \- Mine **6.3** Resource Location \- Grove **6.4** Resource Location \- Hunting Grounds **6.5** Resource Location \-  Fishing Spot **6.6** Resource Location \-  Sacred Spring
 
-# 
+#
 
 # The Muster {#the-muster}
 
@@ -449,10 +443,9 @@ Entry Format: alias: 2 traits | 2 assets
 
 **5.1** mess kit hides (poison storage)   **5.2** bag of (spiked) caltrops **5.3** (trapped) wire for snares **5.4** bell on (strangling) cord **5.5** wire saw with (barbs) **5.6** rope that never tangles  
 
-**6.1** tools serve both dark and light   **6.2** well-crafted explorer's pack   **6.3** reliable steel compass   **6.4** sturdy mapping case   **6.5** tested climbing gear   **6.6** blessed adventuring kit 
+**6.1** tools serve both dark and light   **6.2** well-crafted explorer's pack   **6.3** reliable steel compass   **6.4** sturdy mapping case   **6.5** tested climbing gear   **6.6** blessed adventuring kit
 
-
-# 
+#
 
 # NPCs {#npcs}
 
@@ -460,18 +453,17 @@ Entry Format: alias: 2 traits | 2 assets
 
  Roll 2d6
 
-2. Hostile    
-3. Suspicious    
-4. Fearful    
+2. Hostile
+3. Suspicious
+4. Fearful
 5. Dismissive  
 6. Reluctant  
 7. Neutral  
 8. Interested  
 9. Pleasant  
 10. Friendly  
-11. Enthusiastic    
+11. Enthusiastic
 12. Trusting
-
 
 # On the Road {#on-the-road}
 
@@ -509,7 +501,7 @@ On Combo, roll again and combine:
 19. Warm, Cloudy, Wet \= Tropical storm  
 20. Clear, Warm, Wet \= Rainbow weather
 
-# 
+#
 
 ## DRAMATIC WEATHER PATTERNS {#dramatic-weather-patterns}
 
@@ -523,10 +515,9 @@ On Combo, roll again and combine:
 
 **5.1** ash falls from dark sky   **5.2** hail pounds mercilessly **5.3** thick fog hides dangers **5.4** bitter wind cuts through **5.5** stinging sleet falls **5.6** invigorating mountain air  
 
-**6.1** dramatic storm clears to beauty   **6.2** perfect warm sunny day   **6.3** gentle rain nourishes earth   **6.4** clear starlit evening   **6.5** refreshing morning dew   **6.6** golden light bathes all in wonder 
+**6.1** dramatic storm clears to beauty   **6.2** perfect warm sunny day   **6.3** gentle rain nourishes earth   **6.4** clear starlit evening   **6.5** refreshing morning dew   **6.6** golden light bathes all in wonder
 
-
-# 
+#
 
 # Cities {#cities}
 
@@ -557,7 +548,6 @@ On Combo, roll again and combine:
 **5.1** Ghost ships dock in sky-harbor   **5.2** Mechanical birds deliver prophecies **5.3** Street artist paints doors to elsewhere **5.4** Animated statues hold court **5.5** Mirror-people seek reflections **5.6** Sky-whales swim above city  
 
 **6.1** Dark carnival arrives at moonrise (sp, sw) **6.2** Star-gates open in market square   **6.3** Angels attend mortal theater   **6.4** Rainbow roads appear at dawn   **6.5** Dream merchants grant wishes   **6.6** Dancing lights lead to treasures
-
 
 ## YE OLDE SHOPPES & THEIR SECRETS {#ye-olde-shoppes-&-their-secrets}
 
@@ -755,7 +745,7 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 *Secrets: True Name \- The Desire Heart. The shopkeeper transforms the envious into beautiful objects of their deepest wanting. The True mirror is the central gallery glass, showing the true cost of mortal desire.*
 
-# 
+#
 
 # ![][image4] The Wilderlands {#the-wilderlands}
 
@@ -771,9 +761,9 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **5.1** (Raiders') campfire still smolders   **5.2** Fresh blood stains road **5.3** Abandoned wagon looted **5.4** Half-eaten livestock found **5.5** Strange tracks in mud **5.6** Kind strangers offer shelter  
 
-**6.1** Dark stories lead to sanctuary   **6.2** Farmers share fresh food   **6.3** Militia protects travelers   **6.4** Healer tends wounded free   **6.5** Woodsmen guide safely home   **6.6** Sacred shrine grants refuge   
+**6.1** Dark stories lead to sanctuary   **6.2** Farmers share fresh food   **6.3** Militia protects travelers   **6.4** Healer tends wounded free   **6.5** Woodsmen guide safely home   **6.6** Sacred shrine grants refuge
 
-# 
+#
 
 ## WEIRD WILDERNESS ENCOUNTERS {#weird-wilderness-encounters}
 
@@ -787,10 +777,9 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **5.1** (Blood) tree drinks from travelers   **5.2** Living statues seek souls **5.3** Moon deer grant wishes **5.4** Crystal spiders weave fate **5.5** Time flows backwards here **5.6** Sacred grove heals wounds  
 
-**6.1** Storm dragon offers wisdom and warning   **6.2** Unicorns bless pure hearts   **6.3** Angels share divine poetry   **6.4** Rainbow road leads to wonder   **6.5** Celestial market grants wishes   **6.6** Golden tree grows dreams to reality 
+**6.1** Storm dragon offers wisdom and warning   **6.2** Unicorns bless pure hearts   **6.3** Angels share divine poetry   **6.4** Rainbow road leads to wonder   **6.5** Celestial market grants wishes   **6.6** Golden tree grows dreams to reality
 
-
-## 
+##
 
 ## FOREST AMBUSHES {#forest-ambushes}
 
@@ -804,13 +793,13 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **5.1** spider web holds (paralyzing) toxin   **5.2** wild dogs circle in fog **5.3** mountain lion stalks from above **5.4** stampeding deer crash through **5.5** swarm of biting insects rises **5.6** wise hermit shows hidden trail  
 
-**6.1** dark storm reveals safe haven   **6.2** forest spirits guide travelers   **6.3** ancient shrine offers protection   **6.4** sacred grove grants passage   **6.5** guardian beasts escort party   **6.6** blessed clearing ensures safety   
+**6.1** dark storm reveals safe haven   **6.2** forest spirits guide travelers   **6.3** ancient shrine offers protection   **6.4** sacred grove grants passage   **6.5** guardian beasts escort party   **6.6** blessed clearing ensures safety
 
 # ![][image5]
 
 # The Dungeon {#the-dungeon}
 
-## 
+##
 
 ## GRITTY DUNGEON ENCOUNTERS {#gritty-dungeon-encounters}
 
@@ -826,7 +815,6 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **6.1** Giant centipedes in rotting wood (sp, sw) **6.2** Forgotten armory behind rubble   **6.3** Merchant hiding from bandits   **6.4** Cave spring with clean water   **6.5** Untouched tomb chamber   **6.6** Hidden exit to surface
 
-
 ## WEIRD DUNGEON ENCOUNTERS {#weird-dungeon-encounters}
 
 **1.1** Zone of magical silence, footsteps echo oddly   **1.2** 2d6 animated stone guardians protect ancient door   **1.3** Room where time flows backwards   **1.4** Ancient fountain leaking golden water   **1.5** Intelligent chains binding important prisoner   **1.6** Water elementals flooding lower chamber (sp, sw)
@@ -841,7 +829,7 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **6.1** Dark fey nobles holding court (sp, sw) **6.2** Portal room with multiple destinations   **6.3** Sacred grove deep underground   **6.4** Ancient dragon teaching magic   **6.5** Treasury of a cloud giant   **6.6** Celestial library of forgotten lore  
 
-# 
+#
 
 ## PJÖRC (PIG ORC) NAMES {#pjörc-(pig-orc)-names}
 
@@ -857,8 +845,7 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **6.1** Ham Slam (sp, sw) **6.2** Porcine Divine   **6.3** Snuffles Ruffles   **6.4** Hog Log   **6.5** Bacon Taken   **6.6** Snout About
 
-
-# 
+#
 
 # Camping {#camping}
 
@@ -876,8 +863,7 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **6.1** The Farewell Feast (sp, sw) **6.2** Morning in the Shire   **6.3** Sweet Honeycomb Dance   **6.4** The Harvest Home   **6.5** Firelight and Friends   **6.6** Songs of Hearth and Home
 
-
-# 
+#
 
 # Loot {#loot}
 
@@ -894,7 +880,6 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 **5.1** Cartographer's kit with ivory tools   **5.2** Ceremonial dagger with jade hilt **5.3** Merchant's scales in wooden box **5.4** Priest's ceremonial vestments **5.5** Traveler's water-proof scroll case **5.6** Artist's case of fine pigments  
 
 **6.1** Navigator's compass in brass case (sp, sw) **6.2** Scribe's complete writing kit   **6.3** Set of masterwork wood chisels   **6.4** Alchemist's measuring vessels   **6.5** Book of pressed flower specimens   **6.6** Silver flute in padded case
-
 
 ## MINOR MAGIC LOOTS {#minor-magic-loots}
 
@@ -924,7 +909,7 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **6.1** Demon summoning ritual, half burnt (sp, sw) **6.2** Journal proving hero's dark past   **6.3** Last page of a prophetic book   **6.4** Map to forgotten fairy road   **6.5** Letter explaining royal twins switch   **6.6** True name of a bound devil  
 
-## 
+##
 
 ## NAMED MAGIC ITEMS {#named-magic-items}
 
@@ -963,7 +948,7 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **5.1** Blooddrinker \- "Life feeds the blade"   **5.2** Painweaver \- "Suffering teaches" **5.3** Grimfang \- "Dark deeds done" **5.4** Soulstealer \- "Spirit's last cry" **5.5** Nightreaver \- "Shadows serve me" **5.6** Hopebearer \- "Light guides the lost"  
 
-**6.1** Duskweaver \- "Balance walks the edge"   **6.2** Lightbringer \- "Dawn's first ray"   **6.3** Starweaver \- "Heaven's bright path"   **6.4** Sunfury \- "Darkness flees light"   **6.5** Joybringer \- "Spirit soars free"   **6.6** Truthlight \- "Pure hearts shine bright"   
+**6.1** Duskweaver \- "Balance walks the edge"   **6.2** Lightbringer \- "Dawn's first ray"   **6.3** Starweaver \- "Heaven's bright path"   **6.4** Sunfury \- "Darkness flees light"   **6.5** Joybringer \- "Spirit soars free"   **6.6** Truthlight \- "Pure hearts shine bright"
 
 ## TALKATIVE ENCHANTED WEAPONS {#talkative-enchanted-weapons}
 
@@ -979,7 +964,7 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **6.1** Time spirit. "Yesterday's wounds, tomorrow's scars" (sp, sw) **6.2** Dawn herald. "First light breaks darkness"   **6.3** Dream weaver. "Cut between realities"   **6.4** Star child. "Guidance from above"   **6.5** Life guardian. "Growth through adversity"   **6.6** Peace spirit. "Last resort, first regret"  
 
-#  {#heading}
+# {#heading}
 
 ## MOONS OF THE DRAGON ISLES {#moons-of-the-dragon-isles}
 
@@ -993,7 +978,7 @@ A luxury goods shop for the wealthy. Three mirrors form "the viewing gallery."
 
 **5.1** Full Moon \- Dark creatures hunt   **5.2** Huntsmoon \- Wild Hunt rides forth **5.3** Hunter's Eye \- Night sight granted **5.4** Horned Moon \- Dark beasts gain power **5.5** Nocturne \- Complete darkness reigns **5.6** Hawkmoon \- Sacred beasts patrol  
 
-**6.1** Huntsmoon \- Hunter's Eye emerges (sp, sw) **6.2** Huntsmoon \- Horns manifest   **6.3** Hawkmoon \- Sacred beasts convene   **6.4** Hawkmoon \- Full moon blesses   **6.5** Blood Huntsmoon \- Dark eclipse begins   **6.6** Silvermoon \- Lunara eclipses her dark sister 
+**6.1** Huntsmoon \- Hunter's Eye emerges (sp, sw) **6.2** Huntsmoon \- Horns manifest   **6.3** Hawkmoon \- Sacred beasts convene   **6.4** Hawkmoon \- Full moon blesses   **6.5** Blood Huntsmoon \- Dark eclipse begins   **6.6** Silvermoon \- Lunara eclipses her dark sister
 
 # The Oracle {#the-oracle}
 
@@ -1011,9 +996,9 @@ The Oracle knows how to play 20 questions.
 
 If any die is 1 then the answer is more “spicy”. If any die is 6 the answer is more “sweet”. Combinations are possible.
 
-# 
+#
 
-# 
+#
 
 # Insight {#insight}
 
@@ -1028,13 +1013,13 @@ Roll d6 for Insight every turn:
 
 Insight is the most advantageous approach to take this turn. Players who use Insight gain Advantage, rolling an extra die and discarding one.
 
-TRAIT requires the player to use  a helpful Trait, for example “strong” helps with physical action. 
+TRAIT requires the player to use  a helpful Trait, for example “strong” helps with physical action.
 
-ASSET requires a specific helpful Asset along with the item, while ITEM can be any helpful item. 
+ASSET requires a specific helpful Asset along with the item, while ITEM can be any helpful item.
 
-NAME requires a similar Name, so Story, Song, Named Item, or character title like “dragon slayer” would be appropriate when facing a dragon. 
+NAME requires a similar Name, so Story, Song, Named Item, or character title like “dragon slayer” would be appropriate when facing a dragon.
 
-ASSIST requires an Action to  “set up / assist” the current task. A “parry” could help to defend. 
+ASSIST requires an Action to  “set up / assist” the current task. A “parry” could help to defend.
 
 EFFORT requires exertion, which is not possible while carrying Baggage
 
