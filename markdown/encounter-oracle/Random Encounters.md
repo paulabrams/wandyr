@@ -1,4 +1,4 @@
-# The Encounter Oracle
+# Random Encounters
 
 The Guide should ask the Encounter Oracle every 15 minutes of real time play in dangerous environments OR when the characters linger in one place or perform actions that could reveal themselves (such as fighting, making noise, casting spells, playing music, preparing food, etc.).
 
