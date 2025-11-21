@@ -91,7 +91,7 @@ The Guide describes the starting location for the adventure, such as a medieval 
 
 ## 2 \- Create Characters
 
-You need three characters. Each character has an name/alias, Trait and Skill, for example: `Lindon, brave, poleax`
+You need three characters. Each character has an alias, Trait and Skill, for example: `Lindon, brave, poleax`
 
 ![Character creation illustration][image4]
 
@@ -101,11 +101,13 @@ The Guide lists three rumors that hint about troublesome events in the area or i
 
 ## 4 \- Muster a Character
 
-Roll 1d6 Hearts for each of your three characters, then choose one to "Muster" (play). From now on, you play as your mustered character. The Guide gives new characters 1-4 basic "hand me down" items for weapons, armor, tools, spellbooks, etc.
+Roll 2d6 Hearts for each of your three characters to see how they feeling today, then choose one to "Muster" (play). From now on, you play as your mustered character. The Guide gives new characters 1-4 basic "hand me down" items based on their alias, Trait and Skill.
+
+**Hearts** are a measure of your character's energy to wander and adventure. If you reach zero Hearts you die. Hearts are re-rolled at every Muster.
 
 ## 5 \- Pack for the Journey
 
-The Guide should provide a landmark or general directions so the path of the journey is clear, and provide or suggest basic travel supplies (e.g. food, water, traveling cloak). You can swap items amongst yourselves, but must leave unnecessary items behind with your other characters.
+The Guide should provide a landmark or general directions so the path of the journey is clear; we don't want to waste time sitting around. The Guide should also provide or suggest basic travel supplies (e.g. food, water, traveling cloak). You can swap items amongst yourselves, but must leave unnecessary items behind with your other characters.
 
 ## 6 \- Embark
 
@@ -115,33 +117,29 @@ Start play on the road. You play your mustered character; the Guide handles ever
 
 ## Characters
 
-Each character starts with one Trait and one Skill. Character Level equals the number of Traits.
+Each character starts with an alias, a Trait and a Skill. The Trait is how you play the character, and the Skill is what the character knows how to do. For example, "Rook, cunning, knife" goes by the alias "Rook", should be played as cunning (Trait), and knows how to use a knife (Skill).
 
-Rook, cunning, knife
-
-"Rook" is played as cunning (Trait), knows how to use a knife (Skill), and is 1st level.
+New characters should aim to *go from zero to hero or die trying*. When a new character enters play, please feel free to ask the Guide for a few basic "hand me down" or scrounged items to help you get started.
 
 ### Traits
 
-A Trait is a keyword that describes how your character is played.
+A Trait is a keyword that describes how your character is played. *This is perhaps more important than it sounds*. This is not about what your character knows or can do, but more about how they behave. For example, a character with the "bard" Trait *acts* like a musician or skald, while their Skills determine what they know how to do. You can think of these as "soft skills", or personality traits, and they are complementary to the character's Skills ("hard skills").
 
-Each Trait must be a single word, or common compound word (e.g. "rat-catcher", "horse-thief"). Traits can describe physical appearance, personality, quirks, habits, customs, idioms, approach to solving problems, etc. Traits can refer to a culture, homeland, or ancestry (human, elf, dwarf, etc.) or whatever helps you paint a picture. Good Traits make the character fun and distinctive to play.
+**Guidelines:** Each Trait must be a single word, or common compound word (e.g. "rat-catcher", "horse-thief"). Traits can describe physical appearance, personality, quirks, habits, customs, idioms, approach to solving problems, etc. Traits can refer to a culture, homeland, or ancestry (human, elf, dwarf, etc.) or whatever helps you paint a picture. Good Traits make the character fun and distinctive to play.
 
 ### Skills
 
-A Skill is something the character has learned, either an item proficiency or a knowledge. Examples: dagger, longsword, bow, lockpicks, shield, armor, type of animal, spellbook, wand, arcane staff, harp, bushcraft, etc.
+A Skill is something the character has learned, either an item proficiency or a knowledge. Examples: dagger, longsword, bow, lockpicks, shield, armor, type of animal, spellbook, wand, arcane staff, harp, bushcraft, etc. You can think of these as "hard skills", or technical knowledge. Skills are not about personality or behavior, but about what the character knows how to do.
 
-Attempting to use specialized items or knowledge always requires a specialized Skill, such as "greatsword", "herbal medicine", or a magic school.
+**Guidelines:** Each Skill must be a single word, or common compound word corresponding to a type of item or knowledge (e.g. "greatsword", "herbal medicine").
 
-### Names
-
-New characters are novices who have yet to earn experience, accomplish heroic deeds, or build a legend. Personal titles and bynames (like "Dragon Slayer" or "the Bold") are Traits, not Names. Names can only be assigned to items (weapons, armor, equipment), creating Named Items. Songs and spells follow their own separate advancement tracks.
+**Specialized Skills:** Using specialized items or knowledge requires a specialized Skill, such as "greatsword", "herbal medicine", or a magic school. This should be common sense, with the Guide making rulings as needed.
 
 ![Adventure illustration][image6]
 
 ### Example Characters
 
-Choose or roll d66, or mix n' match parts. The format is `Alias, trait, skill`, with Songs in quotes.
+Choose or roll d66, or mix n' match parts. The format is `Alias, trait, skill`.
 
 1.1  Rook, cunning, lockpicks
 1.2  Cipher, elusive, ciphers
@@ -159,10 +157,10 @@ Choose or roll d66, or mix n' match parts. The format is `Alias, trait, skill`, 
 
 3.1  Drake, wanderer, tinderbox
 3.2  Slate, scout, telescope
-3.3  Wolf, feral, "Song of the Wild"
+3.3  Wolf, feral, spear
 3.4  Hawk, vigilant, falconry-glove
 3.5  Storm, impetuous, grapnel
-3.6  Echo, hallow, "Elven Ballad of Hope"
+3.6  Echo, hallow, harp
 
 4.1  Kat, second-story-thief, thieves tools
 4.2  Forge, steadfast, hammer
@@ -191,17 +189,23 @@ Choose or roll d66, or mix n' match parts. The format is `Alias, trait, skill`, 
 
 During the Muster, you take on the role of one character adventuring today. You also decide who leads the party.
 
-Roll 2d6 Hearts for each of your three characters, then choose one to "Muster" (play). From now on, you play as your mustered character. The Guide gives new characters 1-4 basic "hand me down" items for weapons, armor, tools, spellbooks, etc..
+Roll 2d6 Hearts for each of your three characters to see how they feel today, then choose one to "Muster" (play). From now on, you play as your mustered character.
 
 ## Party Hearts
 
-During the Muster, elect a party leader. You have Party Hearts equal to the leader's Character Level (number of Traits). Party Hearts can be used in place of character Hearts.
+During the Muster, elect a party leader. You have Party Hearts equal to the leader's Character Level (number of Traits). Any of the characters in the party can use these Party Hearts in place of their own Hearts.
+
+### Comforts
+
+> The comforts of home are cheerful companions. A wheel of cheese, a crusty bread, mead, wine, or a good smoke can make even the most dismal dungeon feel fine.
+
+If the party consumes a Comfort during Muster, they receive up to 4 bonus Party Hearts. The number of bonus Hearts depends on the cost (+1 : 1gp, +2 : 10gp, +3 : 100gp, +4 : 1000gp). There is no benefit from consuming multiple Comforts during the same Muster. Comforts are available in taverns, inns, and provisioners, or might be found.
 
 ### 10 Item Slots
 
-Your character has 10 Item Slots to hold gear they have "equipped" and can access and use easily, or quickly stow to free their hands.
+Your character has 10 Item Slots to hold gear they have "equipped" and can access and use easily, or quickly stow to free their hands. Significant items use multiple slots.
 
-Each slot can hold one small item (cloak, flask, tinderbox, flask, 1 day rations, torch, coin purse, arrow quiver, lockpicks) or a bundle of tiny identical items (bowstrings, gems).
+Otherwise, each slot can hold one small item (cloak, flask, tinderbox, flask, 1 day rations, torch, coin purse, arrow quiver, lockpicks) or a bundle of tiny identical items (bowstrings, gems).
 
 Larger items use 1-4 Item Slots:
 
@@ -209,39 +213,38 @@ Larger items use 1-4 Item Slots:
 - **Bows:** arrow quiver 1, bow 2, crossbow 3, arbalest 4
 - **Shields:** buckler 1, heater 2, round shield 3, tower shield 4
 - **Armor:** gauntlets 1, helm 2, gambeson 3, haubergeon 4
-- **Musical Instrument:** pipe 1, lute 2, guitar 3, war drums 4
+- **Musical Instrument:** pipe 1, lute 2, guitar 3, war drums 4o
 
 ### Baggage
 
-You can carry gear outside of your 10 Item Slots, but this is considered "Baggage".
+Your 10 Item Slots are intended to let you to have some items ready to use, and make it easy to keep your hands free. After all, you might want to climb a ladder or swim without leaving things behind. You may also carry additional items in you hands or on your body, but these are considered "Baggage".
 
-You can carry something in your hands, such as a  weapon or shield. This might allow you to carry a spear for throwing without accounting for that in your Item Slots. You can also keep your hands free by wearing a rucksack, haversack, etc.
+**In Hand:** You can carry something in your hands beyond your 10 Item Slots, such as a weapon or shield. This might allow you to carry a spear for throwing without accounting for that in your Item Slots. This counts as Baggage.
 
-Baggage halves movement and causes safety issues when swimming, leaping, climbing, etc. Aside from what's already in your hands, accessing an item from Baggage requires you to stop and drop your Baggage and dig around inside. In combat, dropping Baggage (other than what's in your hands) requires a full Round (Move and Action). Accessing items in Baggage takes 1 Turn (10 minutes).  *This is intended to be fast-and-loose, but the Guide may set more concrete limits or penalties as needed.*
+**On Your Body:** You can carry items beyone your 10 Item Slots while keeping your hands free by wearing a rucksack, haversack, satchel, etc. This counts as Baggage.
+
+**Baggage** halves movement and causes safety issues when swimming, leaping, climbing, etc. Aside from what's in your hands, accessing an item from Baggage requires you to stop and drop your Baggage and dig around inside. In combat, dropping Baggage (other than what's in your hands) requires a full Round (Move and Action). Accessing items from Baggage takes 1 Turn (10 minutes).  
+
+*This is intended to be fast-and-loose, keeping the game moving and avoiding scrupluous bookkeeping, but the Guide shall set more concrete limits or penalties if that becomes necessary. It's only a problem if it's a problem.*
 
 ### Home Base
 
-Your characters are part of an "adventuring party" with a "home base". They might be an adventurers guild, warband, canting crew, etc. Your base could be a tavern, flat house, hideout, etc. Describe and design your bases for fun.
+Your characters are part of an adventuring party with a home base. They might be an adventurers guild, warband, canting crew, etc. Your base could be a tavern, flat house, hideout, etc. Describe and design your bases for fun.
 
-### Fast-Travel
-
-Bases enable fast-travel between established locations, skipping mundane journeys. The Guide can have bases generate rumors on their own, adding new leads between sessions.
+-**Local Rumors:** Your party can hear local rumors at each base. Ask the Guide for new rumors and updates to old rumors.
+- **Fast travel:** Your party can fast-travel between bases; you might decide to fast-travel to follow a rumor. Ask the Guide what happens when you arrive.
 
 ![Camping illustration][image7]
 
 ## Camping {#camping}
 
-In Wåndyr, each game starts with a Muster and ends in Camp. When you decide to stop and rest, you must choose whether to make a temporary camp or return home.
+In Wåndyr, each game session starts with a Muster and ends in Camp. When you decide to stop and rest, you must choose whether to make a temporary camp or return to a home base.
 
 ### Downtime
 
-Camping is downtime. Each character exits play until the next time they Muster. The game is essentially "paused", allowing you and the Guide to openly and rapidly discuss topics that might be more difficult to do when actively playing a character. For example, at this time the Guide awards XP and you can spend XP. The party may also fast-forward in time.
+Camping is downtime; the game is *paused* until you break camp to Muster again. The Guide awards XP and you can spend XP. This also allows you and the Guide to discuss topics that might be more difficult in live play.
 
-### Comforts
 
-The comforts of home are cheerful companions. A wheel of cheese, a crusty bread, mead, wine, or a good smoke can make even the most dismal dungeon feel fine.
-
-If your character consumes a Comfort during Muster, they receive up to 2 extra Hearts. A 1-Heart comfort is 10 gp and uses 1 slot; a 2-Heart is 100 gp and 2 slots. Comforts are available in taverns, inns, and provisioners, or might be found.
 
 # Advancement {#advancement}
 
@@ -253,13 +256,15 @@ Your character can earn Experience Points (XP) from their adventures. You can ea
 
 ### Spending XP
 
-In Camp, you can spend XP to buy Traits, Skills, Item Names, Songs, and Spells. Each advancement track follows escalating costs:
+In Camp, you can spend XP to buy advancements. The cost is equal to the new total number of items in that category (1st = 1 XP, 2nd = 2 XP, 3rd = 3 XP, etc.). Each of the following is a separate **ladder**:
 
-- **Traits:** 1st Trait costs 1 XP, 2nd costs 2 XP, 3rd costs 3 XP, etc.
-- **Skills:** 1st Skill costs 1 XP, 2nd costs 2 XP, 3rd costs 3 XP, etc.
-- **Item Names:** 1st Name costs 1 XP, 2nd costs 2 XP, 3rd costs 3 XP, etc. (per item)
-- **Songs:** 1st song costs 1 XP, 2nd costs 2 XP, 3rd costs 3 XP, etc.
-- **Spells:** 1st spell costs 1 XP, 2nd costs 2 XP, 3rd costs 3 XP, etc. (tracked separately per magic school)
+- Traits
+- Skills
+- Item Names (per item)
+- Bynames
+- Songs
+- Spells (per magic school)
+- Enchanting Arcana
 
 ### Earning Names
 
@@ -305,7 +310,7 @@ The Guide sets the Oracle target number as easy (6), normal (8), hard (10), or e
 
 #### Sweet and Spicy
 
-When any die rolls a 6, the outcome is "Sweet," adding a stylistic flair. Double 6s indicate a bonus or benefit. Conversely, if any die rolls a 1, the outcome is "Spicy," also adding style. Double 1s signify a real penalty or complication.
+When any die rolls a 6, the outcome is "Sweet," adding a stylistic flair. Double 6s indicate a significant bonus or benefit. Conversely, if any die rolls a 1, the outcome is "Spicy," also adding style. Double 1s signify a real penalty or complication.
 
 Example: An archer snipes a sentry. On "spicy" another guard notices; on "sweet" the uniform is spotless.
 
@@ -317,7 +322,7 @@ Most of the game is a loose conversation between you.
 
 The Guide tracks 10-minute "Turns" using the "Turn Clock". This is a glass or metal bowl in the middle of the table. The Guide loudly tosses a die into the clock each time you do something time-consuming. When the bowl has six dice the Guide empties it and rolls the dice, looking for 1's, which indicate a complication of some kind. The Guide also rolls the Turn Clock whenever you do something reckless.
 
-*The Turn Clock is just for slow-time, so it is paused during fast-paced situations such as combat.*
+*The Turn Clock is just for slow-time, so it is paused during fast-paced situations such as combat. In combat, time is measured in 10-second "Rounds".*
 
 ![Time illustration][image8]
 
@@ -363,11 +368,11 @@ Magic is classified by “magic school”, such as Vitae (life), Elementalis, Th
 
 If your character has a **Magic School**, they are a "magic-user" literate in the magic language of that school. Words are magical, and magic is formed by magic words, runes, glyphs, arcane script, etc.
 
+**Caster Level:** You have a separate caster level in each magic school, which is simply the number of spells you know in that school. This determines your level of magic literacy and how many Hearts you can spend to boost a spell. For example, if you know 3 Umbrakalla spells, your Umbrakalla caster level is 3, so you can spend up to 3 Hearts when casting an Umbrakalla spell.
+
 #### Spell Casting
 
-Casting a spell requires using a Spellbook. This uses both your hands, you must say the magic words loudly and precisely, and must spend at least 1 Heart.
-
-Expending 1 Heart casts the spell as a basic cantrip or low-level effect. You can boost the spell by spending additional Hearts up to your Caster Level (the number of spells known in that magic school).
+Casting a spell requires using a Spellbook. This uses both your hands, you must say the magic words loudly and precisely. You must spend 1 Heart to cast the spell as a basic cantrip or beginner-level effect. Once you have learned a spell, you can spend additional Hearts to boost the spell.
 
 ![Magic items illustration][image10]
 
@@ -383,19 +388,16 @@ Each spell can be cast with a duration of either *Round* or *Turn*:
 
 #### Learning Spells
 
-Spells follow their own advancement track, separate from Names and Songs. Each magic school tracks its own spell list separately. To learn a spell pay XP equal to the new number of spells in that magic school (1st spell = 1 XP, 2nd = 2 XP, 3rd = 3 XP, etc. for that school). You can either choose a spell from your spellbooks or roll a random spell.
+To learn a spell, you must first cast the spell with Sweet and then pay XP while in camp.
 
-Once a spell is learned, you no longer need the book to cast the spell. Alternatively, the magic-user may enchant an item, creating an **Arcana**. In either case, you must cast the spell with Sweet (double 6s) before you can learn another spell.
+The XP cost to learn a spell is the new number of spells in that magic school (1st spell = 1 XP, 2nd = 2 XP, 3rd = 3 XP, etc. for that school). Write your spell on your character sheet in a list of spells for that magic school.
 
-**Caster Level:** Your caster level equals the number of spells you know in that magic school. This determines how many Hearts you can spend to boost a spell. For example, if you know 3 Umbrakalla spells, your Umbrakalla caster level is 3, so you can spend up to 3 Hearts when casting an Umbrakalla spell.
-
-#### Arcana
-
-An Arcana is an item with one or more True Names of spells written on it. Arcana can be any kind of item (even tattoos) with magic-user "drip" based on the spell Names. If equipped at Muster, a magic-user can *ostentatiously* use each Name in an Arcana once per Muster (1/day), at no Hearts cost.
+Once a spell is learned, you no longer need the book to cast the spell, and only need one free hand instead of both. In addition, you can boost the spell by spending additional Hearts up to your "Caster Level" (the number of spells known in that magic school).
 
 #### Magic Components
 
 A Magic Component reduces this cost by 1 Heart per item slot consumed. *Magic components can be found in strange magical places.*
+
 
 ![Spell lists illustration][image11]
 
@@ -677,9 +679,18 @@ Death, spirits, and decay. The forbidden magic of the Avathars, inscribed in blo
 **6.6.5** *Wizard Mark* \- death runes  
 **6.6.6** *Perfect Death* \- ultimate end
 
+
+## Arcana
+
+An **Arcana** is an item with True Name (words of power) of one or more spells written on it. Arcana can be any kind of item (even tattoos) with magic-user "drip" based on the spell Names. If continuously equipped from Muster, a magic-user can *ostentatiously* use each spell in an Arcana once during that Muster, at no Hearts cost.
+
+### Enchanting Arcana
+
+You can transfer a spell from a spellbook to an item to create an Arcana. The spell's True Name vanishes from the book and appears on the item. The reverse is possible, although this can destroy the item. Keep a list of your **Arcana Spells** (spells you have enchanted into Arcana). You must pay XP equal to the new number of items in this list.
+
 ## Invocations {#invocations}
 
-Otherworldly beings can be called on by speaking their *True* *Names*.
+You can call on an otherworldly being by speaking their *True Name*. You might find a True Name locked away in a mouldy tome, deep in a library, or hidden in a secret scroll. It might be carved in runes on ancient standing stones, inscribed on the back of a daemon amulet, or whispered by a dying cultist. These names are powerful secrets, jealously guarded and hidden; they are not the common names known to the world.
 
 ### Lore
 
@@ -716,11 +727,11 @@ Each monster (or trap, etc.) has a **Level** comparable to **Character Level**. 
 
 For more detail, the Guide can use OSR monsters or wing it as follows.
 
-Weak pack/tribal monsters have d6 Hearts; leaders 2d6. A solitary “apex predator” monster has 2d6 or 3d6 Hearts per HD, multiple attacks, plus a deadly attack of 2d6 or 3d6, or d6 Hearts per Turn for HD+2 Turns (for paralysis, poison, petrification, etc).
+Weak pack/tribal monsters have d6 Hearts; leaders 2d6. A solitary “apex predator” monster has 2d6 or 3d6 Hearts per HD, multiple attacks, plus a deadly attack of 2d6 or 3d6, or d6 Hearts per Round for HD Turns (for paralysis, poison, petrification, etc).
 
 ## Fighting {#fighting}
 
-In each Turn, you can Move and Attack (or take another action).
+In each Round, you can Move and Attack (or take another action).
 
 ## Move
 
@@ -738,9 +749,13 @@ When two opponents attempt melee attacks against each other, reduce hits to each
 
 ## Initiative
 
-The Guide determines Turn order based on the situation, e.g. characters near the front of the party might be called before those in the rear, or characters who need to move to see what is happening.
+The Guide determines Initative order (i.e. the order in which players and enemies act) based on the situation. Generally, characters near the front of the party will be called before those in the rear. Sometimes characters far out of frame may need to move to enter the scene.
 
-Melee attacks go first and are usually simultaneous. However, when enemies approach from a distance, the weapon with the better reach (by item slots) has the "right of way" to attack first. Conversely, in close quarters combat (less than 10 feet of fighting space per person) the smaller weapon attacks first.
+When the action starts far away with clear line of sight, ranged attacks happen first.
+
+Melee attacks will go first whenever the action is up close and personal or sight lines are obscured. Melee attacks are usually simultaneous, however, when enemies approach from a distance, the weapon with the better reach (by item slots) has the "right of way" to attack first. Conversely, in close quarters combat (less than 10 feet of fighting space per person) the smaller weapon attacks first. 
+
+Spells and miscellaneous actions happen last, at the end of the round, except when they were started in the previous round.
 
 ## Death
 
@@ -748,9 +763,9 @@ Characters and monsters die at 0 Hearts. If you reach 0 Hearts, choose whether y
 
 **Offscreen:** We cut away as your character drops; bring in another character next round.
 
-Offscreen deaths are uncertain. At any future Muster, you may let the character pass on, or make an Invocation to return. If the Invocation roll is Spicy (double 1s), you are dead with no uncertainty.
+Offscreen deaths are uncertain. At any future Muster, you may let the character pass on, or make an Invocation to return. If the Invocation roll is **Double Spicy** (double 1s), you are dead with no uncertainty.
 
-**Onscreen:** Describe one final heroic action. At the start of the next round, ask the Oracle if the action succeeds; heroic feats require Sweet. If the roll is even partially Spicy (any die shows 1), you are dead immediately with no uncertainty; otherwise you go Offscreen.
+**Onscreen:** Describe one final heroic action. At the start of the next round, ask the Oracle if the action succeeds; heroic feats require Sweet. If the roll is Spicy (any die shows 1), you are dead immediately with no uncertainty; otherwise you go Offscreen.
 
 ![Monsters illustration][image12]
 
@@ -777,7 +792,7 @@ When any die rolls a 6, the outcome is "Sweet," adding a stylistic flair. Double
 
 ## Insight {#insight}
 
-Insight is an opportunity to claim advantage. Roll d6 for Insight each Turn to determine the current Insight (1-6). If you use the option matching the current Insight on your roll, you gain Advantage on that roll.
+Insight is an opportunity to claim advantage. Roll d6 for Insight each Round/Turn to determine the current Insight (1-6). If you use the option matching the current Insight on your roll, you gain Advantage on that roll.
 
 ### 1 \- TRAIT
 
