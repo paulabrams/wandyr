@@ -1,10 +1,10 @@
-# [Wåndyr cover image][image1]
+# [Wåndyr cover image][image_wandyr_cover]
 
 !# Wåndyr
 
 !**an Adventure Game**
 
-![Wåndyr title image][image2]
+![Wåndyr title image][image_wandyr_title]
 
 ## Wåndyr, an Adventure Game
 
@@ -73,7 +73,7 @@ The Guide describes the world but doesn't create a story beforehand. The local a
 
 The Guide uses dice rolls and random tables to determine what happens rather than telling a predetermined story. Each new discovery adds to the growing lore of your campaign world.
 
-![Oracle illustration][image3]
+![Oracle illustration][image_oracle_intro]
 
 ## The Oracle
 
@@ -93,7 +93,7 @@ The Guide describes the starting location for the adventure, such as a medieval 
 
 You need three characters. Each character has an alias, Trait and Skill, for example: `Lindon, brave, poleax`
 
-![Character creation illustration][image4]
+![Character creation illustration][image_character_creation]
 
 ## 3 \- Select a Rumor
 
@@ -113,7 +113,7 @@ The Guide should provide a landmark or general directions so the path of the jou
 
 Start play on the road. You play your mustered character; the Guide handles everything else.
 
-![Gameplay illustration][image5]
+![Gameplay illustration][image_gameplay]
 
 ## Characters
 
@@ -135,7 +135,7 @@ A Skill is something the character has learned, either an item proficiency or a 
 
 **Specialized Skills:** Using specialized items or knowledge requires a specialized Skill, such as "greatsword", "herbal medicine", or a magic school. This should be common sense, with the Guide making rulings as needed.
 
-![Adventure illustration][image6]
+![Adventure illustration][image_adventure]
 
 ### Example Characters
 
@@ -234,7 +234,7 @@ Your characters are part of an adventuring party with a home base. They might be
 -**Local Rumors:** Your party can hear local rumors at each base. Ask the Guide for new rumors and updates to old rumors.
 - **Fast travel:** Your party can fast-travel between bases; you might decide to fast-travel to follow a rumor. Ask the Guide what happens when you arrive.
 
-![Camping illustration][image7]
+![Camping illustration][image_camping]
 
 ## Camping {#camping}
 
@@ -324,7 +324,7 @@ The Guide tracks 10-minute "Turns" using the "Turn Clock". This is a glass or me
 
 *The Turn Clock is just for slow-time, so it is paused during fast-paced situations such as combat. In combat, time is measured in 10-second "Rounds".*
 
-![Time illustration][image8]
+![Time illustration][image_time]
 
 ## Music {#music}
 
@@ -352,7 +352,7 @@ All magic items and magical objects bear mystical inscriptions: sharp dwarven ru
 
 Most magic items function as their mundane counterparts plus a magical enhancement. Elven boots silence footsteps, a hero's belt bestows strength, and a magic shield is more protective. If you're skilled in the item (i.e. with a Skill in the item), you can usually discover its function through use.
 
-![Magic illustration][image9]
+![Magic illustration][image_magic]
 
 #### Sentient Items
 
@@ -374,7 +374,7 @@ If your character has a **Magic School**, they are a "magic-user" literate in th
 
 Casting a spell requires using a Spellbook. This uses both your hands, you must say the magic words loudly and precisely. You must spend 1 Heart to cast the spell as a basic cantrip or beginner-level effect. Once you have learned a spell, you can spend additional Hearts to boost the spell.
 
-![Magic items illustration][image10]
+![Magic items illustration][image_magic_items]
 
 #### Magic Oracle
 
@@ -399,7 +399,7 @@ Once a spell is learned, you no longer need the book to cast the spell, and only
 A Magic Component reduces this cost by 1 Heart per item slot consumed. *Magic components can be found in strange magical places.*
 
 
-![Spell lists illustration][image11]
+![Spell lists illustration][image_spell_lists]
 
 #### Magic-User Spell Lists
 
@@ -767,7 +767,7 @@ Offscreen deaths are uncertain. At any future Muster, you may let the character 
 
 **Onscreen:** Describe one final heroic action. At the start of the next round, ask the Oracle if the action succeeds; heroic feats require Sweet. If the roll is Spicy (any die shows 1), you are dead immediately with no uncertainty; otherwise you go Offscreen.
 
-![Monsters illustration][image12]
+![Monsters illustration][image_monsters]
 
 ## Saving Throws
 
@@ -788,7 +788,7 @@ Always phrase the question for yes/no where the characters *want* to hear “Yes
 
 When any die rolls a 6, the outcome is "Sweet," adding a stylistic flair. Double 6s indicate a bonus or benefit. Conversely, if any die rolls a 1, the outcome is "Spicy," also adding style. Double 1s signify a penalty or complication.
 
-![Oracle illustration][image13]
+![Oracle illustration][image_oracle_reference]
 
 ## Insight {#insight}
 
@@ -819,28 +819,28 @@ You have Advantage if the group has one or more Party Hearts. The party is not o
 Apply more effort. Not possible when carrying Baggage, maintaining stealth/subtlety, climbing, swimming, wrestling, or making something look easy.
 
 
-[image1]: https://paulabrams.github.io/wandyr/markdown/images/wandyr_cover.png
+[image_wandyr_cover]: https://paulabrams.github.io/wandyr/markdown/images/wandyr_cover.png
 
-[image2]: https://paulabrams.github.io/wandyr/markdown/images/wandyr_title.png
+[image_wandyr_title]: https://paulabrams.github.io/wandyr/markdown/images/wandyr_title.png
 
-[image3]: https://paulabrams.github.io/wandyr/markdown/images/oracle_intro.png
+[image_oracle_intro]: https://paulabrams.github.io/wandyr/markdown/images/oracle_intro.png
 
-[image4]: https://paulabrams.github.io/wandyr/markdown/images/character_creation.png
+[image_character_creation]: https://paulabrams.github.io/wandyr/markdown/images/character_creation.png
 
-[image5]: https://paulabrams.github.io/wandyr/markdown/images/gameplay.png
+[image_gameplay]: https://paulabrams.github.io/wandyr/markdown/images/gameplay.png
 
-[image6]: https://paulabrams.github.io/wandyr/markdown/images/adventure.jpg
+[image_adventure]: https://paulabrams.github.io/wandyr/markdown/images/adventure.jpg
 
-[image7]: https://paulabrams.github.io/wandyr/markdown/images/camping.jpg
+[image_camping]: https://paulabrams.github.io/wandyr/markdown/images/camping.jpg
 
-[image8]: https://paulabrams.github.io/wandyr/markdown/images/time.png
+[image_time]: https://paulabrams.github.io/wandyr/markdown/images/time.png
 
-[image9]: https://paulabrams.github.io/wandyr/markdown/images/magic.png
+[image_magic]: https://paulabrams.github.io/wandyr/markdown/images/magic.png
 
-[image10]: https://paulabrams.github.io/wandyr/markdown/images/magic_items.png
+[image_magic_items]: https://paulabrams.github.io/wandyr/markdown/images/magic_items.png
 
-[image11]: https://paulabrams.github.io/wandyr/markdown/images/spell_lists.png
+[image_spell_lists]: https://paulabrams.github.io/wandyr/markdown/images/spell_lists.png
 
-[image12]: https://paulabrams.github.io/wandyr/markdown/images/monsters.png
+[image_monsters]: https://paulabrams.github.io/wandyr/markdown/images/monsters.png
 
-[image13]: https://paulabrams.github.io/wandyr/markdown/images/oracle_reference.png
+[image_oracle_reference]: https://paulabrams.github.io/wandyr/markdown/images/oracle_reference.png
