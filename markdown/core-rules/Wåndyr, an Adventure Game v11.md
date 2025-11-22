@@ -1,8 +1,13 @@
-# [Wåndyr cover image][image_wandyr_cover]
+---
+layout: default
+title: Wåndyr, an Adventure Game v11
+---
 
-!# Wåndyr
+![Wåndyr cover image][image_wandyr_cover]
 
-!**an Adventure Game**
+# Wåndyr
+
+## an Adventure Game
 
 ![Wåndyr title image][image_wandyr_title]
 
@@ -61,7 +66,7 @@ About the Name: Wåndyr is “wander” as in travel about, but also “wonder�
 
 [**Insight 19**](#insight)
 
-!# Welcome to Wåndyr
+# Welcome to Wåndyr
 
 **Wåndyr** is an adventure game about a band of adventurers wandering through a pulp fantasy world. The focus is on exploration, following rumors, discovering new places, finding magic, treasure hunting, camping, singing, storytelling, cleverly overcoming impossible odds, and coming back alive with tales to tell. In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again.
 
@@ -117,7 +122,7 @@ Start play on the road. You play your mustered character; the Guide handles ever
 
 ## Characters
 
-Each character starts with an alias, a Trait and a Skill. The Trait is how you play the character, and the Skill is what the character knows how to do. For example, "Rook, cunning, knife" goes by the alias "Rook", should be played as cunning (Trait), and knows how to use a knife (Skill).
+Each character starts with an alias, a Trait and a Skill. The Trait is how you play the character, and the Skill is what the character knows how to do. For example, "Rook, cunning, knife" goes by the alias "Rook", should be played as cunning, and knows how to use a knife.
 
 New characters should aim to *go from zero to hero or die trying*. When a new character enters play, please feel free to ask the Guide for a few basic "hand me down" or scrounged items to help you get started.
 
@@ -260,11 +265,11 @@ In Camp, you can spend XP to buy advancements. The cost is equal to the new tota
 
 - Traits
 - Skills
-- Item Names (per item)
+- Item Names
 - Bynames
 - Songs
-- Spells (per magic school)
-- Enchanting Arcana
+- Known Spells (per magic school)
+- Arcana Spells
 
 ### Earning Names
 
@@ -272,9 +277,7 @@ Your character is only eligible to assign a Name to an item after accomplishing 
 
 ## Character Level {#character-level}
 
-Your character Level is your number of Traits.
-
-The Guide uses character Level for setting the Oracle target. If the characters have a “party leader” the Guide can use their Level instead.
+Your character Level is your number of Traits. The Guide uses character Level for setting the Oracle target. If the characters have a “party leader” the Guide can use their Level instead.
 
 ## Game Play {#game-play}
 
@@ -298,11 +301,9 @@ Speak a question such as "does my spear hit the foe?" and roll 2d6: on 8 or high
 
 #### Advantage/Disadvantage
 
-With Advantage, roll 3d6 and keep the two best dice (on Disadvantage keep the two worst). Never remove a 1 from the roll (e.g. 1, 1, 6 \= 8).
+With Advantage, roll 3d6 and keep the two best dice; with Disadvantage keep the two worst. However, never remove a 1 from the roll (so 1, 1, 6 \= 8).
 
-Advantage can be gained with clever play or **Insight**.
-
-A Disadvantage may apply for being unarmed, encumbered, poor position/visibility, using a bow in melee, etc. Disadvantage cancels Advantage, simply roll 2d6.
+Advantage can be gained with clever play or **Insight**. A Disadvantage may apply for being unarmed, encumbered, poor position/visibility, using a bow in melee, etc. Disadvantage cancels Advantage, simply roll 2d6.
 
 #### Easy / Hard
 
@@ -748,7 +749,7 @@ When two opponents attempt melee attacks against each other, reduce hits to each
 
 ## Initiative
 
-The Guide determines Initative order (i.e. the order in which players and enemies act) based on the situation. Generally, characters near the front of the party will be called before those in the rear. Sometimes characters far out of frame may need to move to enter the scene.
+The Guide determines Initiative order (i.e. the order in which players and enemies act) based on the situation. Generally, characters near the front of the party will be called before those in the rear. Sometimes characters far out of frame may need to move to enter the scene.
 
 When the action starts far away with clear line of sight, ranged attacks happen first.
 
@@ -776,7 +777,7 @@ When you are exposed to a special effect (poison, petrification, breath, magic, 
 
 Ask a question and roll 2d6: if the total is 8 or higher the answer is “Yes”, otherwise "No".
 
-Always phrase the question for yes/no where the characters *want* to hear “Yes”:
+Ideally phrase the question for yes/no where the players want to hear “Yes”:
 
 - “Do we find shelter?”  
 - “Is the sword magical?"  
@@ -791,7 +792,7 @@ When any die rolls a 6, the outcome is "Sweet," adding a stylistic flair. Double
 
 ## Insight {#insight}
 
-Insight is an opportunity to claim advantage. Roll d6 for Insight each Round/Turn to determine the current Insight (1-6). If you use the option matching the current Insight on your roll, you gain Advantage on that roll.
+Insight is an opportunity to claim advantage. As a group, roll d6 for Insight each Round/Turn to determine the current Insight (1-6). If you use the option matching the current Insight on your roll, you gain Advantage on that roll.
 
 ### 1 \- TRAIT
 
