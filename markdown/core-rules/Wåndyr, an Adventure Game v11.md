@@ -375,6 +375,8 @@ If your character has a **Magic School**, they are a "magic-user" literate in th
 
 Casting a spell requires using a Spellbook. This uses both your hands, you must say the magic words loudly and precisely. You must spend 1 Heart to cast the spell as a basic cantrip or beginner-level effect. Once you have learned a spell, you can spend additional Hearts to boost the spell.
 
+Spells normally take a full Turn to cast. In combat, they use a full Round to cast and the effects take place at the very end of the Round.
+
 ![Magic items illustration][image_magic_items]
 
 #### Magic Oracle
@@ -383,9 +385,10 @@ Ask the Oracle if you cast the spell with intended results. A "NO" is not a fail
 
 #### Spell Duration
 
-Each spell can be cast with a duration of either *Round* or *Turn*:  
-**Round** **spells** start and finish instantaneously.  
-**Turn** **spells** do not start instantaneously, but last for the current scene (e.g. a combat encounter or cutscene) or 10 min.
+You can attempt to spell with almost any duration desired. You could cast a "blinding flash" spell with an instantenous duration, or a "shield" spell to last for the current combat, or the Muster (day). However, duration comes at a cost: 
+
+- Active spells count as Baggage.
+- Active spells have a tendency to end when you cast a new spell and roll Spicy.
 
 #### Learning Spells
 
@@ -777,12 +780,7 @@ When you are exposed to a special effect (poison, petrification, breath, magic, 
 
 Ask a question and roll 2d6: if the total is 8 or higher the answer is “Yes”, otherwise "No".
 
-Ideally phrase the question for yes/no where the players want to hear “Yes”:
-
-- “Do we find shelter?”  
-- “Is the sword magical?"  
-- "Do I hit the monster?"  
-- "Do I avoid the trap?
+Try to phrase the question as if the character/s are hoping for a “Yes”. For example, “Do we find shelter from the storm?”, "Do I hit the monster?", "Do I avoid the trap?", etc. This aligns Sweet & Spicy with a benefit to the players.
 
 ### Sweet & Spicy
 
@@ -796,19 +794,19 @@ Insight is an opportunity to claim advantage. As a group, roll d6 for Insight ea
 
 ### 1 \- TRAIT
 
-Describe your approach using your Traits.
+You have Adavantage if your approach matches your Traits.
 
 ### 2 \- SKILL
 
-Use a Skill from a helpful item (requires the item).
+You have Adavantage if you use a Skill from a helpful item (requires the item).
 
 ### 3 \- ITEM
 
-Use a helpful item. Special items require a specialized Skill (e.g. longbow, lockpicks, greatsword, spellbooks, wand, etc.).
+You have Adavantage if you use a helpful item. Special items require a specialized Skill (e.g. longbow, lockpicks, greatsword, spellbooks, wand, etc.).
 
 ### 4 \- NAME
 
-Use a relevant Named Item you possess for Advantage. When Insight shows "4 = NAME", you can invoke a Named Item's power (e.g., "Shadow Guard" armor) to gain Advantage on a relevant Oracle roll.
+You have Advantage if you use a relevant Name (named item, byname, or song) you possess. 
 
 ### 5 \- MORALE
 
@@ -816,7 +814,7 @@ You have Advantage if the group has one or more Party Hearts. The party is not o
 
 ### 6 \- EFFORT
 
-Apply more effort. Not possible when carrying Baggage, maintaining stealth/subtlety, climbing, swimming, wrestling, or making something look easy.
+You have Advantage if you apply more effort. This is not possible when carrying Baggage, maintaining stealth/subtlety, climbing, swimming, wrestling, or making something look easy.
 
 
 [image_wandyr_cover]: https://paulabrams.github.io/wandyr/markdown/images/wandyr_cover.png
