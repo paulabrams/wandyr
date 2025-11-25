@@ -12,7 +12,7 @@ title: Wåndyr, an Adventure Game v11
 ![Wåndyr title image][image_wandyr_title]
 
 ## Wåndyr, an Adventure Game
-
+aleks
 Copyright © 2025 Paul Abrams  
 All rights reserved. No part of this book may be reproduced or transmitted in any form or by any means whatsoever without express written permission from the author, except in the case of brief quotations embodied in critical articles and reviews. Please refer all pertinent questions to the publisher.
 
@@ -202,9 +202,9 @@ During the Muster, elect a party leader. You have Party Hearts equal to the lead
 
 ### Comforts
 
-> The comforts of home are cheerful companions. A wheel of cheese, a crusty bread, mead, wine, or a good smoke can make even the most dismal dungeon feel fine.
+The comforts of home are cheerful companions. A wheel of cheese, a crusty bread, mead, wine, or a good smoke can make even the most dismal dungeon feel fine.
 
-If the party consumes a Comfort during Muster, they receive up to 4 bonus Party Hearts. The number of bonus Hearts depends on the cost (+1 : 1gp, +2 : 10gp, +3 : 100gp, +4 : 1000gp). There is no benefit from consuming multiple Comforts during the same Muster. Comforts are available in taverns, inns, and provisioners, or might be found.
+Comforts are provisions worth 10gp or more, such as fine wine, spices, or fresh game. You can purchase them in settlements or hunt for them in the wild. During Muster, the party gains +1 Party Heart for each different Comfort shared (max +4).
 
 ### 10 Item Slots
 
@@ -411,277 +411,277 @@ A Magic Component reduces this cost by 1 Heart per item slot consumed. *Magic co
 
 Life force, growth, and harmony. The magic of the Elves, written in living ink that grows and changes like vines. The hallow channel beneficial energies, promote growth, and keep nature's balance.
 
-**1.1.1** *Animal Bond* \- form lasting connection  
-**1.1.2** *Animal Friendship* \- benevolent control  
-**1.1.3** *Balance Weave* \- unite opposites  
-**1.1.4** *Beast Bond* \- create long-lasting bond  
-**1.1.5** *Beast Form* \- friendly transformation  
-**1.1.6** *Beast Speech* \- talk with animals
+**1.1** *Animal Bond* \- form lasting connection  
+**1.2** *Animal Friendship* \- benevolent control  
+**1.3** *Balance Weave* \- unite opposites  
+**1.4** *Beast Bond* \- create long-lasting bond  
+**1.5** *Beast Form* \- friendly transformation  
+**1.6** *Beast Speech* \- talk with animals
 
-**1.2.1** *Divine Grace* \- channel blessing  
-**1.2.2** *Healing Touch* \- cure wounds  
-**1.2.3** *Joy Song* \- lift spirits  
-**1.2.4** *Life Bloom* \- encourage growth  
-**1.2.5** *Light Shield* \- protect from evil  
-**1.2.6** *Pacify* \- remove violence
+**2.1** *Divine Grace* \- channel blessing  
+**2.2** *Healing Touch* \- cure wounds  
+**2.3** *Joy Song* \- lift spirits  
+**2.4** *Life Bloom* \- encourage growth  
+**2.5** *Light Shield* \- protect from evil  
+**2.6** *Pacify* \- remove violence
 
-**1.3.1** *Peace Aura* \- calm violence  
-**1.3.2** *Snail Knight* \- summon noble mount  
-**1.3.3** *Star Guide* \- find true path  
-**1.3.4** *Sun Beam* \- channel daylight  
-**1.3.5** *Thicket* \- grow healthy plants  
-**1.3.6** *Truth Sight* \- see through lies
+**3.1** *Peace Aura* \- calm violence  
+**3.2** *Snail Knight* \- summon noble mount  
+**3.3** *Star Guide* \- find true path  
+**3.4** *Sun Beam* \- channel daylight  
+**3.5** *Thicket* \- grow healthy plants  
+**3.6** *Truth Sight* \- see through lies
 
-**1.4.1** *Ward* \- create protective barrier  
-**1.4.2** *Cure Disease* \- remove ailments  
-**1.4.3** *Forest Touch* \- speak with plants  
-**1.4.4** *Growing Script* \- living magical writing  
-**1.4.5** *Nature's Blessing* \- enhance vitality  
-**1.4.6** *Purification* \- remove toxins
+**4.1** *Ward* \- create protective barrier  
+**4.2** *Cure Disease* \- remove ailments  
+**4.3** *Forest Touch* \- speak with plants  
+**4.4** *Growing Script* \- living magical writing  
+**4.5** *Nature's Blessing* \- enhance vitality  
+**4.6** *Purification* \- remove toxins
 
-**1.5.1** *Regeneration* \- speed natural healing  
-**1.5.2** *Heart Glyph* \- inscribe emotions  
-**1.5.3** *Nature's Bounty* \- create food/water  
-**1.5.4** *Pack Call* \- summon animal allies  
-**1.5.5** *Vital Surge* \- boost life force  
-**1.5.6** *Wild Empathy* \- share animal feelings
+**5.1** *Regeneration* \- speed natural healing  
+**5.2** *Heart Glyph* \- inscribe emotions  
+**5.3** *Nature's Bounty* \- create food/water  
+**5.4** *Pack Call* \- summon animal allies  
+**5.5** *Vital Surge* \- boost life force  
+**5.6** *Wild Empathy* \- share animal feelings
 
-**1.6.1** *Life Transfer* \- share vital force  
-**1.6.2** *Nature's Rhythm* \- align with cycles  
-**1.6.3** *Perfect Unity* \- complete balance  
-**1.6.4** *Season's Call* \- control growth cycle  
-**1.6.5** *Tranquil Heart* \- create inner peace  
-**1.6.6** *Vital Harmony* \- balance life forces
+**6.1** *Life Transfer* \- share vital force  
+**6.2** *Nature's Rhythm* \- align with cycles  
+**6.3** *Perfect Unity* \- complete balance  
+**6.4** *Season's Call* \- control growth cycle  
+**6.5** *Tranquil Heart* \- create inner peace  
+**6.6** *Vital Harmony* \- balance life forces
 
 #### 2 Elementalis (Elemental)
 
 Primal forces, elements, and weather. The Baal inscribe dragon magic in burning runes carved in stone. Practitioners control weather, create barriers of ice and fire, command gravity, and shape elements.
 
-**2.1.1** *Control Weather* \- command climate  
-**2.1.2** *Crystal Growth* \- form gems  
-**2.1.3** *Dragon's Breath* \- channel flame  
-**2.1.4** *Earth Shape* \- mold stone  
-**2.1.5** *Earthquake* \- shake ground  
-**2.1.6** *Element Master* \- complete control
+**1.1** *Control Weather* \- command climate  
+**1.2** *Crystal Growth* \- form gems  
+**1.3** *Dragon's Breath* \- channel flame  
+**1.4** *Earth Shape* \- mold stone  
+**1.5** *Earthquake* \- shake ground  
+**1.6** *Element Master* \- complete control
 
-**2.2.1** *Elemental Wall* \- create barrier  
-**2.2.2** *Fire Shield* \- protective flames  
-**2.2.3** *Fog Cloud* \- create mist  
-**2.2.4** *Force Wall* \- energy barrier  
-**2.2.5** *Gravity Shift* \- change gravity  
-**2.2.6** *Heat Metal* \- make objects burning
+**2.1** *Elemental Wall* \- create barrier  
+**2.2** *Fire Shield* \- protective flames  
+**2.3** *Fog Cloud* \- create mist  
+**2.4** *Force Wall* \- energy barrier  
+**2.5** *Gravity Shift* \- change gravity  
+**2.6** *Heat Metal* \- make objects burning
 
-**2.3.1** *Icy Touch* \- spread ice  
-**2.3.2** *Increase Gravity* \- triple weight  
-**2.3.3** *Lightning Strike* \- call electricity  
-**2.3.4** *Liquid Air* \- make air swimmable  
-**2.3.5** *Mist Form* \- become vapor  
-**2.3.6** *Mountain's Strength* \- earth power
+**3.1** *Icy Touch* \- spread ice  
+**3.2** *Increase Gravity* \- triple weight  
+**3.3** *Lightning Strike* \- call electricity  
+**3.4** *Liquid Air* \- make air swimmable  
+**3.5** *Mist Form* \- become vapor  
+**3.6** *Mountain's Strength* \- earth power
 
-**2.4.1** *Rain Make* \- create downpour  
-**2.4.2** *Sculpt Elements* \- shape materials  
-**2.4.3** *Steam Form* \- become vapor  
-**2.4.4** *Stone Skin* \- harden flesh  
-**2.4.5** *Stone Tell* \- read earth memories  
-**2.4.6** *Storm Call* \- summon thunder
+**4.1** *Rain Make* \- create downpour  
+**4.2** *Sculpt Elements* \- shape materials  
+**4.3** *Steam Form* \- become vapor  
+**4.4** *Stone Skin* \- harden flesh  
+**4.5** *Stone Tell* \- read earth memories  
+**4.6** *Storm Call* \- summon thunder
 
-**2.5.1** *Summon Cube* \- control earth  
-**2.5.2** *Summon Idol* \- create statue  
-**2.5.3** *Thunder Call* \- create sonic boom  
-**2.5.4** *Tide Control* \- command waters  
-**2.5.5** *Upwell* \- create spring  
-**2.5.6** *Water Breathing* \- breathe liquid
+**5.1** *Summon Cube* \- control earth  
+**5.2** *Summon Idol* \- create statue  
+**5.3** *Thunder Call* \- create sonic boom  
+**5.4** *Tide Control* \- command waters  
+**5.5** *Upwell* \- create spring  
+**5.6** *Water Breathing* \- breathe liquid
 
-**2.6.1** *Water Shape* \- control liquid  
-**2.6.2** *Web Weave* \- spin natural nets  
-**2.6.3** *Whirlwind* \- create vortex  
-**2.6.4** *Wind Shield* \- air protection  
-**2.6.5** *Wind Walk* \- float on breeze  
-**2.6.6** *Zephyr* \- ride the winds
+**6.1** *Water Shape* \- control liquid  
+**6.2** *Web Weave* \- spin natural nets  
+**6.3** *Whirlwind* \- create vortex  
+**6.4** *Wind Shield* \- air protection  
+**6.5** *Wind Walk* \- float on breeze  
+**6.6** *Zephyr* \- ride the winds
 
 #### 3 Thaumaturgy (Control)
 
 Physical laws, mechanisms, and force. The engineering magic of the Dwur, written in foundational runes that command reality. Practitioners control objects, manipulate energy, bind powers, and impose their will upon matter.
 
-**3.1.1** *Adhere* \- make sticky  
-**3.1.2** *Animate Object* \- objects obey  
-**3.1.3** *Astral Prison* \- crystal stasis  
-**3.1.4** *Command* \- force obedience  
-**3.1.5** *Elasticity* \- control form  
-**3.1.6** *Filch* \- teleport items
+**1.1** *Adhere* \- make sticky  
+**1.2** *Animate Object* \- objects obey  
+**1.3** *Astral Prison* \- crystal stasis  
+**1.4** *Command* \- force obedience  
+**1.5** *Elasticity* \- control form  
+**1.6** *Filch* \- teleport items
 
-**3.2.1** *Force Push* \- directional power  
-**3.2.2** *Haste* \- control speed  
-**3.2.3** *Hover* \- control levitation  
-**3.2.4** *Invisible Tether* \- bind objects  
-**3.2.5** *Knock* \- open locks  
-**3.2.6** *Leap* \- control jumping
+**2.1** *Force Push* \- directional power  
+**2.2** *Haste* \- control speed  
+**2.3** *Hover* \- control levitation  
+**2.4** *Invisible Tether* \- bind objects  
+**2.5** *Knock* \- open locks  
+**2.6** *Leap* \- control jumping
 
-**3.3.1** *Lock* \- seal door  
-**3.3.2** *Magic Suppressor* \- null magic  
-**3.3.3** *Masterscript* \- write command runes  
-**3.3.4** *Shrink Item* \- reduce size  
-**3.3.5** *Sort* \- organize items  
-**3.3.6** *Spider Climb* \- control climbing
+**3.1** *Lock* \- seal door  
+**3.2** *Magic Suppressor* \- null magic  
+**3.3** *Masterscript* \- write command runes  
+**3.4** *Shrink Item* \- reduce size  
+**3.5** *Sort* \- organize items  
+**3.6** *Spider Climb* \- control climbing
 
-**3.4.1** *Strengthen* \- reinforce material  
-**3.4.2** *Teleport* \- move objects  
-**3.4.3** *Time Slip* \- control time  
-**3.4.4** *Unravel* \- counter spells  
-**3.4.5** *Augment Object* \- enhance item  
-**3.4.6** *Control Device* \- command mechanisms
+**4.1** *Strengthen* \- reinforce material  
+**4.2** *Teleport* \- move objects  
+**4.3** *Time Slip* \- control time  
+**4.4** *Unravel* \- counter spells  
+**4.5** *Augment Object* \- enhance item  
+**4.6** *Control Device* \- command mechanisms
 
-**3.5.1** *Animate Tool* \- give purpose  
-**3.5.2** *Binding Circle* \- contain force  
-**3.5.3** *Density Control* \- alter mass  
-**3.5.4** *Enhance Power* \- boost magic  
-**3.5.5** *Mend* \- repair objects  
-**3.5.6** *Object Memory* \- read item history
+**5.1** *Animate Tool* \- give purpose  
+**5.2** *Binding Circle* \- contain force  
+**5.3** *Density Control* \- alter mass  
+**5.4** *Enhance Power* \- boost magic  
+**5.5** *Mend* \- repair objects  
+**5.6** *Object Memory* \- read item history
 
-**3.6.1** *Reality Anchor* \- stabilize space  
-**3.6.2** *Rune Lock* \- seal with power  
-**3.6.3** *Shape Material* \- change form  
-**3.6.4** *Magic Circle* \- create workspace  
-**3.6.5** *Thaumaturgic Seal* \- master rune  
-**3.6.6** *Perfect Control* \- complete mastery
+**6.1** *Reality Anchor* \- stabilize space  
+**6.2** *Rune Lock* \- seal with power  
+**6.3** *Shape Material* \- change form  
+**6.4** *Magic Circle* \- create workspace  
+**6.5** *Thaumaturgic Seal* \- master rune  
+**6.6** *Perfect Control* \- complete mastery
 
 #### 4 Illusione (Illusion)
 
 Perception, thought, and dreams. The subtle magic of the Belerions, woven from phantasmal scripts that deceive the senses. Illusionists create illusions, alter memories, influence minds, and bend perceived reality.
 
-**4.1.1** *Arcane Eye* \- flying sensor  
-**4.1.2** *Auditory Illusion* \- create sounds  
-**4.1.3** *Bewitch* \- enchant mind  
-**4.1.4** *Blur* \- distort appearance  
-**4.1.5** *Charm* \- create friendship  
-**4.1.6** *Detect Magic* \- see magic
+**1.1** *Arcane Eye* \- flying sensor  
+**1.2** *Auditory Illusion* \- create sounds  
+**1.3** *Bewitch* \- enchant mind  
+**1.4** *Blur* \- distort appearance  
+**1.5** *Charm* \- create friendship  
+**1.6** *Detect Magic* \- see magic
 
-**4.2.1** *Disguise* \- alter appearance  
-**4.2.2** *Dream Message* \- send sleeping visions  
-**4.2.3** *Dream Walking* \- enter dreams  
-**4.2.4** *Duplicate* \- create copies  
-**4.2.5** *Emotional Aura* \- project feeling  
-**4.2.6** *False Memory* \- plant fake memory
+**2.1** *Disguise* \- alter appearance  
+**2.2** *Dream Message* \- send sleeping visions  
+**2.3** *Dream Walking* \- enter dreams  
+**2.4** *Duplicate* \- create copies  
+**2.5** *Emotional Aura* \- project feeling  
+**2.6** *False Memory* \- plant fake memory
 
-**4.3.1** *Feign Death* \- appear dead  
-**4.3.2** *Greed* \- create obsession  
-**4.3.3** *Hypnotize* \- question trance  
-**4.3.4** *Illusory Spray* \- disorient with light  
-**4.3.5** *Invisibility* \- become unseen  
-**4.3.6** *Mass Suggestion* \- group command
+**3.1** *Feign Death* \- appear dead  
+**3.2** *Greed* \- create obsession  
+**3.3** *Hypnotize* \- question trance  
+**3.4** *Illusory Spray* \- disorient with light  
+**3.5** *Invisibility* \- become unseen  
+**3.6** *Mass Suggestion* \- group command
 
-**4.4.1** *Major Image* \- perfect illusion  
-**4.4.2** *Mind Maze* \- trap thoughts  
-**4.4.3** *Mind Shield* \- protect thoughts  
-**4.4.4** *Mirror Image* \- create duplicates  
-**4.4.5** *Mirror Walk* \- step through glass  
-**4.4.6** *Perfect Illusion* \- undetectable fake
+**4.1** *Major Image* \- perfect illusion  
+**4.2** *Mind Maze* \- trap thoughts  
+**4.3** *Mind Shield* \- protect thoughts  
+**4.4** *Mirror Image* \- create duplicates  
+**4.5** *Mirror Walk* \- step through glass  
+**4.6** *Perfect Illusion* \- undetectable fake
 
-**4.5.1** *Phantom Sound* \- distant noise  
-**4.5.2** *Phantasmal Force* \- moving illusion  
-**4.5.3** *Programmed Illusion* \- triggered effect  
-**4.5.4** *Read Mind* \- hear thoughts  
-**4.5.5** *Scry* \- share vision  
-**4.5.6** *Silent Image* \- create scene
+**5.1** *Phantom Sound* \- distant noise  
+**5.2** *Phantasmal Force* \- moving illusion  
+**5.3** *Programmed Illusion* \- triggered effect  
+**5.4** *Read Mind* \- hear thoughts  
+**5.5** *Scry* \- share vision  
+**5.6** *Silent Image* \- create scene
 
-**4.6.1** *Spectacle* \- create grand illusion  
-**4.6.2** *Telepathy* \- project thoughts  
-**4.6.3** *True Seeing* \- pierce deception  
-**4.6.4** *Vision* \- personal illusion  
-**4.6.5** *Visual Illusion* \- static images  
-**4.6.6** *X-Ray Vision* \- see through matter
+**6.1** *Spectacle* \- create grand illusion  
+**6.2** *Telepathy* \- project thoughts  
+**6.3** *True Seeing* \- pierce deception  
+**6.4** *Vision* \- personal illusion  
+**6.5** *Visual Illusion* \- static images  
+**6.6** *X-Ray Vision* \- see through matter
 
 ##### 5 Umbrakallo (Shadow Gates)
 
 Shadows, thresholds, and dimensional paths. The secret magic of the Alu, written in darkness and void. Practitioners create Kalla gates, walk between shadows, craft dimensional spaces, and traverse the boundaries between realms.
 
-**5.1.1** *Befuddle* \- shadow memories  
-**5.1.2** *Body Swap* \- shadow exchange  
-**5.1.3** *Cloak of Shadows* \- dark protection  
-**5.1.4** *Dark Anchor* \- fix dimensional point  
-**5.1.5** *Darksight* \- see in darkness  
-**5.1.6** *Deep Shadow* \- create pure darkness
+**1.1** *Befuddle* \- shadow memories  
+**1.2** *Body Swap* \- shadow exchange  
+**1.3** *Cloak of Shadows* \- dark protection  
+**1.4** *Dark Anchor* \- fix dimensional point  
+**1.5** *Darksight* \- see in darkness  
+**1.6** *Deep Shadow* \- create pure darkness
 
-**5.2.1** *Dimension Door* \- create portal  
-**5.2.2** *Disassemble* \- shadow-split form  
-**5.2.3** *Gate Sense* \- detect portals  
-**5.2.4** *Hatred* \- dark emotion  
-**5.2.5** *Ice Heart* \- freeze with shadow  
-**5.2.6** *Kalla Gate* \- create pocket realm
+**2.1** *Dimension Door* \- create portal  
+**2.2** *Disassemble* \- shadow-split form  
+**2.3** *Gate Sense* \- detect portals  
+**2.4** *Hatred* \- dark emotion  
+**2.5** *Ice Heart* \- freeze with shadow  
+**2.6** *Kalla Gate* \- create pocket realm
 
-**5.3.1** *Kallascript* \- write gate runes  
-**5.3.2** *Masquerade* \- shadow dance  
-**5.3.3** *Miniaturize* \- shrink into shadows  
-**5.3.4** *Mind Shatter* \- shadow thoughts  
-**5.3.5** *Night Sphere* \- create darkness  
-**5.3.6** *Nightmare Seed* \- dark dreams
+**3.1** *Kallascript* \- write gate runes  
+**3.2** *Masquerade* \- shadow dance  
+**3.3** *Miniaturize* \- shrink into shadows  
+**3.4** *Mind Shatter* \- shadow thoughts  
+**3.5** *Night Sphere* \- create darkness  
+**3.6** *Nightmare Seed* \- dark dreams
 
-**5.4.1** *Ooze Form* \- shadow substance  
-**5.4.2** *Phantom Coach* \- shadow transport  
-**5.4.3** *Plane Shift* \- change reality  
-**5.4.4** *Realm Weave* \- connect spaces  
-**5.4.5** *Shadow Bind* \- trap in darkness  
-**5.4.6** *Shadow Clone* \- create dark duplicate
+**4.1** *Ooze Form* \- shadow substance  
+**4.2** *Phantom Coach* \- shadow transport  
+**4.3** *Plane Shift* \- change reality  
+**4.4** *Realm Weave* \- connect spaces  
+**4.5** *Shadow Bind* \- trap in darkness  
+**4.6** *Shadow Clone* \- create dark duplicate
 
-**5.5.1** *Shadow Meld* \- merge with darkness  
-**5.5.2** *Shadow Step* \- travel through dark  
-**5.5.3** *Shadow Time* \- pause in darkness  
-**5.5.4** *Shuffle* \- shadow displacement  
-**5.5.5** *Smoke Form* \- become shadow  
-**5.5.6** *Space Fold* \- bend dimensions
+**5.1** *Shadow Meld* \- merge with darkness  
+**5.2** *Shadow Step* \- travel through dark  
+**5.3** *Shadow Time* \- pause in darkness  
+**5.4** *Shuffle* \- shadow displacement  
+**5.5** *Smoke Form* \- become shadow  
+**5.6** *Space Fold* \- bend dimensions
 
-**5.6.1** *Threshold Walk* \- pass through doors  
-**5.6.2** *Twilight Veil* \- walk between worlds  
-**5.6.3** *Void Gate* \- open dark portal  
-**5.6.4** *Void Shield* \- dark protection  
-**5.6.5** *Void Step* \- brief teleport  
-**5.6.6** *Perfect Shadow* \- complete control
+**6.1** *Threshold Walk* \- pass through doors  
+**6.2** *Twilight Veil* \- walk between worlds  
+**6.3** *Void Gate* \- open dark portal  
+**6.4** *Void Shield* \- dark protection  
+**6.5** *Void Step* \- brief teleport  
+**6.6** *Perfect Shadow* \- complete control
 
 #### 6 Necromantia (Death)
 
 Death, spirits, and decay. The forbidden magic of the Avathars, inscribed in blood and bone. Practitioners bind spirits, animate dead, drain life force, and manipulate the boundary between life and death.
 
-**6.1.1** *Animate Skeleton* \- raise bones  
-**6.1.2** *Black Sacrament* \- death ritual  
-**6.1.3** *Blood Curse* \- sacrifice life  
-**6.1.4** *Blood Track* \- follow wounds  
-**6.1.5** *Bone Puppet* \- animate dead  
-**6.1.6** *Bone Shield* \- skeletal armor
+**1.1** *Animate Skeleton* \- raise bones  
+**1.2** *Black Sacrament* \- death ritual  
+**1.3** *Blood Curse* \- sacrifice life  
+**1.4** *Blood Track* \- follow wounds  
+**1.5** *Bone Puppet* \- animate dead  
+**1.6** *Bone Shield* \- skeletal armor
 
-**6.2.1** *Command Undead* \- control dead  
-**6.2.2** *Comprehend Dead* \- dead languages  
-**6.2.3** *Corpse Explosion* \- detonate dead  
-**6.2.4** *Dark Blessing* \- death's power  
-**6.2.5** *Death Gate* \- portal to underworld  
-**6.2.6** *Death Touch* \- wither life
+**2.1** *Command Undead* \- control dead  
+**2.2** *Comprehend Dead* \- dead languages  
+**2.3** *Corpse Explosion* \- detonate dead  
+**2.4** *Dark Blessing* \- death's power  
+**2.5** *Death Gate* \- portal to underworld  
+**2.6** *Death Touch* \- wither life
 
-**6.3.1** *Death Ward* \- protect from necrotic  
-**6.3.2** *Doom Mark* \- mark for death  
-**6.3.3** *Drain Life* \- steal vitality  
-**6.3.4** *Fear Aura* \- death terror  
-**6.3.5** *Ghost Bind* \- trap spirits  
-**6.3.6** *Grave Mist* \- create death fog
+**3.1** *Death Ward* \- protect from necrotic  
+**3.2** *Doom Mark* \- mark for death  
+**3.3** *Drain Life* \- steal vitality  
+**3.4** *Fear Aura* \- death terror  
+**3.5** *Ghost Bind* \- trap spirits  
+**3.6** *Grave Mist* \- create death fog
 
-**6.4.1** *Life Sense* \- detect living  
-**6.4.2** *Mass Animation* \- raise army  
-**6.4.3** *Marble Madness* \- death's toys  
-**6.4.4** *Pain Echo* \- share suffering  
-**6.4.5** *Plague Wind* \- spread death  
-**6.4.6** *Psychometry* \- read death echoes
+**4.1** *Life Sense* \- detect living  
+**4.2** *Mass Animation* \- raise army  
+**4.3** *Marble Madness* \- death's toys  
+**4.4** *Pain Echo* \- share suffering  
+**4.5** *Plague Wind* \- spread death  
+**4.6** *Psychometry* \- read death echoes
 
-**6.5.1** *Raise Dead* \- create undead  
-**6.5.2** *Sniff* \- smell death  
-**6.5.3** *Soul Cage* \- trap essence  
-**6.5.4** *Soul Rend* \- tear spirit  
-**6.5.5** *Speak with Dead* \- question spirits  
-**6.5.6** *Spirit Chains* \- bind ghost
+**5.1** *Raise Dead* \- create undead  
+**5.2** *Sniff* \- smell death  
+**5.3** *Soul Cage* \- trap essence  
+**5.4** *Soul Rend* \- tear spirit  
+**5.5** *Speak with Dead* \- question spirits  
+**5.6** *Spirit Chains* \- bind ghost
 
-**6.6.1** *Spirit Form* \- become ghostly  
-**6.6.2** *Truth Sense* \- death's truth  
-**6.6.3** *Undead Sight* \- see spirits  
-**6.6.4** *Vampiric Touch* \- drain energy  
-**6.6.5** *Wizard Mark* \- death runes  
-**6.6.6** *Perfect Death* \- ultimate end
+**6.1** *Spirit Form* \- become ghostly  
+**6.2** *Truth Sense* \- death's truth  
+**6.3** *Undead Sight* \- see spirits  
+**6.4** *Vampiric Touch* \- drain energy  
+**6.5** *Wizard Mark* \- death runes  
+**6.6** *Perfect Death* \- ultimate end
 
 ## Arcana
 
