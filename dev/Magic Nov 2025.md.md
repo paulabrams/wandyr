@@ -1,0 +1,3 @@
+1. Each spell has a name and snippet, just a couple of words. There is no other spell description. (see Whitehack for suggested text)
+2. When you cast a spell you must describe your intended effect and state the Spell Level you believe this should be. , and  Some spells may have a minimum spell level. This is your spell will behave, this time.
+	1. Use spell levels from classic RPGs as a rough benchmark. The Guide or other players, may help suggest comparable spells or nudge as needed.
