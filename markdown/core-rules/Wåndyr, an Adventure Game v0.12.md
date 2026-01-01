@@ -478,8 +478,8 @@ Morale grants extra Hearts and opportunities to replenish them.
 
 ### Animal Companions
 
-A loyal hound, a clever raven, a pony who finds its way home—animals in Wåndyr are not pets but companions on the road.  
-If you keep an animal in Item Slots from Muster, they are your "companion” and can restore 1 Heart per character once per Muster (takes 1 Turn). This represents the simple comfort of loyal company—a dog at your feet by the fire, a pony nuzzling your pocket for apples.
+A loyal hound, a clever raven, a pony who finds its way home—animals in Wåndyr are not pets but companions on the road.
+If you keep an animal companion in an Item Slot from Muster, they can restore 1 Heart to 1 character per Muster; using their Action as an NPC. This represents the simple comfort of loyal company—a dog at your feet by the fire, a pony nuzzling your pocket for apples.
 
 ### About Morale
 
