@@ -20,61 +20,61 @@ Date: Dec 31, 2025
 
 About the Name: Wåndyr is “wander” as in travel about, but also “wonder” as in finding wondrous things in your travels, and maybe bringing them back.
 
-#### 
+####
 
 # Welcome to Wåndyr\! {#welcome-to-wåndyr!}
 
-**Wåndyr** is an adventure game about a band of adventurers wandering through a pulp fantasy world. The focus is on exploration, following rumors, discovering places, treasure hunting, camping, singing, storytelling, cleverly overcoming impossible odds, naming weapons, and coming back alive with tales to tell. In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again. 
+**Wåndyr** is an adventure game about a band of adventurers wandering through a pulp fantasy world. The focus is on exploration, following rumors, discovering places, treasure hunting, camping, singing, storytelling, cleverly overcoming impossible odds, naming weapons, and coming back alive with tales to tell. In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again.
 
 ![Oracle illustration][image3]
 
 ### Contents
 
-[**Welcome to Wåndyr\!	2**](#welcome-to-wåndyr!)
+[**Welcome to Wåndyr\! 2**](#welcome-to-wåndyr!)
 
-[**Starting a Game	3**](#starting-a-game)
+[**Starting a Game 3**](#starting-a-game)
 
-[Characters	4](#characters)
+[Characters 4](#characters)
 
-[The Muster	7](#the-muster)
+[The Muster 7](#the-muster)
 
-[Rumors	8](#rumors)
+[Rumors 8](#rumors)
 
-[Locations	9](#locations)
+[Locations 9](#locations)
 
-[**Playing the Game	10**](#playing-the-game)
+[**Playing the Game 10**](#playing-the-game)
 
-[The Oracle	10](#the-oracle)
+[The Oracle 10](#the-oracle)
 
-[Attempting the Extraordinary	12](#attempting-the-extraordinary)
+[Attempting the Extraordinary 12](#attempting-the-extraordinary)
 
-[Morale	12](#morale)
+[Morale 12](#morale)
 
-[Camp	14](#camp)
+[Camp 14](#camp)
 
-[Equipment	14](#equipment)
+[Equipment 14](#equipment)
 
-[Experience	15](#experience)
+[Experience 15](#experience)
 
-[Alignment	16](#alignment)
+[Alignment 16](#alignment)
 
-[Game Flow	16](#game-flow)
+[Game Flow 16](#game-flow)
 
-[**Mågįc	17**](#mågįc)
+[**Mågįc 17**](#mågįc)
 
-[Magic-Users	17](#magic-users)
+[Magic-Users 17](#magic-users)
 
-[Arcana	19](#arcana)
+[Arcana 19](#arcana)
 
-[Invocations	27](#invocations)
+[Invocations 27](#invocations)
 
-[Sentient Items	28](#sentient-items)
+[Sentient Items 28](#sentient-items)
 
-[**Fighting	29**](#fighting)
+[**Fighting 29**](#fighting)
 
-[Monsters	30](#monsters)
+[Monsters 30](#monsters)
 
-[Death	30](#death)
+[Death 30](#death)
 
 # Starting a Game {#starting-a-game}
 
@@ -106,7 +106,7 @@ The Guide lists three rumors that hint about troublesome events or mysterious pl
 
 #### 5 \- Pack for the Journey
 
-The Guide will provide you with a few "hand me down" items such as weapons, armor, spellbooks, etc. The Guide may also provide  travel supplies (e.g. food, water, cloak). 
+The Guide will provide you with a few "hand me down" items such as weapons, armor, spellbooks, etc. The Guide may also provide  travel supplies (e.g. food, water, cloak).
 
 #### 6 \- Embark
 
@@ -124,7 +124,7 @@ For example, "Rook: agile cunning | knife, (lockpicks)" goes by the alias "Rook"
 
 A Trait is a keyword that describes how your character is played. *This is perhaps more important than it sounds*. This is not about what your character knows or can do, but more about how they behave. For example, a character with the "bard" Trait *acts* like a musician or skald, while Skills determine what they know how to do. You can think of these as "soft skills" that complement their "hard” Skills.
 
-**Guidelines:** Each Trait must be a single word, or common compound word (e.g. "rat-catcher", "horse-thief"). Traits can describe physical appearance, personality, quirks, habits, customs, approach to solving problems, etc. Traits can refer to a culture, homeland, or ancestry (human, elf, dwarf, etc.) or whatever helps you paint a picture. 
+**Guidelines:** Each Trait must be a single word, or common compound word (e.g. "rat-catcher", "horse-thief"). Traits can describe physical appearance, personality, quirks, habits, customs, approach to solving problems, etc. Traits can refer to a culture, homeland, or ancestry (human, elf, dwarf, etc.) or whatever helps you paint a picture.
 
 ![][image6]
 
@@ -136,7 +136,7 @@ A Skill is something the character has learned, either an item proficiency or a 
 
 **Specialized Skills:** Using specialized items or knowledge requires a specialized or rare Skill, such as "greatsword", "herbal medicine", or a magic school.
 
-#### 
+####
 
 #### Sample Traits (d66)
 
@@ -228,33 +228,33 @@ A Skill is something the character has learned, either an item proficiency or a 
 
 #### Example Characters
 
-Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skills, with Songs in quotes. 
+Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skills, with Songs in quotes.
 
-**1.1**  Rook: agile cunning | knife, (lockpicks)   
-**1.2**  Cipher: calculating elusive | ciphers, daggers   
-**1.3**  Shadow: silent (ruthless) | blowgun, poisons   
-**1.4**  Wilde: charming strong | cards, cutlass   
+**1.1**  Rook: agile cunning | knife, (lockpicks)
+**1.2**  Cipher: calculating elusive | ciphers, daggers
+**1.3**  Shadow: silent (ruthless) | blowgun, poisons
+**1.4**  Wilde: charming strong | cards, cutlass
 **1.5**  Lyra: nimble (spy)  | rope, spy ciphers  
 **1.6**  Pearl: deadly noble | disguise kit, (stiletto)
 
-**2.1**  Serra: fierce shieldmaiden | battle ax, shield   
-**2.2**  Magnus: strong, boisterous | warhammer, armor   
-**2.3**  Iron: tough Dwarf | axe, shield   
-**2.4**  Sarge: grizzled soldier | arming sword, armor   
-**2.5**  Pike: alert guard | halberd, whistle   
+**2.1**  Serra: fierce shieldmaiden | battle ax, shield
+**2.2**  Magnus: strong, boisterous | warhammer, armor
+**2.3**  Iron: tough Dwarf | axe, shield
+**2.4**  Sarge: grizzled soldier | arming sword, armor
+**2.5**  Pike: alert guard | halberd, whistle
 **2.6**  Shiro: honorable lethal | katana, wakizashi
 
-**3.1**  Drake: weathered wanderer | machete, tinderbox   
-**3.2**  Slate: observant scout | telescope, bow   
-**3.3**  Wolf: (feral) hunter | spear, “Song of the Wild”   
-**3.4**  Hawk: vigilant scout | longbow, falconry-glove   
-**3.5**  Storm: impetuous, daring | javelin, grapnel   
+**3.1**  Drake: weathered wanderer | machete, tinderbox
+**3.2**  Slate: observant scout | telescope, bow
+**3.3**  Wolf: (feral) hunter | spear, “Song of the Wild”
+**3.4**  Hawk: vigilant scout | longbow, falconry-glove
+**3.5**  Storm: impetuous, daring | javelin, grapnel
 **3.6**. Echo: hallow Elf | harp | “Elven Ballad of Hope”  
 **4.1**. Kat: lithe second-story-thief | (grappling hook, thieves tools)  
 **4.2**  Forge: steadfast armorer | armor, hammer  
-**4.3**  Quill: meticulous learned | ledger, inkwell   
-**4.4**  Flint: steely Dwarf | axe, cookpot   
-**4.5**  Nails: tough soldier | flail, gambeson   
+**4.3**  Quill: meticulous learned | ledger, inkwell
+**4.4**  Flint: steely Dwarf | axe, cookpot
+**4.5**  Nails: tough soldier | flail, gambeson
 **4.6**  Lindon: brave, strong | poleax, armor
 
 **5.1**   Khael: focused witch-hunter | Umbrakalla binding chains  
@@ -264,11 +264,11 @@ Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skill
 **5.5**  Hezerek: ambitious (shady) | Umbrakalla orb  
 **5.6**  Ignus: fiery driven | Elementale staff
 
-**6.1**  Dusk: honorable noble | ancestral blade, doublet   
-**6.2**  Oak: strong enduring | staff, rope   
+**6.1**  Dusk: honorable noble | ancestral blade, doublet
+**6.2**  Oak: strong enduring | staff, rope
 **6.3**  Vale: woodcraft hunter | longbow, knife  
 **6.4**  Digs: Dwarf prospector | pickaxe, mining helmet  
-**6.5**  Bear: strong warrior | maul, bearskin cloak   
+**6.5**  Bear: strong warrior | maul, bearskin cloak
 **6.6**  Thalia: keen-eyed Elf | bow, sword
 
 ## The Muster {#the-muster}
@@ -277,18 +277,18 @@ Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skill
 
 ### Hearts
 
-**Roll 2d6 Hearts** for each of your three characters to see how they feel today. Choose one character to Muster (play) today. 
+**Roll 2d6 Hearts** for each of your three characters to see how they feel today. Choose one character to Muster (play) today.
 
 ### Equipment
 
-You have **10 Item Slots** for readily equipped gear such as armor, weapons, light, and magic items.   
+You have **10 Item Slots** for readily equipped gear such as armor, weapons, light, and magic items.
 Most items use one slot; larger items use multiple slots. These are your “hot bar” of quickly-accessible items.
 
 #### Baggage
 
 If you have a bag (sack, rucksack, haversack, etc.) you can carry a few items beyond your 10 Item Slots. This counts as "Baggage”, which limits movement and may prevent safely swimming, climbing, leaping, etc.
 
-Dropping Baggage takes 1 Round (10 sec), and accessing items inside takes 1 Turn (10 min). 
+Dropping Baggage takes 1 Round (10 sec), and accessing items inside takes 1 Turn (10 min).
 
 You also have “Baggage” if your hands are occupied with something not listed in your item slots.  
 ![Camping illustration][image7]
@@ -308,7 +308,7 @@ You also have “Baggage” if your hands are occupied with something not listed
 
 ## Rumors {#rumors}
 
-The Guide should provide the players with three rumors to follow by rolling on the spark table below. 
+The Guide should provide the players with three rumors to follow by rolling on the spark table below.
 
 **1.1** Caravan Overdue \- expected last week   **1.2** Heir Vanished \- bed found empty   **1.3** Widow Searching \- husband’s killer   **1.4** Merchant Hoarding \- grain stores locked   **1.5** Captain Bribed \- looks away nightly   **1.6** Priest Preaching \- doom approaches soon
 
@@ -360,7 +360,7 @@ The Guide can update a location upon visit; roll and combine the new result with
 
 # Playing the Game {#playing-the-game}
 
-The game mostly consists of a conversation around the table. The Guide describes the world and people in it other than your characters. 
+The game mostly consists of a conversation around the table. The Guide describes the world and people in it other than your characters.
 
 You can have your character attempt anything you want. The Guide decides what happens, or consults the Oracle.
 
@@ -368,7 +368,7 @@ You can have your character attempt anything you want. The Guide decides what ha
 
 The Oracle answers any yes/no question. Roll 2d6: on 8 or higher the answer is “Yes”, otherwise "No".
 
-**Easy/Hard:** The Oracle number won’t always be 8; the Guide will adjust it based on what you are attempting to do. The range is 6-12: easy (6), normal (8), hard (10), or extreme (12). 
+**Easy/Hard:** The Oracle number won’t always be 8; the Guide will adjust it based on what you are attempting to do. The range is 6-12: easy (6), normal (8), hard (10), or extreme (12).
 
 ### Sweet and Spicy
 
@@ -414,7 +414,7 @@ For each roll this Turn, if you match the criteria then roll with Advantage (3d6
 
 **Byname**: you use a helpful Byname
 
-**Feat**: you have done this before in the game. This isn’t your first time overcoming this foe or situation. 
+**Feat**: you have done this before in the game. This isn’t your first time overcoming this foe or situation.
 
 **Effort**: you push harder (not possible with Baggage, stealth, climbing, swimming, wrestling, or when making it look easy)
 
@@ -424,7 +424,7 @@ A Disadvantage may apply for various factors, such as being unarmed, encumbered,
 
 ### Deeper Questions
 
-If you need more than yes/no, the Oracle can play "20 questions". The Guide should also use random tables from OSR or those in the **Wåndyr World Oracle**. 
+If you need more than yes/no, the Oracle can play "20 questions". The Guide should also use random tables from OSR or those in the **Wåndyr World Oracle**.
 
 *Guide Tip: Ask an AI to generate a table, then proof it, and then have a player roll on it.*
 
@@ -446,7 +446,7 @@ The maximum Level you can attempt is your relevant Alignment (e.g. magic school 
 
 ## Morale {#morale}
 
-*Your character Hearts keep your character wandering, but morale keeps your party together.* 
+*Your character Hearts keep your character wandering, but morale keeps your party together.*
 
 Morale grants extra Hearts and opportunities to replenish them.
 
@@ -464,7 +464,7 @@ Morale grants extra Hearts and opportunities to replenish them.
 
 **Comforts:** Comforts are finer provisions—cold chicken and pickles, seed-cakes, bacon and eggs, a good cheese, pipe and leaf, or a proper tea. Buy \+1 Comforts in town (10 gp each). Exquisite \+2 Comforts are rare gifts: "Beorn's honey" or "elven waybread".
 
-**Host:** If you keep Comforts or hospitality gear in Item Slots from Muster, you are a "host." You can offer refreshment; each character who partakes (everyone needs to spend an Action) regains 1 Heart. Total Hearts per Muster limited to Item Slots plus Recipes.
+**Host:**  If you keep Comforts or hospitality gear in Item Slots from Muster, you are a "host." You can offer refreshment; each character who partakes (everyone needs to spend an Action) regains 1 Heart. Total Hearts per Muster limited to Item Slots plus Recipes.
 
 ![Time illustration][image10]
 
@@ -474,7 +474,7 @@ Morale grants extra Hearts and opportunities to replenish them.
 
 **Performance:** You can play music to restore Hearts once per Muster. The performance takes 1 hour and restores 1 Heart per character who participates (requires a music instrument and Skill), or plays “host”.
 
-**Bards:** If you keep a musical instrument equipped in Item Slots from Muster, you are a "bard." As an Action, you can play music that restores 1 Heart to each character who needs it most (lowest Hearts first). Total Hearts Total Hearts per Muster limited to Item Slots plus Songs.
+**Bard:** If you equip a musical instrument at Muster, you are a “bard". You can play (Action) to restore 1 Heart to whoever needs it most. Total Hearts per Muster limited to Item Slots plus Songs.
 
 ### Animal Companions
 
@@ -483,13 +483,13 @@ If you keep an animal in Item Slots from Muster, they are your "companion” and
 
 ### About Morale
 
-*In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again.* *What makes the journey meaningful? Not just the dragon at the end, but the longing for home along the way—and the companions who carry a piece of home with them into the wild.* 
+*In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again.* *What makes the journey meaningful? Not just the dragon at the end, but the longing for home along the way—and the companions who carry a piece of home with them into the wild.*
 
 *The leader is the compass. The host reminds you of the table you'll sit at when you return. The bard reminds you of the songs you'll sing by your own fire. That's morale. That's what keeps the company together when the road grows dark.*
 
 ## Camp {#camp}
 
-The game starts with Muster and ends or pauses in Camp. When you decide to stop and rest, you must choose whether to make a temporary camp or return to a prior camp. The game is then paused until the next Muster. 
+The game starts with Muster and ends or pauses in Camp. When you decide to stop and rest, you must choose whether to make a temporary camp or return to a prior camp. The game is then paused until the next Muster.
 
 #### Camp Followers
 
@@ -501,9 +501,9 @@ Anyone not in the Muster is assumed to follow along behind to set up the next ca
 
 At some point you may decide to establish a permanent camp or “home base”, such as a cave, frontier tower, tavern, or hideout. This gives you a secure place to store loot. You can have multiple bases, making fast-travel even more useful.
 
-## 
+##
 
-## 
+##
 
 ## Equipment {#equipment}
 
@@ -518,7 +518,7 @@ Wåndyr assumes a traditional fantasy economy using gold pieces (gp), where quai
 **Elevated items** cost an extra 10gp for “good”, 100gp “rich”, 1,000gp for “noble”, and so on.  
 **Magic items** have a magical feature. Elven boots silence footsteps, a hero's belt bestows strength, and a magic shield is more protective. You can usually discover its enchantment through use, especially with Skill in the item. Magic items are rarely sold.
 
-## 
+##
 
 ## Experience {#experience}
 
@@ -530,11 +530,11 @@ You can also earn small spot bonuses of 1 XP for deeds important in Wandyr: disc
 
 ### Spending XP
 
-XP can be spent in camp to buy advancements. New Traits and Skills cost 3 XP each. The following advancements are available if you meet their requirements. Each advancement costs 3 XP. 
+XP can be spent in camp to buy advancements. New Traits and Skills cost 3 XP each. The following advancements are available if you meet their requirements. Each advancement costs 3 XP.
 
 ##### Byname
 
-Once an item has served you well in a significant deed, you can give it a Byname for 3 XP. For example, after narrowly slaying a horrid troll you might name your sword “Trollbane”. An artisan can add decorations or inscriptions (inlays, etchings, jewels, gold leaf, gold pommel, etc.). Also possible for animal companions. 
+Once an item has served you well in a significant deed, you can give it a Byname for 3 XP. For example, after narrowly slaying a horrid troll you might name your sword “Trollbane”. An artisan can add decorations or inscriptions (inlays, etchings, jewels, gold leaf, gold pommel, etc.). Also possible for animal companions.
 
 You might also be given a "byname" such as an honorable title, epithet, or honorific. Once you have led companions through danger, shouldered a burden others could not bear, or stood firm when all seemed lost, you may earn a byname. Bynames are usually assigned to you rather than chosen for yourself.
 
@@ -579,9 +579,9 @@ To add a sense of urgency, the Guide tracks 10-minute "Turns" using a "Turn Cloc
 
 #### Combat Rounds
 
-In combat, time is measured in 10-second "Rounds". This is just enough time for each character to move and take one action. The Turn Clock is usually paused in combat. 
+In combat, time is measured in 10-second "Rounds". This is just enough time for each character to move and take one action. The Turn Clock is usually paused in combat.
 
-# 
+#
 
 # Mågįc {#mågįc}
 
@@ -614,7 +614,7 @@ Each Magic School has its own list of spells and secret magic language, written,
 
 #### Spell Casting
 
-If you are a magic-user, you can use an Action to cast a spell. You must say the spell name and what you want the spell to do. 
+If you are a magic-user, you can use an Action to cast a spell. You must say the spell name and what you want the spell to do.
 
 *Saying what you want to do is especially important in Wåndyr since each spell consists solely of its name. You may not describe something inconsistent with the spell name or the general rules, but are otherwise free to try anything.*
 
@@ -628,12 +628,12 @@ If you are a magic-user, you can use an Action to cast a spell. You must say the
 
 **Effects:** The Guide will describe your spell effects (or may offer to let you do this yourself).
 
-If you controlled the spell it should largely do what you wanted. If you did not control the spell, then something else happens, ranging from different effects, collateral damage, or backlash damage to you. You can mitigate the risks by casting below your limit.   
+If you controlled the spell it should largely do what you wanted. If you did not control the spell, then something else happens, ranging from different effects, collateral damage, or backlash damage to you. You can mitigate the risks by casting below your limit.
 Sweet/Spicy add a twist.
 
 ### Caster Level
 
-Your caster level is your level of Alignment with the magic school of the spell. This determines your level of magic literacy and the maximum spell level you can attempt. For example, if your Umbrakalla level is 3 then you can attempt to cast Umbrakalla spells of 3rd level or lower; you cannot even attempt a 4th level spell. 
+Your caster level is your level of Alignment with the magic school of the spell. This determines your level of magic literacy and the maximum spell level you can attempt. For example, if your Umbrakalla level is 3 then you can attempt to cast Umbrakalla spells of 3rd level or lower; you cannot even attempt a 4th level spell.
 
 *When casting a spell from a spellbook or Arcana, treat your caster level as 1 level higher.*
 
@@ -711,7 +711,7 @@ Life force, growth, and harmony. The magic of the Elves, written in living ink t
 **6.5** *Tranquil Heart* \- create inner peace  
 **6.6** *Vital Harmony* \- balance life forces
 
-#### 
+####
 
 ### Elementale
 
@@ -759,7 +759,7 @@ Primal forces, elements, and weather. The Baal inscribe dragon magic in burning 
 **6.5** *Wind Walk* \- float on breeze  
 **6.6** *Zephyr* \- ride the winds
 
-#### 
+####
 
 ### Thaumaturgy
 
@@ -807,7 +807,7 @@ Physical laws, mechanisms, and force. The engineering magic of the Dwur, written
 **6.5** *Thaumaturgic Seal* \- master rune  
 **6.6** *Perfect Control* \- complete mastery
 
-#### 
+####
 
 ### Illusione
 
@@ -855,7 +855,7 @@ Perception, thought, and dreams. The subtle magic of the Belerions, woven from p
 **6.5** *Visual Illusion* \- static images  
 **6.6** *X-Ray Vision* \- see through matter
 
-#### 
+####
 
 ### Umbrakallo
 
@@ -903,7 +903,7 @@ Shadows, thresholds, and dimensional paths. The secret magic of the Alu, written
 **6.5** *Void Step* \- brief teleport  
 **6.6** *Perfect Shadow* \- complete control
 
-#### 
+####
 
 ### Necromantia
 
@@ -951,7 +951,7 @@ Death, spirits, and decay. The forbidden magic of the Avathars, inscribed in blo
 **6.5** *Wizard Mark* \- death runes  
 **6.6** *Perfect Death* \- ultimate end
 
-#### 
+####
 
 ### Canting
 
@@ -999,7 +999,7 @@ The art of deception and manipulation. Spoken in Thieves' Cant, the secret langu
 **6.5** *Jarkman's Gift* \- living forgeries  
 **6.6** *Prince of Thieves* \- inspire loyalty
 
-## 
+##
 
 ## Invocations {#invocations}
 
@@ -1067,7 +1067,7 @@ Ask the Oracle if you "hit"; this deals d6 Hearts. More lethal weapons may have 
 
 ### Defend
 
-When you are attacked or otherwise endangered, ask the Oracle if you avoid getting "hit". If you are hit, the Guide rolls Hearts lost (often d6). 
+When you are attacked or otherwise endangered, ask the Oracle if you avoid getting "hit". If you are hit, the Guide rolls Hearts lost (often d6).
 
 Reduce melee damage by 1 Heart if you melee attack or parry that foe this round.
 
@@ -1110,9 +1110,9 @@ Characters and monsters die at 0 Hearts. If you reach 0 Hearts, choose whether y
 
 **Onscreen:** Describe one final heroic action on the next round; ask the Oracle if the action succeeds and then go Offscreen. *Heroic feats require Sweet.* *Spicy indicates immediate, final death*
 
-### Welcome to Wåndyr\!
+### Welcome to Wåndyr\
 
-Wåndyr is an adventure game about a band of adventurers wandering through a pulp fantasy world. The focus is on exploration, following rumors, discovering places, treasure hunting, camping, singing, storytelling, cleverly overcoming impossible odds, naming weapons, and coming back alive with tales to tell. In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again. 
+Wåndyr is an adventure game about a band of adventurers wandering through a pulp fantasy world. The focus is on exploration, following rumors, discovering places, treasure hunting, camping, singing, storytelling, cleverly overcoming impossible odds, naming weapons, and coming back alive with tales to tell. In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again.
 
 #### Sandbox Play
 
@@ -1125,7 +1125,7 @@ The Guide does not prepare a predefined story beforehand. Instead, the Guide use
 
 #### The Oracle
 
-The Oracle answers any yes/no question. Roll 2d6: on 8 or higher the answer is “Yes”, otherwise "No". 
+The Oracle answers any yes/no question. Roll 2d6: on 8 or higher the answer is “Yes”, otherwise "No".
 
 The Guide will set the number lower if easy, higher if hard.
 
