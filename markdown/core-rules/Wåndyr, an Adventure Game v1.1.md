@@ -223,7 +223,7 @@ A Skill is something the character has learned, either an item proficiency or a 
 **6.2**  Illusione  
 **6.3**  Thaumaturgy  
 **6.4**  Necromantia  
-**6.5**  Umbrakalla  
+**6.5**  Umbrakala  
 **6.6**  Vitae
 
 #### Example Characters
@@ -257,11 +257,11 @@ Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skill
 **4.5**  Nails: tough soldier | flail, gambeson
 **4.6**  Lindon: brave, strong | poleax, armor
 
-**5.1**   Khael: focused witch-hunter | Umbrakalla binding chains  
+**5.1**   Khael: focused witch-hunter | Umbrakala binding chains  
 **5.2**  Vesper: artistic scholar | Illusione staff  
-**5.3**  Twilight: pensive devious | Umbrakalla sickle  
+**5.3**  Twilight: pensive devious | Umbrakala sickle  
 **5.4**  Istar: honorable white-wizard | Vitae staff  
-**5.5**  Hezerek: ambitious (shady) | Umbrakalla orb  
+**5.5**  Hezerek: ambitious (shady) | Umbrakala orb  
 **5.6**  Ignus: fiery driven | Elementale staff
 
 **6.1**  Dusk: honorable noble | ancestral blade, doublet
@@ -605,7 +605,7 @@ Each magic school is a Skill; the major schools are:
 2. Elementale (Elemental)  
 3. Thaumaturgy (Control)  
 4. Illusione (Illusion)  
-5. Umbrakallo (Shadow Gates)  
+5. Umbrakala (Shadow Gates)  
 6. Necromantia (Death)  
 7. Canting (Thievery)
 
@@ -632,13 +632,13 @@ Sweet/Spicy add a twist.
 
 ### Caster Level
 
-Your caster level is your level of Alignment with the magic school of the spell. This determines your level of magic literacy and the maximum spell level you can attempt. For example, if your Umbrakalla level is 3 then you can attempt to cast Umbrakalla spells of 3rd level or lower; you cannot even attempt a 4th level spell.
+Your caster level is your level of Alignment with the magic school of the spell. This determines your level of magic literacy and the maximum spell level you can attempt. For example, if your Umbrakala level is 3 then you can attempt to cast Umbrakala spells of 3rd level or lower; you cannot even attempt a 4th level spell.
 
 *When casting a spell from a spellbook or Arcana, treat your caster level as 1 level higher.*
 
 #### Alignment
 
-To find your Alignment, count all relevant Advancements (Traits, Skills, Names, etc.) and divide by 3, rounding down. For example, if you have an Umbrakalla skill and know 6 Umbrakalla spells, you are a 2nd level Umbrakalla caster.
+To find your Alignment, count all relevant Advancements (Traits, Skills, Names, etc.) and divide by 3, rounding down. For example, if you have an Umbrakala skill and know 6 Umbrakala spells, you are a 2nd level Umbrakala caster.
 
 *The Guide might ask for your Alignment to things other than magic schools or spells.*
 
@@ -856,7 +856,7 @@ Perception, thought, and dreams. The subtle magic of the Belerions, woven from p
 
 ####
 
-### Umbrakallo
+### Umbrakala
 
 Shadows, thresholds, and dimensional paths. The secret magic of the Alu, written in darkness and void. Practitioners create Kalla gates, walk between shadows, craft dimensional spaces, and traverse the boundaries between realms.
 

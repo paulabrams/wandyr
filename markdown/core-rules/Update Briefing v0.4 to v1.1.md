@@ -288,8 +288,8 @@
 
 ### 32. **Magic School Names**
 
-- **OLD**: Elementalis, Umbrakala
-- **NEW**: Elementale, Umbrakallo
+- **OLD**: Elementalis
+- **NEW**: Elementale
 - *Why*: Consistent naming
 
 ### 33. **Character Examples - Updated**

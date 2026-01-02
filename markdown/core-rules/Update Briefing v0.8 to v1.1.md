@@ -78,12 +78,11 @@
 
 ### 9. **Insight System - Updated**
 
-- **OLD**: 6 options: CONCEPT, SKILL, ITEM, NAME, ASSIST, EFFORT
+- **OLD**: 6 options: TRAIT, SKILL, ITEM, NAME, ASSIST, EFFORT
 - **NEW**: 6 options with changes:
-  - CONCEPT → **TRAIT** (your approach matches a Trait)
   - NAME → **BYNAME** (titles, epithets, named items)
   - ASSIST → **FEAT** (you've done this before)
-  - Still has: SKILL, ITEM, EFFORT
+  - Still has: TRAIT, SKILL, ITEM, EFFORT
 - *Why*: Better reflects new advancement system, clearer terminology
 
 ### 10. **Attempting the Extraordinary**
@@ -174,7 +173,6 @@
 ## Minor Changes
 
 - **Elementalis** → **Elementale** (name change)
-- **Umbrakala** → **Umbrakallo** (name change)
 - Spell lists use **1.1, 1.2** format instead of **1.1.1, 1.1.2**
 - **Learning Spells**:
   - OLD: Cast with Sweet, pay 1 XP, gain as Name, spell vanishes from book
