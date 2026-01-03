@@ -134,7 +134,7 @@ A Skill is something the character has learned, either an item proficiency or a 
 
 **Guidelines:** Each Skill must be a single word, or common compound word corresponding to a type of item or knowledge (e.g. "greatsword", "herbal medicine").
 
-**Specialized Skills:** Using specialized items or knowledge requires a specialized or rare Skill, such as "greatsword", "herbal medicine", or a magic school.
+**Specialized Skills:** Using specialized items or knowledge requires a specialized or rare Skill, such as "greatsword", “lockpicking”, "herbal medicine", “spellbook”, or a magic school.
 
 ####
 
@@ -177,7 +177,7 @@ A Skill is something the character has learned, either an item proficiency or a 
 
 **6.1**  noble  
 **6.2**  enduring  
-**6.3**  skilled  
+**6.3**  dreamy  
 **6.4**  hardy  
 **6.5**  powerful  
 **6.6**  keen-eyed
@@ -634,7 +634,7 @@ Sweet/Spicy add a twist.
 
 Your caster level is your level of Alignment with the magic school of the spell. This determines your level of magic literacy and the maximum spell level you can attempt. For example, if your Umbrakala level is 3 then you can attempt to cast Umbrakala spells of 3rd level or lower; you cannot even attempt a 4th level spell.
 
-*When casting a spell from a spellbook or Arcana, treat your caster level as 1 level higher.*
+Casting a spell from a spellbook or Arcana in which you have Skill is made with a +1 caster level bonus.
 
 #### Alignment
 
@@ -652,7 +652,7 @@ Arcana are "drippy wizard costume" items (wand, orb, staff, hat, robes, crystal,
 
 #### Arcana Spells
 
-Arcana can contain spells written in stylized words of power, and serve as spellbooks for casting those spells. (Similar to a spellbook, this grants a bonus of +1 to caster level.)
+Arcana can contain spells written in stylized words of power, and if so serve as spellbooks for casting those spells, provided you have a Skill in the item.
 
 #### Arcana Hearts
 
