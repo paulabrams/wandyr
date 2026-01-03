@@ -464,7 +464,7 @@ Morale grants extra Hearts and opportunities to replenish them.
 
 **Comforts:** Comforts are finer provisions—cold chicken and pickles, seed-cakes, bacon and eggs, a good cheese, pipe and leaf, or a proper tea. Buy \+1 Comforts in town (10 gp each). Exquisite \+2 Comforts are rare gifts: "Beorn's honey" or "elven waybread".
 
-**Host:** If you keep Comforts or hospitality gear in Item Slots from Muster, you are a "host." You can offer refreshment; each character who partakes (everyone needs to spend an Action) regains 1 Heart. Total Hearts per Muster limited to Item Slots plus Recipes.
+**Host:** If you keep Comforts or hospitality gear in Item Slots from Muster, you are a "host." You can offer refreshment as an Action; each character who partakes (everyone needs to spend an Action) regains 1 Heart. Total Hearts per Muster limited to Item Slots plus Recipes.
 
 ![Time illustration][image10]
 
@@ -652,7 +652,7 @@ Arcana are "drippy wizard costume" items (wand, orb, staff, hat, robes, crystal,
 
 #### Arcana Spells
 
-Arcana can contain spells written in stylized words of power. Similar to spellbooks, this grants \+1 to caster level when casting those spells.
+Arcana can contain spells written in stylized words of power, and serve as spellbooks for casting those spells. (Similar to a spellbook, this grants a bonus of +1 to caster level.)
 
 #### Arcana Hearts
 
@@ -1105,7 +1105,7 @@ For more detail, the Guide can use OSR monsters or wing it as follows.
 
 Characters and monsters die at 0 Hearts. If you reach 0 Hearts, choose whether you die "offscreen" or "onscreen".
 
-**Offscreen:** We cut away as your character drops; bring in another character next round. Offscreen deaths are uncertain. At any future Muster, you may let the character pass on, or make an Invocation to return. On **Double Spicy** (double 1s) you are dead with no uncertainty.
+**Offscreen:** We cut away as your character drops; bring in another character next round. Offscreen deaths are uncertain. At any future Muster, you may let the character pass on, or let them make an Invocation to return. On **Double Spicy** (double 1s) they are dead with no uncertainty.
 
 **Onscreen:** Describe one final heroic action on the next round; ask the Oracle if the action succeeds and then go Offscreen. *Heroic feats require Sweet.* *Spicy indicates immediate, final death*
 
