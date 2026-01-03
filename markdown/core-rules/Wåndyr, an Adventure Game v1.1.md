@@ -656,7 +656,7 @@ Arcana can contain spells written in stylized words of power, and serve as spell
 
 #### Arcana Hearts
 
-If you are a magic-user and muster with Arcana, you gain 1 “Arcana Heart” per Arcana item, up to your Alignment across all Magic Schools. Arcana Hearts are used for casting spells and against hostile magic.
+If you are a magic-user and muster with Arcana, you gain 1 “Arcana Heart” per Arcana item, up to your Alignment across all Magic Schools. Requires a Skill in the Arcana item (e.g. wand, orb, etc). Arcana Hearts are used for casting spells and against hostile magic.
 
 ![Spell lists illustration][image12]
 
