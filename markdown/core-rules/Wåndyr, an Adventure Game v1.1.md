@@ -513,7 +513,7 @@ Wåndyr assumes a traditional fantasy economy using gold pieces (gp), where quai
 **Common items** cost 1gp per item slot. Examples: clothing, provisions, water skin, tools, etc.  
 **Armaments** cost 5gp per item slot. Examples: weapons, armor, shields, arrows.  
 **Niche items** cost 10gp per item slot. Examples: books, music instruments, lockpicks, comforts (+1 provisions), and unusual munitions.  
-**Masterwork** **items** are \+1 and cost an extra 100gp. Add weapon plus to damage and armor plus to Iron Hearts. Grandmasterwork are \+2, 1,000gp, and rare.  
+**Masterwork** **items** are \+1 and cost an extra 100gp. Add weapon plus to damage and armor plus to Iron Hearts. Grandmasterwork are \+2, 1,000gp, and rare.
 **Elevated items** cost an extra 10gp for “good”, 100gp “rich”, 1,000gp for “noble”, and so on.  
 **Magic items** have a magical feature. Elven boots silence footsteps, a hero's belt bestows strength, and a magic shield is more protective. You can usually discover its enchantment through use, especially with Skill in the item. Magic items are rarely sold.
 
@@ -1022,19 +1022,19 @@ The Guide determines what happens next, following existing Lore, your Alignment 
 
 ![][image13]
 
-#### Alignment
+#### Shaping Spirits
 
-Making an Invocation changes your character. The Guide rolls on a  secret random Trait table for the being. If you already have the rolled Trait, you are in harmony—no cost. Otherwise, the being spends 3 of your XP on that Trait, bringing you further into Alignment with them
+Making an Invocation changes your character, aligning and molding you into the shape of their ideal "Saint". The Guide rolls on a secret Trait table for the being. If you already have the Trait, you are in harmony—no cost. Otherwise, you must buy that Trait for 3 XP.
 
-*Each being has their own nature. One might grant Traits like “wrathful” or “storm-touched”; another might shape you toward “patient” or “sea-longing”.*
+*Each being has their own nature. One might shape you toward “wrathful” or “storm-touched”; another might prefer “patient” or “sea-longing”.*
 
 #### Relics
 
 A Relic is a sacred object that serves as conduit and ark—a rallying flag—to an otherworldly being. To the uninitiated, they may appear to be “cursed” or Sentient Items, as the being can use any powers of the item.
 
-**Ark**: When invoking the being for a similar Invocation carried by the Relic, treat your Alignment as \+1.
+**Ark**: The Relic gives a \+1 Alignment bonus for its Invocation.
 
-**Saint**: If you muster with a Relic of a being you are Aligned to, you are a "saint" of that being. At Muster, you may *bless* companions to follow the rumor the being likes. Each who accepts the blessing gains 1 extra Heart. Each character can only carry one blessing at a time.
+**Saint**: If you Muster with a Relic of a being you are Aligned to, you are their "saint". You may *bless* companions to zealously pursue a rumor the being likes. Each who accepts the blessing gains extra Hearts (lower of your Alignment and Relics in Item Slots). On failure to complete the rumor, even in death, the being may claim and *shape their spirits*.
 
 ## Sentient Items {#sentient-items}
 
