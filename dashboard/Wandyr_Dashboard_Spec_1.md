@@ -26,8 +26,12 @@ A web-based session management tool for Wåndyr tabletop RPG. Designed for scree
     "region": "Wåndyrwyld",
     "terrain": "forest",
     "weather": "clear",
-    "weather": "clear",
-    "weatherDice": [3, 4, 1]
+    "weather": "clear"
+  },
+  "dice": {
+    "rolls": [3, 4],
+    "type": "normal", // normal, adv, dis
+    "total": 7
   },
   "rumor": {
     "text": "",
@@ -128,7 +132,7 @@ Layout:
 ┌─────────────────────────────────────────────────────────────┐
 │ HEADER: Title  [Wåndyr]                       [Actions (=)] │
 ├─────────────────────────────────────────────────────────────┤
-│ ENVIRONMENT CARD: Region | Terrain | Weather | Dice         │
+│ ENVIRONMENT CARD: Region | Terrain [⟳] | Weather [⟳]        │
 ├──────────────┬─────────────────────────┬────────────────────┤
 │  TURN CLOCK  │      THE MUSTER         │      THREATS       │
 │              │                         │                    │
@@ -149,6 +153,9 @@ Layout:
 │ [Reroll]     │                         │                    │
 │              │                         │                    │
 │ Roll Result  │                         │                    │
+├──────────────┤                         │                    │
+│  DICE CARD   │                         │                    │
+│  ⚀ ⚁ ⚂ [Roll]│                         │                    │
 └──────────────┴─────────────────────────┴────────────────────┘
 ```
 
@@ -180,9 +187,15 @@ Layout:
 
 ### Environment Card (Muster Mode)
 - **Region**: Text Input.
-- **Terrain**: Dropdown (Forest, Mountains, Swamp, Desert, Plains, Urban, Underground, Coastal).
-- **Weather**: Dropdown (Clear, Cloudy, Rain, Storm, Fog, Snow, Extreme Heat, Extreme Cold).
-- **Weather Dice**: Visual pip faces (3 dice). "Roll" button.
+- **Terrain**: Dropdown + Randomize Button (⟳).
+- **Weather**: Dropdown + Randomize Button (⟳).
+
+### Oracle Dice Card (Muster Mode)
+- **Buttons**: Roll (2d6), Advantage (Adv), Disadvantage (Dis).
+- **Display**: 
+  - Normal: 2 dice pips.
+  - Adv/Dis: 3 dice pips (visually indicate dropped die).
+  - **Total**: Sum of kept dice.
 
 ### Rumor & Blessing (Camp Mode)
 - **Rumor**: Text area.

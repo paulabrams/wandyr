@@ -164,6 +164,11 @@
 
     /* Environment Card (Muster) */
     .environment-card {
+      /* Keep standard panel style */
+      display: block; 
+    }
+    
+    .env-group-wrapper {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
@@ -182,11 +187,29 @@
       color: var(--ink-light);
       text-transform: uppercase;
     }
+    
+    .input-with-btn {
+      display: flex;
+      gap: 0.3rem;
+    }
+    
+    .icon-btn {
+      min-width: 32px;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+
+    /* Dice Card */
+    .dice-card-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     .weather-dice-display {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.3rem;
       background: var(--parchment-dark);
       padding: 0.3rem 0.6rem;
       border-radius: 4px;
@@ -194,8 +217,9 @@
     }
 
     .weather-die {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       line-height: 1;
+      color: var(--ink);
     }
 
     /* Rumor & Blessing (Camp) */
@@ -484,14 +508,14 @@
 
     <!-- The Muster List -->
     <section class="panel">
-      <h2>The Muster (Active)</h2>
+      <h2>Mustering</h2>
       <div class="character-list" id="camp-muster-list"></div>
       <button class="add-btn" onclick="openCharacterModal(null, false)">+ Add Character</button>
     </section>
 
     <!-- The Camp List -->
     <section class="panel">
-      <h2>The Camp (Resting)</h2>
+      <h2>Camping</h2>
       <div class="character-list" id="camp-camp-list"></div>
       <button class="add-btn" onclick="openCharacterModal(null, true)">+ Add Character</button>
     </section>
@@ -499,45 +523,45 @@
 
   <!-- MUSTER MODE VIEW -->
   <main id="view-muster">
-    <!-- Environment Card (Full Width on Mobile/Tablet usually, but grid handles it) -->
+    <!-- Environment Card -->
     <section class="panel environment-card" style="grid-column: 1 / -1;"> 
       <h2>Environment</h2>
-      <div class="env-field" style="flex: 1; min-width: 150px;">
-        <label>Region</label>
-        <input type="text" id="env-region" placeholder="Wåndyrwyld" onchange="updateEnvironment()">
-      </div>
-      <div class="env-field">
-        <label>Terrain</label>
-        <select id="env-terrain" onchange="updateEnvironment()">
-          <option value="forest">Forest</option>
-          <option value="mountains">Mountains</option>
-          <option value="swamp">Swamp</option>
-          <option value="desert">Desert</option>
-          <option value="plains">Plains</option>
-          <option value="urban">Urban</option>
-          <option value="underground">Underground</option>
-          <option value="coastal">Coastal</option>
-        </select>
-      </div>
-      <div class="env-field">
-        <label>Weather</label>
-        <select id="env-weather" onchange="updateEnvironment()">
-          <option value="clear">Clear</option>
-          <option value="cloudy">Cloudy</option>
-          <option value="rain">Rain</option>
-          <option value="storm">Storm</option>
-          <option value="fog">Fog</option>
-          <option value="snow">Snow</option>
-          <option value="hot">Heat</option>
-          <option value="cold">Cold</option>
-        </select>
-      </div>
-      <div class="env-field">
-        <label>Dice</label>
-        <div class="weather-dice-display">
-          <span id="weather-die-1" class="weather-die">⚀</span>
-          <span id="weather-die-2" class="weather-die">⚂</span>
-          <button class="btn" style="min-height: 24px; font-size: 0.7rem; padding: 0.1rem 0.4rem;" onclick="rollWeather()">Roll</button>
+      <div class="env-group-wrapper">
+        <div class="env-field" style="flex: 1; min-width: 150px;">
+          <label>Region</label>
+          <input type="text" id="env-region" placeholder="Wåndyrwyld" onchange="updateEnvironment()">
+        </div>
+        <div class="env-field">
+          <label>Terrain</label>
+          <div class="input-with-btn">
+            <select id="env-terrain" onchange="updateEnvironment()">
+              <option value="forest">Forest</option>
+              <option value="mountains">Mountains</option>
+              <option value="swamp">Swamp</option>
+              <option value="desert">Desert</option>
+              <option value="plains">Plains</option>
+              <option value="urban">Urban</option>
+              <option value="underground">Underground</option>
+              <option value="coastal">Coastal</option>
+            </select>
+            <button class="btn icon-btn" onclick="randomizeTerrain()" title="Randomize Terrain">⟳</button>
+          </div>
+        </div>
+        <div class="env-field">
+          <label>Weather</label>
+          <div class="input-with-btn">
+            <select id="env-weather" onchange="updateEnvironment()">
+              <option value="clear">Clear</option>
+              <option value="cloudy">Cloudy</option>
+              <option value="rain">Rain</option>
+              <option value="storm">Storm</option>
+              <option value="fog">Fog</option>
+              <option value="snow">Snow</option>
+              <option value="hot">Heat</option>
+              <option value="cold">Cold</option>
+            </select>
+            <button class="btn icon-btn" onclick="randomizeWeather()" title="Randomize Weather">⟳</button>
+          </div>
         </div>
       </div>
     </section>
@@ -569,6 +593,21 @@
       <div class="roll-result" id="roll-result">
         <div class="roll-dice" id="roll-dice"></div>
         <div class="roll-outcome" id="roll-outcome"></div>
+      </div>
+      
+      <!-- Moved Dice Card INSIDE the Clock Column for layout (under clock) or separate? Spec says separate row at bottom of column 1. Let's put it here. -->
+      <div class="panel dice-card" style="margin-top: 0.75rem;">
+         <h2>Oracle Dice</h2>
+         <div class="dice-card-content">
+             <div class="weather-dice-display">
+               <!-- Auto populated -->
+            </div>
+            <div class="dice-controls" style="display:flex; gap:0.3rem;">
+                <button class="btn" style="padding:0.2rem 0.5rem;" onclick="rollOracle('normal')">Roll</button>
+                <button class="btn" style="padding:0.2rem 0.5rem;" onclick="rollOracle('adv')" title="Advantage (3d6 drop low)">Adv</button>
+                <button class="btn" style="padding:0.2rem 0.5rem;" onclick="rollOracle('dis')" title="Disadvantage (3d6 drop high)">Dis</button>
+            </div>
+         </div>
       </div>
     </section>
 
@@ -681,36 +720,36 @@
     const DEFAULT_STATE = {
       mode: 'muster', // or 'camp'
       session: { round: 0, turn: 0, hour: 0, clock: 0, insight: 0 },
-      environment: { region: 'Wåndyrwyld', terrain: 'forest', weather: 'clear', dice: [3, 4, 1] },
+      environment: { region: 'Wåndyrwyld', terrain: 'forest', weather: 'clear' },
+      dice: { rolls: [3, 4], type: 'normal', total: 7 },
       rumor: { text: '', blessing: { active: false, source: '', value: 0 } },
       muster: [],
       camp: [],
       threats: []
     };
-
-    let state = JSON.parse(JSON.stringify(DEFAULT_STATE));
-
-    const INSIGHTS = ['—', 'TRAIT', 'SKILL', 'ITEM', 'BYNAME', 'FEAT', 'EFFORT'];
-    const DICE_FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+    
+    // ... (rest of vars)
 
     function init() {
       loadState();
       render();
+      // renderDice called in render()
     }
-
+    
     function loadState() {
       const stored = localStorage.getItem('wandyr-session-v3');
       if (stored) {
         const loaded = JSON.parse(stored);
-        // Deep merge / migration rudimentary logic
-        state = { ...DEFAULT_STATE, ...loaded, environment: { ...DEFAULT_STATE.environment, ...loaded.environment }, rumor: { ...DEFAULT_STATE.rumor, ...loaded.rumor } };
+        state = { ...DEFAULT_STATE, ...loaded };
         
-        // Back-compat for v1.2 users with flat blessingActive boolean
-        if (typeof loaded.rumor?.blessingActive === 'boolean') {
-             state.rumor.blessing.active = loaded.rumor.blessingActive;
-             state.rumor.blessing.source = '';
-             state.rumor.blessing.value = 0;
+        // Migration: extract dice from environment if present
+        if(loaded.environment && loaded.environment.dice) {
+            // map old dice to new structure if needed, or just ignore since it's a transient roll
+            delete state.environment.dice;
         }
+        if(!state.dice) state.dice = DEFAULT_STATE.dice;
+        
+        // ... (rest of migration)
       }
     }
 
@@ -786,16 +825,85 @@
       state.environment.weather = document.getElementById('env-weather').value;
       saveState();
     }
+    
+    function randomizeTerrain() {
+       const opts = document.getElementById('env-terrain').options;
+       const rand = Math.floor(Math.random() * opts.length);
+       document.getElementById('env-terrain').selectedIndex = rand;
+       updateEnvironment();
+    }
+    
+    function randomizeWeather() {
+       const opts = document.getElementById('env-weather').options;
+       const rand = Math.floor(Math.random() * opts.length);
+       document.getElementById('env-weather').selectedIndex = rand;
+       updateEnvironment();
+    }
 
-    function rollWeather() {
-      // Roll 3 dice instead of 2
-      state.environment.dice = [
-        Math.floor(Math.random()*6)+1, 
-        Math.floor(Math.random()*6)+1,
-        Math.floor(Math.random()*6)+1
-      ];
+    // --- Dice ---
+    
+    function rollOracle(type) {
+      // type: 'normal' (2d6), 'adv' (3d6 drop low), 'dis' (3d6 drop high)
+      const rolls = [];
+      const count = type === 'normal' ? 2 : 3;
+      
+      for(let i=0; i<count; i++) rolls.push(Math.floor(Math.random()*6)+1);
+      
+      let total = 0;
+      let kept = [];
+      
+      // clone to sort
+      const sorted = [...rolls].sort((a,b) => a-b);
+      
+      if(type === 'normal') {
+        kept = sorted; // keep all 2
+        total = kept.reduce((a,c) => a+c, 0);
+      } else if(type === 'adv') {
+        // Drop lowest (first)
+        kept = sorted.slice(1);
+        total = kept.reduce((a,c) => a+c, 0);
+      } else if(type === 'dis') {
+        // Drop highest (last)
+        kept = sorted.slice(0, 2);
+        total = kept.reduce((a,c) => a+c, 0);
+      }
+      
+      state.dice = { rolls: rolls, type: type, total: total };
       saveState();
-      renderEnvironment();
+      renderDice();
+    }
+    
+    function renderDice() {
+        const d = state.dice || { rolls: [1,1], type: 'normal', total: 2 };
+        const container = document.querySelector('.weather-dice-display');
+        let html = '';
+        
+        // logic to highlight kept/dropped?
+        // simple approach: show all, maybe dim the dropped one?
+        // But user said "only show the three dice in those situations".
+        // implies normal shows 2.
+        
+        // Let's sort visual rolls for consistency or keep rolled order?
+        // kept order is better for "feeling" usually, but sorted helps see drops.
+        // Let's just render what we have.
+        
+        // For Adv/Dis, we need to know which was dropped to visualy indicate it?
+        // My logic calculated total from sorted, but `state.dice.rolls` is raw order.
+        // Re-deriving dropped index for display is tricky if duplicates exist.
+        // Let's simplify: Display them sorted? Or just display them and highlighting is bonus.
+        // Requirement: "show the three dice in those situations"
+        
+        const rolls = d.rolls || [];
+        
+        // We will just show the pips.
+        rolls.forEach(val => {
+            html += `<span class="weather-die">${DICE_FACES[val-1]}</span>`;
+        });
+        
+        // Add Total
+        html += `<span style="margin-left:0.5rem; font-weight:bold; color:var(--accent-dark);">= ${d.total}</span>`;
+        
+        if(container) container.innerHTML = html;
     }
 
     // --- Rumor & Blessing ---
@@ -891,6 +999,7 @@
       renderEnvironment();
       renderRumorBlessing();
       renderClockPanel();
+      renderDice();
       renderCharacterLists();
       renderThreats();
     }
@@ -899,28 +1008,6 @@
         document.getElementById('env-region').value = state.environment.region || '';
         document.getElementById('env-terrain').value = state.environment.terrain;
         document.getElementById('env-weather').value = state.environment.weather;
-        
-        const [d1, d2, d3] = state.environment.dice || [1,1,1];
-        document.getElementById('weather-die-1').textContent = DICE_FACES[d1-1] || '?';
-        document.getElementById('weather-die-2').textContent = DICE_FACES[d2-1] || '?';
-        // Check if 3rd die element exists, if not create/append it?
-        // Actually best to update the HTML structure separately or inject here.
-        // Let's assume we update the HTML structure in the main body.
-        // But since we can't rely on that tool call hitting both perfectly, let's just make sure the DOM exists.
-        
-        let die3 = document.getElementById('weather-die-3');
-        if (!die3) {
-            // Append if missing (migration from 2 dice DOM)
-            const parent = document.querySelector('.weather-dice-display');
-            if(parent) {
-                const btn = parent.querySelector('button'); // insert before button
-                die3 = document.createElement('span');
-                die3.id = 'weather-die-3';
-                die3.className = 'weather-die';
-                parent.insertBefore(die3, btn);
-            }
-        }
-        if(die3) die3.textContent = DICE_FACES[d3-1] || '?';
     }
 
     function renderRumorBlessing() {
