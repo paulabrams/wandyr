@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Wåndyr Session Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --parchment: #f4e4bc;
+      --parchment-dark: #e8d4a8;
+      --parchment-light: #faf3e3;
+      --ink: #2c1810;
+      --ink-light: #5c4030;
+      --accent: #8b4513;
+      --accent-dark: #6b3410;
+      --heart-red: #a83232;
+      --iron-blue: #4a6670;
+      --arcana-purple: #6b4a8c;
+      --blessing-gold: #d4a017;
+      --hit-orange: #c47f17;
+      --dead-gray: #666;
+      --fled-blue: #4a7090;
+      --shadow: rgba(44, 24, 16, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Crimson Text', Georgia, serif;
+      background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23f4e4bc" width="100" height="100"/><circle fill="%23e8d4a8" cx="25" cy="25" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="75" cy="75" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="50" cy="10" r="0.5" opacity="0.2"/></svg>'),
+        linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 50%, var(--parchment) 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 0.75rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+    }
+
+    /* Common Components */
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 0.4rem;
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      background: var(--parchment);
+      color: var(--accent-dark);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn:hover, .btn:active {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    .btn.primary:hover, .btn.primary:active {
+      background: var(--accent-dark);
+    }
+
+    .panel {
+      background: linear-gradient(to bottom, var(--parchment-light), var(--parchment));
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+      margin-bottom: 0.75rem;
+    }
+
+    input, select, textarea {
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      padding: 0.4rem;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background: var(--parchment-light);
+      color: var(--ink);
+    }
+
+    /* Header */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0.75rem;
+      background: linear-gradient(to bottom, var(--parchment-light), var(--parchment));
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .top-bar h1 {
+      font-size: 1.4rem;
+      color: var(--accent-dark);
+      letter-spacing: 0.1em;
+    }
+
+    .actions-menu {
+      position: relative;
+    }
+
+    .actions-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--parchment);
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      min-width: 200px;
+      box-shadow: 0 4px 12px var(--shadow);
+      z-index: 50;
+    }
+
+    .actions-dropdown.active {
+      display: block;
+    }
+
+    .action-item {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      background: none;
+      border: none;
+      border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+      color: var(--ink);
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .action-item:last-child {
+      border-bottom: none;
+    }
+
+    .action-item:hover {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    /* Environment Card (Muster) */
+    .environment-card {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .env-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .env-field label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      text-transform: uppercase;
+    }
+
+    .weather-dice-display {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--parchment-dark);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--accent);
+    }
+
+    .weather-die {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    /* Rumor & Blessing (Camp) */
+    .rumor-blessing-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rumor-row, .blessing-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+    
+    .rumor-row {
+      width: 100%;
+    }
+    .rumor-row .env-field {
+      flex: 1;
+    }
+
+    .blessing-row input[type="number"] {
+      width: 60px;
+    }
+
+    .blessing-toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Cinzel', serif;
+      color: var(--accent-dark);
+      cursor: pointer;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Views */
+    #view-camp, #view-muster {
+      display: none;
+    }
+
+    #view-camp.active, #view-muster.active {
+      display: grid;
+    }
+
+    /* Camp Grid */
+    #view-camp.active {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    /* Muster Grid */
+    #view-muster.active {
+      grid-template-columns: 260px 1fr 300px;
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    /* Responsive Views */
+    @media (max-width: 1023px) {
+      #view-muster.active {
+        grid-template-columns: 1fr 1fr;
+      }
+      .turn-clock-panel { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 767px) {
+      #view-camp.active { grid-template-columns: 1fr; }
+      #view-muster.active { grid-template-columns: 1fr; }
+      .turn-clock-panel { display: flex; flex-direction: column; }
+    }
+
+    /* Turn Clock (Reused styling) */
+    .turn-clock-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .clock-display {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.75rem;
+      background: var(--parchment-dark);
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+    }
+    
+    .clock-slot {
+      width: 34px; height: 34px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      background: var(--parchment-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .clock-slot.filled { background: var(--accent); color: var(--parchment-light); }
+    .clock-slot.rolled { animation: pulse 0.5s ease-in-out; }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .time-counters {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; text-align: center;
+    }
+    .counter { padding: 0.4rem; background: var(--parchment-dark); border-radius: 4px; }
+    .counter-label { font-size: 0.65rem; color: var(--ink-light); text-transform: uppercase; }
+    .counter-value { font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--accent-dark); }
+    
+    .insight-display {
+      text-align: center; padding: 0.75rem;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-dark));
+      border-radius: 6px; color: var(--parchment-light);
+    }
+    .insight-label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; }
+    .insight-value { font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700; margin: 0.2rem 0; }
+    
+    .clock-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    
+    .roll-result {
+      text-align: center; padding: 0.6rem; background: var(--parchment-dark);
+      border-radius: 6px; min-height: 50px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .roll-dice { font-size: 1.3rem; letter-spacing: 0.25em; margin-bottom: 0.2rem; }
+    .roll-outcome { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.9rem; color: var(--accent-dark); }
+    .roll-outcome.complication { color: var(--heart-red); }
+
+    /* Character Cards */
+    .character-list {
+      display: flex; flex-direction: column; gap: 0.6rem;
+      min-height: 100px;
+    }
+
+    .character-card {
+      background: var(--parchment-dark);
+      border-radius: 6px; padding: 0.6rem;
+      border-left: 4px solid var(--accent);
+      position: relative;
+    }
+    .character-card.leader { border-left-color: gold; }
+    .character-card.blessed { box-shadow: 0 0 8px var(--blessing-gold); }
+    .character-card.in-camp { opacity: 0.8; background: #e0cca0; }
+
+    .char-header {
+      display: flex; justify-content: space-between; align-items: start; gap: 0.5rem; margin-bottom: 0.4rem;
+    }
+    .char-name {
+      font-family: 'Cinzel', serif; font-weight: 600; font-size: 1rem;
+      display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+    }
+    .char-number {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; background: var(--accent); color: var(--parchment-light);
+      border-radius: 50%; font-size: 0.8rem; font-weight: 700;
+    }
+    .leader-crown { color: gold; text-shadow: 0 1px 2px var(--shadow); }
+    .blessed-star { color: var(--blessing-gold); text-shadow: 0 0 4px var(--blessing-gold); }
+    
+    .char-description { font-size: 0.85rem; font-style: italic; color: var(--ink-light); margin-bottom: 0.4rem; }
+
+    .char-stats { display: flex; flex-direction: column; gap: 0.3rem; }
+    .stat-row { display: flex; align-items: center; gap: 0.4rem; }
+    .stat-label { font-size: 0.75rem; color: var(--ink-light); width: 50px; }
+    .stat-value { font-family: 'Cinzel', serif; font-weight: 700; font-size: 1rem; min-width: 55px; }
+    .stat-value.hearts { color: var(--heart-red); }
+    .stat-value.iron { color: var(--iron-blue); }
+    .stat-value.arcana { color: var(--arcana-purple); }
+    
+    .stat-controls button {
+      width: 24px; height: 24px; font-size: 0.9rem; font-weight: bold;
+      border: 1px solid var(--ink-light); border-radius: 3px; background: var(--parchment);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .stat-controls button:hover { background: var(--ink-light); color: var(--parchment); }
+
+    .char-controls button {
+      font-size: 0.7rem; padding: 0.2rem 0.4rem; border: 1px solid var(--ink-light);
+      border-radius: 3px; background: var(--parchment); cursor: pointer;
+    }
+    .char-controls button:hover { background: var(--ink-light); color: var(--parchment); }
+
+    .char-extras { margin-top: 0.5rem; display: flex; gap: 0.8rem; font-size: 0.8rem; color: var(--ink-light); }
+    .notes-toggle { text-decoration: underline; cursor: pointer; color: var(--accent); }
+    .char-notes { margin-top: 0.4rem; padding: 0.4rem; background: var(--parchment-light); border-radius: 4px; font-size: 0.85rem; white-space: pre-wrap; display: none; }
+    .char-notes.visible { display: block; }
+
+    /* Threat Cards */
+    .threats-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .threat-card {
+      background: var(--parchment-dark); border-radius: 6px; padding: 0.5rem;
+      border-left: 4px solid var(--ink-light);
+    }
+    .threat-card.hit { border-left-color: var(--hit-orange); }
+    .threat-card.dead { border-left-color: var(--dead-gray); opacity: 0.6; }
+    .threat-card.fled { border-left-color: var(--fled-blue); opacity: 0.7; }
+    
+    .threat-header { display: flex; justify-content: space-between; align-items: start; gap: 0.5rem; }
+    .threat-name { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.95rem; }
+    .threat-meta { font-size: 0.75rem; color: var(--ink-light); display: flex; gap: 0.6rem; }
+
+    .threat-controls { display: flex; gap: 0.3rem; align-items: center; flex-wrap: wrap; margin-top: 0.3rem;}
+    .threat-controls select { font-size: 0.8rem; padding: 0.1rem; height: 24px; }
+    .threat-controls button { font-size: 0.7rem; padding: 0.1rem 0.4rem; border: 1px solid var(--ink-light); background: var(--parchment); cursor: pointer; border-radius: 3px; }
+
+    /* Floating Add Btn */
+    .add-btn {
+      width: 100%; margin-top: 0.5rem; padding: 0.5rem;
+      font-family: 'Cinzel', serif; font-size: 0.85rem;
+      border: 2px dashed var(--accent); border-radius: 6px;
+      background: transparent; color: var(--accent); cursor: pointer;
+    }
+    .add-btn:hover { background: var(--accent); color: var(--parchment-light); border-style: solid; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 100; padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--parchment); border: 3px solid var(--accent); border-radius: 8px;
+      padding: 1.25rem; width: 100%; max-width: 450px; max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .modal h3 { margin-bottom: 0.75rem; color: var(--accent-dark); text-align: center; }
+    .modal-form { display: flex; flex-direction: column; gap: 0.8rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.2rem; }
+    .form-group label { font-size: 0.8rem; color: var(--ink-light); }
+    .form-row { display: flex; gap: 0.6rem; }
+    .form-row .form-group { flex: 1; }
+    .checkbox-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .checkbox-row label { display: flex; align-items: center; gap: 0.3rem; font-size: 0.9rem; cursor: pointer; }
+    .modal-buttons { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .modal-buttons button { flex: 1; }
+    
+    #import-file { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="top-bar">
+    <h1 id="app-title">Wåndyr</h1>
+    <div class="actions-menu">
+      <button class="btn" onclick="toggleActions()">☰ Actions</button>
+      <div class="actions-dropdown" id="actions-dropdown">
+        <button class="action-item" onclick="toggleMode()">Switch Mode</button>
+        <button class="action-item" onclick="exportData()">Export Session</button>
+        <button class="action-item" onclick="document.getElementById('import-file').click()">Import Session</button>
+        <button class="action-item" onclick="resetSession()">Reset Session</button>
+      </div>
+    </div>
+    <input type="file" id="import-file" accept=".json" onchange="importData(event)">
+  </header>
+
+  <!-- CAMP MODE VIEW -->
+  <main id="view-camp">
+    <!-- Rumor & Blessing -->
+    <section class="panel rumor-blessing-card" style="grid-column: 1 / -1;">
+      <h2>Rumors & Blessings</h2>
+      <div class="rumor-row">
+        <div class="env-field">
+          <label>Current Rumor</label>
+          <input type="text" id="camp-rumor" placeholder="What do they say..." onchange="updateRumor()">
+        </div>
+      </div>
+      <div class="blessing-row">
+        <div class="env-field" style="flex: 2;">
+          <label>Blessing Source</label>
+          <input type="text" id="camp-bless-source" placeholder="e.g. The Forest Spirit" onchange="updateBlessing()">
+        </div>
+        <div class="env-field">
+          <label>Value</label>
+          <input type="number" id="camp-bless-value" value="0" min="0" onchange="updateBlessing()">
+        </div>
+        <div class="blessing-toggle-label">
+           <label><input type="checkbox" id="camp-bless-active" onchange="updateBlessing()"> Blessing Active</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Muster List -->
+    <section class="panel">
+      <h2>The Muster (Active)</h2>
+      <div class="character-list" id="camp-muster-list"></div>
+      <button class="add-btn" onclick="openCharacterModal(null, false)">+ Add Character</button>
+    </section>
+
+    <!-- The Camp List -->
+    <section class="panel">
+      <h2>The Camp (Resting)</h2>
+      <div class="character-list" id="camp-camp-list"></div>
+      <button class="add-btn" onclick="openCharacterModal(null, true)">+ Add Character</button>
+    </section>
+  </main>
+
+  <!-- MUSTER MODE VIEW -->
+  <main id="view-muster">
+    <!-- Environment Card (Full Width on Mobile/Tablet usually, but grid handles it) -->
+    <section class="panel environment-card" style="grid-column: 1 / -1;"> 
+      <h2>Environment</h2>
+      <div class="env-field" style="flex: 1; min-width: 150px;">
+        <label>Region</label>
+        <input type="text" id="env-region" placeholder="Wåndyrwyld" onchange="updateEnvironment()">
+      </div>
+      <div class="env-field">
+        <label>Terrain</label>
+        <select id="env-terrain" onchange="updateEnvironment()">
+          <option value="forest">Forest</option>
+          <option value="mountains">Mountains</option>
+          <option value="swamp">Swamp</option>
+          <option value="desert">Desert</option>
+          <option value="plains">Plains</option>
+          <option value="urban">Urban</option>
+          <option value="underground">Underground</option>
+          <option value="coastal">Coastal</option>
+        </select>
+      </div>
+      <div class="env-field">
+        <label>Weather</label>
+        <select id="env-weather" onchange="updateEnvironment()">
+          <option value="clear">Clear</option>
+          <option value="cloudy">Cloudy</option>
+          <option value="rain">Rain</option>
+          <option value="storm">Storm</option>
+          <option value="fog">Fog</option>
+          <option value="snow">Snow</option>
+          <option value="hot">Heat</option>
+          <option value="cold">Cold</option>
+        </select>
+      </div>
+      <div class="env-field">
+        <label>Dice</label>
+        <div class="weather-dice-display">
+          <span id="weather-die-1" class="weather-die">⚀</span>
+          <span id="weather-die-2" class="weather-die">⚂</span>
+          <button class="btn" style="min-height: 24px; font-size: 0.7rem; padding: 0.1rem 0.4rem;" onclick="rollWeather()">Roll</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Turn Clock -->
+    <section class="panel turn-clock-panel">
+      <h2>Turn Clock</h2>
+      <div class="clock-display" id="clock-display">
+        <!-- 6 slots -->
+        <div class="clock-slot"></div><div class="clock-slot"></div><div class="clock-slot"></div>
+        <div class="clock-slot"></div><div class="clock-slot"></div><div class="clock-slot"></div>
+      </div>
+      <div class="time-counters">
+        <div class="counter"><div class="counter-label">Round</div><div class="counter-value" id="count-round">0</div></div>
+        <div class="counter"><div class="counter-label">Turn</div><div class="counter-value" id="count-turn">0</div></div>
+        <div class="counter"><div class="counter-label">Hour</div><div class="counter-value" id="count-hour">0</div></div>
+        <div class="counter"><div class="counter-label">Clock</div><div class="counter-value" id="count-clock">0</div></div>
+      </div>
+      <div class="insight-display">
+        <div class="insight-label">Insight</div>
+        <div class="insight-value" id="insight-value">—</div>
+      </div>
+      <div class="clock-buttons">
+        <button class="btn primary" onclick="advanceTurn()">+ Turn</button>
+        <button class="btn primary" onclick="advanceRound()">+ Round</button>
+        <button class="btn" onclick="rollClock()">Roll Clock</button>
+        <button class="btn" onclick="rollInsight()">Reroll</button>
+      </div>
+      <div class="roll-result" id="roll-result">
+        <div class="roll-dice" id="roll-dice"></div>
+        <div class="roll-outcome" id="roll-outcome"></div>
+      </div>
+    </section>
+
+    <!-- Muster List (Active Play) -->
+    <section class="panel">
+      <h2>The Muster</h2>
+      <div class="character-list" id="play-muster-list"></div>
+      <!-- No Add/Move buttons here per spec, managed in Camp or Edit -->
+    </section>
+
+    <!-- Threats -->
+    <section class="panel">
+      <h2>Threats</h2>
+      <div class="threats-list" id="threats-list"></div>
+      <button class="add-btn" onclick="openThreatModal()">+ Add Threat</button>
+    </section>
+  </main>
+
+  <!-- Character Modal -->
+  <div class="modal-overlay" id="character-modal">
+    <div class="modal">
+      <h3 id="char-modal-title">Edit Character</h3>
+      <form class="modal-form" onsubmit="saveCharacter(event)">
+        <input type="hidden" id="char-id">
+        <div class="form-row">
+            <div class="form-group" style="flex: 0 0 60px;">
+                <label>#</label>
+                <input type="number" id="char-num" min="1" max="99">
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="char-name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" id="char-desc">
+        </div>
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea id="char-notes"></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Hearts</label>
+                <input type="number" id="char-hearts" value="7" min="1" max="20">
+            </div>
+            <div class="form-group">
+                <label>Iron</label>
+                <input type="number" id="char-iron" value="0" min="0" max="10">
+            </div>
+            <div class="form-group">
+                <label>Arcana</label>
+                <input type="number" id="char-arcana" value="0" min="0" max="10">
+            </div>
+        </div>
+        <div class="checkbox-row">
+            <label><input type="checkbox" id="char-leader"> Leader</label>
+            <label><input type="checkbox" id="char-blessed"> Blessed</label>
+            <label><input type="checkbox" id="char-incamp"> In Camp</label>
+        </div>
+        <div class="modal-buttons">
+            <button type="button" class="btn" onclick="closeModal('character-modal')">Cancel</button>
+            <button type="submit" class="btn primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Threat Modal -->
+  <div class="modal-overlay" id="threat-modal">
+      <div class="modal">
+        <h3 id="threat-modal-title">Threat</h3>
+        <form class="modal-form" onsubmit="saveThreat(event)">
+          <input type="hidden" id="threat-id">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="threat-name" required>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="threat-desc"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Level</label>
+              <input type="number" id="threat-level" min="0">
+            </div>
+            <div class="form-group">
+              <label>Oracle</label>
+              <select id="threat-oracle">
+                <option value="">—</option>
+                <option value="6">Easy (6)</option>
+                <option value="8">Normal (8)</option>
+                <option value="10">Hard (10)</option>
+                <option value="12">Extreme (12)</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-buttons">
+            <button type="button" class="btn" onclick="closeModal('threat-modal')">Cancel</button>
+            <button type="submit" class="btn primary">Save</button>
+          </div>
+        </form>
+      </div>
+  </div>
+
+  <script>
+    // --- Data & State ---
+    const DEFAULT_STATE = {
+      mode: 'muster', // or 'camp'
+      session: { round: 0, turn: 0, hour: 0, clock: 0, insight: 0 },
+      environment: { region: 'Wåndyrwyld', terrain: 'forest', weather: 'clear', dice: [3, 4, 1] },
+      rumor: { text: '', blessing: { active: false, source: '', value: 0 } },
+      muster: [],
+      camp: [],
+      threats: []
+    };
+
+    let state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+
+    const INSIGHTS = ['—', 'TRAIT', 'SKILL', 'ITEM', 'BYNAME', 'FEAT', 'EFFORT'];
+    const DICE_FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+
+    function init() {
+      loadState();
+      render();
+    }
+
+    function loadState() {
+      const stored = localStorage.getItem('wandyr-session-v3');
+      if (stored) {
+        const loaded = JSON.parse(stored);
+        // Deep merge / migration rudimentary logic
+        state = { ...DEFAULT_STATE, ...loaded, environment: { ...DEFAULT_STATE.environment, ...loaded.environment }, rumor: { ...DEFAULT_STATE.rumor, ...loaded.rumor } };
+        
+        // Back-compat for v1.2 users with flat blessingActive boolean
+        if (typeof loaded.rumor?.blessingActive === 'boolean') {
+             state.rumor.blessing.active = loaded.rumor.blessingActive;
+             state.rumor.blessing.source = '';
+             state.rumor.blessing.value = 0;
+        }
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem('wandyr-session-v3', JSON.stringify(state));
+    }
+
+    function uuid() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        const r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+    }
+
+    // --- Actions ---
+
+    function toggleActions() {
+      document.getElementById('actions-dropdown').classList.toggle('active');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      const menu = document.querySelector('.actions-menu');
+      if (!menu.contains(e.target)) {
+        document.getElementById('actions-dropdown').classList.remove('active');
+      }
+    });
+
+    function toggleMode() {
+      state.mode = state.mode === 'muster' ? 'camp' : 'muster';
+      saveState();
+      render();
+    }
+
+    function resetSession() {
+      if(confirm("Are you sure you want to reset everything? cannot be undone.")) {
+        state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+        saveState();
+        render();
+      }
+    }
+
+    function exportData() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `wandyr-session-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a); // Fix: Append to body for Firefox/some browsers
+      a.click();
+      document.body.removeChild(a); // Cleanup
+      URL.revokeObjectURL(url);
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const loaded = JSON.parse(e.target.result);
+          state = { ...DEFAULT_STATE, ...loaded }; // safe merge
+          saveState();
+          render();
+        } catch(err) { alert("Invalid JSON"); }
+      };
+      reader.readAsText(file);
+    }
+
+    // --- Environment ---
+    function updateEnvironment() {
+      state.environment.region = document.getElementById('env-region').value;
+      state.environment.terrain = document.getElementById('env-terrain').value;
+      state.environment.weather = document.getElementById('env-weather').value;
+      saveState();
+    }
+
+    function rollWeather() {
+      // Roll 3 dice instead of 2
+      state.environment.dice = [
+        Math.floor(Math.random()*6)+1, 
+        Math.floor(Math.random()*6)+1,
+        Math.floor(Math.random()*6)+1
+      ];
+      saveState();
+      renderEnvironment();
+    }
+
+    // --- Rumor & Blessing ---
+    function updateRumor() {
+        state.rumor.text = document.getElementById('camp-rumor').value;
+        saveState();
+    }
+
+    function updateBlessing() {
+        state.rumor.blessing.source = document.getElementById('camp-bless-source').value;
+        state.rumor.blessing.value = parseInt(document.getElementById('camp-bless-value').value) || 0;
+        state.rumor.blessing.active = document.getElementById('camp-bless-active').checked;
+        saveState();
+        // Since blessing visual glow affects cards, we re-render cards too?
+        // Actually full render is safer.
+        renderCharacterLists();
+    }
+
+    // --- Clock Logic ---
+    function rollD6() { return Math.floor(Math.random()*6)+1; }
+
+    function advanceTurn() {
+      state.session.clock++;
+      state.session.turn++;
+      state.session.round = 0;
+      rollInsight();
+      if(state.session.clock >= 6) rollClockAndClear();
+      else { saveState(); renderClockPanel(); }
+    }
+
+    function advanceRound() {
+        state.session.round++;
+        rollInsight();
+        if(state.session.round >= 60) {
+            state.session.round = 0;
+            state.session.clock++;
+            state.session.turn++;
+            if(state.session.clock >= 6) rollClockAndClear();
+        }
+        saveState();
+        renderClockPanel();
+    }
+
+    function rollClock() {
+        if(state.session.clock === 0) { showRollResult([], 0); return; }
+        const rolls = Array.from({length: state.session.clock}, () => rollD6());
+        showRollResult(rolls, rolls.filter(r => r===1).length);
+    }
+
+    function rollClockAndClear() {
+        const rolls = Array.from({length: 6}, () => rollD6());
+        showRollResult(rolls, rolls.filter(r => r===1).length);
+        state.session.clock = 0;
+        state.session.hour++;
+        saveState();
+        renderClockPanel();
+    }
+
+    function rollInsight() {
+        state.session.insight = rollD6();
+        saveState();
+        renderClockPanel();
+    }
+
+    function showRollResult(rolls, ones) {
+        const dEl = document.getElementById('roll-dice');
+        const oEl = document.getElementById('roll-outcome');
+        if(rolls.length===0) {
+            dEl.textContent = '—'; oEl.textContent = 'No dice'; oEl.className='roll-outcome'; return;
+        }
+        dEl.textContent = rolls.map(r => DICE_FACES[r-1]).join(' ');
+        if(ones===0) { oEl.textContent='All Clear'; oEl.className='roll-outcome'; }
+        else if(ones===1) { oEl.textContent='Complication!'; oEl.className='roll-outcome complication'; }
+        else { oEl.textContent=`${ones}× Complication!`; oEl.className='roll-outcome complication'; }
+
+        document.querySelectorAll('.clock-slot.filled').forEach(s => {
+            s.classList.add('rolled'); setTimeout(()=>s.classList.remove('rolled'), 500);
+        });
+    }
+
+    // --- Rendering ---
+
+    function render() {
+      // Toggle Views
+      document.getElementById('view-camp').classList.toggle('active', state.mode === 'camp');
+      document.getElementById('view-muster').classList.toggle('active', state.mode === 'muster');
+      
+      // Update Title
+      document.getElementById('app-title').textContent = state.mode === 'camp' ? 'Wåndyr - Camp' : 'Wåndyr - Muster';
+      const switchBtn = document.querySelector(".action-item[onclick='toggleMode()']");
+      if(switchBtn) switchBtn.textContent = state.mode === 'camp' ? 'Switch to Muster' : 'Switch to Camp';
+
+      renderEnvironment();
+      renderRumorBlessing();
+      renderClockPanel();
+      renderCharacterLists();
+      renderThreats();
+    }
+
+    function renderEnvironment() {
+        document.getElementById('env-region').value = state.environment.region || '';
+        document.getElementById('env-terrain').value = state.environment.terrain;
+        document.getElementById('env-weather').value = state.environment.weather;
+        
+        const [d1, d2, d3] = state.environment.dice || [1,1,1];
+        document.getElementById('weather-die-1').textContent = DICE_FACES[d1-1] || '?';
+        document.getElementById('weather-die-2').textContent = DICE_FACES[d2-1] || '?';
+        // Check if 3rd die element exists, if not create/append it?
+        // Actually best to update the HTML structure separately or inject here.
+        // Let's assume we update the HTML structure in the main body.
+        // But since we can't rely on that tool call hitting both perfectly, let's just make sure the DOM exists.
+        
+        let die3 = document.getElementById('weather-die-3');
+        if (!die3) {
+            // Append if missing (migration from 2 dice DOM)
+            const parent = document.querySelector('.weather-dice-display');
+            if(parent) {
+                const btn = parent.querySelector('button'); // insert before button
+                die3 = document.createElement('span');
+                die3.id = 'weather-die-3';
+                die3.className = 'weather-die';
+                parent.insertBefore(die3, btn);
+            }
+        }
+        if(die3) die3.textContent = DICE_FACES[d3-1] || '?';
+    }
+
+    function renderRumorBlessing() {
+        document.getElementById('camp-rumor').value = state.rumor.text || '';
+        document.getElementById('camp-bless-source').value = state.rumor.blessing.source || '';
+        document.getElementById('camp-bless-value').value = state.rumor.blessing.value || 0;
+        document.getElementById('camp-bless-active').checked = state.rumor.blessing.active;
+    }
+
+    function renderClockPanel() {
+        const slots = document.querySelectorAll('.clock-slot');
+        slots.forEach((s, i) => {
+            s.classList.toggle('filled', i < state.session.clock);
+            s.textContent = i < state.session.clock ? '●' : '○';
+        });
+        document.getElementById('count-round').textContent = state.session.round;
+        document.getElementById('count-turn').textContent = state.session.turn;
+        document.getElementById('count-hour').textContent = state.session.hour;
+        document.getElementById('count-clock').textContent = state.session.clock;
+        document.getElementById('insight-value').textContent = INSIGHTS[state.session.insight];
+    }
+
+    function renderCharacterLists() {
+        // We have 3 target lists in DOM: camp-muster-list, camp-camp-list, play-muster-list
+        if(state.mode === 'camp') {
+            document.getElementById('camp-muster-list').innerHTML = generateCharHTML(state.muster, 'muster');
+            document.getElementById('camp-camp-list').innerHTML = generateCharHTML(state.camp, 'camp');
+        } else {
+             document.getElementById('play-muster-list').innerHTML = generateCharHTML(state.muster, 'play');
+        }
+    }
+
+    function generateCharHTML(list, context) {
+        // context: 'muster' (in camp view), 'camp' (in camp view), 'play' (in muster view)
+        const sorted = [...list].sort((a,b) => (a.number||99) - (b.number||99));
+        return sorted.map(c => {
+            const isBlessed = state.rumor.blessing.active && c.blessed;
+            const cardClass = `character-card ${c.leader?'leader':''} ${isBlessed?'blessed':''} ${context==='camp'?'in-camp':''}`;
+            
+            let moveBtn = '';
+            if(context === 'muster') moveBtn = `<button onclick="moveChar('${c.id}', 'camp')" title="Move to Camp">To Camp ↓</button>`;
+            if(context === 'camp') moveBtn = `<button onclick="moveChar('${c.id}', 'muster')" title="Move to Muster">To Muster ↑</button>`;
+            
+            // In 'play' mode, we usually don't show move buttons as per spec, or only small ones. keeping it clean.
+            // But we need controls.
+            
+            const stats = `
+              <div class="char-stats">
+                  <div class="stat-row">
+                      <span class="stat-label">Hearts</span>
+                      <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'hearts', -1)">-</button>
+                      </div>
+                      <span class="stat-value hearts">${c.hearts.current}/${c.hearts.max}</span>
+                      <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'hearts', 1)">+</button>
+                      </div>
+                  </div>
+                  ${c.iron.max>0 ? `
+                  <div class="stat-row">
+                      <span class="stat-label">Iron</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'iron', -1)">-</button>
+                      </div>
+                      <span class="stat-value iron">${c.iron.current}/${c.iron.max}</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'iron', 1)">+</button>
+                      </div>
+                  </div>` : ''}
+                   ${c.arcana.max>0 ? `
+                  <div class="stat-row">
+                      <span class="stat-label">Arcana</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'arcana', -1)">-</button>
+                      </div>
+                      <span class="stat-value arcana">${c.arcana.current}/${c.arcana.max}</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'arcana', 1)">+</button>
+                      </div>
+                  </div>` : ''}
+              </div>
+            `;
+
+            return `
+            <div class="${cardClass}">
+                <div class="char-header">
+                    <div class="char-name">
+                        <span class="char-number">${c.number}</span>
+                        ${c.leader ? '<span class="leader-crown">👑</span>' : ''}
+                        ${isBlessed ? '<span class="blessed-star">✦</span>' : ''}
+                        ${c.name}
+                    </div>
+                    <div class="char-controls">
+                        ${moveBtn}
+                        <button onclick="openCharacterModal('${c.id}')">Edit</button>
+                        <button onclick="deleteChar('${c.id}')">✕</button>
+                    </div>
+                </div>
+                ${c.description ? `<div class="char-description">${c.description}</div>` : ''}
+                ${stats}
+                <div class="char-extras">
+                   ${c.notes ? `<span class="notes-toggle" onclick="this.nextElementSibling.classList.toggle('visible')">Notes</span><div class="char-notes">${c.notes}</div>` : ''}
+                </div>
+            </div>
+            `;
+        }).join('');
+    }
+
+    // --- Character Actions ---
+    function findChar(id) {
+        let c = state.muster.find(x => x.id === id);
+        if(c) return { c, list: 'muster' };
+        c = state.camp.find(x => x.id === id);
+        if(c) return { c, list: 'camp' };
+        return null;
+    }
+
+    function modStat(id, stat, delta) {
+        const f = findChar(id);
+        if(f) {
+            f.c[stat].current = Math.max(0, Math.min(f.c[stat].max, f.c[stat].current + delta));
+            saveState(); renderCharacterLists();
+        }
+    }
+
+    function moveChar(id, dest) {
+        const f = findChar(id);
+        if(!f) return;
+        state[f.list] = state[f.list].filter(x => x.id !== id);
+        state[dest].push(f.c);
+        saveState(); renderCharacterLists();
+    }
+    
+    function deleteChar(id) {
+        if(confirm("Delete character?")) {
+            state.muster = state.muster.filter(x => x.id !== id);
+            state.camp = state.camp.filter(x => x.id !== id);
+            saveState(); renderCharacterLists();
+        }
+    }
+
+    // Modal
+    function openCharacterModal(id, forceCamp) {
+        document.getElementById('character-modal').classList.add('active');
+        const f = id ? findChar(id) : null;
+        
+        if(f) {
+            const c = f.c;
+            document.getElementById('char-modal-title').textContent = "Edit Character";
+            document.getElementById('char-id').value = c.id;
+            document.getElementById('char-num').value = c.number;
+            document.getElementById('char-name').value = c.name;
+            document.getElementById('char-desc').value = c.description || '';
+            document.getElementById('char-notes').value = c.notes || '';
+            document.getElementById('char-hearts').value = c.hearts.max;
+            document.getElementById('char-iron').value = c.iron.max;
+            document.getElementById('char-arcana').value = c.arcana.max;
+            document.getElementById('char-leader').checked = c.leader;
+            document.getElementById('char-blessed').checked = c.blessed;
+            document.getElementById('char-incamp').checked = f.list === 'camp';
+        } else {
+            // New
+            document.getElementById('char-modal-title').textContent = "Add Character";
+            document.getElementById('char-id').value = '';
+            document.getElementById('char-num').value = (state.muster.length + state.camp.length) + 1;
+            document.getElementById('char-name').value = '';
+            document.getElementById('char-desc').value = '';
+            document.getElementById('char-notes').value = '';
+            document.getElementById('char-hearts').value = 7;
+            document.getElementById('char-iron').value = 0;
+            document.getElementById('char-arcana').value = 0;
+            document.getElementById('char-leader').checked = false;
+            document.getElementById('char-blessed').checked = false;
+            document.getElementById('char-incamp').checked = (typeof forceCamp === 'boolean') ? forceCamp : (state.mode === 'camp');
+        }
+    }
+
+    function saveCharacter(e) {
+        e.preventDefault();
+        const id = document.getElementById('char-id').value;
+        const leader = document.getElementById('char-leader').checked;
+        const inCamp = document.getElementById('char-incamp').checked;
+        
+        // Unset other leaders if this one is leader
+        if(leader) {
+            state.muster.forEach(c => c.leader = false);
+            state.camp.forEach(c => c.leader = false);
+        }
+
+        const charData = {
+            id: id || uuid(),
+            number: parseInt(document.getElementById('char-num').value) || 0,
+            name: document.getElementById('char-name').value,
+            description: document.getElementById('char-desc').value,
+            notes: document.getElementById('char-notes').value,
+            leader: leader,
+            blessed: document.getElementById('char-blessed').checked,
+            baggage: false,
+            hearts: { max: parseInt(document.getElementById('char-hearts').value), current: 0 }, // temp
+            iron: { max: parseInt(document.getElementById('char-iron').value), current: 0 },
+            arcana: { max: parseInt(document.getElementById('char-arcana').value), current: 0 }
+        };
+
+        // Preserve current values if editing, or set to max if new
+        if(id) {
+             const f = findChar(id);
+             if(f) {
+                 charData.hearts.current = Math.min(f.c.hearts.current, charData.hearts.max);
+                 charData.iron.current = Math.min(f.c.iron.current, charData.iron.max);
+                 charData.arcana.current = Math.min(f.c.arcana.current, charData.arcana.max);
+                 
+                 // Remove from old list
+                 state[f.list] = state[f.list].filter(x => x.id !== id);
+             }
+        } else {
+            charData.hearts.current = charData.hearts.max;
+            charData.iron.current = charData.iron.max;
+            charData.arcana.current = charData.arcana.max;
+        }
+
+        // Add to new list
+        if(inCamp) state.camp.push(charData);
+        else state.muster.push(charData);
+
+        saveState();
+        closeModal('character-modal');
+        renderCharacterLists();
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+
+    // --- Threats ---
+    function renderThreats() {
+        const list = document.getElementById('threats-list');
+        list.innerHTML = state.threats.map(t => `
+            <div class="threat-card ${t.condition}">
+              <div class="threat-header">
+                <div>
+                   <div class="threat-name">${t.name}</div>
+                   <div class="threat-meta">
+                      ${t.level?`<span>Lvl ${t.level}</span>`:''}
+                      ${t.oracle?`<span>Oracle ${t.oracle}+</span>`:''}
+                   </div>
+                   ${t.description?`<div class="char-description">${t.description}</div>`:''}
+                </div>
+              </div>
+              <div class="threat-controls">
+                  <select onchange="updateThreatCond('${t.id}', this.value)">
+                      <option value="active" ${t.condition==='active'?'selected':''}>Active</option>
+                      <option value="hit" ${t.condition==='hit'?'selected':''}>Hit</option>
+                      <option value="dead" ${t.condition==='dead'?'selected':''}>Dead</option>
+                      <option value="fled" ${t.condition==='fled'?'selected':''}>Fled</option>
+                  </select>
+                  <button onclick="openThreatModal('${t.id}')">Edit</button>
+                  <button onclick="deleteThreat('${t.id}')">✕</button>
+              </div>
+            </div>
+        `).join('');
+    }
+
+    function openThreatModal(id) {
+        document.getElementById('threat-modal').classList.add('active');
+        document.getElementById('threat-id').value = id || '';
+        if(id) {
+            const t = state.threats.find(x => x.id === id);
+            document.getElementById('threat-name').value = t.name;
+            document.getElementById('threat-desc').value = t.description;
+            document.getElementById('threat-level').value = t.level;
+            document.getElementById('threat-oracle').value = t.oracle;
+        } else {
+            document.getElementById('threat-name').value = '';
+            document.getElementById('threat-desc').value = '';
+            document.getElementById('threat-level').value = '';
+            document.getElementById('threat-oracle').value = '';
+        }
+    }
+
+    function saveThreat(e) {
+        e.preventDefault();
+        const id = document.getElementById('threat-id').value;
+        const data = {
+            id: id || uuid(),
+            name: document.getElementById('threat-name').value,
+            description: document.getElementById('threat-desc').value,
+            level: document.getElementById('threat-level').value,
+            oracle: document.getElementById('threat-oracle').value
+        };
+        
+        if(id) {
+            const idx = state.threats.findIndex(x => x.id === id);
+            if(idx >= 0) {
+                data.condition = state.threats[idx].condition;
+                state.threats[idx] = data;
+            }
+        } else {
+            data.condition = 'active';
+            state.threats.push(data);
+        }
+        saveState(); closeModal('threat-modal'); renderThreats();
+    }
+
+    function updateThreatCond(id, val) {
+        const t = state.threats.find(x => x.id === id);
+        if(t) { t.condition = val; saveState(); renderThreats(); }
+    }
+    
+    function deleteThreat(id) {
+        if(confirm('Delete threat?')) {
+            state.threats = state.threats.filter(x => x.id !== id);
+            saveState(); renderThreats();
+        }
+    }
+
+    // Init
+    init();
+
+  </script>
+</body>
+</html>

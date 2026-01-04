@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Wåndyr Session Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --parchment: #f4e4bc;
+      --parchment-dark: #e8d4a8;
+      --parchment-light: #faf3e3;
+      --ink: #2c1810;
+      --ink-light: #5c4030;
+      --accent: #8b4513;
+      --accent-dark: #6b3410;
+      --heart-red: #a83232;
+      --iron-blue: #4a6670;
+      --arcana-purple: #6b4a8c;
+      --blessing-gold: #d4a017;
+      --hit-orange: #c47f17;
+      --dead-gray: #666;
+      --fled-blue: #4a7090;
+      --shadow: rgba(44, 24, 16, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Crimson Text', Georgia, serif;
+      background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23f4e4bc" width="100" height="100"/><circle fill="%23e8d4a8" cx="25" cy="25" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="75" cy="75" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="50" cy="10" r="0.5" opacity="0.2"/></svg>'),
+        linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 50%, var(--parchment) 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 0.75rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.75rem;
+      background: linear-gradient(to bottom, var(--parchment-light), var(--parchment));
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .top-bar h1 {
+      font-size: 1.3rem;
+      color: var(--accent-dark);
+      letter-spacing: 0.1em;
+    }
+
+    .environment {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .env-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .env-group label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: var(--ink-light);
+    }
+
+    select {
+      font-family: 'Crimson Text', serif;
+      font-size: 0.95rem;
+      padding: 0.25rem 0.4rem;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background: var(--parchment-light);
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 44px;
+    }
+
+    .data-controls {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .data-controls button {
+      font-family: 'Crimson Text', serif;
+      font-size: 0.85rem;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--ink-light);
+      border-radius: 4px;
+      background: var(--parchment);
+      color: var(--ink-light);
+      cursor: pointer;
+      min-height: 44px;
+      transition: all 0.2s;
+    }
+
+    .data-controls button:hover {
+      background: var(--ink-light);
+      color: var(--parchment);
+    }
+
+    /* Rumor Bar */
+    .rumor-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.75rem;
+      background: linear-gradient(to bottom, var(--parchment-light), var(--parchment));
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .rumor-bar label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      color: var(--accent-dark);
+      white-space: nowrap;
+    }
+
+    .rumor-bar input[type="text"] {
+      flex: 1;
+      min-width: 150px;
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background: var(--parchment-light);
+      color: var(--ink);
+      min-height: 44px;
+    }
+
+    .blessing-section {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .blessing-section label {
+      font-size: 0.85rem;
+    }
+
+    .blessing-toggle {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+    }
+
+    /* Main Layout */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr 300px;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 1023px) {
+      .main-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .turn-clock-panel {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+      .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .top-bar h1 {
+        text-align: center;
+      }
+      .environment {
+        justify-content: center;
+      }
+      .data-controls {
+        justify-content: center;
+      }
+      .rumor-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .blessing-section {
+        justify-content: center;
+      }
+    }
+
+    .panel {
+      background: linear-gradient(to bottom, var(--parchment-light), var(--parchment));
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .panel h2 {
+      font-size: 1rem;
+      color: var(--accent-dark);
+      text-align: center;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--accent);
+      cursor: pointer;
+    }
+
+    .section-header h3 {
+      font-size: 0.85rem;
+      color: var(--accent-dark);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-header .toggle {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+    }
+
+    /* Turn Clock Panel */
+    .turn-clock-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 1023px) {
+      .turn-clock-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+      .turn-clock-panel h2 {
+        grid-column: 1 / -1;
+      }
+      .clock-display {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .turn-clock-panel {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .clock-display {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.75rem;
+      background: var(--parchment-dark);
+      border-radius: 6px;
+    }
+
+    .clock-slot {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      background: var(--parchment-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+
+    .clock-slot.filled {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    .clock-slot.rolled {
+      animation: pulse 0.5s ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .time-counters {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.4rem;
+      text-align: center;
+    }
+
+    .counter {
+      padding: 0.4rem;
+      background: var(--parchment-dark);
+      border-radius: 4px;
+    }
+
+    .counter-label {
+      font-size: 0.65rem;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .counter-value {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .insight-display {
+      text-align: center;
+      padding: 0.75rem;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-dark));
+      border-radius: 6px;
+      color: var(--parchment-light);
+    }
+
+    .insight-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.8;
+    }
+
+    .insight-value {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin: 0.2rem 0;
+    }
+
+    .clock-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+    }
+
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 0.4rem;
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      background: var(--parchment);
+      color: var(--accent-dark);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      min-height: 44px;
+    }
+
+    .btn:hover, .btn:active {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    .btn.primary:hover, .btn.primary:active {
+      background: var(--accent-dark);
+    }
+
+    .roll-result {
+      text-align: center;
+      padding: 0.6rem;
+      background: var(--parchment-dark);
+      border-radius: 6px;
+      min-height: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .roll-dice {
+      font-size: 1.3rem;
+      letter-spacing: 0.25em;
+      margin-bottom: 0.2rem;
+    }
+
+    .roll-outcome {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--accent-dark);
+    }
+
+    .roll-outcome.complication {
+      color: var(--heart-red);
+    }
+
+    /* Character Lists */
+    .character-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-height: 40vh;
+      overflow-y: auto;
+    }
+
+    .character-card {
+      background: var(--parchment-dark);
+      border-radius: 6px;
+      padding: 0.6rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .character-card.leader {
+      border-left-color: gold;
+    }
+
+    .character-card.blessed {
+      box-shadow: 0 0 8px var(--blessing-gold);
+    }
+
+    .character-card.in-camp {
+      opacity: 0.7;
+    }
+
+    .char-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      gap: 0.5rem;
+    }
+
+    .char-name {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .char-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: var(--accent);
+      color: var(--parchment-light);
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .leader-crown {
+      color: gold;
+      text-shadow: 0 1px 2px var(--shadow);
+    }
+
+    .blessed-star {
+      color: var(--blessing-gold);
+      text-shadow: 0 0 4px var(--blessing-gold);
+    }
+
+    .char-controls {
+      display: flex;
+      gap: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .char-controls button {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.4rem;
+      border: 1px solid var(--ink-light);
+      border-radius: 3px;
+      background: var(--parchment);
+      color: var(--ink-light);
+      cursor: pointer;
+      min-height: 32px;
+      min-width: 32px;
+    }
+
+    .char-controls button:hover, .char-controls button:active {
+      background: var(--ink-light);
+      color: var(--parchment);
+    }
+
+    .char-description {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .char-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      width: 50px;
+    }
+
+    .stat-value {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      min-width: 55px;
+    }
+
+    .stat-value.hearts { color: var(--heart-red); }
+    .stat-value.iron { color: var(--iron-blue); }
+    .stat-value.arcana { color: var(--arcana-purple); }
+
+    .stat-controls {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .stat-controls button {
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: 1px solid var(--ink-light);
+      border-radius: 3px;
+      background: var(--parchment);
+      color: var(--ink-light);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-controls button:hover, .stat-controls button:active {
+      background: var(--ink-light);
+      color: var(--parchment);
+    }
+
+    .char-extras {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .baggage-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .baggage-toggle label {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      cursor: pointer;
+    }
+
+    .baggage-toggle input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .notes-toggle {
+      font-size: 0.8rem;
+      color: var(--accent);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .char-notes {
+      margin-top: 0.4rem;
+      padding: 0.4rem;
+      background: var(--parchment-light);
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      white-space: pre-wrap;
+    }
+
+    .char-notes.hidden {
+      display: none;
+    }
+
+    /* Threats */
+    .threats-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .threat-card {
+      background: var(--parchment-dark);
+      border-radius: 6px;
+      padding: 0.5rem;
+      border-left: 4px solid var(--ink-light);
+    }
+
+    .threat-card.hit { border-left-color: var(--hit-orange); }
+    .threat-card.dead { border-left-color: var(--dead-gray); opacity: 0.6; }
+    .threat-card.fled { border-left-color: var(--fled-blue); opacity: 0.7; }
+
+    .threat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .threat-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .threat-name {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .threat-meta {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .threat-description {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-top: 0.3rem;
+    }
+
+    .threat-controls {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .threat-controls select {
+      font-size: 0.8rem;
+      padding: 0.2rem;
+      min-height: 32px;
+    }
+
+    .threat-controls button {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.35rem;
+      border: 1px solid var(--ink-light);
+      border-radius: 3px;
+      background: var(--parchment);
+      color: var(--ink-light);
+      cursor: pointer;
+      min-height: 32px;
+      min-width: 32px;
+    }
+
+    .threat-controls button:hover, .threat-controls button:active {
+      background: var(--heart-red);
+      color: var(--parchment);
+      border-color: var(--heart-red);
+    }
+
+    /* Add buttons */
+    .add-btn {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      border: 2px dashed var(--accent);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--accent);
+      cursor: pointer;
+      transition: all 0.2s;
+      min-height: 44px;
+    }
+
+    .add-btn:hover, .add-btn:active {
+      background: var(--accent);
+      color: var(--parchment-light);
+      border-style: solid;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 1rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--parchment);
+      border: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem;
+      width: 100%;
+      max-width: 400px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal h3 {
+      margin-bottom: 0.75rem;
+      color: var(--accent-dark);
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      padding: 0.5rem;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background: var(--parchment-light);
+      min-height: 44px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .form-row .form-group.small {
+      flex: 0 0 60px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .checkbox-row label {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .checkbox-row input {
+      width: 18px;
+      height: 18px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .modal-buttons button {
+      flex: 1;
+    }
+
+    #import-file {
+      display: none;
+    }
+
+    /* Collapsible sections */
+    .collapsible-content {
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .collapsible-content.collapsed {
+      max-height: 0 !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <h1>Wåndyr</h1>
+    <div class="environment">
+      <div class="env-group">
+        <label>Terrain:</label>
+        <select id="terrain">
+          <option value="forest">Forest</option>
+          <option value="mountains">Mountains</option>
+          <option value="swamp">Swamp</option>
+          <option value="desert">Desert</option>
+          <option value="plains">Plains</option>
+          <option value="urban">Urban</option>
+          <option value="underground">Underground</option>
+          <option value="coastal">Coastal</option>
+        </select>
+      </div>
+      <div class="env-group">
+        <label>Weather:</label>
+        <select id="weather">
+          <option value="clear">Clear</option>
+          <option value="cloudy">Cloudy</option>
+          <option value="rain">Rain</option>
+          <option value="storm">Storm</option>
+          <option value="fog">Fog</option>
+          <option value="snow">Snow</option>
+          <option value="hot">Extreme Heat</option>
+          <option value="cold">Extreme Cold</option>
+        </select>
+      </div>
+    </div>
+    <div class="data-controls">
+      <button onclick="exportData()">Export</button>
+      <button onclick="document.getElementById('import-file').click()">Import</button>
+      <input type="file" id="import-file" accept=".json" onchange="importData(event)">
+    </div>
+  </header>
+
+  <!-- Rumor Bar -->
+  <div class="rumor-bar">
+    <label>Current Rumor:</label>
+    <input type="text" id="current-rumor" placeholder="Enter the current rumor..." onchange="saveRumor()">
+    <div class="blessing-section">
+      <label>Blessing:</label>
+      <input type="checkbox" id="blessing-active" class="blessing-toggle" onchange="toggleBlessing()">
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <main class="main-grid">
+    <!-- Turn Clock Panel -->
+    <section class="panel turn-clock-panel">
+      <h2>Turn Clock</h2>
+      
+      <div class="clock-display" id="clock-display">
+        <div class="clock-slot"></div>
+        <div class="clock-slot"></div>
+        <div class="clock-slot"></div>
+        <div class="clock-slot"></div>
+        <div class="clock-slot"></div>
+        <div class="clock-slot"></div>
+      </div>
+
+      <div class="time-counters">
+        <div class="counter">
+          <div class="counter-label">Round</div>
+          <div class="counter-value" id="round-count">0</div>
+        </div>
+        <div class="counter">
+          <div class="counter-label">Turn</div>
+          <div class="counter-value" id="turn-count">0</div>
+        </div>
+        <div class="counter">
+          <div class="counter-label">Hour</div>
+          <div class="counter-value" id="hour-count">0</div>
+        </div>
+        <div class="counter">
+          <div class="counter-label">Clock</div>
+          <div class="counter-value" id="clock-count">0</div>
+        </div>
+      </div>
+
+      <div class="insight-display">
+        <div class="insight-label">Insight</div>
+        <div class="insight-value" id="insight-value">—</div>
+      </div>
+
+      <div class="clock-buttons">
+        <button class="btn primary" onclick="advanceTurn()">+ Turn</button>
+        <button class="btn primary" onclick="advanceRound()">+ Round</button>
+        <button class="btn" onclick="rollClock()">Roll Clock</button>
+        <button class="btn" onclick="rollInsight()">Reroll</button>
+      </div>
+
+      <div class="roll-result" id="roll-result">
+        <div class="roll-dice" id="roll-dice"></div>
+        <div class="roll-outcome" id="roll-outcome"></div>
+      </div>
+    </section>
+
+    <!-- Characters Panel -->
+    <section class="panel">
+      <h2>Characters</h2>
+      
+      <!-- The Muster -->
+      <div class="section-header" onclick="toggleSection('muster')">
+        <h3>The Muster</h3>
+        <span class="toggle" id="muster-toggle">▼</span>
+      </div>
+      <div class="collapsible-content" id="muster-content">
+        <div class="character-list" id="muster-list"></div>
+      </div>
+
+      <!-- The Camp -->
+      <div class="section-header" onclick="toggleSection('camp')" style="margin-top: 0.75rem;">
+        <h3>The Camp</h3>
+        <span class="toggle" id="camp-toggle">▼</span>
+      </div>
+      <div class="collapsible-content" id="camp-content">
+        <div class="character-list" id="camp-list"></div>
+      </div>
+
+      <button class="add-btn" onclick="openCharacterModal()">+ Add Character</button>
+    </section>
+
+    <!-- Threats Panel -->
+    <section class="panel">
+      <h2>Threats</h2>
+      <div class="threats-list" id="threats-list"></div>
+      <button class="add-btn" onclick="openThreatModal()">+ Add Threat</button>
+    </section>
+  </main>
+
+  <!-- Character Modal -->
+  <div class="modal-overlay" id="character-modal">
+    <div class="modal">
+      <h3 id="character-modal-title">Add Character</h3>
+      <form class="modal-form" onsubmit="saveCharacter(event)">
+        <input type="hidden" id="char-edit-id" value="">
+        <div class="form-row">
+          <div class="form-group small">
+            <label>#</label>
+            <input type="number" id="char-number" min="1" max="99" value="1">
+          </div>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="char-name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" id="char-description" placeholder="Brief description...">
+        </div>
+        <div class="form-group">
+          <label>Notes</label>
+          <textarea id="char-notes" placeholder="Additional notes..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Hearts</label>
+            <input type="number" id="char-hearts-max" min="1" max="20" value="7">
+          </div>
+          <div class="form-group">
+            <label>Iron</label>
+            <input type="number" id="char-iron-max" min="0" max="10" value="0">
+          </div>
+          <div class="form-group">
+            <label>Arcana</label>
+            <input type="number" id="char-arcana-max" min="0" max="10" value="0">
+          </div>
+        </div>
+        <div class="checkbox-row">
+          <label><input type="checkbox" id="char-leader"> Leader</label>
+          <label><input type="checkbox" id="char-blessed"> Blessed</label>
+          <label><input type="checkbox" id="char-in-camp"> In Camp</label>
+        </div>
+        <div class="modal-buttons">
+          <button type="button" class="btn" onclick="closeCharacterModal()">Cancel</button>
+          <button type="submit" class="btn primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Threat Modal -->
+  <div class="modal-overlay" id="threat-modal">
+    <div class="modal">
+      <h3 id="threat-modal-title">Add Threat</h3>
+      <form class="modal-form" onsubmit="saveThreat(event)">
+        <input type="hidden" id="threat-edit-id" value="">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="threat-name" required>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="threat-description" placeholder="Brief description..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Level</label>
+            <input type="number" id="threat-level" min="0" max="20">
+          </div>
+          <div class="form-group">
+            <label>Oracle</label>
+            <select id="threat-oracle">
+              <option value="">—</option>
+              <option value="6">Easy (6)</option>
+              <option value="8">Normal (8)</option>
+              <option value="10">Hard (10)</option>
+              <option value="12">Extreme (12)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button type="button" class="btn" onclick="closeThreatModal()">Cancel</button>
+          <button type="submit" class="btn primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Utility
+    function uuid() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        const r = Math.random() * 16 | 0;
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+    }
+
+    // State
+    let state = {
+      session: { round: 0, turn: 0, hour: 0, clock: 0, insight: 0 },
+      environment: { terrain: 'forest', weather: 'clear' },
+      rumor: { text: '', blessingActive: false },
+      muster: [],
+      camp: [],
+      threats: []
+    };
+
+    const INSIGHTS = ['—', 'TRAIT', 'SKILL', 'ITEM', 'BYNAME', 'FEAT', 'EFFORT'];
+    const DICE_FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+
+    // Initialize
+    function init() {
+      loadState();
+      render();
+      
+      document.getElementById('terrain').addEventListener('change', e => {
+        state.environment.terrain = e.target.value;
+        saveState();
+      });
+      document.getElementById('weather').addEventListener('change', e => {
+        state.environment.weather = e.target.value;
+        saveState();
+      });
+    }
+
+    // State Management
+    function loadState() {
+      const saved = localStorage.getItem('wandyr-session-v2');
+      if (saved) {
+        const loaded = JSON.parse(saved);
+        state = { ...state, ...loaded };
+        // Migration from v1
+        if (loaded.company && !loaded.muster) {
+          state.muster = loaded.company.filter(c => !c.inCamp);
+          state.camp = loaded.company.filter(c => c.inCamp);
+          delete state.company;
+        }
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem('wandyr-session-v2', JSON.stringify(state));
+    }
+
+    function exportData() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `wandyr-session-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const loaded = JSON.parse(e.target.result);
+          state = { ...state, ...loaded };
+          if (!state.rumor) state.rumor = { text: '', blessingActive: false };
+          if (!state.muster) state.muster = [];
+          if (!state.camp) state.camp = [];
+          saveState();
+          render();
+        } catch (err) {
+          alert('Invalid JSON file');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function saveRumor() {
+      state.rumor.text = document.getElementById('current-rumor').value;
+      saveState();
+    }
+
+    function toggleBlessing() {
+      state.rumor.blessingActive = document.getElementById('blessing-active').checked;
+      saveState();
+      renderCharacters();
+    }
+
+    // Render
+    function render() {
+      renderClock();
+      renderCounters();
+      renderInsight();
+      renderCharacters();
+      renderThreats();
+      renderEnvironment();
+      renderRumor();
+    }
+
+    function renderClock() {
+      const slots = document.querySelectorAll('.clock-slot');
+      slots.forEach((slot, i) => {
+        slot.classList.toggle('filled', i < state.session.clock);
+        slot.textContent = i < state.session.clock ? '●' : '○';
+      });
+    }
+
+    function renderCounters() {
+      document.getElementById('round-count').textContent = state.session.round;
+      document.getElementById('turn-count').textContent = state.session.turn;
+      document.getElementById('hour-count').textContent = state.session.hour;
+      document.getElementById('clock-count').textContent = state.session.clock;
+    }
+
+    function renderInsight() {
+      document.getElementById('insight-value').textContent = INSIGHTS[state.session.insight];
+    }
+
+    function renderEnvironment() {
+      document.getElementById('terrain').value = state.environment.terrain;
+      document.getElementById('weather').value = state.environment.weather;
+    }
+
+    function renderRumor() {
+      document.getElementById('current-rumor').value = state.rumor.text || '';
+      document.getElementById('blessing-active').checked = state.rumor.blessingActive || false;
+    }
+
+    function renderCharacters() {
+      renderCharacterList('muster', state.muster, false);
+      renderCharacterList('camp', state.camp, true);
+    }
+
+    function renderCharacterList(listId, characters, isCamp) {
+      const list = document.getElementById(`${listId}-list`);
+      const sorted = [...characters].sort((a, b) => (a.number || 99) - (b.number || 99));
+      
+      list.innerHTML = sorted.map(char => {
+        const showBlessed = state.rumor.blessingActive && char.blessed;
+        const notesId = `notes-${char.id}`;
+        return `
+        <div class="character-card ${char.leader ? 'leader' : ''} ${showBlessed ? 'blessed' : ''} ${isCamp ? 'in-camp' : ''}">
+          <div class="char-header">
+            <div class="char-name">
+              <span class="char-number">${char.number || '?'}</span>
+              ${char.leader ? '<span class="leader-crown">👑</span>' : ''}
+              ${showBlessed ? '<span class="blessed-star">✦</span>' : ''}
+              ${char.name}
+            </div>
+            <div class="char-controls">
+              <button onclick="editCharacter('${char.id}')" title="Edit">✎</button>
+              <button onclick="moveCharacter('${char.id}')" title="${isCamp ? 'To Muster' : 'To Camp'}">${isCamp ? '↑' : '↓'}</button>
+              <button onclick="removeCharacter('${char.id}')" title="Remove">✕</button>
+            </div>
+          </div>
+          ${char.description ? `<div class="char-description">${char.description}</div>` : ''}
+          <div class="char-stats">
+            <div class="stat-row">
+              <span class="stat-label">Hearts</span>
+              <span class="stat-value hearts">${char.hearts.current} / ${char.hearts.max}</span>
+              <div class="stat-controls">
+                <button onclick="adjustStat('${char.id}', 'hearts', -1)">−</button>
+                <button onclick="adjustStat('${char.id}', 'hearts', 1)">+</button>
+              </div>
+            </div>
+            ${char.iron.max > 0 ? `
+            <div class="stat-row">
+              <span class="stat-label">Iron</span>
+              <span class="stat-value iron">${char.iron.current} / ${char.iron.max}</span>
+              <div class="stat-controls">
+                <button onclick="adjustStat('${char.id}', 'iron', -1)">−</button>
+                <button onclick="adjustStat('${char.id}', 'iron', 1)">+</button>
+              </div>
+            </div>
+            ` : ''}
+            ${char.arcana.max > 0 ? `
+            <div class="stat-row">
+              <span class="stat-label">Arcana</span>
+              <span class="stat-value arcana">${char.arcana.current} / ${char.arcana.max}</span>
+              <div class="stat-controls">
+                <button onclick="adjustStat('${char.id}', 'arcana', -1)">−</button>
+                <button onclick="adjustStat('${char.id}', 'arcana', 1)">+</button>
+              </div>
+            </div>
+            ` : ''}
+          </div>
+          <div class="char-extras">
+            <div class="baggage-toggle">
+              <input type="checkbox" id="baggage-${char.id}" ${char.baggage ? 'checked' : ''} onchange="toggleBaggage('${char.id}')">
+              <label for="baggage-${char.id}">Baggage</label>
+            </div>
+            ${char.notes ? `<span class="notes-toggle" onclick="toggleNotes('${notesId}')">Notes</span>` : ''}
+          </div>
+          ${char.notes ? `<div class="char-notes hidden" id="${notesId}">${char.notes}</div>` : ''}
+        </div>
+      `}).join('');
+    }
+
+    function renderThreats() {
+      const list = document.getElementById('threats-list');
+      list.innerHTML = state.threats.map(threat => `
+        <div class="threat-card ${threat.condition}">
+          <div class="threat-header">
+            <div class="threat-info">
+              <div class="threat-name">${threat.name}</div>
+              <div class="threat-meta">
+                ${threat.level ? `<span>Lvl ${threat.level}</span>` : ''}
+                ${threat.oracle ? `<span>Oracle ${threat.oracle}+</span>` : ''}
+              </div>
+              ${threat.description ? `<div class="threat-description">${threat.description}</div>` : ''}
+            </div>
+            <div class="threat-controls">
+              <select onchange="setThreatCondition('${threat.id}', this.value)">
+                <option value="active" ${threat.condition === 'active' ? 'selected' : ''}>Active</option>
+                <option value="hit" ${threat.condition === 'hit' ? 'selected' : ''}>Hit</option>
+                <option value="dead" ${threat.condition === 'dead' ? 'selected' : ''}>Dead</option>
+                <option value="fled" ${threat.condition === 'fled' ? 'selected' : ''}>Fled</option>
+              </select>
+              <button onclick="editThreat('${threat.id}')" title="Edit">✎</button>
+              <button onclick="removeThreat('${threat.id}')" title="Remove">✕</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Section toggling
+    function toggleSection(section) {
+      const content = document.getElementById(`${section}-content`);
+      const toggle = document.getElementById(`${section}-toggle`);
+      content.classList.toggle('collapsed');
+      toggle.textContent = content.classList.contains('collapsed') ? '▶' : '▼';
+    }
+
+    function toggleNotes(id) {
+      document.getElementById(id).classList.toggle('hidden');
+    }
+
+    // Clock Actions
+    function rollD6() {
+      return Math.floor(Math.random() * 6) + 1;
+    }
+
+    function rollInsight() {
+      state.session.insight = rollD6();
+      saveState();
+      renderInsight();
+    }
+
+    function advanceTurn() {
+      state.session.clock++;
+      state.session.turn++;
+      state.session.round = 0;
+      rollInsight();
+
+      if (state.session.clock >= 6) {
+        rollClockAndClear();
+      } else {
+        saveState();
+        render();
+      }
+    }
+
+    function advanceRound() {
+      state.session.round++;
+      rollInsight();
+
+      if (state.session.round >= 60) {
+        state.session.round = 0;
+        state.session.clock++;
+        state.session.turn++;
+
+        if (state.session.clock >= 6) {
+          rollClockAndClear();
+        }
+      }
+
+      saveState();
+      render();
+    }
+
+    function rollClock() {
+      if (state.session.clock === 0) {
+        showRollResult([], 0);
+        return;
+      }
+
+      const rolls = [];
+      for (let i = 0; i < state.session.clock; i++) {
+        rolls.push(rollD6());
+      }
+
+      const ones = rolls.filter(r => r === 1).length;
+      showRollResult(rolls, ones);
+    }
+
+    function rollClockAndClear() {
+      const rolls = [];
+      for (let i = 0; i < 6; i++) {
+        rolls.push(rollD6());
+      }
+
+      const ones = rolls.filter(r => r === 1).length;
+      showRollResult(rolls, ones);
+
+      state.session.clock = 0;
+      state.session.hour++;
+      saveState();
+      render();
+    }
+
+    function showRollResult(rolls, ones) {
+      const diceEl = document.getElementById('roll-dice');
+      const outcomeEl = document.getElementById('roll-outcome');
+
+      if (rolls.length === 0) {
+        diceEl.textContent = '—';
+        outcomeEl.textContent = 'No dice to roll';
+        outcomeEl.className = 'roll-outcome';
+        return;
+      }
+
+      diceEl.textContent = rolls.map(r => DICE_FACES[r - 1]).join(' ');
+
+      if (ones === 0) {
+        outcomeEl.textContent = 'All clear';
+        outcomeEl.className = 'roll-outcome';
+      } else if (ones === 1) {
+        outcomeEl.textContent = 'Complication!';
+        outcomeEl.className = 'roll-outcome complication';
+      } else {
+        outcomeEl.textContent = `${ones}× Complication!`;
+        outcomeEl.className = 'roll-outcome complication';
+      }
+
+      document.querySelectorAll('.clock-slot.filled').forEach(slot => {
+        slot.classList.add('rolled');
+        setTimeout(() => slot.classList.remove('rolled'), 500);
+      });
+    }
+
+    // Character helpers
+    function findCharacter(id) {
+      let char = state.muster.find(c => c.id === id);
+      if (char) return { char, list: 'muster' };
+      char = state.camp.find(c => c.id === id);
+      if (char) return { char, list: 'camp' };
+      return null;
+    }
+
+    // Character Actions
+    function openCharacterModal(editId = null) {
+      document.getElementById('char-edit-id').value = editId || '';
+      
+      if (editId) {
+        const found = findCharacter(editId);
+        if (!found) return;
+        const char = found.char;
+        document.getElementById('character-modal-title').textContent = 'Edit Character';
+        document.getElementById('char-number').value = char.number || 1;
+        document.getElementById('char-name').value = char.name;
+        document.getElementById('char-description').value = char.description || '';
+        document.getElementById('char-notes').value = char.notes || '';
+        document.getElementById('char-hearts-max').value = char.hearts.max;
+        document.getElementById('char-iron-max').value = char.iron.max;
+        document.getElementById('char-arcana-max').value = char.arcana.max;
+        document.getElementById('char-leader').checked = char.leader;
+        document.getElementById('char-blessed').checked = char.blessed;
+        document.getElementById('char-in-camp').checked = found.list === 'camp';
+      } else {
+        document.getElementById('character-modal-title').textContent = 'Add Character';
+        document.getElementById('char-number').value = state.muster.length + state.camp.length + 1;
+        document.getElementById('char-name').value = '';
+        document.getElementById('char-description').value = '';
+        document.getElementById('char-notes').value = '';
+        document.getElementById('char-hearts-max').value = 7;
+        document.getElementById('char-iron-max').value = 0;
+        document.getElementById('char-arcana-max').value = 0;
+        document.getElementById('char-leader').checked = false;
+        document.getElementById('char-blessed').checked = false;
+        document.getElementById('char-in-camp').checked = false;
+      }
+
+      document.getElementById('character-modal').classList.add('active');
+    }
+
+    function closeCharacterModal() {
+      document.getElementById('character-modal').classList.remove('active');
+    }
+
+    function saveCharacter(event) {
+      event.preventDefault();
+      
+      const editId = document.getElementById('char-edit-id').value;
+      const isLeader = document.getElementById('char-leader').checked;
+      const inCamp = document.getElementById('char-in-camp').checked;
+      const heartsMax = parseInt(document.getElementById('char-hearts-max').value);
+      const ironMax = parseInt(document.getElementById('char-iron-max').value);
+      const arcanaMax = parseInt(document.getElementById('char-arcana-max').value);
+
+      if (isLeader) {
+        state.muster.forEach(c => c.leader = false);
+        state.camp.forEach(c => c.leader = false);
+      }
+
+      let char;
+      let oldList = null;
+
+      if (editId) {
+        const found = findCharacter(editId);
+        if (found) {
+          char = found.char;
+          oldList = found.list;
+          char.number = parseInt(document.getElementById('char-number').value) || 1;
+          char.name = document.getElementById('char-name').value;
+          char.description = document.getElementById('char-description').value;
+          char.notes = document.getElementById('char-notes').value;
+          char.leader = isLeader;
+          char.blessed = document.getElementById('char-blessed').checked;
+          char.hearts.max = heartsMax;
+          char.hearts.current = Math.min(char.hearts.current, heartsMax);
+          char.iron.max = ironMax;
+          char.iron.current = Math.min(char.iron.current, ironMax);
+          char.arcana.max = arcanaMax;
+          char.arcana.current = Math.min(char.arcana.current, arcanaMax);
+        }
+      } else {
+        char = {
+          id: uuid(),
+          number: parseInt(document.getElementById('char-number').value) || 1,
+          name: document.getElementById('char-name').value,
+          description: document.getElementById('char-description').value,
+          notes: document.getElementById('char-notes').value,
+          leader: isLeader,
+          blessed: document.getElementById('char-blessed').checked,
+          baggage: false,
+          hearts: { current: heartsMax, max: heartsMax },
+          iron: { current: ironMax, max: ironMax },
+          arcana: { current: arcanaMax, max: arcanaMax }
+        };
+      }
+
+      // Handle list placement
+      const targetList = inCamp ? 'camp' : 'muster';
+      
+      if (editId && oldList && oldList !== targetList) {
+        state[oldList] = state[oldList].filter(c => c.id !== editId);
+        state[targetList].push(char);
+      } else if (!editId) {
+        state[targetList].push(char);
+      }
+
+      saveState();
+      renderCharacters();
+      closeCharacterModal();
+    }
+
+    function editCharacter(id) {
+      openCharacterModal(id);
+    }
+
+    function moveCharacter(id) {
+      const found = findCharacter(id);
+      if (!found) return;
+      
+      const fromList = found.list;
+      const toList = fromList === 'muster' ? 'camp' : 'muster';
+      
+      state[fromList] = state[fromList].filter(c => c.id !== id);
+      state[toList].push(found.char);
+      
+      saveState();
+      renderCharacters();
+    }
+
+    function removeCharacter(id) {
+      const found = findCharacter(id);
+      if (!found) return;
+      
+      if (confirm(`Remove ${found.char.name}?`)) {
+        state[found.list] = state[found.list].filter(c => c.id !== id);
+        saveState();
+        renderCharacters();
+      }
+    }
+
+    function adjustStat(id, stat, delta) {
+      const found = findCharacter(id);
+      if (!found) return;
+      
+      const char = found.char;
+      char[stat].current = Math.max(0, Math.min(char[stat].max, char[stat].current + delta));
+      saveState();
+      renderCharacters();
+    }
+
+    function toggleBaggage(id) {
+      const found = findCharacter(id);
+      if (!found) return;
+      
+      found.char.baggage = !found.char.baggage;
+      saveState();
+    }
+
+    // Threat Actions
+    function openThreatModal(editId = null) {
+      document.getElementById('threat-edit-id').value = editId || '';
+      
+      if (editId) {
+        const threat = state.threats.find(t => t.id === editId);
+        if (!threat) return;
+        document.getElementById('threat-modal-title').textContent = 'Edit Threat';
+        document.getElementById('threat-name').value = threat.name;
+        document.getElementById('threat-description').value = threat.description || '';
+        document.getElementById('threat-level').value = threat.level || '';
+        document.getElementById('threat-oracle').value = threat.oracle || '';
+      } else {
+        document.getElementById('threat-modal-title').textContent = 'Add Threat';
+        document.getElementById('threat-name').value = '';
+        document.getElementById('threat-description').value = '';
+        document.getElementById('threat-level').value = '';
+        document.getElementById('threat-oracle').value = '';
+      }
+
+      document.getElementById('threat-modal').classList.add('active');
+    }
+
+    function closeThreatModal() {
+      document.getElementById('threat-modal').classList.remove('active');
+    }
+
+    function saveThreat(event) {
+      event.preventDefault();
+
+      const editId = document.getElementById('threat-edit-id').value;
+      
+      const threatData = {
+        id: editId || uuid(),
+        name: document.getElementById('threat-name').value,
+        description: document.getElementById('threat-description').value,
+        level: document.getElementById('threat-level').value || null,
+        oracle: document.getElementById('threat-oracle').value || null,
+        condition: 'active'
+      };
+
+      if (editId) {
+        const idx = state.threats.findIndex(t => t.id === editId);
+        if (idx >= 0) {
+          threatData.condition = state.threats[idx].condition;
+          state.threats[idx] = threatData;
+        }
+      } else {
+        state.threats.push(threatData);
+      }
+
+      saveState();
+      renderThreats();
+      closeThreatModal();
+    }
+
+    function editThreat(id) {
+      openThreatModal(id);
+    }
+
+    function setThreatCondition(id, condition) {
+      const threat = state.threats.find(t => t.id === id);
+      if (threat) {
+        threat.condition = condition;
+        saveState();
+        renderThreats();
+      }
+    }
+
+    function removeThreat(id) {
+      state.threats = state.threats.filter(t => t.id !== id);
+      saveState();
+      renderThreats();
+    }
+
+    // Initialize
+    init();
+  </script>
+</body>
+</html>

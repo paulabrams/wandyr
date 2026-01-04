@@ -7,6 +7,7 @@ A process for generating character-specific d66 Trait tables when a character re
 ## PROCESS OVERVIEW
 
 When a character cheats death, instead of rolling on the generic "Cheating Death Marks" table, generate a personalized d66 table that reflects:
+
 - Their existing Traits and nature
 - Their Assets and equipment
 - Their Names/abilities
@@ -51,12 +52,15 @@ To generate a personalized table, gather:
 ## GENERATION STEPS
 
 ### Step 1: Create the Framework
+
 - Set up a d66 table (36 entries total: 1.1 through 6.6)
 - Include a header explaining when/how the character returns
 - Add the tone key: results with **1** = Spicy (ominous, cursed, scarred), results with **6** = Sweet (mystical, blessed)
 
 ### Step 2: Identify Key Themes
+
 List the core elements to weave through the table:
+
 - **Existing Traits** - How death/corruption changes them
 - **Assets** - How items become cursed, enhanced, or corrupted
 - **Abilities** - How powers invert, intensify, or transform
@@ -67,6 +71,7 @@ List the core elements to weave through the table:
 ### Step 3: Generate Entries (d66 Format)
 
 For each of the 36 entries, create a Trait that:
+
 - **Ties to character elements** - References their Traits, Assets, Names, or history
 - **Reflects transformation** - Shows how death changed them
 - **Maintains tone** - Spicy (1s) are ominous/cursed, Sweet (6s) are mystical/blessed
@@ -74,18 +79,22 @@ For each of the 36 entries, create a Trait that:
 - **Feels personal** - Couldn't apply to just any character
 
 **Distribution Strategy:**
+
 - **1.x row** - Most Spicy, corruption-focused, ominous
 - **2.x-5.x rows** - Mixed, transformational, ambiguous
 - **6.x row** - Most Sweet, potentially redemptive or powerful
 
 **Entry Format:**
+
 - Each entry is a single sentence or short paragraph
 - Describes the Trait clearly
 - Implies narrative consequences
 - May hint at mechanical effects (keep subtle)
 
 ### Step 4: Add GM Notes
+
 Include optional mechanical nudges that:
+
 - Stay minimal (avoid permanent stat changes)
 - Focus on narrative impact
 - Provide small advantages/disadvantages
@@ -101,6 +110,7 @@ Include optional mechanical nudges that:
 **Death Context:** Stole cursed chalice from chaos altar, failed save, became servant of evil, missing for a month
 
 **Key Themes Identified:**
+
 - Chaos altar corruption
 - Berserker rage transformation
 - Vitae (life-force) curdling
@@ -112,6 +122,7 @@ Include optional mechanical nudges that:
 - Weapon bloodlust
 
 **Sample Entries:**
+
 - **1.1** (Spicy) - Chaos chalice corruption: black blood, dark energy in veins
 - **1.3** (Spicy) - Trophy skulls whisper condemnation
 - **2.3** (Mixed) - Peace Aura inverted, enemies grow aggressive
@@ -123,6 +134,7 @@ Include optional mechanical nudges that:
 ## TONE GUIDE
 
 ### Spicy (Contains 1)
+
 - Ominous, cursed, scarred
 - Physical corruption
 - Dark transformations
@@ -131,6 +143,7 @@ Include optional mechanical nudges that:
 - Unwanted consequences
 
 ### Sweet (Contains 6)
+
 - Mystical, blessed, redemptive
 - Unexpected gifts
 - Strange boons
@@ -139,6 +152,7 @@ Include optional mechanical nudges that:
 - Mysterious but helpful
 
 ### Mixed (1-5, excluding 1s and 6s)
+
 - Ambiguous transformations
 - Both curse and gift
 - Neutral but interesting
@@ -221,4 +235,3 @@ When implementing as a slash command, the process should:
 
 Keep the mechanical effects minimal—the real power is in how these Traits color the narrative and shape the character's interactions with the world.
 ```
-
