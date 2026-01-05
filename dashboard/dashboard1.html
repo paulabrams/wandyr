@@ -541,84 +541,39 @@
           <label>Region</label>
           <input type="text" id="env-region" placeholder="Wåndyrwyld" onchange="updateEnvironment()">
         </div>
-        <div class="env-field">
-          <label>Terrain</label>
-          <div class="input-with-btn">
-            <select id="env-terrain" onchange="updateEnvironment()">
-              <optgroup label="Forest">
-                <option value="Forest - Light Coniferous">Forest, Light Coniferous (1.1)</option>
-                <option value="Forest - Heavy Coniferous">Forest, Heavy Coniferous (1.2)</option>
-                <option value="Forest - Light Deciduous">Forest, Light Deciduous (1.3)</option>
-                <option value="Forest - Heavy Deciduous">Forest, Heavy Deciduous (1.4)</option>
-                <option value="Forest - Light Mixed">Forest, Light Mixed (1.5)</option>
-                <option value="Forest - Heavy Mixed">Forest, Heavy Mixed (1.6)</option>
-              </optgroup>
-              <optgroup label="Flat">
-                <option value="Flat - Prairie">Flat, Prairie (2.1)</option>
-                <option value="Flat - Farmland">Flat, Farmland (2.2)</option>
-                <option value="Flat - Shrublands">Flat, Shrublands (2.3)</option>
-                <option value="Flat - Savanna">Flat, Savanna (2.4)</option>
-                <option value="Flat - Flats">Flat, Flats (2.5)</option>
-              </optgroup>
-              <optgroup label="Arid">
-                 <option value="Arid - Desert Cold">Arid, Desert Cold (3.1)</option>
-                 <option value="Arid - Desert Coastal">Arid, Desert Coastal (3.2)</option>
-                 <option value="Arid - Desert Rocky">Arid, Desert Rocky (3.3)</option>
-                 <option value="Arid - Badlands">Arid, Badlands (3.4)</option>
-                 <option value="Arid - Steppe">Arid, Steppe (3.5)</option>
-              </optgroup>
-              <optgroup label="Wetlands">
-                  <option value="Wetlands - Bog">Wetlands, Bog (4.1)</option>
-                  <option value="Wetlands - Marsh">Wetlands, Marsh (4.2)</option>
-                  <option value="Wetlands - Swamp">Wetlands, Swamp (4.3)</option>
-                  <option value="Wetlands - Moor">Wetlands, Moor (4.4)</option>
-                  <option value="Wetlands - River">Wetlands, River (4.5)</option>
-                  <option value="Wetlands - Tundra">Wetlands, Tundra (4.6)</option>
-              </optgroup>
-              <optgroup label="Mountains">
-                  <option value="Mountains - Small">Mountains, Small (5.1)</option>
-                  <option value="Mountains - Tall">Mountains, Tall (5.2)</option>
-                  <option value="Mountains - Snow-capped">Mountains, Snow-capped (5.3)</option>
-                  <option value="Mountains - Forested">Mountains, Forested (5.4)</option>
-                  <option value="Mountains - Transitional">Mountains, Transitional (5.5)</option>
-                  <option value="Mountains - Volcano">Mountains, Volcano (5.6)</option>
-              </optgroup>
-              <optgroup label="Hills">
-                  <option value="Hills - Barren">Hills, Barren (6.1)</option>
-                  <option value="Hills - Grassy">Hills, Grassy (6.2)</option>
-                  <option value="Hills - Forested">Hills, Forested (6.3)</option>
-                  <option value="Hills - Shrubland">Hills, Shrubland (6.4)</option>
-                  <option value="Hills - Jungle">Hills, Jungle (6.5)</option>
-                  <option value="Hills - Transitional">Hills, Transitional (6.6)</option>
-              </optgroup>
-            </select>
-            <button class="btn icon-btn" onclick="randomizeTerrain()" title="Randomize Terrain">⟳</button>
-          </div>
+        
+        <!-- TERRAIN ROW -->
+        <h4 style="margin: 0.5rem 0 0.2rem; font-size: 0.8rem; color: var(--accent); opacity: 0.8; text-transform: uppercase;">Terrain</h4>
+        <div class="env-group-wrapper">
+            <div class="env-field">
+              <label>Climate</label>
+              <select id="env-climate" onchange="onClimateChange()">
+                  <!-- Populated by JS -->
+              </select>
+            </div>
+            <div class="env-field">
+              <label>Landform</label>
+              <div class="input-with-btn">
+                <select id="env-landform" onchange="updateEnvironment()">
+                    <!-- Populated by JS -->
+                </select>
+                <button class="btn icon-btn" onclick="randomizeLandform()" title="Randomize Landform">⟳</button>
+              </div>
+            </div>
         </div>
-        <div class="env-field">
-          <label>Conditions</label>
-          <div class="input-with-btn">
-            <select id="env-conditions" onchange="updateEnvironment()">
-               <optgroup label="1 Standard">
-                  <option value="1.1 Clear & Mild">1.1 Clear & Mild</option>
-                  <option value="1.2 Overcast">1.2 Overcast</option>
-                  <option value="1.3 Windy">1.3 Windy</option>
-                  <option value="1.4 Foggy">1.4 Foggy</option>
-                  <option value="1.5 Light Rain/Snow">1.5 Light Rain/Snow</option>
-                  <option value="1.6 Heavy Rain/Snow">1.6 Heavy Rain/Snow</option>
-               </optgroup>
-               <optgroup label="2 Wet & Humid">
-                  <option value="2.1 Drizzle">2.1 Drizzle</option>
-                  <option value="2.2 Downpour">2.2 Downpour</option>
-                  <option value="2.3 Thunderstorm">2.3 Thunderstorm</option>
-                  <option value="2.4 Monsoon">2.4 Monsoon</option>
-                  <option value="2.5 Flood">2.5 Flood</option>
-                  <option value="2.6 Hail">2.6 Hail</option>
-               </optgroup>
-               <optgroup label="3 Cold & Frozen">
-                  <option value="3.1 Cold Snap">3.1 Cold Snap</option>
-                  <option value="3.2 Frost">3.2 Frost</option>
-                  <option value="3.3 Ice Storm">3.3 Ice Storm</option>
+        <div class="env-group-wrapper">
+             <div class="env-field">
+                <label>T.Cond (Tier 4)</label>
+                <div class="input-with-btn">
+                   <select id="env-condition" onchange="updateEnvironment()">
+                       <!-- Populated by JS -->
+                   </select>
+                   <button class="btn icon-btn" onclick="randTerrainCond()" title="Random Terrain Cond">⟳</button>
+                </div>
+             </div>
+             <div class="env-field">
+                <label>POI (Tier 5)</label>
+                 <div class="input-with-btn">
                   <option value="3.4 Blizzard">3.4 Blizzard</option>
                   <option value="3.5 Freezing Fog">3.5 Freezing Fog</option>
                   <option value="3.6 Black Ice">3.6 Black Ice</option>
@@ -710,11 +665,11 @@
       <div class="character-list" id="play-muster-list"></div>
     </section>
 
-    <!-- Threats -->
+    <!-- Others (NPCs/Threats) -->
     <section class="panel">
-      <h2>Threats</h2>
-      <div class="threats-list" id="threats-list"></div>
-      <button class="add-btn" onclick="openThreatModal()">+ Add Threat</button>
+      <h2>Others</h2>
+      <div class="threats-list" id="others-list"></div>
+      <button class="add-btn" onclick="openOtherModal()">+ Add Other</button>
     </section>
   </main>
 
@@ -769,28 +724,34 @@
     </div>
   </div>
 
-  <!-- Threat Modal -->
-  <div class="modal-overlay" id="threat-modal">
+  <!-- Other/Threat Modal -->
+  <div class="modal-overlay" id="other-modal">
       <div class="modal">
-        <h3 id="threat-modal-title">Threat</h3>
-        <form class="modal-form" onsubmit="saveThreat(event)">
-          <input type="hidden" id="threat-id">
+        <h3 id="other-modal-title">Other</h3>
+        <form class="modal-form" onsubmit="saveOther(event)">
+          <input type="hidden" id="other-id">
           <div class="form-group">
             <label>Name</label>
-            <input type="text" id="threat-name" required>
+            <input type="text" id="other-name" required>
           </div>
           <div class="form-group">
             <label>Description</label>
-            <textarea id="threat-desc"></textarea>
+            <textarea id="other-desc"></textarea>
+          </div>
+          <div class="form-row">
+              <div class="form-group">
+                 <label>Reaction</label>
+                 <input type="text" id="other-reaction" placeholder="e.g. Suspicious">
+              </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Level</label>
-              <input type="number" id="threat-level" min="0">
+              <input type="number" id="other-level" min="0">
             </div>
             <div class="form-group">
               <label>Oracle</label>
-              <select id="threat-oracle">
+              <select id="other-oracle">
                 <option value="">—</option>
                 <option value="6">Easy (6)</option>
                 <option value="8">Normal (8)</option>
@@ -800,7 +761,7 @@
             </div>
           </div>
           <div class="modal-buttons">
-            <button type="button" class="btn" onclick="closeModal('threat-modal')">Cancel</button>
+            <button type="button" class="btn" onclick="closeModal('other-modal')">Cancel</button>
             <button type="submit" class="btn primary">Save</button>
           </div>
         </form>
@@ -809,39 +770,243 @@
 
   <script>
     // --- Data & State ---
+    // --- Data & State ---
     const DEFAULT_STATE = {
       mode: 'muster', // or 'camp'
       session: { round: 0, turn: 0, hour: 0, clock: 0, insight: 0 },
-      environment: { region: 'Wåndyrwyld', terrain: 'Forest - Light Coniferous', conditions: '7 Mild' },
+      environment: { 
+        region: 'Wåndyrwyld', 
+        climate: 'Temperate', 
+        landform: 'Deciduous forest', 
+        terrain_condition: '', 
+        poi: '',
+        weather_pattern: 'Clear skies',
+        weather_shift: '',
+        weather_condition: '', // Tier 4 Weather
+        weather_event: ''      // Tier 5 Weather
+      },
       dice: { rolls: [3, 4], type: 'normal', total: 7 },
       rumor: { text: '', blessing: { active: false, source: '', value: 0 } },
       muster: [],
       camp: [],
-      threats: []
+      others: []
     };
     
     let state = JSON.parse(JSON.stringify(DEFAULT_STATE));
 
     const INSIGHTS = ['—', 'TRAIT', 'SKILL', 'ITEM', 'BYNAME', 'FEAT', 'EFFORT'];
     const DICE_FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+    
+    // NPC Reactions 2d6
+    const NPC_REACTIONS = {
+        2: "Hostile",
+        3: "Suspicious",
+        4: "Fearful",
+        5: "Dismissive",
+        6: "Reluctant",
+        7: "Neutral",
+        8: "Interested",
+        9: "Pleasant",
+        10: "Friendly",
+        11: "Enthusiastic",
+        12: "Trusting"
+    };
+
+    // Terrain & Weather Data
+    const TERRAIN_DATA = {
+        zones: ["Polar", "Boreal", "Temperate", "Subtropical", "Tropical", "Equatorial"],
+        landforms: {
+            "Polar": ["Tundra", "Ice field or glacier", "Frozen sea or lake", "Snow plain", "Permafrost bog", "Rocky barrens"],
+            "Boreal": ["Taiga (conifer forest)", "Muskeg or bog", "Frozen lake or river", "Open tundra", "Rocky hills", "River valley"],
+            "Temperate": ["Deciduous forest", "Grassland or meadow", "Rolling hills", "Marsh or fen", "River valley", "Mixed woodland"],
+            "Subtropical": ["Scrubland or chaparral", "Dry steppe", "Oak woodland", "River valley", "Rugged hills", "Seasonal wetland"],
+            "Tropical": ["Jungle", "Savannah", "Swamp or mangrove", "River delta", "Volcanic terrain", "Monsoon forest"],
+            "Equatorial": ["Dense rainforest", "Flooded forest", "River system", "Swamp", "Cloud forest", "Coastal lagoon"]
+        },
+        terrainConditions: ["Flooded or waterlogged", "Recently burned", "Overgrown or choked", "Drought-stricken", "Storm-damaged", "Unnaturally still"],
+        pois: ["Ruins or old structure", "Campsite (old or recent)", "Trail or crossroads", "Water source", "Natural shelter", "Signs of habitation"],
+        
+        weatherPatterns: {
+            "Polar": ["Clear and frigid", "Overcast and bitter", "Light snow", "Heavy snow", "Blizzard", "Ice fog"],
+            "Boreal": ["Clear and cold", "Overcast", "Light snow or rain", "Heavy snow or rain", "Freezing rain", "Dense fog"],
+            "Temperate": ["Clear skies", "Partly cloudy", "Overcast", "Light rain", "Heavy rain", "Thunderstorm"],
+            "Subtropical": ["Clear and hot", "Hazy", "Dry and windy", "Light rain", "Heavy rain", "Dust storm or dry lightning"],
+            "Tropical": ["Clear and humid", "Hazy and still", "Afternoon showers", "Steady rain", "Torrential downpour", "Tropical storm"],
+            "Equatorial": ["Hot and humid", "Steamy", "Afternoon thunderstorm", "Steady rain", "Torrential downpour", "Brief clearing"]
+        },
+        weatherShifts: ["Weather holds steady", "Weather holds steady", "Weather improves one step", "Weather worsens one step", "Weather worsens dramatically", "Sudden change"],
+        weatherConditions: ["Fog or mist", "High winds", "Bitter cold or oppressive heat", "Humidity or dryness", "Unusual calm", "Strange light"],
+        weatherEvents: ["Rainbow or sun break", "Aurora or strange glow", "Ominous clouds", "Sudden temperature shift", "Unseasonal weather", "Calm before the storm"]
+    };
 
     function init() {
-      // Logic: try to load. If load fails or invalid, fallback to default.
       try {
         loadState();
       } catch(e) {
         console.error("Failed to load state:", e);
       }
-      render();
+      populateClimateSelect(); 
+      populateGenericSelect('env-condition', TERRAIN_DATA.terrainConditions);
+      populateGenericSelect('env-poi', TERRAIN_DATA.pois);
+      populateGenericSelect('env-weather-pattern', TERRAIN_DATA.weatherPatterns[state.environment.climate] || TERRAIN_DATA.weatherPatterns["Temperate"]);
+      // Weather Shift, Cond, Event are still text or should they be dropdowns too? 
+      // User said "Condition and Point of Interest", implying the Terrain ones first. 
+      // But looking at previous code, Weather Shift/Cond/Event were also text.
+      // I will stick to Condition/POI as requested.
+      
+      render(); 
     }
     
+    function populateGenericSelect(id, options) {
+        const sel = document.getElementById(id);
+        if(!sel) return;
+        sel.innerHTML = '<option value="">— None —</option>'; // Add blank option
+        if(Array.isArray(options)) {
+            options.forEach(opt => {
+                const el = document.createElement('option');
+                el.value = opt; el.textContent = opt;
+                sel.appendChild(el);
+            });
+        }
+    }
+    
+    function populateClimateSelect() {
+        const sel = document.getElementById('env-climate');
+        if(!sel) return;
+        sel.innerHTML = '';
+        TERRAIN_DATA.zones.forEach(z => {
+            const opt = document.createElement('option');
+            opt.value = z; opt.textContent = z;
+            sel.appendChild(opt);
+        });
+    }
+
+    function updateLandformOptions() {
+        // Called when Climate changes
+        const climatic = state.environment.climate || "Temperate";
+        // Landforms
+        const lfSel = document.getElementById('env-landform');
+        const lfOpts = TERRAIN_DATA.landforms[climatic] || TERRAIN_DATA.landforms["Temperate"];
+        lfSel.innerHTML = '';
+        lfOpts.forEach(lf => {
+            const opt = document.createElement('option');
+            opt.value = lf; opt.textContent = lf;
+            lfSel.appendChild(opt);
+        });
+        if(lfOpts.includes(state.environment.landform)) {
+            lfSel.value = state.environment.landform;
+        } else {
+             lfSel.value = lfOpts[0];
+             state.environment.landform = lfOpts[0];
+        }
+        
+        // Weather Patterns - need to update options based on climate too
+        const wpSel = document.getElementById('env-weather-pattern');
+        if(wpSel) {
+            const wpOpts = TERRAIN_DATA.weatherPatterns[climatic] || TERRAIN_DATA.weatherPatterns["Temperate"];
+            // Reuse generic populate but keep selection
+            populateGenericSelect('env-weather-pattern', wpOpts);
+            
+            // Remove the 'None' if we want forced pattern? Or keep it?
+            // Weather pattern usually mandatory? Let's keep it simple.
+            // Actually populateGenericSelect adds 'None'.
+            
+            if(wpOpts.includes(state.environment.weather_pattern)) {
+                wpSel.value = state.environment.weather_pattern;
+            } else if(state.environment.weather_pattern) {
+                 // Try to keep value? No, must be in options.
+                 wpSel.value = wpOpts[0];
+                 state.environment.weather_pattern = wpOpts[0];
+            }
+        }
+    }
+    
+    // ... loadState ...
+
+    // ... saveState ...
+    
+    // ... 
+
+    // --- Actions ---
+
+    // ...
+
+    // --- Environment ---
+    function updateEnvironment() {
+      state.environment.region = document.getElementById('env-region').value;
+      
+      state.environment.climate = document.getElementById('env-climate').value;
+      state.environment.landform = document.getElementById('env-landform').value;
+      state.environment.terrain_condition = document.getElementById('env-condition').value;
+      state.environment.poi = document.getElementById('env-poi').value;
+      
+      state.environment.weather_pattern = document.getElementById('env-weather-pattern').value;
+      state.environment.weather_shift = document.getElementById('env-weather-shift').value;
+      state.environment.weather_condition = document.getElementById('env-weather-condition').value;
+      state.environment.weather_event = document.getElementById('env-weather-event').value;
+
+      saveState();
+    }
+    
+    function onClimateChange() {
+        state.environment.climate = document.getElementById('env-climate').value;
+        const lfOpts = TERRAIN_DATA.landforms[state.environment.climate];
+        if(lfOpts) state.environment.landform = lfOpts[0];
+        
+        const wpOpts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
+        if(wpOpts) state.environment.weather_pattern = wpOpts[0];
+        
+        updateLandformOptions(); 
+        saveState();
+    }
+    
+    function randomizeLandform() {
+       const opts = TERRAIN_DATA.landforms[state.environment.climate];
+       if(opts) {
+           const rand = Math.floor(Math.random() * opts.length);
+           state.environment.landform = opts[rand];
+           document.getElementById('env-landform').value = state.environment.landform;
+           saveState();
+       }
+    }
+    
+    function randomizeWeatherPattern() {
+       const opts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
+       if(opts) {
+           const rand = Math.floor(Math.random() * opts.length);
+           state.environment.weather_pattern = opts[rand];
+           document.getElementById('env-weather-pattern').value = state.environment.weather_pattern;
+           saveState();
+       }
+    }
+
+    function randomizeEnvField(fieldId, stateKey, dataArray) {
+        // For dropdowns (Condition, POI) or text inputs
+        const el = document.getElementById(fieldId);
+        const isSelect = el.tagName === 'SELECT';
+        
+        const rand = Math.floor(Math.random() * dataArray.length);
+        const val = dataArray[rand];
+        
+        state.environment[stateKey] = val;
+        el.value = val;
+        saveState();
+    }
+
+    // Wrapper randomizers
+    function randTerrainCond() { randomizeEnvField('env-condition', 'terrain_condition', TERRAIN_DATA.terrainConditions); }
+    function randPOI() { randomizeEnvField('env-poi', 'poi', TERRAIN_DATA.pois); }
+    function randWeatherShift() { randomizeEnvField('env-weather-shift', 'weather_shift', TERRAIN_DATA.weatherShifts); }
+    function randWeatherCond() { randomizeEnvField('env-weather-condition', 'weather_condition', TERRAIN_DATA.weatherConditions); }
+    function randWeatherEvent() { randomizeEnvField('env-weather-event', 'weather_event', TERRAIN_DATA.weatherEvents); }
+
+    // Old randomizers deprecated
+
     function loadState() {
       const stored = localStorage.getItem('wandyr-session-v3');
       if (stored) {
         const loaded = JSON.parse(stored);
         
-        // Deep merge logic simplified to avoid overwriting nested objects with missing keys if using simple spread
-        // But here we want to prioritize loaded data.
         state = {
             ...DEFAULT_STATE,
             ...loaded,
@@ -849,8 +1014,6 @@
             environment: { 
                 ...DEFAULT_STATE.environment, 
                 ...(loaded.environment || {}),
-                // Migration: conditions <- weather
-                conditions: (loaded.environment && loaded.environment.conditions) ? loaded.environment.conditions : (loaded.environment && loaded.environment.weather) ? loaded.environment.weather : DEFAULT_STATE.environment.conditions
             },
             rumor: { 
                 ...DEFAULT_STATE.rumor, 
@@ -859,13 +1022,41 @@
             },
             dice: { ...DEFAULT_STATE.dice, ...(loaded.dice || {}) }
         };
+        // Ensure new fields exist if migrating
+        if(!state.environment.climate) state.environment.climate = 'Temperate';
+        if(!state.environment.weather_pattern && state.environment.conditions) {
+            // If old 'conditions' exists, migrate it to 'weather_pattern'
+            state.environment.weather_pattern = state.environment.conditions; 
+        }
+        // Remove old 'conditions' field if it exists after migration
+        if (state.environment.conditions !== undefined) {
+            delete state.environment.conditions;
+        }
 
-        // Arrays just replace
         if(loaded.muster) state.muster = loaded.muster;
         if(loaded.camp) state.camp = loaded.camp;
-        if(loaded.threats) state.threats = loaded.threats;
         
-        // Back-compat for v1.2 users with flat blessingActive boolean
+        if(loaded.others) {
+            state.others = loaded.others;
+        } else if(loaded.threats) {
+            state.others = loaded.threats.map(t => {
+                let s = 'fresh';
+                if(t.condition === 'hit') s = 'hit';
+                if(t.condition === 'fled') s = 'fled';
+                if(t.condition === 'dead') s = 'dead';
+                if(t.condition === 'active') s = 'fresh';
+                return {
+                    id: t.id,
+                    name: t.name,
+                    description: t.description,
+                    level: t.level,
+                    oracle: t.oracle,
+                    status: s,
+                    reaction: t.reaction || "Neutral"
+                };
+            });
+        }
+        
         if (typeof loaded.rumor?.blessingActive === 'boolean') {
              state.rumor.blessing.active = loaded.rumor.blessingActive;
         }
@@ -875,53 +1066,33 @@
     function saveState() {
       localStorage.setItem('wandyr-session-v3', JSON.stringify(state));
     }
-
+    
+    // ... uuid ...
     function uuid() {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
         const r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
       });
     }
 
-    // --- Actions ---
-
-    function toggleActions() {
-      document.getElementById('actions-dropdown').classList.toggle('active');
-    }
-
-    // Close dropdown when clicking outside
+    // ... Actions ... (toggleActions, toggleMode, reset, export, import)
+    function toggleActions() { document.getElementById('actions-dropdown').classList.toggle('active'); }
     document.addEventListener('click', (e) => {
       const menu = document.querySelector('.actions-menu');
-      if (!menu.contains(e.target)) {
-        document.getElementById('actions-dropdown').classList.remove('active');
-      }
+      if (!menu.contains(e.target)) document.getElementById('actions-dropdown').classList.remove('active');
     });
-
-    function toggleModeModeSwitch() {
-      state.mode = state.mode === 'muster' ? 'camp' : 'muster';
-      saveState();
-      render();
-    }
-
+    function toggleModeModeSwitch() { state.mode = state.mode === 'muster' ? 'camp' : 'muster'; saveState(); render(); }
     function resetSession() {
       if(confirm("Are you sure you want to reset everything? cannot be undone.")) {
         state = JSON.parse(JSON.stringify(DEFAULT_STATE));
-        saveState();
-        render();
+        saveState(); render();
       }
     }
-
     function exportData() {
       const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `wandyr-session-${new Date().toISOString().slice(0, 10)}.json`;
-      document.body.appendChild(a); // Fix: Append to body for Firefox/some browsers
-      a.click();
-      document.body.removeChild(a); // Cleanup
-      URL.revokeObjectURL(url);
+      const a = document.createElement('a'); a.href = url; a.download = `wandyr-session-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
     }
-
     function importData(event) {
       const file = event.target.files[0];
       if(!file) return;
@@ -929,29 +1100,19 @@
       reader.onload = e => {
         try {
           const loaded = JSON.parse(e.target.result);
-          // Valid JSON?
           if(!loaded || typeof loaded !== 'object') throw new Error("Invalid JSON structure");
-          
-          state = {
-              ...DEFAULT_STATE,
-              ...loaded,
-              environment: { ...DEFAULT_STATE.environment, ...loaded.environment },
-              rumor: { ...DEFAULT_STATE.rumor, ...loaded.rumor },
-              dice: { ...DEFAULT_STATE.dice, ...loaded.dice }
-          }; // simple merge for import
-          
-          // Arrays
+          state = { ...DEFAULT_STATE, ...loaded, environment: { ...DEFAULT_STATE.environment, ...loaded.environment }, rumor: { ...DEFAULT_STATE.rumor, ...loaded.rumor }, dice: { ...DEFAULT_STATE.dice, ...loaded.dice } }; 
            if(loaded.muster) state.muster = loaded.muster;
            if(loaded.camp) state.camp = loaded.camp;
-           if(loaded.threats) state.threats = loaded.threats;
-           
-          saveState();
-          render();
-          alert("Session imported successfully!");
-        } catch(err) { 
-            console.error(err); 
-            alert("Invalid JSON file: " + err.message); 
-        }
+           if(loaded.others) state.others = loaded.others;
+           else if(loaded.threats) {
+                state.others = loaded.threats.map(t => ({
+                    id: t.id, name: t.name, description: t.description, level: t.level, oracle: t.oracle,
+                    status: (t.condition==='active'?'fresh':t.condition)||'fresh', reaction: t.reaction || "Neutral"
+                }));
+           }
+          saveState(); render(); alert("Session imported successfully!");
+        } catch(err) { console.error(err); alert("Invalid JSON file: " + err.message); }
       };
       reader.readAsText(file);
     }
@@ -959,31 +1120,80 @@
     // --- Environment ---
     function updateEnvironment() {
       state.environment.region = document.getElementById('env-region').value;
-      state.environment.terrain = document.getElementById('env-terrain').value;
-      state.environment.conditions = document.getElementById('env-conditions').value;
+      
+      // Values are mostly updated by specific onchange handlers or here
+      state.environment.climate = document.getElementById('env-climate').value;
+      state.environment.landform = document.getElementById('env-landform').value;
+      state.environment.terrain_condition = document.getElementById('env-condition').value;
+      state.environment.poi = document.getElementById('env-poi').value;
+      
+      state.environment.weather_pattern = document.getElementById('env-weather-pattern').value;
+      state.environment.weather_shift = document.getElementById('env-weather-shift').value;
+      state.environment.weather_condition = document.getElementById('env-weather-condition').value;
+      state.environment.weather_event = document.getElementById('env-weather-event').value;
+
       saveState();
     }
     
-    function randomizeTerrain() {
-       const select = document.getElementById('env-terrain');
-       const allOpts = Array.from(select.querySelectorAll('option'));
-       const rand = Math.floor(Math.random() * allOpts.length);
-       allOpts[rand].selected = true;
-       updateEnvironment();
+    function onClimateChange() {
+        state.environment.climate = document.getElementById('env-climate').value;
+        // Reset deps
+        const lfOpts = TERRAIN_DATA.landforms[state.environment.climate];
+        if(lfOpts) state.environment.landform = lfOpts[0];
+        
+        const wpOpts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
+        if(wpOpts) state.environment.weather_pattern = wpOpts[0];
+        
+        updateLandformOptions(); 
+        saveState();
     }
     
-    function randomizeConditions() {
-       const select = document.getElementById('env-conditions');
-       const allOpts = Array.from(select.querySelectorAll('option'));
-       const rand = Math.floor(Math.random() * allOpts.length);
-       allOpts[rand].selected = true;
-       updateEnvironment();
+    function randomizeLandform() {
+       const opts = TERRAIN_DATA.landforms[state.environment.climate];
+       if(opts) {
+           const rand = Math.floor(Math.random() * opts.length);
+           state.environment.landform = opts[rand];
+           document.getElementById('env-landform').value = state.environment.landform;
+           saveState();
+       }
     }
+    
+    function randomizeWeatherPattern() {
+       const opts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
+       if(opts) {
+           const rand = Math.floor(Math.random() * opts.length);
+           state.environment.weather_pattern = opts[rand];
+           document.getElementById('env-weather-pattern').value = state.environment.weather_pattern;
+           saveState();
+       }
+    }
+
+    function randomizeEnvField(fieldId, stateKey, dataArray) {
+        const rand = Math.floor(Math.random() * dataArray.length);
+        const val = dataArray[rand];
+        state.environment[stateKey] = val;
+        document.getElementById(fieldId).value = val;
+        saveState();
+    }
+
+    // Wrapper randomizers
+    function randTerrainCond() { randomizeEnvField('env-condition', 'terrain_condition', TERRAIN_DATA.terrainConditions); }
+    function randPOI() { randomizeEnvField('env-poi', 'poi', TERRAIN_DATA.pois); }
+    function randWeatherShift() { randomizeEnvField('env-weather-shift', 'weather_shift', TERRAIN_DATA.weatherShifts); }
+    function randWeatherCond() { randomizeEnvField('env-weather-condition', 'weather_condition', TERRAIN_DATA.weatherConditions); }
+    function randWeatherEvent() { randomizeEnvField('env-weather-event', 'weather_event', TERRAIN_DATA.weatherEvents); }
+
+    // Old randomizers (now deprecated or replaced by new system)
+    function randomizeConditions() {
+       // This function is now deprecated as 'conditions' is split into multiple fields.
+       // For now, it will randomize the weather pattern.
+       randomizeWeatherPattern();
+    }
+
 
     // --- Dice ---
     
     function rollOracle(type) {
-      // type: 'normal' (2d6), 'adv' (3d6 drop low), 'dis' (3d6 drop high)
       const rolls = [];
       const count = type === 'normal' ? 2 : 3;
       
@@ -1018,24 +1228,9 @@
         const container = document.querySelector('.weather-dice-display');
         let html = '';
         
-        // logic to highlight kept/dropped?
-        // simple approach: show all, maybe dim the dropped one?
-        // But user said "only show the three dice in those situations".
-        // implies normal shows 2.
-        
-        // Let's sort visual rolls for consistency or keep rolled order?
-        // kept order is better for "feeling" usually, but sorted helps see drops.
-        // Let's just render what we have.
-        
-        // For Adv/Dis, we need to know which was dropped to visualy indicate it?
-        // My logic calculated total from sorted, but `state.dice.rolls` is raw order.
-        // Re-deriving dropped index for display is tricky if duplicates exist.
-        // Let's simplify: Display them sorted? Or just display them and highlighting is bonus.
-        // Requirement: "show the three dice in those situations"
-        
+        // We will just show the pips.
         const rolls = d.rolls || [];
         
-        // We will just show the pips.
         rolls.forEach(val => {
             html += `<span class="weather-die">${DICE_FACES[val-1]}</span>`;
         });
@@ -1165,7 +1360,7 @@
         dEl.textContent = rolls.map(r => DICE_FACES[r-1]).join(' ');
         if(ones===0) { oEl.textContent='All Clear'; oEl.className='roll-outcome'; }
         else if(ones===1) { oEl.textContent='Complication!'; oEl.className='roll-outcome complication'; }
-        else { oEl.textContent=`${ones}× Complication!`; oEl.className='roll-outcome complication'; }
+        else { oEl.textContent=`${ones} Complications!`; oEl.className='roll-outcome complication'; }
 
         document.querySelectorAll('.clock-slot.filled').forEach(s => {
             s.classList.add('rolled'); setTimeout(()=>s.classList.remove('rolled'), 500);
@@ -1176,39 +1371,45 @@
 
     function render() {
       // Toggle Views
-      document.getElementById('view-camp').classList.toggle('active', state.mode === 'camp');
-      document.getElementById('view-muster').classList.toggle('active', state.mode === 'muster');
+      if(state.mode === 'camp') {
+        document.getElementById('view-camp').classList.add('active');
+        document.getElementById('view-muster').classList.remove('active');
+        renderCharacterLists('camp');
+      } else {
+        document.getElementById('view-muster').classList.add('active');
+        document.getElementById('view-camp').classList.remove('active');
+        renderCharacterLists('muster');
+      }
       
-      // Update Title Content if needed, but per request Header is static "Wåndyr"
-      // document.getElementById('app-title').textContent = 'Wåndyr'; 
+      // Update Inputs
+      document.getElementById('env-region').value = state.environment.region;
       
-      const switchBtn = document.querySelector(".action-item[onclick='toggleModeModeSwitch()']");
-      if(switchBtn) switchBtn.textContent = state.mode === 'camp' ? 'Switch to Muster' : 'Switch to Camp';
+      // Climate & Landform
+      // Need to ensure options exist
+      const clim = document.getElementById('env-climate');
+      if(clim.value !== state.environment.climate) {
+          clim.value = state.environment.climate;
+          updateLandformOptions(); // sync list
+      }
+      // Ensure landform value set (updateLandformOptions tries to set it, but verify)
+      document.getElementById('env-landform').value = state.environment.landform;
 
-      renderEnvironment();
-      renderRumorBlessing();
+      document.getElementById('env-condition').value = state.environment.terrain_condition || '';
+      document.getElementById('env-poi').value = state.environment.poi || '';
+      
+      document.getElementById('env-conditions').value = state.environment.conditions;
+      
+      document.getElementById('camp-rumor').value = state.rumor.text;
+      document.getElementById('camp-bless-source').value = state.rumor.blessing.source;
+      document.getElementById('camp-bless-value').value = state.rumor.blessing.value;
+      document.getElementById('camp-bless-active').checked = state.rumor.blessing.active;
+
       renderClockPanel();
+      renderOTHERS(); // New Render Fn
       renderDice();
-      renderCharacterLists();
-      renderThreats();
     }
 
-    function renderEnvironment() {
-        const reg = document.getElementById('env-region'); if(reg) reg.value = state.environment.region || '';
-        const terr = document.getElementById('env-terrain'); if(terr) terr.value = state.environment.terrain;
-        
-        // Handle migration from old simple values if needed, or just set
-        const cond = document.getElementById('env-conditions'); 
-        if(cond) {
-            // If current state value isn't in options (e.g. old "clear"), defaults might kick in or it stays blank.
-            // Ideally we map old values, but for now we just try to set it.
-            // If it fails, maybe set to default "7 Mild"?
-            cond.value = state.environment.conditions || state.environment.weather || '7 Mild';
-            if(!cond.value && state.environment.weather) {
-                // simple fallback mapping could go here
-            }
-        }
-    }
+
 
     function renderRumorBlessing() {
         document.getElementById('camp-rumor').value = state.rumor.text || '';
@@ -1441,85 +1642,100 @@
         document.getElementById(id).classList.remove('active');
     }
 
-    // --- Threats ---
-    function renderThreats() {
-        const list = document.getElementById('threats-list');
-        list.innerHTML = state.threats.map(t => `
-            <div class="threat-card ${t.condition}">
-              <div class="threat-header">
-                <div>
-                   <div class="threat-name">${t.name}</div>
+    // --- Others (NPCs/Threats) ---
+    function renderOTHERS() {
+        const list = document.getElementById('others-list');
+        if(!list) return;
+        
+        list.innerHTML = state.others.map(t => {
+            const statusIcons = { fresh: '✨', hit: '🩸', fled: '💨', dead: '💀' };
+            const currentIcon = statusIcons[t.status] || '✨';
+            
+            return `
+            <div class="threat-card ${t.status}" style="border-left: 4px solid var(--accent);">
+              <div class="threat-header" style="justify-content:space-between;">
+                 <div style="flex:1;">
+                   <div class="threat-name">${t.name} <span style="font-size:0.8em; margin-left:0.5rem;">${currentIcon}</span></div>
                    <div class="threat-meta">
                       ${t.level?`<span>Lvl ${t.level}</span>`:''}
                       ${t.oracle?`<span>Oracle ${t.oracle}+</span>`:''}
+                      ${t.reaction?`<span style="color:var(--ink); font-style:italic;">"${t.reaction}"</span>`:''}
                    </div>
                    ${t.description?`<div class="char-description">${t.description}</div>`:''}
-                </div>
+                 </div>
+                 <div class="threat-actions" style="display:flex; flex-direction:column; gap:0.2rem; margin-left:0.5rem;">
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'fresh')" title="Fresh">✨</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'hit')" title="Hit">🩸</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'fled')" title="Fled">💨</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'dead')" title="Dead">💀</button>
+                 </div>
               </div>
-              <div class="threat-controls">
-                  <select onchange="updateThreatCond('${t.id}', this.value)">
-                      <option value="active" ${t.condition==='active'?'selected':''}>Active</option>
-                      <option value="hit" ${t.condition==='hit'?'selected':''}>Hit</option>
-                      <option value="dead" ${t.condition==='dead'?'selected':''}>Dead</option>
-                      <option value="fled" ${t.condition==='fled'?'selected':''}>Fled</option>
-                  </select>
-                  <button onclick="openThreatModal('${t.id}')">Edit</button>
-                  <button onclick="deleteThreat('${t.id}')">✕</button>
+              <div class="threat-controls" style="margin-top:0.5rem; border-top:1px solid rgba(0,0,0,0.1); padding-top:0.5rem;">
+                  <button onclick="openOtherModal('${t.id}')">Edit</button>
+                  <button onclick="deleteOther('${t.id}')" style="color:var(--danger);">Delete</button>
               </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
-    function openThreatModal(id) {
-        document.getElementById('threat-modal').classList.add('active');
-        document.getElementById('threat-id').value = id || '';
+    function openOtherModal(id) {
+        document.getElementById('other-modal').classList.add('active');
+        document.getElementById('other-id').value = id || '';
         if(id) {
-            const t = state.threats.find(x => x.id === id);
-            document.getElementById('threat-name').value = t.name;
-            document.getElementById('threat-desc').value = t.description;
-            document.getElementById('threat-level').value = t.level;
-            document.getElementById('threat-oracle').value = t.oracle;
+            const t = state.others.find(x => x.id === id);
+            document.getElementById('other-name').value = t.name;
+            document.getElementById('other-desc').value = t.description;
+            document.getElementById('other-level').value = t.level;
+            document.getElementById('other-oracle').value = t.oracle;
+            document.getElementById('other-reaction').value = t.reaction;
         } else {
-            document.getElementById('threat-name').value = '';
-            document.getElementById('threat-desc').value = '';
-            document.getElementById('threat-level').value = '';
-            document.getElementById('threat-oracle').value = '';
+            // New
+            document.getElementById('other-name').value = '';
+            document.getElementById('other-desc').value = '';
+            document.getElementById('other-level').value = '';
+            document.getElementById('other-oracle').value = '';
+            // Auto-roll reaction
+            const roll = Math.floor(Math.random()*6)+1 + Math.floor(Math.random()*6)+1;
+            document.getElementById('other-reaction').value = NPC_REACTIONS[roll] || "Neutral";
         }
     }
 
-    function saveThreat(e) {
+    function saveOther(e) {
         e.preventDefault();
-        const id = document.getElementById('threat-id').value;
+        const id = document.getElementById('other-id').value;
         const data = {
             id: id || uuid(),
-            name: document.getElementById('threat-name').value,
-            description: document.getElementById('threat-desc').value,
-            level: document.getElementById('threat-level').value,
-            oracle: document.getElementById('threat-oracle').value
+            name: document.getElementById('other-name').value,
+            description: document.getElementById('other-desc').value,
+            level: document.getElementById('other-level').value,
+            oracle: document.getElementById('other-oracle').value,
+            reaction: document.getElementById('other-reaction').value
         };
         
         if(id) {
-            const idx = state.threats.findIndex(x => x.id === id);
+            const idx = state.others.findIndex(x => x.id === id);
             if(idx >= 0) {
-                data.condition = state.threats[idx].condition;
-                state.threats[idx] = data;
+                // preserve status
+                data.status = state.others[idx].status;
+                state.others[idx] = data;
             }
         } else {
-            data.condition = 'active';
-            state.threats.push(data);
+            data.status = 'fresh';
+            state.others.push(data);
         }
-        saveState(); closeModal('threat-modal'); renderThreats();
+        saveState(); closeModal('other-modal'); renderOTHERS();
     }
 
-    function updateThreatCond(id, val) {
-        const t = state.threats.find(x => x.id === id);
-        if(t) { t.condition = val; saveState(); renderThreats(); }
+    function updateOtherStatus(id, stat) {
+        const t = state.others.find(x => x.id === id);
+        if(t) { t.status = stat; saveState(); renderOTHERS(); }
     }
     
-    function deleteThreat(id) {
-        if(confirm('Delete threat?')) {
-            state.threats = state.threats.filter(x => x.id !== id);
-            saveState(); renderThreats();
+    function deleteOther(id) {
+        if(confirm('Delete this entry?')) {
+            state.others = state.others.filter(x => x.id !== id);
+            saveState(); renderOTHERS();
         }
     }
 
