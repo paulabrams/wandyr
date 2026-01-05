@@ -574,7 +574,7 @@ To find your Alignment, count all relevant Advancements and divide by 3, roundin
 
 ## Game Flow {#game-flow}
 
-To add a sense of urgency, the Guide tracks 10-minute "Turns" using a "Turn Clock". This can be a glass or metal bowl on the table. The Guide loudly tosses a die into the clock each time you do something time-consuming. When the bowl is full with all six dice, an hour has passed; the Guide empties it and rolls the dice. Any 1's indicate a *spicy* complication such as a wandering monster. The Guide also rolls when you do something reckless, but puts the dice back in.
+To add a sense of urgency, the Guide tracks 10-minute "Turns" using a "Turn Clock". This can be a glass or metal bowl on the table. The Guide loudly tosses a die into the clock each time you do something time-consuming. When the bowl is full with all six dice, an hour has passed and the Guide rolls the dice. Any 1's indicate a spicy complication such as a wandering monster. The Guide also rolls when you do something reckless. The clock only holds 6 dice; reset to 1 on the 7th.
 
 #### Combat Rounds
 

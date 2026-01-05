@@ -25,8 +25,7 @@ A web-based session management tool for Wåndyr tabletop RPG. Designed for scree
   "environment": {
     "region": "Wåndyrwyld",
     "terrain": "forest",
-    "weather": "clear",
-    "weather": "clear"
+    "conditions": "clear"
   },
   "dice": {
     "rolls": [3, 4],
@@ -132,7 +131,7 @@ Layout:
 ┌─────────────────────────────────────────────────────────────┐
 │ HEADER: Title  [Wåndyr]                       [Actions (=)] │
 ├─────────────────────────────────────────────────────────────┤
-│ ENVIRONMENT CARD: Region | Terrain [⟳] | Weather [⟳]        │
+│ ENVIRONMENT CARD: Region | Terrain [⟳] | Conditions [⟳]     │
 ├──────────────┬─────────────────────────┬────────────────────┤
 │  TURN CLOCK  │      THE MUSTER         │      THREATS       │
 │              │                         │                    │
@@ -187,8 +186,8 @@ Layout:
 
 ### Environment Card (Muster Mode)
 - **Region**: Text Input.
-- **Terrain**: Dropdown + Randomize Button (⟳).
-- **Weather**: Dropdown + Randomize Button (⟳).
+- **Terrain**: Dropdown + Randomize Button (⟳). Populated from `terrain-type.md` (6 groups: Forest, Flat, Arid, Wetlands, Mountains, Hills).
+- **Conditions**: Dropdown + Randomize Button (⟳). Populated from `weather.md` (Standard) and `weather shifts.md` (Shifts). Renamed from "Weather".
 
 ### Oracle Dice Card (Muster Mode)
 - **Buttons**: Roll (2d6), Advantage (Adv), Disadvantage (Dis).

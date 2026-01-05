@@ -471,7 +471,7 @@
     <div class="actions-menu">
       <button class="btn" onclick="toggleActions()">☰ Actions</button>
       <div class="actions-dropdown" id="actions-dropdown">
-        <button class="action-item" onclick="toggleMode()">Switch Mode</button>
+        <button class="action-item" onclick="toggleModeModeSwitch()">Switch Mode</button>
         <button class="action-item" onclick="exportData()">Export Session</button>
         <button class="action-item" onclick="document.getElementById('import-file').click()">Import Session</button>
         <button class="action-item" onclick="resetSession()">Reset Session</button>
@@ -506,14 +506,14 @@
       </div>
     </section>
 
-    <!-- The Muster List -->
+    <!-- Mustering List -->
     <section class="panel">
       <h2>Mustering</h2>
       <div class="character-list" id="camp-muster-list"></div>
       <button class="add-btn" onclick="openCharacterModal(null, false)">+ Add Character</button>
     </section>
 
-    <!-- The Camp List -->
+    <!-- Camping List -->
     <section class="panel">
       <h2>Camping</h2>
       <div class="character-list" id="camp-camp-list"></div>
@@ -535,32 +535,86 @@
           <label>Terrain</label>
           <div class="input-with-btn">
             <select id="env-terrain" onchange="updateEnvironment()">
-              <option value="forest">Forest</option>
-              <option value="mountains">Mountains</option>
-              <option value="swamp">Swamp</option>
-              <option value="desert">Desert</option>
-              <option value="plains">Plains</option>
-              <option value="urban">Urban</option>
-              <option value="underground">Underground</option>
-              <option value="coastal">Coastal</option>
+              <optgroup label="Forest">
+                <option value="Forest - Light Coniferous">Forest, Light Coniferous (1.1)</option>
+                <option value="Forest - Heavy Coniferous">Forest, Heavy Coniferous (1.2)</option>
+                <option value="Forest - Light Deciduous">Forest, Light Deciduous (1.3)</option>
+                <option value="Forest - Heavy Deciduous">Forest, Heavy Deciduous (1.4)</option>
+                <option value="Forest - Light Mixed">Forest, Light Mixed (1.5)</option>
+                <option value="Forest - Heavy Mixed">Forest, Heavy Mixed (1.6)</option>
+              </optgroup>
+              <optgroup label="Flat">
+                <option value="Flat - Prairie">Flat, Prairie (2.1)</option>
+                <option value="Flat - Farmland">Flat, Farmland (2.2)</option>
+                <option value="Flat - Shrublands">Flat, Shrublands (2.3)</option>
+                <option value="Flat - Savanna">Flat, Savanna (2.4)</option>
+                <option value="Flat - Flats">Flat, Flats (2.5)</option>
+              </optgroup>
+              <optgroup label="Arid">
+                 <option value="Arid - Desert Cold">Arid, Desert Cold (3.1)</option>
+                 <option value="Arid - Desert Coastal">Arid, Desert Coastal (3.2)</option>
+                 <option value="Arid - Desert Rocky">Arid, Desert Rocky (3.3)</option>
+                 <option value="Arid - Badlands">Arid, Badlands (3.4)</option>
+                 <option value="Arid - Steppe">Arid, Steppe (3.5)</option>
+              </optgroup>
+              <optgroup label="Wetlands">
+                  <option value="Wetlands - Bog">Wetlands, Bog (4.1)</option>
+                  <option value="Wetlands - Marsh">Wetlands, Marsh (4.2)</option>
+                  <option value="Wetlands - Swamp">Wetlands, Swamp (4.3)</option>
+                  <option value="Wetlands - Moor">Wetlands, Moor (4.4)</option>
+                  <option value="Wetlands - River">Wetlands, River (4.5)</option>
+                  <option value="Wetlands - Tundra">Wetlands, Tundra (4.6)</option>
+              </optgroup>
+              <optgroup label="Mountains">
+                  <option value="Mountains - Small">Mountains, Small (5.1)</option>
+                  <option value="Mountains - Tall">Mountains, Tall (5.2)</option>
+                  <option value="Mountains - Snow-capped">Mountains, Snow-capped (5.3)</option>
+                  <option value="Mountains - Forested">Mountains, Forested (5.4)</option>
+                  <option value="Mountains - Transitional">Mountains, Transitional (5.5)</option>
+                  <option value="Mountains - Volcano">Mountains, Volcano (5.6)</option>
+              </optgroup>
+              <optgroup label="Hills">
+                  <option value="Hills - Barren">Hills, Barren (6.1)</option>
+                  <option value="Hills - Grassy">Hills, Grassy (6.2)</option>
+                  <option value="Hills - Forested">Hills, Forested (6.3)</option>
+                  <option value="Hills - Shrubland">Hills, Shrubland (6.4)</option>
+                  <option value="Hills - Jungle">Hills, Jungle (6.5)</option>
+                  <option value="Hills - Transitional">Hills, Transitional (6.6)</option>
+              </optgroup>
             </select>
             <button class="btn icon-btn" onclick="randomizeTerrain()" title="Randomize Terrain">⟳</button>
           </div>
         </div>
         <div class="env-field">
-          <label>Weather</label>
+          <label>Conditions</label>
           <div class="input-with-btn">
-            <select id="env-weather" onchange="updateEnvironment()">
-              <option value="clear">Clear</option>
-              <option value="cloudy">Cloudy</option>
-              <option value="rain">Rain</option>
-              <option value="storm">Storm</option>
-              <option value="fog">Fog</option>
-              <option value="snow">Snow</option>
-              <option value="hot">Heat</option>
-              <option value="cold">Cold</option>
+            <select id="env-conditions" onchange="updateEnvironment()">
+               <optgroup label="Standard Weather (2d6)">
+                  <option value="2 Thunderstorm/Blizzard">2 Thunderstorm/Blizzard</option>
+                  <option value="3 Heavy Rain/Snow">3 Heavy Rain/Snow</option>
+                  <option value="4 Cold for Season">4 Cold for Season</option>
+                  <option value="5 Light Rain/Snow">5 Light Rain/Snow</option>
+                  <option value="6 Cool for Season">6 Cool for Season</option>
+                  <option value="7 Mild">7 Mild</option>
+                  <option value="8 Warm for Season">8 Warm for Season</option>
+                  <option value="9 Windy">9 Windy</option>
+                  <option value="10 Hot for Season">10 Hot for Season</option>
+                  <option value="11 Strong Winds">11 Strong Winds</option>
+                  <option value="12 Hail/Fog/Frost">12 Hail/Fog/Frost</option>
+               </optgroup>
+               <optgroup label="Weather Shifts (100)">
+                  <option value="1 Acid rain">1 Acid rain</option>
+                  <option value="11 Blizzard">11 Blizzard</option>
+                  <option value="20 Dense fog">20 Dense fog</option>
+                  <option value="48 Heavy rain">48 Heavy rain</option>
+                  <option value="63 Monsoon">63 Monsoon</option>
+                  <option value="86 Strong winds">86 Strong winds</option>
+                  <option value="91 Thunderstorms">91 Thunderstorms</option>
+                  <option value="92 Tornado">92 Tornado</option>
+                  <!-- Add more as needed or keep simple for now -->
+               </optgroup>
             </select>
-            <button class="btn icon-btn" onclick="randomizeWeather()" title="Randomize Weather">⟳</button>
+            <button class="btn icon-btn" onclick="randomizeConditions()" title="Randomize Conditions">⟳</button>
           </div>
         </div>
       </div>
@@ -595,7 +649,7 @@
         <div class="roll-outcome" id="roll-outcome"></div>
       </div>
       
-      <!-- Moved Dice Card INSIDE the Clock Column for layout (under clock) or separate? Spec says separate row at bottom of column 1. Let's put it here. -->
+      <!-- Oracle Dice Card -->
       <div class="panel dice-card" style="margin-top: 0.75rem;">
          <h2>Oracle Dice</h2>
          <div class="dice-card-content">
@@ -613,9 +667,8 @@
 
     <!-- Muster List (Active Play) -->
     <section class="panel">
-      <h2>The Muster</h2>
+      <h2>Muster</h2>
       <div class="character-list" id="play-muster-list"></div>
-      <!-- No Add/Move buttons here per spec, managed in Camp or Edit -->
     </section>
 
     <!-- Threats -->
@@ -720,7 +773,7 @@
     const DEFAULT_STATE = {
       mode: 'muster', // or 'camp'
       session: { round: 0, turn: 0, hour: 0, clock: 0, insight: 0 },
-      environment: { region: 'Wåndyrwyld', terrain: 'forest', weather: 'clear' },
+      environment: { region: 'Wåndyrwyld', terrain: 'Forest - Light Coniferous', conditions: '7 Mild' },
       dice: { rolls: [3, 4], type: 'normal', total: 7 },
       rumor: { text: '', blessing: { active: false, source: '', value: 0 } },
       muster: [],
@@ -728,28 +781,55 @@
       threats: []
     };
     
-    // ... (rest of vars)
+    let state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+
+    const INSIGHTS = ['—', 'TRAIT', 'SKILL', 'ITEM', 'BYNAME', 'FEAT', 'EFFORT'];
+    const DICE_FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
 
     function init() {
-      loadState();
+      // Logic: try to load. If load fails or invalid, fallback to default.
+      try {
+        loadState();
+      } catch(e) {
+        console.error("Failed to load state:", e);
+      }
       render();
-      // renderDice called in render()
     }
     
     function loadState() {
       const stored = localStorage.getItem('wandyr-session-v3');
       if (stored) {
         const loaded = JSON.parse(stored);
-        state = { ...DEFAULT_STATE, ...loaded };
         
-        // Migration: extract dice from environment if present
-        if(loaded.environment && loaded.environment.dice) {
-            // map old dice to new structure if needed, or just ignore since it's a transient roll
-            delete state.environment.dice;
+        // Deep merge logic simplified to avoid overwriting nested objects with missing keys if using simple spread
+        // But here we want to prioritize loaded data.
+        state = {
+            ...DEFAULT_STATE,
+            ...loaded,
+            session: { ...DEFAULT_STATE.session, ...(loaded.session || {}) },
+            environment: { 
+                ...DEFAULT_STATE.environment, 
+                ...(loaded.environment || {}),
+                // Migration: conditions <- weather
+                conditions: (loaded.environment && loaded.environment.conditions) ? loaded.environment.conditions : (loaded.environment && loaded.environment.weather) ? loaded.environment.weather : DEFAULT_STATE.environment.conditions
+            },
+            rumor: { 
+                ...DEFAULT_STATE.rumor, 
+                ...(loaded.rumor || {}),
+                blessing: { ...DEFAULT_STATE.rumor.blessing, ...(loaded.rumor?.blessing || {}) }
+            },
+            dice: { ...DEFAULT_STATE.dice, ...(loaded.dice || {}) }
+        };
+
+        // Arrays just replace
+        if(loaded.muster) state.muster = loaded.muster;
+        if(loaded.camp) state.camp = loaded.camp;
+        if(loaded.threats) state.threats = loaded.threats;
+        
+        // Back-compat for v1.2 users with flat blessingActive boolean
+        if (typeof loaded.rumor?.blessingActive === 'boolean') {
+             state.rumor.blessing.active = loaded.rumor.blessingActive;
         }
-        if(!state.dice) state.dice = DEFAULT_STATE.dice;
-        
-        // ... (rest of migration)
       }
     }
 
@@ -777,7 +857,7 @@
       }
     });
 
-    function toggleMode() {
+    function toggleModeModeSwitch() {
       state.mode = state.mode === 'muster' ? 'camp' : 'muster';
       saveState();
       render();
@@ -810,10 +890,29 @@
       reader.onload = e => {
         try {
           const loaded = JSON.parse(e.target.result);
-          state = { ...DEFAULT_STATE, ...loaded }; // safe merge
+          // Valid JSON?
+          if(!loaded || typeof loaded !== 'object') throw new Error("Invalid JSON structure");
+          
+          state = {
+              ...DEFAULT_STATE,
+              ...loaded,
+              environment: { ...DEFAULT_STATE.environment, ...loaded.environment },
+              rumor: { ...DEFAULT_STATE.rumor, ...loaded.rumor },
+              dice: { ...DEFAULT_STATE.dice, ...loaded.dice }
+          }; // simple merge for import
+          
+          // Arrays
+           if(loaded.muster) state.muster = loaded.muster;
+           if(loaded.camp) state.camp = loaded.camp;
+           if(loaded.threats) state.threats = loaded.threats;
+           
           saveState();
           render();
-        } catch(err) { alert("Invalid JSON"); }
+          alert("Session imported successfully!");
+        } catch(err) { 
+            console.error(err); 
+            alert("Invalid JSON file: " + err.message); 
+        }
       };
       reader.readAsText(file);
     }
@@ -822,21 +921,23 @@
     function updateEnvironment() {
       state.environment.region = document.getElementById('env-region').value;
       state.environment.terrain = document.getElementById('env-terrain').value;
-      state.environment.weather = document.getElementById('env-weather').value;
+      state.environment.conditions = document.getElementById('env-conditions').value;
       saveState();
     }
     
     function randomizeTerrain() {
-       const opts = document.getElementById('env-terrain').options;
-       const rand = Math.floor(Math.random() * opts.length);
-       document.getElementById('env-terrain').selectedIndex = rand;
+       const select = document.getElementById('env-terrain');
+       const allOpts = Array.from(select.querySelectorAll('option'));
+       const rand = Math.floor(Math.random() * allOpts.length);
+       allOpts[rand].selected = true;
        updateEnvironment();
     }
     
-    function randomizeWeather() {
-       const opts = document.getElementById('env-weather').options;
-       const rand = Math.floor(Math.random() * opts.length);
-       document.getElementById('env-weather').selectedIndex = rand;
+    function randomizeConditions() {
+       const select = document.getElementById('env-conditions');
+       const allOpts = Array.from(select.querySelectorAll('option'));
+       const rand = Math.floor(Math.random() * allOpts.length);
+       allOpts[rand].selected = true;
        updateEnvironment();
     }
 
@@ -926,37 +1027,77 @@
     function rollD6() { return Math.floor(Math.random()*6)+1; }
 
     function advanceTurn() {
-      state.session.clock++;
+      // Logic: 
+      // 1. If clock is < 5: Increment clock (e.g. 1->2).
+      // 2. If clock is 5: Increment to 6 (Full). Trigger Roll. Increment Hour.
+      // 3. If clock is 6: Reset to 1. Start of next hour.
+      
       state.session.turn++;
       state.session.round = 0;
-      rollInsight();
-      if(state.session.clock >= 6) rollClockAndClear();
-      else { saveState(); renderClockPanel(); }
+      rollInsight(); // Always roll insight on turn advance
+      
+      if(state.session.clock < 5) {
+          state.session.clock++;
+          saveState();
+          renderClockPanel();
+      } else if(state.session.clock === 5) {
+          state.session.clock = 6;
+          state.session.hour++;
+          // Trigger roll immediately when full
+          rollClockOnly(); 
+      } else if(state.session.clock >= 6) {
+          state.session.clock = 1;
+          saveState();
+          renderClockPanel();
+      }
     }
 
     function advanceRound() {
         state.session.round++;
         rollInsight();
+        
         if(state.session.round >= 60) {
             state.session.round = 0;
-            state.session.clock++;
             state.session.turn++;
-            if(state.session.clock >= 6) rollClockAndClear();
+            // Apply same clock logic as advanceTurn
+            if(state.session.clock < 5) {
+                state.session.clock++;
+                saveState(); renderClockPanel();
+            } else if(state.session.clock === 5) {
+                state.session.clock = 6;
+                state.session.hour++;
+                rollClockOnly();
+            } else if(state.session.clock >= 6) {
+                state.session.clock = 1;
+                saveState(); renderClockPanel();
+            }
+        } else {
+            saveState();
+            renderClockPanel();
         }
-        saveState();
-        renderClockPanel();
     }
 
     function rollClock() {
+        // Manual roll button - rolls current dice
         if(state.session.clock === 0) { showRollResult([], 0); return; }
         const rolls = Array.from({length: state.session.clock}, () => rollD6());
         showRollResult(rolls, rolls.filter(r => r===1).length);
     }
-
-    function rollClockAndClear() {
+    
+    function rollClockOnly() {
+        // Rolls 6 dice, does NOT clear clock, DOES save state
         const rolls = Array.from({length: 6}, () => rollD6());
         showRollResult(rolls, rolls.filter(r => r===1).length);
-        state.session.clock = 0;
+        saveState();
+        renderClockPanel();
+    }
+
+    function rollClockAndClear() {
+        // Deprecated usually, but kept for Manual 'Roll Clock' if fully full? 
+        // Or if user manually resets. leaving as helper if needed.
+        const rolls = Array.from({length: 6}, () => rollD6());
+        showRollResult(rolls, rolls.filter(r => r===1).length);
+        state.session.clock = 0; 
         state.session.hour++;
         saveState();
         renderClockPanel();
@@ -991,9 +1132,10 @@
       document.getElementById('view-camp').classList.toggle('active', state.mode === 'camp');
       document.getElementById('view-muster').classList.toggle('active', state.mode === 'muster');
       
-      // Update Title
-      document.getElementById('app-title').textContent = state.mode === 'camp' ? 'Wåndyr - Camp' : 'Wåndyr - Muster';
-      const switchBtn = document.querySelector(".action-item[onclick='toggleMode()']");
+      // Update Title Content if needed, but per request Header is static "Wåndyr"
+      // document.getElementById('app-title').textContent = 'Wåndyr'; 
+      
+      const switchBtn = document.querySelector(".action-item[onclick='toggleModeModeSwitch()']");
       if(switchBtn) switchBtn.textContent = state.mode === 'camp' ? 'Switch to Muster' : 'Switch to Camp';
 
       renderEnvironment();
@@ -1005,9 +1147,20 @@
     }
 
     function renderEnvironment() {
-        document.getElementById('env-region').value = state.environment.region || '';
-        document.getElementById('env-terrain').value = state.environment.terrain;
-        document.getElementById('env-weather').value = state.environment.weather;
+        const reg = document.getElementById('env-region'); if(reg) reg.value = state.environment.region || '';
+        const terr = document.getElementById('env-terrain'); if(terr) terr.value = state.environment.terrain;
+        
+        // Handle migration from old simple values if needed, or just set
+        const cond = document.getElementById('env-conditions'); 
+        if(cond) {
+            // If current state value isn't in options (e.g. old "clear"), defaults might kick in or it stays blank.
+            // Ideally we map old values, but for now we just try to set it.
+            // If it fails, maybe set to default "7 Mild"?
+            cond.value = state.environment.conditions || state.environment.weather || '7 Mild';
+            if(!cond.value && state.environment.weather) {
+                // simple fallback mapping could go here
+            }
+        }
     }
 
     function renderRumorBlessing() {
