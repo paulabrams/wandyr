@@ -204,6 +204,26 @@ Layout:
     - **Active**: Checkbox/Toggle.
     - *Effect*: When active, characters marked as 'Blessed' receive a visual cue (Gold Glow). The 'Value' is for reference by the Guide (e.g., "You all have 2 extra Iron Hearts").
 
+### 7. **Others (NPCs & Threats) (All Modes)**
+- **Header**: "Others" (previously Threats).
+- **List**: Display list of NPCs/monsters.
+- **Card Content**:
+    - **Name** (Cinzel Bold).
+    - **Description** (Italic secondary).
+    - **Reaction**: Randomized NPC reaction (e.g., "Suspicious", "Friendly").
+    - **Status**: Visual indicator (Fresh ✨, Hit 🩸, Fled 💨, Dead 💀).
+    - **Buttons**: Edit | Fresh | Hit | Fled | Dead (Icons/Text grouped on right).
+- **Add Other**: Opens modal to create new entry. Auto-rolls Reaction (2d6).
+- **Functionality**:
+    - Track status of NPCs/enemies.
+    - Status "Hit" indicates damaged/wounded.
+    - Status "Dead" fades card.
+    - Reaction provides RP prompts.
+- **Camp Mode**:
+    - Full view.
+    - "Mustering" Toggle or "Move" buttons.
+    - Edit button.
+
 ### Actions Menu
 - Located in Header (top right).
 - Dropdown or Modal.

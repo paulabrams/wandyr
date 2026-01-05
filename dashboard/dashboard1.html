@@ -599,29 +599,53 @@
           <label>Conditions</label>
           <div class="input-with-btn">
             <select id="env-conditions" onchange="updateEnvironment()">
-               <optgroup label="Standard Weather (2d6)">
-                  <option value="2 Thunderstorm/Blizzard">2 Thunderstorm/Blizzard</option>
-                  <option value="3 Heavy Rain/Snow">3 Heavy Rain/Snow</option>
-                  <option value="4 Cold for Season">4 Cold for Season</option>
-                  <option value="5 Light Rain/Snow">5 Light Rain/Snow</option>
-                  <option value="6 Cool for Season">6 Cool for Season</option>
-                  <option value="7 Mild">7 Mild</option>
-                  <option value="8 Warm for Season">8 Warm for Season</option>
-                  <option value="9 Windy">9 Windy</option>
-                  <option value="10 Hot for Season">10 Hot for Season</option>
-                  <option value="11 Strong Winds">11 Strong Winds</option>
-                  <option value="12 Hail/Fog/Frost">12 Hail/Fog/Frost</option>
+               <optgroup label="1 Standard">
+                  <option value="1.1 Clear & Mild">1.1 Clear & Mild</option>
+                  <option value="1.2 Overcast">1.2 Overcast</option>
+                  <option value="1.3 Windy">1.3 Windy</option>
+                  <option value="1.4 Foggy">1.4 Foggy</option>
+                  <option value="1.5 Light Rain/Snow">1.5 Light Rain/Snow</option>
+                  <option value="1.6 Heavy Rain/Snow">1.6 Heavy Rain/Snow</option>
                </optgroup>
-               <optgroup label="Weather Shifts (100)">
-                  <option value="1 Acid rain">1 Acid rain</option>
-                  <option value="11 Blizzard">11 Blizzard</option>
-                  <option value="20 Dense fog">20 Dense fog</option>
-                  <option value="48 Heavy rain">48 Heavy rain</option>
-                  <option value="63 Monsoon">63 Monsoon</option>
-                  <option value="86 Strong winds">86 Strong winds</option>
-                  <option value="91 Thunderstorms">91 Thunderstorms</option>
-                  <option value="92 Tornado">92 Tornado</option>
-                  <!-- Add more as needed or keep simple for now -->
+               <optgroup label="2 Wet & Humid">
+                  <option value="2.1 Drizzle">2.1 Drizzle</option>
+                  <option value="2.2 Downpour">2.2 Downpour</option>
+                  <option value="2.3 Thunderstorm">2.3 Thunderstorm</option>
+                  <option value="2.4 Monsoon">2.4 Monsoon</option>
+                  <option value="2.5 Flood">2.5 Flood</option>
+                  <option value="2.6 Hail">2.6 Hail</option>
+               </optgroup>
+               <optgroup label="3 Cold & Frozen">
+                  <option value="3.1 Cold Snap">3.1 Cold Snap</option>
+                  <option value="3.2 Frost">3.2 Frost</option>
+                  <option value="3.3 Ice Storm">3.3 Ice Storm</option>
+                  <option value="3.4 Blizzard">3.4 Blizzard</option>
+                  <option value="3.5 Freezing Fog">3.5 Freezing Fog</option>
+                  <option value="3.6 Black Ice">3.6 Black Ice</option>
+               </optgroup>
+               <optgroup label="4 Hot & Dry">
+                  <option value="4.1 Heatwave">4.1 Heatwave</option>
+                  <option value="4.2 Drought">4.2 Drought</option>
+                  <option value="4.3 Dust Storm">4.3 Dust Storm</option>
+                  <option value="4.4 Wildfire">4.4 Wildfire</option>
+                  <option value="4.5 Ash Fall">4.5 Ash Fall</option>
+                  <option value="4.6 Dry Lightning">4.6 Dry Lightning</option>
+               </optgroup>
+               <optgroup label="5 Severe & Violent">
+                  <option value="5.1 Strong Winds">5.1 Strong Winds</option>
+                  <option value="5.2 Gale Force">5.2 Gale Force</option>
+                  <option value="5.3 Tornado">5.3 Tornado</option>
+                  <option value="5.4 Hurricane">5.4 Hurricane</option>
+                  <option value="5.5 Landslide">5.5 Landslide</option>
+                  <option value="5.6 Avalanche">5.6 Avalanche</option>
+               </optgroup>
+               <optgroup label="6 Strange & Rare">
+                  <option value="6.1 Blood Moon">6.1 Blood Moon</option>
+                  <option value="6.2 Aurora">6.2 Aurora</option>
+                  <option value="6.3 Meteor Shower">6.3 Meteor Shower</option>
+                  <option value="6.4 Acid Rain">6.4 Acid Rain</option>
+                  <option value="6.5 Rain of Frogs">6.5 Rain of Frogs</option>
+                  <option value="6.6 Star Jelly">6.6 Star Jelly</option>
                </optgroup>
             </select>
             <button class="btn icon-btn" onclick="randomizeConditions()" title="Randomize Conditions">⟳</button>
@@ -640,7 +664,7 @@
       </div>
       <div class="time-counters">
         <div class="counter"><div class="counter-label">Round</div><div class="counter-value" id="count-round">0</div></div>
-        <div class="counter"><div class="counter-label">Turn</div><div class="counter-value" id="count-turn">0</div></div>
+        <div class="counter" style="cursor: pointer;" onclick="resetTurnCount()" title="Click to Reset Turn Count"><div class="counter-label">Turn</div><div class="counter-value" id="count-turn">0</div></div>
         <div class="counter"><div class="counter-label">Hour</div><div class="counter-value" id="count-hour">0</div></div>
         <div class="counter"><div class="counter-label">Clock</div><div class="counter-value" id="count-clock">0</div></div>
       </div>
@@ -652,7 +676,7 @@
         <button class="btn primary" onclick="advanceTurn()">+ Turn</button>
         <button class="btn primary" onclick="advanceRound()">+ Round</button>
         <button class="btn" onclick="rollClock()">Roll Clock</button>
-        <button class="btn" onclick="rollInsight()">Reroll</button>
+        <button class="btn" onclick="rollInsight()">Roll Insight</button>
       </div>
       <div class="roll-result" id="roll-result">
         <div class="roll-dice" id="roll-dice"></div>
@@ -1040,6 +1064,14 @@
 
     // --- Clock Logic ---
     function rollD6() { return Math.floor(Math.random()*6)+1; }
+
+    function resetTurnCount() {
+        if(confirm("Reset Turn Count to 0?")) {
+            state.session.turn = 0;
+            saveState();
+            renderClockPanel();
+        }
+    }
 
     function advanceTurn() {
       // Logic: 
