@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Wåndyr Session Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --parchment: #f4e4bc;
+      --parchment-dark: #e8d4a8;
+      --parchment-light: #faf3e3;
+      --ink: #2c1810;
+      --ink-light: #5c4030;
+      --accent: #8b4513;
+      --accent-dark: #6b3410;
+      --heart-red: #a83232;
+      --iron-blue: #4a6670;
+      --arcana-purple: #6b4a8c;
+      --blessing-gold: #d4a017;
+      --hit-orange: #c47f17;
+      --dead-gray: #666;
+      --fled-blue: #4a7090;
+      --shadow: rgba(44, 24, 16, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Crimson Text', Georgia, serif;
+      background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23f4e4bc" width="100" height="100"/><circle fill="%23e8d4a8" cx="25" cy="25" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="75" cy="75" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="50" cy="10" r="0.5" opacity="0.2"/></svg>'),
+        linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 50%, var(--parchment) 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 0.75rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+    }
+
+    /* Common Components */
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 0.4rem;
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      background: var(--parchment);
+      color: var(--accent-dark);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn:hover, .btn:active {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    .btn.primary:hover, .btn.primary:active {
+      background: var(--accent-dark);
+    }
+
+    .panel {
+      background: linear-gradient(to bottom, var(--parchment-light), var(--parchment));
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+      margin-bottom: 0.75rem;
+    }
+
+    input, select, textarea {
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      padding: 0.4rem;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background: var(--parchment-light);
+      color: var(--ink);
+    }
+
+    /* Header */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0.75rem;
+      background: linear-gradient(to bottom, var(--parchment-light), var(--parchment));
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .top-bar h1 {
+      font-size: 1.4rem;
+      color: var(--accent-dark);
+      letter-spacing: 0.1em;
+    }
+
+    .actions-menu {
+      position: relative;
+    }
+
+    .actions-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--parchment);
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      min-width: 200px;
+      box-shadow: 0 4px 12px var(--shadow);
+      z-index: 50;
+    }
+
+    .actions-dropdown.active {
+      display: block;
+    }
+
+    .action-item {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      background: none;
+      border: none;
+      border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+      color: var(--ink);
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .action-item:last-child {
+      border-bottom: none;
+    }
+
+    .action-item:hover {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+
+    /* Environment Card (Muster) */
+    .environment-card {
+      /* Keep standard panel style */
+      display: block; 
+    }
+    
+    .env-group-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .env-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .env-field label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      text-transform: uppercase;
+    }
+    
+    .input-with-btn {
+      display: flex;
+      gap: 0.3rem;
+    }
+    
+    .icon-btn {
+      min-width: 32px;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+
+    /* Dice Card */
+    .dice-card-content {
+      display: flex;
+      flex-wrap: wrap; /* Fix: Allow wrapping so buttons don't overlap dice */
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .oracle-dice-display {
+      font-size: 1rem;
+      color: var(--ink);
+      flex: 1 1 auto; /* Allow it to grow/shrink */
+      min-width: 120px; /* Ensure some space for dice */
+      white-space: nowrap;
+      /* background: var(--parchment-dark); REMOVED */
+      padding: 0; /* REMOVED padding */
+      /* border: 1px solid var(--accent); REMOVED */
+    }
+    
+    .dice-controls {
+        display: flex; 
+        gap: 0.3rem;
+        flex: 0 0 auto; /* Keep buttons from shrinking too much */
+    }
+
+    .weather-die {
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    /* Rumor & Blessing (Camp) */
+    .rumor-blessing-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rumor-row, .blessing-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+    
+    .rumor-row {
+      width: 100%;
+    }
+    .rumor-row .env-field {
+      flex: 1;
+    }
+
+    .blessing-row input[type="number"] {
+      width: 60px;
+    }
+
+    .blessing-toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Cinzel', serif;
+      color: var(--accent-dark);
+      cursor: pointer;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Views */
+    #view-camp, #view-muster {
+      display: none;
+    }
+
+    #view-camp.active, #view-muster.active {
+      display: grid;
+    }
+
+    /* Camp Grid */
+    #view-camp.active {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    /* Muster Grid */
+    #view-muster.active {
+      grid-template-columns: 260px 1fr 300px;
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    /* Responsive Views */
+    @media (max-width: 1023px) {
+      #view-muster.active {
+        grid-template-columns: 1fr 1fr;
+      }
+      .turn-clock-panel { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 767px) {
+      #view-camp.active { grid-template-columns: 1fr; }
+      #view-muster.active { grid-template-columns: 1fr; }
+      .turn-clock-panel { display: flex; flex-direction: column; }
+    }
+
+    /* Turn Clock (Dice Style) */
+    .turn-clock-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .clock-display {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem; 
+      padding: 1rem;
+      background: var(--parchment-dark);
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+      min-height: 60px;
+    }
+    
+    .clock-slot {
+      width: 40px; height: 40px;
+      border: 2px solid var(--accent);
+      border-radius: 6px; /* Square for dice */
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      color: var(--accent);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .clock-slot.filled { 
+        background: var(--parchment-light); 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-color: var(--accent-dark);
+    }
+    .clock-slot.rolled-result {
+        background: #fff;
+        color: var(--ink);
+        border-color: var(--ink);
+    }
+    .clock-slot.rolled-one {
+        background-color: #ff0000 !important;
+        color: #ffffff !important;
+        border-color: #ff0000 !important;
+    }
+    
+    .time-counters {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; text-align: center;
+    }
+    .counter { padding: 0.4rem; background: var(--parchment-dark); border-radius: 4px; }
+    .counter-label { font-size: 0.65rem; color: var(--ink-light); text-transform: uppercase; }
+    .counter-value { font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--accent-dark); }
+    
+    .insight-display {
+      text-align: center; padding: 0.75rem;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-dark));
+      border-radius: 6px; color: var(--parchment-light);
+    }
+    .insight-label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; }
+    .insight-value { font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700; margin: 0.2rem 0; }
+    
+    .clock-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    
+    #roll-outcome {
+        text-align: center; font-family: 'Cinzel', serif; font-weight: 600; 
+        font-size: 1.1rem; color: var(--accent-dark); min-height: 1.5em;
+        margin-top: 0.5rem;
+    }
+    #roll-outcome.complication { color: var(--heart-red); }
+
+    /* Character Cards ... (unchanged) */
+    .character-list {
+      display: flex; flex-direction: column; gap: 0.6rem;
+      min-height: 100px;
+    }
+    /* ... */
+
+
+
+
+    .character-card {
+      background: var(--parchment-dark);
+      border-radius: 6px; padding: 0.6rem;
+      border-left: 4px solid var(--accent);
+      position: relative;
+    }
+    .character-card.leader { border-left-color: gold; }
+    .character-card.blessed { box-shadow: 0 0 8px var(--blessing-gold); }
+    .character-card.in-camp { opacity: 0.8; background: #e0cca0; }
+
+    .char-header {
+      display: flex; justify-content: space-between; align-items: start; gap: 0.5rem; margin-bottom: 0.4rem;
+    }
+    .char-name {
+      font-family: 'Cinzel', serif; font-weight: 600; font-size: 1rem;
+      display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+    }
+    .char-number {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; background: var(--accent); color: var(--parchment-light);
+      border-radius: 50%; font-size: 0.8rem; font-weight: 700;
+    }
+    .leader-crown { color: gold; text-shadow: 0 1px 2px var(--shadow); }
+    .blessed-star { color: var(--blessing-gold); text-shadow: 0 0 4px var(--blessing-gold); }
+    
+    .char-description { font-size: 0.85rem; font-style: italic; color: var(--ink-light); margin-bottom: 0.4rem; }
+
+    .char-stats { display: flex; flex-direction: column; gap: 0.3rem; }
+    .stat-row { display: flex; align-items: center; gap: 0.4rem; }
+    .stat-label { font-size: 0.75rem; color: var(--ink-light); width: 50px; }
+    .stat-value { font-family: 'Cinzel', serif; font-weight: 700; font-size: 1rem; min-width: 55px; }
+    .stat-value.hearts { color: var(--heart-red); }
+    .stat-value.iron { color: var(--iron-blue); }
+    .stat-value.arcana { color: var(--arcana-purple); }
+    
+    .stat-controls button {
+      width: 24px; height: 24px; font-size: 0.9rem; font-weight: bold;
+      border: 1px solid var(--ink-light); border-radius: 3px; background: var(--parchment);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .stat-controls button:hover { background: var(--ink-light); color: var(--parchment); }
+
+    .char-controls button {
+      font-size: 0.7rem; padding: 0.2rem 0.4rem; border: 1px solid var(--ink-light);
+      border-radius: 3px; background: var(--parchment); cursor: pointer;
+    }
+    .char-controls button:hover { background: var(--ink-light); color: var(--parchment); }
+
+    .char-extras { margin-top: 0.5rem; display: flex; gap: 0.8rem; font-size: 0.8rem; color: var(--ink-light); }
+    .notes-toggle { text-decoration: underline; cursor: pointer; color: var(--accent); }
+    .char-notes { margin-top: 0.4rem; padding: 0.4rem; background: var(--parchment-light); border-radius: 4px; font-size: 0.85rem; white-space: pre-wrap; display: none; }
+    .char-notes.visible { display: block; }
+
+    /* Threat Cards */
+    .threats-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .threat-card {
+      background: var(--parchment-dark); border-radius: 6px; padding: 0.5rem;
+      border-left: 4px solid var(--ink-light);
+    }
+    .threat-card.hit { border-left-color: var(--hit-orange); }
+    .threat-card.dead { border-left-color: var(--dead-gray); opacity: 0.6; }
+    .threat-card.fled { border-left-color: var(--fled-blue); opacity: 0.7; }
+    
+    .threat-header { display: flex; justify-content: space-between; align-items: start; gap: 0.5rem; }
+    .threat-name { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.95rem; }
+    .threat-meta { font-size: 0.75rem; color: var(--ink-light); display: flex; gap: 0.6rem; }
+
+    .threat-controls { display: flex; gap: 0.3rem; align-items: center; flex-wrap: wrap; margin-top: 0.3rem;}
+    .threat-controls select { font-size: 0.8rem; padding: 0.1rem; height: 24px; }
+    .threat-controls button { font-size: 0.7rem; padding: 0.1rem 0.4rem; border: 1px solid var(--ink-light); background: var(--parchment); cursor: pointer; border-radius: 3px; }
+
+    /* Floating Add Btn */
+    .add-btn {
+      width: 100%; margin-top: 0.5rem; padding: 0.5rem;
+      font-family: 'Cinzel', serif; font-size: 0.85rem;
+      border: 2px dashed var(--accent); border-radius: 6px;
+      background: transparent; color: var(--accent); cursor: pointer;
+    }
+    .add-btn:hover { background: var(--accent); color: var(--parchment-light); border-style: solid; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 100; padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--parchment); border: 3px solid var(--accent); border-radius: 8px;
+      padding: 1.25rem; width: 100%; max-width: 450px; max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .modal h3 { margin-bottom: 0.75rem; color: var(--accent-dark); text-align: center; }
+    .modal-form { display: flex; flex-direction: column; gap: 0.8rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.2rem; }
+    .form-group label { font-size: 0.8rem; color: var(--ink-light); }
+    .form-row { display: flex; gap: 0.6rem; }
+    .form-row .form-group { flex: 1; }
+    .checkbox-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .checkbox-row label { display: flex; align-items: center; gap: 0.3rem; font-size: 0.9rem; cursor: pointer; }
+    .modal-buttons { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .modal-buttons button { flex: 1; }
+    
+    #import-file { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="top-bar">
+    <h1 id="app-title">Wåndyr</h1>
+    <div class="actions-menu">
+      <button class="btn" onclick="toggleActions()">☰ Actions</button>
+      <div class="actions-dropdown" id="actions-dropdown">
+        <button class="action-item" onclick="toggleModeModeSwitch()">Switch Mode</button>
+        <button class="action-item" onclick="exportData()">Export Session</button>
+        <button class="action-item" onclick="document.getElementById('import-file').click()">Import Session</button>
+        <button class="action-item" onclick="resetSession()">Reset Session</button>
+      </div>
+    </div>
+    <input type="file" id="import-file" accept=".json" onchange="importData(event)">
+  </header>
+
+  <!-- CAMP MODE VIEW -->
+  <main id="view-camp">
+    <!-- Rumor & Blessing -->
+    <section class="panel rumor-blessing-card" style="grid-column: 1 / -1;">
+      <h2>Rumors & Blessings</h2>
+      <div class="rumor-row">
+        <div class="env-field">
+          <label>Current Rumor</label>
+          <input type="text" id="camp-rumor" placeholder="What do they say..." onchange="updateRumor()">
+        </div>
+      </div>
+      <div class="blessing-row">
+        <div class="env-field" style="flex: 2;">
+          <label>Blessing Source</label>
+          <input type="text" id="camp-bless-source" placeholder="e.g. The Forest Spirit" onchange="updateBlessing()">
+        </div>
+        <div class="env-field">
+          <label>Value</label>
+          <input type="number" id="camp-bless-value" value="0" min="0" onchange="updateBlessing()">
+        </div>
+        <div class="blessing-toggle-label">
+           <label><input type="checkbox" id="camp-bless-active" onchange="updateBlessing()"> Blessing Active</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mustering List -->
+    <section class="panel">
+      <h2>Mustering</h2>
+      <div class="character-list" id="camp-muster-list"></div>
+      <button class="add-btn" onclick="openCharacterModal(null, false)">+ Add Character</button>
+    </section>
+
+    <!-- Camping List -->
+    <section class="panel">
+      <h2>Camping</h2>
+      <div class="character-list" id="camp-camp-list"></div>
+      <button class="add-btn" onclick="openCharacterModal(null, true)">+ Add Character</button>
+    </section>
+  </main>
+
+  <!-- MUSTER MODE VIEW -->
+  <main id="view-muster">
+    <!-- Environment Card -->
+    <!-- Environment Card -->
+    <section class="panel environment-card" style="grid-column: 1 / -1;"> 
+      <h2>Where are we?</h2>
+      <div class="environment-story">
+          <p class="env-sentence">
+              We are in <input type="text" class="inline-input" id="env-region" placeholder="Region Name" onchange="updateEnvironment()" value="Wåndyrwyld">: 
+              <span id="text-climate" class="text-link" onclick="openEnvMenu(event, 'climate', TERRAIN_DATA.zones, 'Climate')">[Climate]</span> 
+              <span id="text-landform" class="text-link" onclick="openEnvMenu(event, 'landform', TERRAIN_DATA.landforms[state.environment.climate], 'Landform')">[Landform]</span>, 
+              <span id="text-weather_pattern" class="text-link" onclick="openEnvMenu(event, 'weather_pattern', TERRAIN_DATA.weatherPatterns[state.environment.climate], 'Weather Pattern')">[Weather Pattern]</span>, 
+              <span id="text-weather_condition" class="text-link" onclick="openEnvMenu(event, 'weather_condition', TERRAIN_DATA.weatherConditions, 'Weather Cond')">[Condition]</span>.
+          </p>
+          <p class="env-details">
+              <span id="text-poi" class="text-link" onclick="openEnvMenu(event, 'poi', TERRAIN_DATA.pois, 'Point of Interest')">[Point of Interest]</span> • 
+              <span id="text-terrain_condition" class="text-link" onclick="openEnvMenu(event, 'terrain_condition', TERRAIN_DATA.terrainConditions, 'Terrain Cond')">[Terrain Cond]</span> • 
+              <span id="text-weather_shift" class="text-link" onclick="openEnvMenu(event, 'weather_shift', TERRAIN_DATA.weatherShifts, 'Shift')">[Weather Shift]</span> • 
+              <span id="text-weather_event" class="text-link" onclick="openEnvMenu(event, 'weather_event', TERRAIN_DATA.weatherEvents, 'Event')">[Event]</span>
+          </p>
+      </div>
+    </section>
+
+    <!-- Turn Clock -->
+    <section class="panel turn-clock-panel">
+      <h2>Turn Clock</h2>
+      <div class="clock-display" id="clock-display">
+        <!-- 6 slots -->
+        <div class="clock-slot"></div><div class="clock-slot"></div><div class="clock-slot"></div>
+        <div class="clock-slot"></div><div class="clock-slot"></div><div class="clock-slot"></div>
+      </div>
+      <div class="time-counters">
+        <div class="counter"><div class="counter-label">Round</div><div class="counter-value" id="count-round">0</div></div>
+        <div class="counter" style="cursor: pointer;" onclick="resetTurnCount()" title="Click to Reset Turn Count"><div class="counter-label">Turn</div><div class="counter-value" id="count-turn">0</div></div>
+        <div class="counter"><div class="counter-label">Hour</div><div class="counter-value" id="count-hour">0</div></div>
+        <div class="counter"><div class="counter-label">Clock</div><div class="counter-value" id="count-clock">0</div></div>
+      </div>
+      <div class="insight-display">
+        <div class="insight-label">Insight</div>
+        <div class="insight-value" id="insight-value">—</div>
+      </div>
+      <div class="clock-buttons">
+        <button class="btn primary" onclick="advanceTurn()">+ Turn</button>
+        <button class="btn primary" onclick="advanceRound()">+ Round</button>
+        <button class="btn" onclick="rollClock()">Roll Clock</button>
+        <button class="btn" onclick="rollInsight()">Roll Insight</button>
+      </div>
+      <div id="roll-outcome" class="roll-outcome"></div>
+      
+      <!-- Ask the Oracle Card -->
+      <div class="panel dice-card" style="margin-top: 0.75rem;">
+          <div class="insight-display" style="background: var(--parchment-dark); color: var(--ink);  display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem;">
+             <!-- Label -->
+             <div class="insight-label" style="color: var(--ink-light); margin: 0px 10px 0px 0px; font-size: 1rem;">ORACLE</div>
+             
+             <!-- Dice & Result -->
+             <div class="oracle-dice-display" style="display: flex; align-items: center; gap: 0.5rem; font-family: 'Cinzel', serif; font-weight: 700; color: var(--accent-dark);">
+                <!-- Auto populated -->
+             </div>
+             
+             <!-- Controls -->
+             <div class="dice-controls" style="display:flex; gap:0.2rem;">
+                <button class="btn" style="padding:0.2rem 0.4rem;" onclick="rollOracle('normal')">ROLL</button>
+                <button class="btn" style="padding:0.2rem 0.4rem;" onclick="rollOracle('adv')" title="Advantage (3d6 drop low)">ADV</button>
+                <button class="btn" style="padding:0.2rem 0.4rem;" onclick="rollOracle('dis')" title="Disadvantage (3d6 drop high)">DIS</button>
+             </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Muster List (Active Play) -->
+    <section class="panel">
+      <h2>Muster</h2>
+      <div class="character-list" id="play-muster-list"></div>
+    </section>
+
+    <!-- Others (NPCs/Threats) -->
+    <section class="panel">
+      <h2>Others</h2>
+      <div class="threats-list" id="others-list"></div>
+      <button class="add-btn" onclick="openOtherModal()">+ Add Other</button>
+    </section>
+  </main>
+
+  <!-- Character Modal -->
+  <div class="modal-overlay" id="character-modal">
+    <div class="modal">
+      <h3 id="char-modal-title">Edit Character</h3>
+      <form class="modal-form" onsubmit="saveCharacter(event)">
+        <input type="hidden" id="char-id">
+        <div class="form-row">
+            <div class="form-group" style="flex: 0 0 60px;">
+                <label>#</label>
+                <input type="number" id="char-num" min="1" max="99">
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="char-name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" id="char-desc">
+        </div>
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea id="char-notes"></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Hearts</label>
+                <input type="number" id="char-hearts" value="7" min="1" max="20">
+            </div>
+            <div class="form-group">
+                <label>Iron</label>
+                <input type="number" id="char-iron" value="0" min="0" max="10">
+            </div>
+            <div class="form-group">
+                <label>Arcana</label>
+                <input type="number" id="char-arcana" value="0" min="0" max="10">
+            </div>
+        </div>
+        <div class="checkbox-row">
+            <label><input type="checkbox" id="char-leader"> Leader</label>
+            <label><input type="checkbox" id="char-blessed"> Blessed</label>
+            <label><input type="checkbox" id="char-incamp"> In Camp</label>
+        </div>
+        <div class="modal-buttons">
+            <button type="button" class="btn" onclick="closeModal('character-modal')">Cancel</button>
+            <button type="submit" class="btn primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Other/Threat Modal -->
+  <div class="modal-overlay" id="other-modal">
+      <div class="modal">
+        <h3 id="other-modal-title">Other</h3>
+        <form class="modal-form" onsubmit="saveOther(event)">
+          <input type="hidden" id="other-id">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="other-name" required>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="other-desc"></textarea>
+          </div>
+          <div class="form-row">
+              <div class="form-group">
+                 <label>Reaction</label>
+                 <div style="display:flex; gap:0.5rem;">
+                     <select id="other-reaction" style="flex:1;">
+                        <option value="Hostile">Hostile</option>
+                        <option value="Suspicious">Suspicious</option>
+                        <option value="Fearful">Fearful</option>
+                        <option value="Dismissive">Dismissive</option>
+                        <option value="Reluctant">Reluctant</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Interested">Interested</option>
+                        <option value="Pleasant">Pleasant</option>
+                        <option value="Friendly">Friendly</option>
+                        <option value="Enthusiastic">Enthusiastic</option>
+                        <option value="Trusting">Trusting</option>
+                     </select>
+                     <button type="button" class="btn icon-btn" onclick="randomizeReaction()" title="Randomize Reaction">⟳</button>
+                 </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Level</label>
+              <input type="number" id="other-level" min="0">
+            </div>
+            <div class="form-group">
+              <label>Oracle</label>
+              <select id="other-oracle">
+                <option value="">—</option>
+                <option value="6">Easy (6)</option>
+                <option value="8">Normal (8)</option>
+                <option value="10">Hard (10)</option>
+                <option value="12">Extreme (12)</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-buttons">
+            <button type="button" class="btn" onclick="closeModal('other-modal')">Cancel</button>
+            <button type="submit" class="btn primary">Save</button>
+          </div>
+        </form>
+      </div>
+  </div>
+
+  <script>
+    // --- Data & State ---
+    // --- Data & State ---
+    const DEFAULT_STATE = {
+      mode: 'muster', // or 'camp'
+      session: { round: 0, turn: 0, hour: 0, clock: 0, insight: 0 },
+      environment: { 
+        region: 'Wåndyrwyld', 
+        climate: 'Temperate', 
+        landform: 'Deciduous forest', 
+        terrain_condition: '', 
+        poi: '',
+        weather_pattern: 'Clear skies',
+        weather_shift: '',
+        weather_condition: '', // Tier 4 Weather
+        weather_event: ''      // Tier 5 Weather
+      },
+      dice: { rolls: [3, 4], type: 'normal', total: 7 },
+      rumor: { text: '', blessing: { active: false, source: '', value: 0 } },
+      muster: [],
+      camp: [],
+      others: []
+    };
+    
+    let state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+
+    const INSIGHTS = ['—', 'TRAIT', 'SKILL', 'ITEM', 'BYNAME', 'FEAT', 'EFFORT'];
+    const DICE_FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+    
+    // NPC Reactions 2d6
+    const NPC_REACTIONS = {
+        2: "Hostile",
+        3: "Suspicious",
+        4: "Fearful",
+        5: "Dismissive",
+        6: "Reluctant",
+        7: "Neutral",
+        8: "Interested",
+        9: "Pleasant",
+        10: "Friendly",
+        11: "Enthusiastic",
+        12: "Trusting"
+    };
+
+    // Terrain & Weather Data
+    const TERRAIN_DATA = {
+        zones: ["Polar", "Boreal", "Temperate", "Subtropical", "Tropical", "Equatorial"],
+        landforms: {
+            "Polar": ["Tundra", "Ice field or glacier", "Frozen sea or lake", "Snow plain", "Permafrost bog", "Rocky barrens"],
+            "Boreal": ["Taiga (conifer forest)", "Muskeg or bog", "Frozen lake or river", "Open tundra", "Rocky hills", "River valley"],
+            "Temperate": ["Deciduous forest", "Grassland or meadow", "Rolling hills", "Marsh or fen", "River valley", "Mixed woodland"],
+            "Subtropical": ["Scrubland or chaparral", "Dry steppe", "Oak woodland", "River valley", "Rugged hills", "Seasonal wetland"],
+            "Tropical": ["Jungle", "Savannah", "Swamp or mangrove", "River delta", "Volcanic terrain", "Monsoon forest"],
+            "Equatorial": ["Dense rainforest", "Flooded forest", "River system", "Swamp", "Cloud forest", "Coastal lagoon"]
+        },
+        terrainConditions: ["Flooded or waterlogged", "Recently burned", "Overgrown or choked", "Drought-stricken", "Storm-damaged", "Unnaturally still"],
+        pois: ["Ruins or old structure", "Campsite (old or recent)", "Trail or crossroads", "Water source", "Natural shelter", "Signs of habitation"],
+        
+        weatherPatterns: {
+            "Polar": ["Clear and frigid", "Overcast and bitter", "Light snow", "Heavy snow", "Blizzard", "Ice fog"],
+            "Boreal": ["Clear and cold", "Overcast", "Light snow or rain", "Heavy snow or rain", "Freezing rain", "Dense fog"],
+            "Temperate": ["Clear skies", "Partly cloudy", "Overcast", "Light rain", "Heavy rain", "Thunderstorm"],
+            "Subtropical": ["Clear and hot", "Hazy", "Dry and windy", "Light rain", "Heavy rain", "Dust storm or dry lightning"],
+            "Tropical": ["Clear and humid", "Hazy and still", "Afternoon showers", "Steady rain", "Torrential downpour", "Tropical storm"],
+            "Equatorial": ["Hot and humid", "Steamy", "Afternoon thunderstorm", "Steady rain", "Torrential downpour", "Brief clearing"]
+        },
+        weatherShifts: ["Weather holds steady", "Weather holds steady", "Weather improves one step", "Weather worsens one step", "Weather worsens dramatically", "Sudden change"],
+        weatherConditions: ["Fog or mist", "High winds", "Bitter cold or oppressive heat", "Humidity or dryness", "Unusual calm", "Strange light"],
+        weatherEvents: ["Rainbow or sun break", "Aurora or strange glow", "Ominous clouds", "Sudden temperature shift", "Unseasonal weather", "Calm before the storm"]
+    };
+
+    // --- Popover Logic ---
+    let currentPopover = null;
+
+    function openEnvMenu(event, stateKey, options, label) {
+        event.stopPropagation();
+        const target = event.target;
+        const rect = target.getBoundingClientRect();
+        
+        // Close existing
+        closePopover();
+        
+        // Create/Get Popover
+        let popover = document.getElementById('env-popover');
+        if(!popover) {
+            popover = document.createElement('div');
+            popover.id = 'env-popover';
+            popover.className = 'popover-menu';
+            document.body.appendChild(popover);
+        }
+        
+        // Content
+        let html = `
+            <div class="popover-list">
+        `;
+        
+        options.forEach(opt => {
+            const isSel = state.environment[stateKey] === opt;
+            html += `<div class="popover-option ${isSel?'selected':''}" onclick="selectEnvOption('${stateKey}', '${opt}')">${opt}</div>`;
+        });
+        html += `</div>`;
+        
+        popover.innerHTML = html;
+        popover.classList.add('active');
+        
+        // Position
+        popover.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+        popover.style.left = (rect.left + window.scrollX) + 'px';
+        
+        currentPopover = popover;
+        
+        // Global click to close
+        document.addEventListener('click', closePopoverOnClickOutside);
+    }
+    
+    function closePopover() {
+        if(currentPopover) {
+            currentPopover.classList.remove('active');
+            currentPopover = null;
+            document.removeEventListener('click', closePopoverOnClickOutside);
+        }
+    }
+    
+    function closePopoverOnClickOutside(e) {
+        if(currentPopover && !currentPopover.contains(e.target)) {
+            closePopover();
+        }
+    }
+    
+    function selectEnvOption(key, val) {
+        state.environment[key] = val;
+        
+        // Special Logic for Climate change affecting Landform
+        if(key === 'climate') {
+            const lfOpts = TERRAIN_DATA.landforms[val];
+            if(lfOpts) state.environment.landform = lfOpts[0];
+            // Also update weather pattern default?
+            const wpOpts = TERRAIN_DATA.weatherPatterns[val];
+            if(wpOpts) state.environment.weather_pattern = wpOpts[0];
+        }
+        
+        saveState();
+        render();
+        closePopover();
+    }
+    
+    function randomizeAndSelect(key) {
+        // Find options based on key
+        let opts = [];
+        if(key === 'climate') opts = TERRAIN_DATA.zones;
+        else if(key === 'landform') opts = TERRAIN_DATA.landforms[state.environment.climate];
+        else if(key === 'terrain_condition') opts = TERRAIN_DATA.terrainConditions;
+        else if(key === 'poi') opts = TERRAIN_DATA.pois;
+        else if(key === 'weather_pattern') opts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
+        else if(key === 'weather_shift') opts = TERRAIN_DATA.weatherShifts;
+        else if(key === 'weather_condition') opts = TERRAIN_DATA.weatherConditions;
+        else if(key === 'weather_event') opts = TERRAIN_DATA.weatherEvents;
+        
+        if(opts && opts.length > 0) {
+            const rand = Math.floor(Math.random() * opts.length);
+            selectEnvOption(key, opts[rand]);
+        }
+    }
+
+    function init() {
+      try {
+        loadState();
+      } catch(e) {
+        console.error("Failed to load state:", e);
+      }
+      render();
+    }
+    
+    // Cleanup old helpers no longer needed for direct select manipulation
+    // but generic randomizers might still be useful via buttons if we kept them?
+    // User wants "text values should open a menu", implying the menu handles it.
+    // I put randomize button IN the popover header.
+
+    
+    // --- Environment Helpers ---
+    function updateEnvironment() {
+       // Only region input remains as a standard input
+       const el = document.getElementById('env-region');
+       if(el) {
+           state.environment.region = el.value;
+           saveState();
+       }
+    }
+    
+    // Legacy functions removed: populateClimateSelect, updateLandformOptions, onClimateChange, randomize...
+    // New logic handled via openEnvMenu / selectEnvOption / randomizeAndSelect logic.
+
+
+    function loadState() {
+      const stored = localStorage.getItem('wandyr-session-v3');
+      if (stored) {
+        const loaded = JSON.parse(stored);
+        
+        state = {
+            ...DEFAULT_STATE,
+            ...loaded,
+            session: { ...DEFAULT_STATE.session, ...(loaded.session || {}) },
+            environment: { 
+                ...DEFAULT_STATE.environment, 
+                ...(loaded.environment || {}),
+            },
+            rumor: { 
+                ...DEFAULT_STATE.rumor, 
+                ...(loaded.rumor || {}),
+                blessing: { ...DEFAULT_STATE.rumor.blessing, ...(loaded.rumor?.blessing || {}) }
+            },
+            dice: { ...DEFAULT_STATE.dice, ...(loaded.dice || {}) }
+        };
+        // Ensure new fields exist if migrating
+        if(!state.environment.climate) state.environment.climate = 'Temperate';
+        if(!state.environment.weather_pattern && state.environment.conditions) {
+            // If old 'conditions' exists, migrate it to 'weather_pattern'
+            state.environment.weather_pattern = state.environment.conditions; 
+        }
+        // Remove old 'conditions' field if it exists after migration
+        if (state.environment.conditions !== undefined) {
+            delete state.environment.conditions;
+        }
+
+        if(loaded.muster) state.muster = loaded.muster;
+        if(loaded.camp) state.camp = loaded.camp;
+        
+        if(loaded.others) {
+            state.others = loaded.others;
+        } else if(loaded.threats) {
+            state.others = loaded.threats.map(t => {
+                let s = 'fresh';
+                if(t.condition === 'hit') s = 'hit';
+                if(t.condition === 'fled') s = 'fled';
+                if(t.condition === 'dead') s = 'dead';
+                if(t.condition === 'active') s = 'fresh';
+                return {
+                    id: t.id,
+                    name: t.name,
+                    description: t.description,
+                    level: t.level,
+                    oracle: t.oracle,
+                    status: s,
+                    reaction: t.reaction || "Neutral"
+                };
+            });
+        }
+        
+        if (typeof loaded.rumor?.blessingActive === 'boolean') {
+             state.rumor.blessing.active = loaded.rumor.blessingActive;
+        }
+      } else {
+          // New session or no data: Randomize Environment immediately
+          initialRandomizeEnv();
+      }
+      
+      // Safety check: if loaded state has empty env fields (e.g. from partial previous state), fill them
+      ensureEnvData();
+    }
+
+    function initialRandomizeEnv() {
+        // Pick random Climate first
+        const zones = TERRAIN_DATA.zones;
+        state.environment.climate = zones[Math.floor(Math.random() * zones.length)];
+        ensureEnvData();
+    }
+    
+    function ensureEnvData() {
+        const env = state.environment;
+        // Climate
+        if(!env.climate) env.climate = "Temperate"; 
+        
+        // Landform (dependent on climate)
+        if(!env.landform) {
+            const opts = TERRAIN_DATA.landforms[env.climate] || TERRAIN_DATA.landforms["Temperate"];
+            env.landform = opts[Math.floor(Math.random() * opts.length)];
+        }
+        
+        // Weather Pattern (dependent on climate)
+        if(!env.weather_pattern) {
+             const opts = TERRAIN_DATA.weatherPatterns[env.climate] || TERRAIN_DATA.weatherPatterns["Temperate"];
+             env.weather_pattern = opts[Math.floor(Math.random() * opts.length)];
+        }
+        
+        // Others basic
+        if(!env.terrain_condition) {
+            const opts = TERRAIN_DATA.terrainConditions;
+            env.terrain_condition = opts[Math.floor(Math.random() * opts.length)];
+        }
+        if(!env.poi) {
+            const opts = TERRAIN_DATA.pois;
+            env.poi = opts[Math.floor(Math.random() * opts.length)];
+        }
+        if(!env.weather_shift) {
+            const opts = TERRAIN_DATA.weatherShifts;
+            env.weather_shift = opts[Math.floor(Math.random() * opts.length)];
+        }
+        if(!env.weather_condition) {
+            const opts = TERRAIN_DATA.weatherConditions;
+            env.weather_condition = opts[Math.floor(Math.random() * opts.length)];
+        }
+        if(!env.weather_event) {
+            const opts = TERRAIN_DATA.weatherEvents;
+            env.weather_event = opts[Math.floor(Math.random() * opts.length)];
+        }
+    }
+
+    function saveState() {
+      localStorage.setItem('wandyr-session-v3', JSON.stringify(state));
+    }
+    
+    // ... uuid ...
+    function uuid() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        const r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+    }
+
+    // ... Actions ... (toggleActions, toggleMode, reset, export, import)
+    function toggleActions() { document.getElementById('actions-dropdown').classList.toggle('active'); }
+    document.addEventListener('click', (e) => {
+      const menu = document.querySelector('.actions-menu');
+      if (!menu.contains(e.target)) document.getElementById('actions-dropdown').classList.remove('active');
+    });
+    function toggleModeModeSwitch() { state.mode = state.mode === 'muster' ? 'camp' : 'muster'; saveState(); render(); }
+    function resetSession() {
+      if(confirm("Are you sure you want to reset everything? cannot be undone.")) {
+        state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+        saveState(); render();
+      }
+    }
+    function exportData() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = `wandyr-session-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    }
+    function importData(event) {
+      const file = event.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const loaded = JSON.parse(e.target.result);
+          if(!loaded || typeof loaded !== 'object') throw new Error("Invalid JSON structure");
+          state = { ...DEFAULT_STATE, ...loaded, environment: { ...DEFAULT_STATE.environment, ...loaded.environment }, rumor: { ...DEFAULT_STATE.rumor, ...loaded.rumor }, dice: { ...DEFAULT_STATE.dice, ...loaded.dice } }; 
+           if(loaded.muster) state.muster = loaded.muster;
+           if(loaded.camp) state.camp = loaded.camp;
+           if(loaded.others) state.others = loaded.others;
+           else if(loaded.threats) {
+                state.others = loaded.threats.map(t => ({
+                    id: t.id, name: t.name, description: t.description, level: t.level, oracle: t.oracle,
+                    status: (t.condition==='active'?'fresh':t.condition)||'fresh', reaction: t.reaction || "Neutral"
+                }));
+           }
+          saveState(); render(); alert("Session imported successfully!");
+        } catch(err) { console.error(err); alert("Invalid JSON file: " + err.message); }
+      };
+      reader.readAsText(file);
+    }
+
+    // --- Environment ---
+    function updateEnvironment() {
+      state.environment.region = document.getElementById('env-region').value;
+      
+      // Values are mostly updated by specific onchange handlers or here
+      state.environment.climate = document.getElementById('env-climate').value;
+      state.environment.landform = document.getElementById('env-landform').value;
+      state.environment.terrain_condition = document.getElementById('env-condition').value;
+      state.environment.poi = document.getElementById('env-poi').value;
+      
+      state.environment.weather_pattern = document.getElementById('env-weather-pattern').value;
+      state.environment.weather_shift = document.getElementById('env-weather-shift').value;
+      state.environment.weather_condition = document.getElementById('env-weather-condition').value;
+      state.environment.weather_event = document.getElementById('env-weather-event').value;
+
+      saveState();
+    }
+    
+    function onClimateChange() {
+        state.environment.climate = document.getElementById('env-climate').value;
+        // Reset deps
+        const lfOpts = TERRAIN_DATA.landforms[state.environment.climate];
+        if(lfOpts) state.environment.landform = lfOpts[0];
+        
+        const wpOpts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
+        if(wpOpts) state.environment.weather_pattern = wpOpts[0];
+        
+        updateLandformOptions(); 
+        saveState();
+    }
+    
+    function randomizeLandform() {
+       const opts = TERRAIN_DATA.landforms[state.environment.climate];
+       if(opts) {
+           const rand = Math.floor(Math.random() * opts.length);
+           state.environment.landform = opts[rand];
+           document.getElementById('env-landform').value = state.environment.landform;
+           saveState();
+       }
+    }
+    
+    function randomizeWeatherPattern() {
+       const opts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
+       if(opts) {
+           const rand = Math.floor(Math.random() * opts.length);
+           state.environment.weather_pattern = opts[rand];
+           document.getElementById('env-weather-pattern').value = state.environment.weather_pattern;
+           saveState();
+       }
+    }
+
+    function randomizeEnvField(fieldId, stateKey, dataArray) {
+        const rand = Math.floor(Math.random() * dataArray.length);
+        const val = dataArray[rand];
+        state.environment[stateKey] = val;
+        document.getElementById(fieldId).value = val;
+        saveState();
+    }
+
+    // Wrapper randomizers
+    function randTerrainCond() { randomizeEnvField('env-condition', 'terrain_condition', TERRAIN_DATA.terrainConditions); }
+    function randPOI() { randomizeEnvField('env-poi', 'poi', TERRAIN_DATA.pois); }
+    function randWeatherShift() { randomizeEnvField('env-weather-shift', 'weather_shift', TERRAIN_DATA.weatherShifts); }
+    function randWeatherCond() { randomizeEnvField('env-weather-condition', 'weather_condition', TERRAIN_DATA.weatherConditions); }
+    function randWeatherEvent() { randomizeEnvField('env-weather-event', 'weather_event', TERRAIN_DATA.weatherEvents); }
+
+    // Old randomizers (now deprecated or replaced by new system)
+    function randomizeConditions() {
+       // This function is now deprecated as 'conditions' is split into multiple fields.
+       // For now, it will randomize the weather pattern.
+       randomizeWeatherPattern();
+    }
+
+
+    // --- Dice ---
+    
+    function rollOracle(type) {
+      const rolls = [];
+      const count = type === 'normal' ? 2 : 3;
+      
+      for(let i=0; i<count; i++) rolls.push(Math.floor(Math.random()*6)+1);
+      
+      let total = 0;
+      let kept = [];
+      
+      // clone to sort
+      const sorted = [...rolls].sort((a,b) => a-b);
+      
+      if(type === 'normal') {
+        kept = sorted; // keep all 2
+        total = kept.reduce((a,c) => a+c, 0);
+      } else if(type === 'adv') {
+        // Drop lowest (first) UNLESS it is a 1.
+        if(sorted[0] === 1) {
+            kept = sorted; // Keep all 3
+        } else {
+            kept = sorted.slice(1);
+        }
+        total = kept.reduce((a,c) => a+c, 0);
+      } else if(type === 'dis') {
+        // Drop highest (last)
+        kept = sorted.slice(0, 2);
+        total = kept.reduce((a,c) => a+c, 0);
+      }
+      
+      state.dice = { rolls: rolls, type: type, total: total };
+      saveState();
+      renderDice();
+    }
+    
+    function renderDice() {
+        const d = state.dice || { rolls: [1,1], type: 'normal', total: 2 };
+        const container = document.querySelector('.oracle-dice-display');
+        let html = '';
+        
+        // We will just show the pips.
+        const rolls = d.rolls || [];
+        
+        rolls.forEach(val => {
+            html += `<div class="clock-slot filled" style="font-size: 1.6rem;">${DICE_FACES[val-1]}</div>`;
+        });
+        
+        // Calculate Tags
+        const sixes = rolls.filter(r => r === 6).length;
+        const ones = rolls.filter(r => r === 1).length;
+        let tagHtml = '';
+        
+        if(sixes > 0) tagHtml += '<span style="color:#2e7d32; font-size:0.5em; margin-left:0.2rem;" title="Sweet">🌿</span>';
+        if(ones > 0) tagHtml += '<span style="color:#c62828; font-size:0.5em; margin-left:0.2rem;" title="Spicy">💀</span>';
+
+        // Add Total & Tags
+        html += `<span style="margin-left:0.5rem; font-size: 2rem; font-weight:bold; color:var(--accent-dark);">= ${d.total}${tagHtml}</span>`;
+        
+        if(container) container.innerHTML = html;
+    }
+
+    // --- Rumor & Blessing ---
+    function updateRumor() {
+        state.rumor.text = document.getElementById('camp-rumor').value;
+        saveState();
+    }
+
+    function updateBlessing() {
+        state.rumor.blessing.source = document.getElementById('camp-bless-source').value;
+        state.rumor.blessing.value = parseInt(document.getElementById('camp-bless-value').value) || 0;
+        state.rumor.blessing.active = document.getElementById('camp-bless-active').checked;
+        saveState();
+        // Since blessing visual glow affects cards, we re-render cards too?
+        // Actually full render is safer.
+        renderCharacterLists();
+    }
+
+    // --- Clock Logic ---
+    function rollD6() { return Math.floor(Math.random()*6)+1; }
+
+    function resetTurnCount() {
+        if(confirm("Reset Turn Count to 0?")) {
+            state.session.turn = 0;
+            saveState();
+            renderClockPanel();
+        }
+    }
+
+    function advanceTurn() {
+      // 1. Check if locked
+      const btn = document.querySelector('.turn-clock-panel button'); // rough check
+      if(btn && btn.disabled) return;
+
+      state.session.turn++;
+      state.session.round = 0;
+      rollInsight(); 
+      
+      if(state.session.clock < 5) {
+          state.session.clock++;
+          saveState();
+          renderClockPanel();
+      } else if(state.session.clock === 5) {
+          // Fill 6th
+          state.session.clock = 6;
+          state.session.hour++;
+          saveState();
+          renderClockPanel();
+          
+          // Lock UI during wait + roll
+          toggleClockButtons(true);
+          
+          setTimeout(() => {
+              rollClockOnly();
+          }, 800); 
+      } else if(state.session.clock >= 6) {
+          state.session.clock = 1;
+          saveState();
+          renderClockPanel();
+      }
+    }
+
+    function advanceRound() {
+        const btn = document.querySelector('.turn-clock-panel button');
+        if(btn && btn.disabled) return;
+        
+        state.session.round++;
+        rollInsight();
+        
+        if(state.session.round >= 60) {
+            state.session.round = 0;
+            state.session.turn++;
+            if(state.session.clock < 5) {
+                state.session.clock++;
+                saveState(); renderClockPanel();
+            } else if(state.session.clock === 5) {
+                state.session.clock = 6;
+                state.session.hour++;
+                saveState(); renderClockPanel();
+                
+                toggleClockButtons(true);
+                setTimeout(() => { rollClockOnly(); }, 800);
+            } else if(state.session.clock >= 6) {
+                state.session.clock = 1;
+                saveState(); renderClockPanel();
+            }
+        } else {
+            saveState();
+            renderClockPanel();
+        }
+    }
+
+    function rollClock() {
+        if(state.session.clock === 0) { showRollResult([], 0); return; }
+        const rolls = Array.from({length: state.session.clock}, () => rollD6());
+        
+        toggleClockButtons(true);
+        showRollResult(rolls, rolls.filter(r => r===1).length);
+    }
+    
+    // Internal helper for animation
+    function showRollResult(finalRolls, onesCount) {
+         const slots = document.querySelectorAll('.clock-slot');
+         const count = finalRolls.length;
+         
+         // Ensure buttons are disabled if called directly
+         // toggleClockButtons(true); // handled by caller usually
+         
+         // 1. Animate Rolling
+         let ticks = 0;
+         const interval = setInterval(() => {
+             slots.forEach((s, i) => {
+                 if(i < count) s.textContent = DICE_FACES[Math.floor(Math.random()*6)];
+             });
+             ticks++;
+             if(ticks > 8) {
+                 clearInterval(interval);
+                 // 2. Show Final
+                 finalRolls.forEach((val, i) => {
+                     if(i < count) {
+                         slots[i].textContent = DICE_FACES[val-1];
+                         slots[i].classList.add('filled', 'rolled-result');
+                         if(val === 1) slots[i].classList.add('rolled-one');
+                     }
+                 });
+                 
+                 // 3. Show Outcome Text
+                 const oEl = document.getElementById('roll-outcome');
+                 if(onesCount===0) { oEl.textContent='All Clear'; oEl.className='roll-outcome'; }
+                 else if(onesCount===1) { oEl.textContent='😈 Complication!'; oEl.className='roll-outcome complication'; }
+                 else { oEl.textContent=`😈 ${onesCount} Complications!`; oEl.className='roll-outcome complication'; }
+                 
+                 // Unlock UI
+                 toggleClockButtons(false);
+             }
+         }, 80);
+    }
+    
+    function toggleClockButtons(disabled) {
+        const btns = document.querySelectorAll('.turn-clock-panel button');
+        btns.forEach(b => b.disabled = disabled);
+    }
+
+    function rollClockOnly() {
+        // Rolls 6 dice, does NOT clear clock (logic reset handled by next advanceTurn)
+        const rolls = Array.from({length: 6}, () => rollD6());
+        // toggleClockButtons(true); // Caller handled
+        showRollResult(rolls, rolls.filter(r => r===1).length);
+        // We do not save state here because 'rolling' is a transient event on top of state.clock=6
+    }
+
+    function rollClockAndClear() {
+        // Deprecated usually, but kept for Manual 'Roll Clock' if fully full? 
+        // Or if user manually resets. leaving as helper if needed.
+        const rolls = Array.from({length: 6}, () => rollD6());
+        showRollResult(rolls, rolls.filter(r => r===1).length);
+        state.session.clock = 0; 
+        state.session.hour++;
+        saveState();
+        renderClockPanel();
+    }
+
+    function rollInsight() {
+        state.session.insight = rollD6();
+        saveState();
+        renderClockPanel();
+    }
+
+
+
+    // --- Rendering ---
+
+    function render() {
+      // Toggle Views
+      if(state.mode === 'camp') {
+        document.getElementById('view-camp').classList.add('active');
+        document.getElementById('view-muster').classList.remove('active');
+        renderCharacterLists('camp');
+      } else {
+        document.getElementById('view-muster').classList.add('active');
+        document.getElementById('view-camp').classList.remove('active');
+        renderCharacterLists('muster');
+      }
+      
+      // Update Inputs
+      document.getElementById('env-region').value = state.environment.region;
+      
+      // Climate & Landform
+      // Need to ensure options exist
+      const clim = document.getElementById('env-climate');
+      if(clim.value !== state.environment.climate) {
+          clim.value = state.environment.climate;
+          updateLandformOptions(); // sync list
+      }
+      // Ensure landform value set (updateLandformOptions tries to set it, but verify)
+      document.getElementById('env-landform').value = state.environment.landform;
+
+      document.getElementById('env-condition').value = state.environment.terrain_condition || '';
+      document.getElementById('env-poi').value = state.environment.poi || '';
+      
+      document.getElementById('env-conditions').value = state.environment.conditions;
+      
+      document.getElementById('camp-rumor').value = state.rumor.text;
+      document.getElementById('camp-bless-source').value = state.rumor.blessing.source;
+      document.getElementById('camp-bless-value').value = state.rumor.blessing.value;
+      document.getElementById('camp-bless-active').checked = state.rumor.blessing.active;
+
+      renderClockPanel();
+      renderOTHERS(); // New Render Fn
+      renderDice();
+    }
+
+
+
+    function renderRumorBlessing() {
+        document.getElementById('camp-rumor').value = state.rumor.text || '';
+        document.getElementById('camp-bless-source').value = state.rumor.blessing.source || '';
+        document.getElementById('camp-bless-value').value = state.rumor.blessing.value || 0;
+        document.getElementById('camp-bless-active').checked = state.rumor.blessing.active;
+    }
+
+    function renderClockPanel() {
+        const slots = document.querySelectorAll('.clock-slot');
+        // Clear outcome when re-rendering normal state
+        const oEl = document.getElementById('roll-outcome');
+        if(state.session.clock > 0 && oEl) { 
+             oEl.textContent = '';
+             oEl.className = 'roll-outcome';
+        }
+        
+        slots.forEach((s, i) => {
+            s.className = 'clock-slot'; 
+            if (i < state.session.clock) {
+                s.classList.add('filled');
+                s.textContent = DICE_FACES[i]; 
+            } else {
+                s.textContent = '';
+            }
+        });
+        
+        document.getElementById('count-round').textContent = state.session.round;
+        document.getElementById('count-turn').textContent = state.session.turn;
+        document.getElementById('count-hour').textContent = state.session.hour;
+        document.getElementById('count-clock').textContent = state.session.clock;
+        const iVal = document.getElementById('insight-value');
+        if(iVal) iVal.textContent = INSIGHTS[state.session.insight];
+    }
+
+    function renderCharacterLists() {
+        // We have 3 target lists in DOM: camp-muster-list, camp-camp-list, play-muster-list
+        if(state.mode === 'camp') {
+            document.getElementById('camp-muster-list').innerHTML = generateCharHTML(state.muster, 'muster');
+            document.getElementById('camp-camp-list').innerHTML = generateCharHTML(state.camp, 'camp');
+        } else {
+             document.getElementById('play-muster-list').innerHTML = generateCharHTML(state.muster, 'play');
+        }
+    }
+
+    function generateCharHTML(list, context) {
+        // context: 'muster' (in camp view), 'camp' (in camp view), 'play' (in muster view)
+        const sorted = [...list].sort((a,b) => (a.number||99) - (b.number||99));
+        return sorted.map(c => {
+            const isBlessed = state.rumor.blessing.active && c.blessed;
+            const cardClass = `character-card ${c.leader?'leader':''} ${isBlessed?'blessed':''} ${context==='camp'?'in-camp':''}`;
+            
+            let moveBtn = '';
+            if(context === 'muster') moveBtn = `<button onclick="moveChar('${c.id}', 'camp')" title="Move to Camp">To Camp ↓</button>`;
+            if(context === 'camp') moveBtn = `<button onclick="moveChar('${c.id}', 'muster')" title="Move to Muster">To Muster ↑</button>`;
+            
+            // In 'play' mode, we usually don't show move buttons as per spec, or only small ones. keeping it clean.
+            // But we need controls.
+            
+            const stats = `
+              <div class="char-stats">
+                  <div class="stat-row">
+                      <span class="stat-label">Hearts</span>
+                      <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'hearts', -1)">-</button>
+                      </div>
+                      <span class="stat-value hearts">${c.hearts.current}/${c.hearts.max}</span>
+                      <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'hearts', 1)">+</button>
+                      </div>
+                  </div>
+                  ${c.iron.max>0 ? `
+                  <div class="stat-row">
+                      <span class="stat-label">Iron</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'iron', -1)">-</button>
+                      </div>
+                      <span class="stat-value iron">${c.iron.current}/${c.iron.max}</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'iron', 1)">+</button>
+                      </div>
+                  </div>` : ''}
+                   ${c.arcana.max>0 ? `
+                  <div class="stat-row">
+                      <span class="stat-label">Arcana</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'arcana', -1)">-</button>
+                      </div>
+                      <span class="stat-value arcana">${c.arcana.current}/${c.arcana.max}</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'arcana', 1)">+</button>
+                      </div>
+                  </div>` : ''}
+              </div>
+            `;
+
+            return `
+            <div class="${cardClass}">
+                <div class="char-header">
+                    <div class="char-name">
+                        <span class="char-number">${c.number}</span>
+                        ${c.leader ? '<span class="leader-crown">👑</span>' : ''}
+                        ${isBlessed ? '<span class="blessed-star">✦</span>' : ''}
+                        ${c.name}
+                    </div>
+                    <div class="char-controls">
+                        ${moveBtn}
+                        <button onclick="openCharacterModal('${c.id}')">Edit</button>
+                        <button onclick="deleteChar('${c.id}')">✕</button>
+                    </div>
+                </div>
+                ${c.description ? `<div class="char-description">${c.description}</div>` : ''}
+                ${stats}
+                <div class="char-extras">
+                   ${c.notes ? `<span class="notes-toggle" onclick="this.nextElementSibling.classList.toggle('visible')">Notes</span><div class="char-notes">${c.notes}</div>` : ''}
+                </div>
+            </div>
+            `;
+        }).join('');
+    }
+
+    // --- Character Actions ---
+    function findChar(id) {
+        let c = state.muster.find(x => x.id === id);
+        if(c) return { c, list: 'muster' };
+        c = state.camp.find(x => x.id === id);
+        if(c) return { c, list: 'camp' };
+        return null;
+    }
+
+    function modStat(id, stat, delta) {
+        const f = findChar(id);
+        if(f) {
+            f.c[stat].current = Math.max(0, Math.min(f.c[stat].max, f.c[stat].current + delta));
+            saveState(); renderCharacterLists();
+        }
+    }
+
+    function moveChar(id, dest) {
+        const f = findChar(id);
+        if(!f) return;
+        state[f.list] = state[f.list].filter(x => x.id !== id);
+        state[dest].push(f.c);
+        saveState(); renderCharacterLists();
+    }
+    
+    function deleteChar(id) {
+        if(confirm("Delete character?")) {
+            state.muster = state.muster.filter(x => x.id !== id);
+            state.camp = state.camp.filter(x => x.id !== id);
+            saveState(); renderCharacterLists();
+        }
+    }
+
+    // Modal
+    function openCharacterModal(id, forceCamp) {
+        document.getElementById('character-modal').classList.add('active');
+        const f = id ? findChar(id) : null;
+        
+        if(f) {
+            const c = f.c;
+            document.getElementById('char-modal-title').textContent = "Edit Character";
+            document.getElementById('char-id').value = c.id;
+            document.getElementById('char-num').value = c.number;
+            document.getElementById('char-name').value = c.name;
+            document.getElementById('char-desc').value = c.description || '';
+            document.getElementById('char-notes').value = c.notes || '';
+            document.getElementById('char-hearts').value = c.hearts.max;
+            document.getElementById('char-iron').value = c.iron.max;
+            document.getElementById('char-arcana').value = c.arcana.max;
+            document.getElementById('char-leader').checked = c.leader;
+            document.getElementById('char-blessed').checked = c.blessed;
+            document.getElementById('char-incamp').checked = f.list === 'camp';
+        } else {
+            // New
+            document.getElementById('char-modal-title').textContent = "Add Character";
+            document.getElementById('char-id').value = '';
+            document.getElementById('char-num').value = (state.muster.length + state.camp.length) + 1;
+            document.getElementById('char-name').value = '';
+            document.getElementById('char-desc').value = '';
+            document.getElementById('char-notes').value = '';
+            document.getElementById('char-hearts').value = 7;
+            document.getElementById('char-iron').value = 0;
+            document.getElementById('char-arcana').value = 0;
+            document.getElementById('char-leader').checked = false;
+            document.getElementById('char-blessed').checked = false;
+            document.getElementById('char-incamp').checked = (typeof forceCamp === 'boolean') ? forceCamp : (state.mode === 'camp');
+        }
+    }
+
+    function saveCharacter(e) {
+        e.preventDefault();
+        const id = document.getElementById('char-id').value;
+        const leader = document.getElementById('char-leader').checked;
+        const inCamp = document.getElementById('char-incamp').checked;
+        
+        // Unset other leaders if this one is leader
+        if(leader) {
+            state.muster.forEach(c => c.leader = false);
+            state.camp.forEach(c => c.leader = false);
+        }
+
+        const charData = {
+            id: id || uuid(),
+            number: parseInt(document.getElementById('char-num').value) || 0,
+            name: document.getElementById('char-name').value,
+            description: document.getElementById('char-desc').value,
+            notes: document.getElementById('char-notes').value,
+            leader: leader,
+            blessed: document.getElementById('char-blessed').checked,
+            baggage: false,
+            hearts: { max: parseInt(document.getElementById('char-hearts').value), current: 0 }, // temp
+            iron: { max: parseInt(document.getElementById('char-iron').value), current: 0 },
+            arcana: { max: parseInt(document.getElementById('char-arcana').value), current: 0 }
+        };
+
+        // Preserve current values if editing, or set to max if new
+        if(id) {
+             const f = findChar(id);
+             if(f) {
+                 charData.hearts.current = Math.min(f.c.hearts.current, charData.hearts.max);
+                 charData.iron.current = Math.min(f.c.iron.current, charData.iron.max);
+                 charData.arcana.current = Math.min(f.c.arcana.current, charData.arcana.max);
+                 
+                 // Remove from old list
+                 state[f.list] = state[f.list].filter(x => x.id !== id);
+             }
+        } else {
+            charData.hearts.current = charData.hearts.max;
+            charData.iron.current = charData.iron.max;
+            charData.arcana.current = charData.arcana.max;
+        }
+
+        // Add to new list
+        if(inCamp) state.camp.push(charData);
+        else state.muster.push(charData);
+
+        saveState();
+        closeModal('character-modal');
+        renderCharacterLists();
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+
+    // --- Others (NPCs/Threats) ---
+    function renderOTHERS() {
+        const list = document.getElementById('others-list');
+        if(!list) return;
+        
+        list.innerHTML = state.others.map(t => {
+            // Map 'fresh' to 'fighting' visually if state hasn't migrated
+            const displayStatus = (t.status === 'fresh') ? 'fighting' : t.status;
+            
+            const statusIcons = { fighting: '⚔️', talking: '💬', hit: '🩸', fled: '💨', dead: '💀' };
+            const currentIcon = statusIcons[displayStatus] || '⚔️';
+            
+            return `
+            <div class="threat-card ${displayStatus}" style="border-left: 4px solid var(--accent);">
+              <div class="threat-header">
+                 <div style="flex:1;">
+                   <div class="threat-name">${t.name} <span style="font-size:0.8em; margin-left:0.5rem;">${currentIcon}</span></div>
+                   <div class="threat-meta">
+                      ${t.level?`<span>Lvl ${t.level}</span>`:''}
+                      ${t.oracle?`<span>Oracle ${t.oracle}+</span>`:''}
+                      ${t.reaction?`<span style="color:var(--ink); font-style:italic;">"${t.reaction}"</span>`:''}
+                   </div>
+                   ${t.description?`<div class="char-description">${t.description}</div>`:''}
+                 </div>
+              </div>
+              
+              <div class="threat-controls" style="margin-top:0.5rem; border-top:1px solid rgba(0,0,0,0.1); padding-top:0.5rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
+                  <!-- Status Actions -->
+                  <div class="status-actions" style="display:flex; gap:0.2rem;">
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'fighting')" title="Fighting">⚔️</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'talking')" title="Talking">💬</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'hit')" title="Hit">🩸</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'fled')" title="Fled">💨</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'dead')" title="Dead">💀</button>
+                  </div>
+                  
+                  <!-- Edit/Delete -->
+                  <div class="edit-actions" style="display:flex; gap:0.5rem;">
+                      <button onclick="openOtherModal('${t.id}')">Edit</button>
+                      <button onclick="deleteOther('${t.id}')" style="color:var(--danger);">Delete</button>
+                  </div>
+              </div>
+            </div>
+            `;
+        }).join('');
+    }
+
+    function randomizeReaction() {
+        const roll = Math.floor(Math.random()*6)+1 + Math.floor(Math.random()*6)+1;
+        const result = NPC_REACTIONS[roll] || "Neutral";
+        document.getElementById('other-reaction').value = result;
+    }
+
+    function openOtherModal(id) {
+        document.getElementById('other-modal').classList.add('active');
+        document.getElementById('other-id').value = id || '';
+        if(id) {
+            const t = state.others.find(x => x.id === id);
+            document.getElementById('other-name').value = t.name;
+            document.getElementById('other-desc').value = t.description;
+            document.getElementById('other-level').value = t.level;
+            document.getElementById('other-oracle').value = t.oracle;
+            document.getElementById('other-reaction').value = t.reaction;
+        } else {
+            // New
+            document.getElementById('other-name').value = '';
+            document.getElementById('other-desc').value = '';
+            document.getElementById('other-level').value = '';
+            document.getElementById('other-oracle').value = '';
+            // Auto-roll reaction
+            const roll = Math.floor(Math.random()*6)+1 + Math.floor(Math.random()*6)+1;
+            document.getElementById('other-reaction').value = NPC_REACTIONS[roll] || "Neutral";
+        }
+    }
+
+    function saveOther(e) {
+        e.preventDefault();
+        const id = document.getElementById('other-id').value;
+        const data = {
+            id: id || uuid(),
+            name: document.getElementById('other-name').value,
+            description: document.getElementById('other-desc').value,
+            level: document.getElementById('other-level').value,
+            oracle: document.getElementById('other-oracle').value,
+            reaction: document.getElementById('other-reaction').value
+        };
+        
+        if(id) {
+            const idx = state.others.findIndex(x => x.id === id);
+            if(idx >= 0) {
+                // preserve status
+                data.status = state.others[idx].status;
+                state.others[idx] = data;
+            }
+        } else {
+            data.status = 'fresh';
+            state.others.push(data);
+        }
+        saveState(); closeModal('other-modal'); renderOTHERS();
+    }
+
+    function updateOtherStatus(id, stat) {
+        const t = state.others.find(x => x.id === id);
+        if(t) { t.status = stat; saveState(); renderOTHERS(); }
+    }
+    
+    function deleteOther(id) {
+        if(confirm('Delete this entry?')) {
+            state.others = state.others.filter(x => x.id !== id);
+            saveState(); renderOTHERS();
+        }
+    }
+
+    // Init
+    init();
+
+  </script>
+</body>
+</html>
