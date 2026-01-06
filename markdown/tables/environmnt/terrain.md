@@ -94,7 +94,7 @@ The GM decides recent weather warrants a Condition roll:
 5. Cloud forest
 6. Coastal lagoon
 
-## Tier 3: Transition (universal)
+## Tier 3: Transition
 
 1. Easy passage
 2. Hard passage
@@ -103,7 +103,7 @@ The GM decides recent weather warrants a Condition roll:
 5. Hard passage to new landform (roll Landform)
 6. Impassable barrier to new landform (roll Landform)
 
-## Tier 4: Condition (universal)
+## Tier 4: Condition
 
 1. Flooded or waterlogged
 2. Recently burned
@@ -112,7 +112,7 @@ The GM decides recent weather warrants a Condition roll:
 5. Storm-damaged
 6. Unnaturally still
 
-## Tier 5: Point of Interest (universal)
+## Tier 5: Point of Interest
 
 1. Ruins or old structure
 2. Campsite (old or recent)

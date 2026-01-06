@@ -208,16 +208,15 @@
       gap: 0.5rem;
     }
 
-    .weather-dice-display {
-      font-size: 1.5rem;
+    .oracle-dice-display {
+      font-size: 1rem;
       color: var(--ink);
       flex: 1 1 auto; /* Allow it to grow/shrink */
       min-width: 120px; /* Ensure some space for dice */
       white-space: nowrap;
-      background: var(--parchment-dark);
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      border: 1px solid var(--accent);
+      /* background: var(--parchment-dark); REMOVED */
+      padding: 0; /* REMOVED padding */
+      /* border: 1px solid var(--accent); REMOVED */
     }
     
     .dice-controls {
@@ -304,7 +303,7 @@
       .turn-clock-panel { display: flex; flex-direction: column; }
     }
 
-    /* Turn Clock (Reused styling) */
+    /* Turn Clock (Dice Style) */
     .turn-clock-panel {
       display: flex;
       flex-direction: column;
@@ -314,29 +313,40 @@
     .clock-display {
       display: flex;
       justify-content: center;
-      gap: 0.4rem;
-      padding: 0.75rem;
+      gap: 0.6rem; 
+      padding: 1rem;
       background: var(--parchment-dark);
-      border-radius: 6px;
+      border-radius: 8px;
       border: 1px solid var(--accent);
+      min-height: 60px;
     }
     
     .clock-slot {
-      width: 34px; height: 34px;
+      width: 40px; height: 40px;
       border: 2px solid var(--accent);
-      border-radius: 50%;
-      background: var(--parchment-light);
+      border-radius: 6px; /* Square for dice */
+      background: rgba(255,255,255,0.1);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.8rem;
+      color: var(--accent);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .clock-slot.filled { background: var(--accent); color: var(--parchment-light); }
-    .clock-slot.rolled { animation: pulse 0.5s ease-in-out; }
+    .clock-slot.filled { 
+        background: var(--parchment-light); 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-color: var(--accent-dark);
+    }
+    .clock-slot.rolled-result {
+        background: #fff;
+        color: var(--ink);
+        border-color: var(--ink);
+    }
+    .clock-slot.rolled-one {
+        background-color: #ff0000 !important;
+        color: #ffffff !important;
+        border-color: #ff0000 !important;
+    }
     
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-
     .time-counters {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; text-align: center;
     }
@@ -354,19 +364,22 @@
     
     .clock-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
     
-    .roll-result {
-      text-align: center; padding: 0.6rem; background: var(--parchment-dark);
-      border-radius: 6px; min-height: 50px; display: flex; flex-direction: column; justify-content: center;
+    #roll-outcome {
+        text-align: center; font-family: 'Cinzel', serif; font-weight: 600; 
+        font-size: 1.1rem; color: var(--accent-dark); min-height: 1.5em;
+        margin-top: 0.5rem;
     }
-    .roll-dice { font-size: 1.3rem; letter-spacing: 0.25em; margin-bottom: 0.2rem; }
-    .roll-outcome { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.9rem; color: var(--accent-dark); }
-    .roll-outcome.complication { color: var(--heart-red); }
+    #roll-outcome.complication { color: var(--heart-red); }
 
-    /* Character Cards */
+    /* Character Cards ... (unchanged) */
     .character-list {
       display: flex; flex-direction: column; gap: 0.6rem;
       min-height: 100px;
     }
+    /* ... */
+
+
+
 
     .character-card {
       background: var(--parchment-dark);
@@ -534,78 +547,23 @@
   <!-- MUSTER MODE VIEW -->
   <main id="view-muster">
     <!-- Environment Card -->
+    <!-- Environment Card -->
     <section class="panel environment-card" style="grid-column: 1 / -1;"> 
-      <h2>Environment</h2>
-      <div class="env-group-wrapper">
-        <div class="env-field" style="flex: 1; min-width: 150px;">
-          <label>Region</label>
-          <input type="text" id="env-region" placeholder="Wåndyrwyld" onchange="updateEnvironment()">
-        </div>
-        
-        <!-- TERRAIN ROW -->
-        <h4 style="margin: 0.5rem 0 0.2rem; font-size: 0.8rem; color: var(--accent); opacity: 0.8; text-transform: uppercase;">Terrain</h4>
-        <div class="env-group-wrapper">
-            <div class="env-field">
-              <label>Climate</label>
-              <select id="env-climate" onchange="onClimateChange()">
-                  <!-- Populated by JS -->
-              </select>
-            </div>
-            <div class="env-field">
-              <label>Landform</label>
-              <div class="input-with-btn">
-                <select id="env-landform" onchange="updateEnvironment()">
-                    <!-- Populated by JS -->
-                </select>
-                <button class="btn icon-btn" onclick="randomizeLandform()" title="Randomize Landform">⟳</button>
-              </div>
-            </div>
-        </div>
-        <div class="env-group-wrapper">
-             <div class="env-field">
-                <label>T.Cond (Tier 4)</label>
-                <div class="input-with-btn">
-                   <select id="env-condition" onchange="updateEnvironment()">
-                       <!-- Populated by JS -->
-                   </select>
-                   <button class="btn icon-btn" onclick="randTerrainCond()" title="Random Terrain Cond">⟳</button>
-                </div>
-             </div>
-             <div class="env-field">
-                <label>POI (Tier 5)</label>
-                 <div class="input-with-btn">
-                  <option value="3.4 Blizzard">3.4 Blizzard</option>
-                  <option value="3.5 Freezing Fog">3.5 Freezing Fog</option>
-                  <option value="3.6 Black Ice">3.6 Black Ice</option>
-               </optgroup>
-               <optgroup label="4 Hot & Dry">
-                  <option value="4.1 Heatwave">4.1 Heatwave</option>
-                  <option value="4.2 Drought">4.2 Drought</option>
-                  <option value="4.3 Dust Storm">4.3 Dust Storm</option>
-                  <option value="4.4 Wildfire">4.4 Wildfire</option>
-                  <option value="4.5 Ash Fall">4.5 Ash Fall</option>
-                  <option value="4.6 Dry Lightning">4.6 Dry Lightning</option>
-               </optgroup>
-               <optgroup label="5 Severe & Violent">
-                  <option value="5.1 Strong Winds">5.1 Strong Winds</option>
-                  <option value="5.2 Gale Force">5.2 Gale Force</option>
-                  <option value="5.3 Tornado">5.3 Tornado</option>
-                  <option value="5.4 Hurricane">5.4 Hurricane</option>
-                  <option value="5.5 Landslide">5.5 Landslide</option>
-                  <option value="5.6 Avalanche">5.6 Avalanche</option>
-               </optgroup>
-               <optgroup label="6 Strange & Rare">
-                  <option value="6.1 Blood Moon">6.1 Blood Moon</option>
-                  <option value="6.2 Aurora">6.2 Aurora</option>
-                  <option value="6.3 Meteor Shower">6.3 Meteor Shower</option>
-                  <option value="6.4 Acid Rain">6.4 Acid Rain</option>
-                  <option value="6.5 Rain of Frogs">6.5 Rain of Frogs</option>
-                  <option value="6.6 Star Jelly">6.6 Star Jelly</option>
-               </optgroup>
-            </select>
-            <button class="btn icon-btn" onclick="randomizeConditions()" title="Randomize Conditions">⟳</button>
-          </div>
-        </div>
+      <h2>Where are we?</h2>
+      <div class="environment-story">
+          <p class="env-sentence">
+              We are in <input type="text" class="inline-input" id="env-region" placeholder="Region Name" onchange="updateEnvironment()" value="Wåndyrwyld">: 
+              <span id="text-climate" class="text-link" onclick="openEnvMenu(event, 'climate', TERRAIN_DATA.zones, 'Climate')">[Climate]</span> 
+              <span id="text-landform" class="text-link" onclick="openEnvMenu(event, 'landform', TERRAIN_DATA.landforms[state.environment.climate], 'Landform')">[Landform]</span>, 
+              <span id="text-weather_pattern" class="text-link" onclick="openEnvMenu(event, 'weather_pattern', TERRAIN_DATA.weatherPatterns[state.environment.climate], 'Weather Pattern')">[Weather Pattern]</span>, 
+              <span id="text-weather_condition" class="text-link" onclick="openEnvMenu(event, 'weather_condition', TERRAIN_DATA.weatherConditions, 'Weather Cond')">[Condition]</span>.
+          </p>
+          <p class="env-details">
+              <span id="text-poi" class="text-link" onclick="openEnvMenu(event, 'poi', TERRAIN_DATA.pois, 'Point of Interest')">[Point of Interest]</span> • 
+              <span id="text-terrain_condition" class="text-link" onclick="openEnvMenu(event, 'terrain_condition', TERRAIN_DATA.terrainConditions, 'Terrain Cond')">[Terrain Cond]</span> • 
+              <span id="text-weather_shift" class="text-link" onclick="openEnvMenu(event, 'weather_shift', TERRAIN_DATA.weatherShifts, 'Shift')">[Weather Shift]</span> • 
+              <span id="text-weather_event" class="text-link" onclick="openEnvMenu(event, 'weather_event', TERRAIN_DATA.weatherEvents, 'Event')">[Event]</span>
+          </p>
       </div>
     </section>
 
@@ -633,29 +591,26 @@
         <button class="btn" onclick="rollClock()">Roll Clock</button>
         <button class="btn" onclick="rollInsight()">Roll Insight</button>
       </div>
-      <div class="roll-result" id="roll-result">
-        <div class="roll-dice" id="roll-dice"></div>
-        <div class="roll-outcome" id="roll-outcome"></div>
-      </div>
+      <div id="roll-outcome" class="roll-outcome"></div>
       
       <!-- Ask the Oracle Card -->
       <div class="panel dice-card" style="margin-top: 0.75rem;">
-         <div class="insight-display" style="background: var(--parchment-dark); color: var(--ink); border: 1px solid var(--accent);">
-             <div class="insight-label" style="color: var(--ink-light);">Ask the Oracle</div>
+          <div class="insight-display" style="background: var(--parchment-dark); color: var(--ink);  display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem;">
+             <!-- Label -->
+             <div class="insight-label" style="color: var(--ink-light); margin: 0px 10px 0px 0px; font-size: 1rem;">ORACLE</div>
              
-             <!-- Dice Display Area (reusing insight-value style for big text feeling, but flex for dice) -->
-             <div class="dice-card-content" style="justify-content: center; margin-top: 0.5rem; flex-direction: column; gap: 0.5rem;">
-                 <div class="weather-dice-display" style="background:none; color: var(--accent-dark); padding:0; font-family: 'Cinzel', serif; font-weight: 700;">
-                    <!-- Auto populated -->
-                 </div>
-                 
-                 <div class="dice-controls" style="display:flex; gap:0.3rem;">
-                    <button class="btn" style="padding:0.2rem 0.5rem;" onclick="rollOracle('normal')">Roll</button>
-                    <button class="btn" style="padding:0.2rem 0.5rem;" onclick="rollOracle('adv')" title="Advantage (3d6 drop low)">Adv</button>
-                    <button class="btn" style="padding:0.2rem 0.5rem;" onclick="rollOracle('dis')" title="Disadvantage (3d6 drop high)">Dis</button>
-                 </div>
+             <!-- Dice & Result -->
+             <div class="oracle-dice-display" style="display: flex; align-items: center; gap: 0.5rem; font-family: 'Cinzel', serif; font-weight: 700; color: var(--accent-dark);">
+                <!-- Auto populated -->
              </div>
-         </div>
+             
+             <!-- Controls -->
+             <div class="dice-controls" style="display:flex; gap:0.2rem;">
+                <button class="btn" style="padding:0.2rem 0.4rem;" onclick="rollOracle('normal')">ROLL</button>
+                <button class="btn" style="padding:0.2rem 0.4rem;" onclick="rollOracle('adv')" title="Advantage (3d6 drop low)">ADV</button>
+                <button class="btn" style="padding:0.2rem 0.4rem;" onclick="rollOracle('dis')" title="Disadvantage (3d6 drop high)">DIS</button>
+             </div>
+          </div>
       </div>
     </section>
 
@@ -741,7 +696,22 @@
           <div class="form-row">
               <div class="form-group">
                  <label>Reaction</label>
-                 <input type="text" id="other-reaction" placeholder="e.g. Suspicious">
+                 <div style="display:flex; gap:0.5rem;">
+                     <select id="other-reaction" style="flex:1;">
+                        <option value="Hostile">Hostile</option>
+                        <option value="Suspicious">Suspicious</option>
+                        <option value="Fearful">Fearful</option>
+                        <option value="Dismissive">Dismissive</option>
+                        <option value="Reluctant">Reluctant</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Interested">Interested</option>
+                        <option value="Pleasant">Pleasant</option>
+                        <option value="Friendly">Friendly</option>
+                        <option value="Enthusiastic">Enthusiastic</option>
+                        <option value="Trusting">Trusting</option>
+                     </select>
+                     <button type="button" class="btn icon-btn" onclick="randomizeReaction()" title="Randomize Reaction">⟳</button>
+                 </div>
               </div>
           </div>
           <div class="form-row">
@@ -839,168 +809,127 @@
         weatherEvents: ["Rainbow or sun break", "Aurora or strange glow", "Ominous clouds", "Sudden temperature shift", "Unseasonal weather", "Calm before the storm"]
     };
 
+    // --- Popover Logic ---
+    let currentPopover = null;
+
+    function openEnvMenu(event, stateKey, options, label) {
+        event.stopPropagation();
+        const target = event.target;
+        const rect = target.getBoundingClientRect();
+        
+        // Close existing
+        closePopover();
+        
+        // Create/Get Popover
+        let popover = document.getElementById('env-popover');
+        if(!popover) {
+            popover = document.createElement('div');
+            popover.id = 'env-popover';
+            popover.className = 'popover-menu';
+            document.body.appendChild(popover);
+        }
+        
+        // Content
+        let html = `
+            <div class="popover-list">
+        `;
+        
+        options.forEach(opt => {
+            const isSel = state.environment[stateKey] === opt;
+            html += `<div class="popover-option ${isSel?'selected':''}" onclick="selectEnvOption('${stateKey}', '${opt}')">${opt}</div>`;
+        });
+        html += `</div>`;
+        
+        popover.innerHTML = html;
+        popover.classList.add('active');
+        
+        // Position
+        popover.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+        popover.style.left = (rect.left + window.scrollX) + 'px';
+        
+        currentPopover = popover;
+        
+        // Global click to close
+        document.addEventListener('click', closePopoverOnClickOutside);
+    }
+    
+    function closePopover() {
+        if(currentPopover) {
+            currentPopover.classList.remove('active');
+            currentPopover = null;
+            document.removeEventListener('click', closePopoverOnClickOutside);
+        }
+    }
+    
+    function closePopoverOnClickOutside(e) {
+        if(currentPopover && !currentPopover.contains(e.target)) {
+            closePopover();
+        }
+    }
+    
+    function selectEnvOption(key, val) {
+        state.environment[key] = val;
+        
+        // Special Logic for Climate change affecting Landform
+        if(key === 'climate') {
+            const lfOpts = TERRAIN_DATA.landforms[val];
+            if(lfOpts) state.environment.landform = lfOpts[0];
+            // Also update weather pattern default?
+            const wpOpts = TERRAIN_DATA.weatherPatterns[val];
+            if(wpOpts) state.environment.weather_pattern = wpOpts[0];
+        }
+        
+        saveState();
+        render();
+        closePopover();
+    }
+    
+    function randomizeAndSelect(key) {
+        // Find options based on key
+        let opts = [];
+        if(key === 'climate') opts = TERRAIN_DATA.zones;
+        else if(key === 'landform') opts = TERRAIN_DATA.landforms[state.environment.climate];
+        else if(key === 'terrain_condition') opts = TERRAIN_DATA.terrainConditions;
+        else if(key === 'poi') opts = TERRAIN_DATA.pois;
+        else if(key === 'weather_pattern') opts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
+        else if(key === 'weather_shift') opts = TERRAIN_DATA.weatherShifts;
+        else if(key === 'weather_condition') opts = TERRAIN_DATA.weatherConditions;
+        else if(key === 'weather_event') opts = TERRAIN_DATA.weatherEvents;
+        
+        if(opts && opts.length > 0) {
+            const rand = Math.floor(Math.random() * opts.length);
+            selectEnvOption(key, opts[rand]);
+        }
+    }
+
     function init() {
       try {
         loadState();
       } catch(e) {
         console.error("Failed to load state:", e);
       }
-      populateClimateSelect(); 
-      populateGenericSelect('env-condition', TERRAIN_DATA.terrainConditions);
-      populateGenericSelect('env-poi', TERRAIN_DATA.pois);
-      populateGenericSelect('env-weather-pattern', TERRAIN_DATA.weatherPatterns[state.environment.climate] || TERRAIN_DATA.weatherPatterns["Temperate"]);
-      // Weather Shift, Cond, Event are still text or should they be dropdowns too? 
-      // User said "Condition and Point of Interest", implying the Terrain ones first. 
-      // But looking at previous code, Weather Shift/Cond/Event were also text.
-      // I will stick to Condition/POI as requested.
-      
-      render(); 
+      render();
     }
     
-    function populateGenericSelect(id, options) {
-        const sel = document.getElementById(id);
-        if(!sel) return;
-        sel.innerHTML = '<option value="">— None —</option>'; // Add blank option
-        if(Array.isArray(options)) {
-            options.forEach(opt => {
-                const el = document.createElement('option');
-                el.value = opt; el.textContent = opt;
-                sel.appendChild(el);
-            });
-        }
-    }
+    // Cleanup old helpers no longer needed for direct select manipulation
+    // but generic randomizers might still be useful via buttons if we kept them?
+    // User wants "text values should open a menu", implying the menu handles it.
+    // I put randomize button IN the popover header.
+
     
-    function populateClimateSelect() {
-        const sel = document.getElementById('env-climate');
-        if(!sel) return;
-        sel.innerHTML = '';
-        TERRAIN_DATA.zones.forEach(z => {
-            const opt = document.createElement('option');
-            opt.value = z; opt.textContent = z;
-            sel.appendChild(opt);
-        });
-    }
-
-    function updateLandformOptions() {
-        // Called when Climate changes
-        const climatic = state.environment.climate || "Temperate";
-        // Landforms
-        const lfSel = document.getElementById('env-landform');
-        const lfOpts = TERRAIN_DATA.landforms[climatic] || TERRAIN_DATA.landforms["Temperate"];
-        lfSel.innerHTML = '';
-        lfOpts.forEach(lf => {
-            const opt = document.createElement('option');
-            opt.value = lf; opt.textContent = lf;
-            lfSel.appendChild(opt);
-        });
-        if(lfOpts.includes(state.environment.landform)) {
-            lfSel.value = state.environment.landform;
-        } else {
-             lfSel.value = lfOpts[0];
-             state.environment.landform = lfOpts[0];
-        }
-        
-        // Weather Patterns - need to update options based on climate too
-        const wpSel = document.getElementById('env-weather-pattern');
-        if(wpSel) {
-            const wpOpts = TERRAIN_DATA.weatherPatterns[climatic] || TERRAIN_DATA.weatherPatterns["Temperate"];
-            // Reuse generic populate but keep selection
-            populateGenericSelect('env-weather-pattern', wpOpts);
-            
-            // Remove the 'None' if we want forced pattern? Or keep it?
-            // Weather pattern usually mandatory? Let's keep it simple.
-            // Actually populateGenericSelect adds 'None'.
-            
-            if(wpOpts.includes(state.environment.weather_pattern)) {
-                wpSel.value = state.environment.weather_pattern;
-            } else if(state.environment.weather_pattern) {
-                 // Try to keep value? No, must be in options.
-                 wpSel.value = wpOpts[0];
-                 state.environment.weather_pattern = wpOpts[0];
-            }
-        }
-    }
-    
-    // ... loadState ...
-
-    // ... saveState ...
-    
-    // ... 
-
-    // --- Actions ---
-
-    // ...
-
-    // --- Environment ---
+    // --- Environment Helpers ---
     function updateEnvironment() {
-      state.environment.region = document.getElementById('env-region').value;
-      
-      state.environment.climate = document.getElementById('env-climate').value;
-      state.environment.landform = document.getElementById('env-landform').value;
-      state.environment.terrain_condition = document.getElementById('env-condition').value;
-      state.environment.poi = document.getElementById('env-poi').value;
-      
-      state.environment.weather_pattern = document.getElementById('env-weather-pattern').value;
-      state.environment.weather_shift = document.getElementById('env-weather-shift').value;
-      state.environment.weather_condition = document.getElementById('env-weather-condition').value;
-      state.environment.weather_event = document.getElementById('env-weather-event').value;
-
-      saveState();
-    }
-    
-    function onClimateChange() {
-        state.environment.climate = document.getElementById('env-climate').value;
-        const lfOpts = TERRAIN_DATA.landforms[state.environment.climate];
-        if(lfOpts) state.environment.landform = lfOpts[0];
-        
-        const wpOpts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
-        if(wpOpts) state.environment.weather_pattern = wpOpts[0];
-        
-        updateLandformOptions(); 
-        saveState();
-    }
-    
-    function randomizeLandform() {
-       const opts = TERRAIN_DATA.landforms[state.environment.climate];
-       if(opts) {
-           const rand = Math.floor(Math.random() * opts.length);
-           state.environment.landform = opts[rand];
-           document.getElementById('env-landform').value = state.environment.landform;
+       // Only region input remains as a standard input
+       const el = document.getElementById('env-region');
+       if(el) {
+           state.environment.region = el.value;
            saveState();
        }
     }
     
-    function randomizeWeatherPattern() {
-       const opts = TERRAIN_DATA.weatherPatterns[state.environment.climate];
-       if(opts) {
-           const rand = Math.floor(Math.random() * opts.length);
-           state.environment.weather_pattern = opts[rand];
-           document.getElementById('env-weather-pattern').value = state.environment.weather_pattern;
-           saveState();
-       }
-    }
+    // Legacy functions removed: populateClimateSelect, updateLandformOptions, onClimateChange, randomize...
+    // New logic handled via openEnvMenu / selectEnvOption / randomizeAndSelect logic.
 
-    function randomizeEnvField(fieldId, stateKey, dataArray) {
-        // For dropdowns (Condition, POI) or text inputs
-        const el = document.getElementById(fieldId);
-        const isSelect = el.tagName === 'SELECT';
-        
-        const rand = Math.floor(Math.random() * dataArray.length);
-        const val = dataArray[rand];
-        
-        state.environment[stateKey] = val;
-        el.value = val;
-        saveState();
-    }
-
-    // Wrapper randomizers
-    function randTerrainCond() { randomizeEnvField('env-condition', 'terrain_condition', TERRAIN_DATA.terrainConditions); }
-    function randPOI() { randomizeEnvField('env-poi', 'poi', TERRAIN_DATA.pois); }
-    function randWeatherShift() { randomizeEnvField('env-weather-shift', 'weather_shift', TERRAIN_DATA.weatherShifts); }
-    function randWeatherCond() { randomizeEnvField('env-weather-condition', 'weather_condition', TERRAIN_DATA.weatherConditions); }
-    function randWeatherEvent() { randomizeEnvField('env-weather-event', 'weather_event', TERRAIN_DATA.weatherEvents); }
-
-    // Old randomizers deprecated
 
     function loadState() {
       const stored = localStorage.getItem('wandyr-session-v3');
@@ -1060,7 +989,60 @@
         if (typeof loaded.rumor?.blessingActive === 'boolean') {
              state.rumor.blessing.active = loaded.rumor.blessingActive;
         }
+      } else {
+          // New session or no data: Randomize Environment immediately
+          initialRandomizeEnv();
       }
+      
+      // Safety check: if loaded state has empty env fields (e.g. from partial previous state), fill them
+      ensureEnvData();
+    }
+
+    function initialRandomizeEnv() {
+        // Pick random Climate first
+        const zones = TERRAIN_DATA.zones;
+        state.environment.climate = zones[Math.floor(Math.random() * zones.length)];
+        ensureEnvData();
+    }
+    
+    function ensureEnvData() {
+        const env = state.environment;
+        // Climate
+        if(!env.climate) env.climate = "Temperate"; 
+        
+        // Landform (dependent on climate)
+        if(!env.landform) {
+            const opts = TERRAIN_DATA.landforms[env.climate] || TERRAIN_DATA.landforms["Temperate"];
+            env.landform = opts[Math.floor(Math.random() * opts.length)];
+        }
+        
+        // Weather Pattern (dependent on climate)
+        if(!env.weather_pattern) {
+             const opts = TERRAIN_DATA.weatherPatterns[env.climate] || TERRAIN_DATA.weatherPatterns["Temperate"];
+             env.weather_pattern = opts[Math.floor(Math.random() * opts.length)];
+        }
+        
+        // Others basic
+        if(!env.terrain_condition) {
+            const opts = TERRAIN_DATA.terrainConditions;
+            env.terrain_condition = opts[Math.floor(Math.random() * opts.length)];
+        }
+        if(!env.poi) {
+            const opts = TERRAIN_DATA.pois;
+            env.poi = opts[Math.floor(Math.random() * opts.length)];
+        }
+        if(!env.weather_shift) {
+            const opts = TERRAIN_DATA.weatherShifts;
+            env.weather_shift = opts[Math.floor(Math.random() * opts.length)];
+        }
+        if(!env.weather_condition) {
+            const opts = TERRAIN_DATA.weatherConditions;
+            env.weather_condition = opts[Math.floor(Math.random() * opts.length)];
+        }
+        if(!env.weather_event) {
+            const opts = TERRAIN_DATA.weatherEvents;
+            env.weather_event = opts[Math.floor(Math.random() * opts.length)];
+        }
     }
 
     function saveState() {
@@ -1209,8 +1191,12 @@
         kept = sorted; // keep all 2
         total = kept.reduce((a,c) => a+c, 0);
       } else if(type === 'adv') {
-        // Drop lowest (first)
-        kept = sorted.slice(1);
+        // Drop lowest (first) UNLESS it is a 1.
+        if(sorted[0] === 1) {
+            kept = sorted; // Keep all 3
+        } else {
+            kept = sorted.slice(1);
+        }
         total = kept.reduce((a,c) => a+c, 0);
       } else if(type === 'dis') {
         // Drop highest (last)
@@ -1225,18 +1211,26 @@
     
     function renderDice() {
         const d = state.dice || { rolls: [1,1], type: 'normal', total: 2 };
-        const container = document.querySelector('.weather-dice-display');
+        const container = document.querySelector('.oracle-dice-display');
         let html = '';
         
         // We will just show the pips.
         const rolls = d.rolls || [];
         
         rolls.forEach(val => {
-            html += `<span class="weather-die">${DICE_FACES[val-1]}</span>`;
+            html += `<div class="clock-slot filled" style="font-size: 1.6rem;">${DICE_FACES[val-1]}</div>`;
         });
         
-        // Add Total
-        html += `<span style="margin-left:0.5rem; font-weight:bold; color:var(--accent-dark);">= ${d.total}</span>`;
+        // Calculate Tags
+        const sixes = rolls.filter(r => r === 6).length;
+        const ones = rolls.filter(r => r === 1).length;
+        let tagHtml = '';
+        
+        if(sixes > 0) tagHtml += '<span style="color:#2e7d32; font-size:0.5em; margin-left:0.2rem;" title="Sweet">🌿</span>';
+        if(ones > 0) tagHtml += '<span style="color:#c62828; font-size:0.5em; margin-left:0.2rem;" title="Spicy">💀</span>';
+
+        // Add Total & Tags
+        html += `<span style="margin-left:0.5rem; font-size: 2rem; font-weight:bold; color:var(--accent-dark);">= ${d.total}${tagHtml}</span>`;
         
         if(container) container.innerHTML = html;
     }
@@ -1269,24 +1263,31 @@
     }
 
     function advanceTurn() {
-      // Logic: 
-      // 1. If clock is < 5: Increment clock (e.g. 1->2).
-      // 2. If clock is 5: Increment to 6 (Full). Trigger Roll. Increment Hour.
-      // 3. If clock is 6: Reset to 1. Start of next hour.
-      
+      // 1. Check if locked
+      const btn = document.querySelector('.turn-clock-panel button'); // rough check
+      if(btn && btn.disabled) return;
+
       state.session.turn++;
       state.session.round = 0;
-      rollInsight(); // Always roll insight on turn advance
+      rollInsight(); 
       
       if(state.session.clock < 5) {
           state.session.clock++;
           saveState();
           renderClockPanel();
       } else if(state.session.clock === 5) {
+          // Fill 6th
           state.session.clock = 6;
           state.session.hour++;
-          // Trigger roll immediately when full
-          rollClockOnly(); 
+          saveState();
+          renderClockPanel();
+          
+          // Lock UI during wait + roll
+          toggleClockButtons(true);
+          
+          setTimeout(() => {
+              rollClockOnly();
+          }, 800); 
       } else if(state.session.clock >= 6) {
           state.session.clock = 1;
           saveState();
@@ -1295,20 +1296,25 @@
     }
 
     function advanceRound() {
+        const btn = document.querySelector('.turn-clock-panel button');
+        if(btn && btn.disabled) return;
+        
         state.session.round++;
         rollInsight();
         
         if(state.session.round >= 60) {
             state.session.round = 0;
             state.session.turn++;
-            // Apply same clock logic as advanceTurn
             if(state.session.clock < 5) {
                 state.session.clock++;
                 saveState(); renderClockPanel();
             } else if(state.session.clock === 5) {
                 state.session.clock = 6;
                 state.session.hour++;
-                rollClockOnly();
+                saveState(); renderClockPanel();
+                
+                toggleClockButtons(true);
+                setTimeout(() => { rollClockOnly(); }, 800);
             } else if(state.session.clock >= 6) {
                 state.session.clock = 1;
                 saveState(); renderClockPanel();
@@ -1320,18 +1326,62 @@
     }
 
     function rollClock() {
-        // Manual roll button - rolls current dice
         if(state.session.clock === 0) { showRollResult([], 0); return; }
         const rolls = Array.from({length: state.session.clock}, () => rollD6());
+        
+        toggleClockButtons(true);
         showRollResult(rolls, rolls.filter(r => r===1).length);
     }
     
+    // Internal helper for animation
+    function showRollResult(finalRolls, onesCount) {
+         const slots = document.querySelectorAll('.clock-slot');
+         const count = finalRolls.length;
+         
+         // Ensure buttons are disabled if called directly
+         // toggleClockButtons(true); // handled by caller usually
+         
+         // 1. Animate Rolling
+         let ticks = 0;
+         const interval = setInterval(() => {
+             slots.forEach((s, i) => {
+                 if(i < count) s.textContent = DICE_FACES[Math.floor(Math.random()*6)];
+             });
+             ticks++;
+             if(ticks > 8) {
+                 clearInterval(interval);
+                 // 2. Show Final
+                 finalRolls.forEach((val, i) => {
+                     if(i < count) {
+                         slots[i].textContent = DICE_FACES[val-1];
+                         slots[i].classList.add('filled', 'rolled-result');
+                         if(val === 1) slots[i].classList.add('rolled-one');
+                     }
+                 });
+                 
+                 // 3. Show Outcome Text
+                 const oEl = document.getElementById('roll-outcome');
+                 if(onesCount===0) { oEl.textContent='All Clear'; oEl.className='roll-outcome'; }
+                 else if(onesCount===1) { oEl.textContent='😈 Complication!'; oEl.className='roll-outcome complication'; }
+                 else { oEl.textContent=`😈 ${onesCount} Complications!`; oEl.className='roll-outcome complication'; }
+                 
+                 // Unlock UI
+                 toggleClockButtons(false);
+             }
+         }, 80);
+    }
+    
+    function toggleClockButtons(disabled) {
+        const btns = document.querySelectorAll('.turn-clock-panel button');
+        btns.forEach(b => b.disabled = disabled);
+    }
+
     function rollClockOnly() {
-        // Rolls 6 dice, does NOT clear clock, DOES save state
+        // Rolls 6 dice, does NOT clear clock (logic reset handled by next advanceTurn)
         const rolls = Array.from({length: 6}, () => rollD6());
+        // toggleClockButtons(true); // Caller handled
         showRollResult(rolls, rolls.filter(r => r===1).length);
-        saveState();
-        renderClockPanel();
+        // We do not save state here because 'rolling' is a transient event on top of state.clock=6
     }
 
     function rollClockAndClear() {
@@ -1351,21 +1401,7 @@
         renderClockPanel();
     }
 
-    function showRollResult(rolls, ones) {
-        const dEl = document.getElementById('roll-dice');
-        const oEl = document.getElementById('roll-outcome');
-        if(rolls.length===0) {
-            dEl.textContent = '—'; oEl.textContent = 'No dice'; oEl.className='roll-outcome'; return;
-        }
-        dEl.textContent = rolls.map(r => DICE_FACES[r-1]).join(' ');
-        if(ones===0) { oEl.textContent='All Clear'; oEl.className='roll-outcome'; }
-        else if(ones===1) { oEl.textContent='Complication!'; oEl.className='roll-outcome complication'; }
-        else { oEl.textContent=`${ones} Complications!`; oEl.className='roll-outcome complication'; }
 
-        document.querySelectorAll('.clock-slot.filled').forEach(s => {
-            s.classList.add('rolled'); setTimeout(()=>s.classList.remove('rolled'), 500);
-        });
-    }
 
     // --- Rendering ---
 
@@ -1420,15 +1456,29 @@
 
     function renderClockPanel() {
         const slots = document.querySelectorAll('.clock-slot');
+        // Clear outcome when re-rendering normal state
+        const oEl = document.getElementById('roll-outcome');
+        if(state.session.clock > 0 && oEl) { 
+             oEl.textContent = '';
+             oEl.className = 'roll-outcome';
+        }
+        
         slots.forEach((s, i) => {
-            s.classList.toggle('filled', i < state.session.clock);
-            s.textContent = i < state.session.clock ? '●' : '○';
+            s.className = 'clock-slot'; 
+            if (i < state.session.clock) {
+                s.classList.add('filled');
+                s.textContent = DICE_FACES[i]; 
+            } else {
+                s.textContent = '';
+            }
         });
+        
         document.getElementById('count-round').textContent = state.session.round;
         document.getElementById('count-turn').textContent = state.session.turn;
         document.getElementById('count-hour').textContent = state.session.hour;
         document.getElementById('count-clock').textContent = state.session.clock;
-        document.getElementById('insight-value').textContent = INSIGHTS[state.session.insight];
+        const iVal = document.getElementById('insight-value');
+        if(iVal) iVal.textContent = INSIGHTS[state.session.insight];
     }
 
     function renderCharacterLists() {
@@ -1648,12 +1698,15 @@
         if(!list) return;
         
         list.innerHTML = state.others.map(t => {
-            const statusIcons = { fresh: '✨', hit: '🩸', fled: '💨', dead: '💀' };
-            const currentIcon = statusIcons[t.status] || '✨';
+            // Map 'fresh' to 'fighting' visually if state hasn't migrated
+            const displayStatus = (t.status === 'fresh') ? 'fighting' : t.status;
+            
+            const statusIcons = { fighting: '⚔️', talking: '💬', hit: '🩸', fled: '💨', dead: '💀' };
+            const currentIcon = statusIcons[displayStatus] || '⚔️';
             
             return `
-            <div class="threat-card ${t.status}" style="border-left: 4px solid var(--accent);">
-              <div class="threat-header" style="justify-content:space-between;">
+            <div class="threat-card ${displayStatus}" style="border-left: 4px solid var(--accent);">
+              <div class="threat-header">
                  <div style="flex:1;">
                    <div class="threat-name">${t.name} <span style="font-size:0.8em; margin-left:0.5rem;">${currentIcon}</span></div>
                    <div class="threat-meta">
@@ -1663,20 +1716,33 @@
                    </div>
                    ${t.description?`<div class="char-description">${t.description}</div>`:''}
                  </div>
-                 <div class="threat-actions" style="display:flex; flex-direction:column; gap:0.2rem; margin-left:0.5rem;">
-                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'fresh')" title="Fresh">✨</button>
+              </div>
+              
+              <div class="threat-controls" style="margin-top:0.5rem; border-top:1px solid rgba(0,0,0,0.1); padding-top:0.5rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
+                  <!-- Status Actions -->
+                  <div class="status-actions" style="display:flex; gap:0.2rem;">
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'fighting')" title="Fighting">⚔️</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'talking')" title="Talking">💬</button>
                     <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'hit')" title="Hit">🩸</button>
                     <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'fled')" title="Fled">💨</button>
                     <button class="btn icon-btn" onclick="updateOtherStatus('${t.id}', 'dead')" title="Dead">💀</button>
-                 </div>
-              </div>
-              <div class="threat-controls" style="margin-top:0.5rem; border-top:1px solid rgba(0,0,0,0.1); padding-top:0.5rem;">
-                  <button onclick="openOtherModal('${t.id}')">Edit</button>
-                  <button onclick="deleteOther('${t.id}')" style="color:var(--danger);">Delete</button>
+                  </div>
+                  
+                  <!-- Edit/Delete -->
+                  <div class="edit-actions" style="display:flex; gap:0.5rem;">
+                      <button onclick="openOtherModal('${t.id}')">Edit</button>
+                      <button onclick="deleteOther('${t.id}')" style="color:var(--danger);">Delete</button>
+                  </div>
               </div>
             </div>
             `;
         }).join('');
+    }
+
+    function randomizeReaction() {
+        const roll = Math.floor(Math.random()*6)+1 + Math.floor(Math.random()*6)+1;
+        const result = NPC_REACTIONS[roll] || "Neutral";
+        document.getElementById('other-reaction').value = result;
     }
 
     function openOtherModal(id) {
