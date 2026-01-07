@@ -16,7 +16,7 @@ Author: Paul Abrams
 Illustrations: public domain
 
 Version: 1.1  
-Date: Jan 2, 2026
+Date: Jan 7, 2026
 
 About the Name: Wåndyr is “wander” as in travel about, but also “wonder” as in finding wondrous things in your travels, and maybe bringing them back.
 
@@ -72,7 +72,7 @@ About the Name: Wåndyr is “wander” as in travel about, but also “wonder�
 
 [**Fighting 29**](#fighting)
 
-[Monsters 30](#monsters)
+[Monsters 30](#heading=h.qq37j69kwju8)
 
 [Death 30](#death)
 
@@ -228,48 +228,48 @@ A Skill is something the character has learned, either an item proficiency or a 
 
 #### Example Characters
 
-Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skills, with Songs in quotes.
+Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skills
 
-**1.1**  Rook: agile cunning | knife, (lockpicks)
-**1.2**  Cipher: calculating elusive | ciphers, daggers
-**1.3**  Shadow: silent (ruthless) | blowgun, poisons
-**1.4**  Wilde: charming strong | cards, cutlass
-**1.5**  Lyra: nimble (spy)  | rope, spy ciphers  
-**1.6**  Pearl: deadly noble | disguise kit, (stiletto)
+**1.1**  Rook: agile, cunning | knife, (lockpicks)
+**1.2**  Cipher: calculating, elusive | ciphers, daggers
+**1.3**  Shadow: silent, (ruthless) | blowgun, poisons
+**1.4**  Wilde: charming, strong | cards, cutlass
+**1.5**  Lyra: nimble, (spy)  | rope, spy ciphers  
+**1.6**  Pearl: deadly, noble | disguise kit, (stiletto)
 
-**2.1**  Serra: fierce shieldmaiden | battle ax, shield
+**2.1**  Serra: fierce, shieldmaiden | battle ax, shield
 **2.2**  Magnus: strong, boisterous | warhammer, armor
-**2.3**  Iron: tough Dwarf | axe, shield
-**2.4**  Sarge: grizzled soldier | arming sword, armor
-**2.5**  Pike: alert guard | halberd, whistle
-**2.6**  Shiro: honorable lethal | katana, wakizashi
+**2.3**  Iron: tough, Dwarf | axe, shield
+**2.4**  Sarge: grizzled, soldier | arming sword, armor
+**2.5**  Pike: alert, guard | halberd, whistle
+**2.6**  Shiro: honorable, lethal | katana, wakizashi
 
-**3.1**  Drake: weathered wanderer | machete, tinderbox
-**3.2**  Slate: observant scout | telescope, bow
-**3.3**  Wolf: (feral) hunter | spear, “Song of the Wild”
-**3.4**  Hawk: vigilant scout | longbow, falconry-glove
-**3.5**  Storm: impetuous, daring | javelin, grapnel
-**3.6**. Echo: hallow Elf | harp | “Elven Ballad of Hope”  
-**4.1**. Kat: lithe second-story-thief | (grappling hook, thieves tools)  
-**4.2**  Forge: steadfast armorer | armor, hammer  
-**4.3**  Quill: meticulous learned | ledger, inkwell
-**4.4**  Flint: steely Dwarf | axe, cookpot
-**4.5**  Nails: tough soldier | flail, gambeson
+**3.1**  Drake: weathered, wanderer | machete, tinderbox
+**3.2**  Slate: observant, scout | telescope, bow
+**3.3**  Wolf: (feral), hunter | spear, ax
+**3.4**  Hawk: vigilant, scout | longbow, falcon  
+**3.5**  Storm: impetuous, daring | javelin, grapnel  
+**3.6**. Echo: hallow, Elf | harp, long knife  
+**4.1**. Kat: lithe. second-story-thief | (grappling hook, thieves tools)  
+**4.2**  Forge: steadfast. armorer | armor, hammer  
+**4.3**  Quill: meticulous. learned | ledger, inkwell
+**4.4**  Flint: steely. Dwarf | axe, cookpot
+**4.5**  Nails: tough. soldier | flail, gambeson
 **4.6**  Lindon: brave, strong | poleax, armor
 
-**5.1**   Khael: focused witch-hunter | Umbrakala binding chains  
-**5.2**  Vesper: artistic scholar | Illusione staff  
-**5.3**  Twilight: pensive devious | Umbrakala sickle  
-**5.4**  Istar: honorable white-wizard | Vitae staff  
-**5.5**  Hezerek: ambitious (shady) | Umbrakala orb  
-**5.6**  Ignus: fiery driven | Elementale staff
+**5.1**   Khael: focused. witch-hunter | Umbrakala, binding chains  
+**5.2**  Vesper: artistic, scholar | Illusione, staff  
+**5.3**  Twilight: pensive, devious | Umbrakala, sickle  
+**5.4**  Istar: honorable, white-wizard | Vitae, staff  
+**5.5**  Hezerek: ambitious, (shady) | Umbrakala, orb  
+**5.6**  Ignus: fiery, driven | Elementale, staff
 
-**6.1**  Dusk: honorable noble | ancestral blade, doublet
-**6.2**  Oak: strong enduring | staff, rope
-**6.3**  Vale: woodcraft hunter | longbow, knife  
-**6.4**  Digs: Dwarf prospector | pickaxe, mining helmet  
-**6.5**  Bear: strong warrior | maul, bearskin cloak
-**6.6**  Thalia: keen-eyed Elf | bow, sword
+**6.1**  Dusk: honorable, noble | rapier, doublet
+**6.2**  Oak: strong, enduring | staff, rope
+**6.3**  Vale: woodcraft, hunter | longbow, knife  
+**6.4**  Digs: Dwarf, prospector | pickaxe, mining helmet  
+**6.5**  Bear: strong, warrior | maul, bearskin cloak
+**6.6**  Thalia: keen-eyed, Elf | bow, sword
 
 ## The Muster {#the-muster}
 
@@ -382,6 +382,8 @@ If your Double Sweet question is ambitious—a disarm, a mighty throw—use Atte
 
 ### ![Oracle illustration][image8]
 
+###
+
 ### Who Asks?
 
 Your character can try anything\! When you say your character attempts a direct action, then you roll to ask the Oracle if it happens. Otherwise, the Guide rolls, especially for unestablished facts:
@@ -428,13 +430,7 @@ If you need more than yes/no, the Oracle can play "20 questions". The Guide shou
 
 *Guide Tip: Ask an AI to generate a table, then proof it, and then have a player roll on it.*
 
-### Area of Effect
-
-If you and your companions are attacked by dragonbreath or some other area-of-effect attack, each of you will need to roll a defense.
-
-If you attack your enemies with an area-of-effect attack, such as a *fireball* spell or rockslide, you will need to roll for *each* enemy (the Guide may group similar enemies).
-
-*![][image9]*
+![][image9]
 
 ## Attempting the Extraordinary {#attempting-the-extraordinary}
 
@@ -500,11 +496,15 @@ Anyone not in the Muster is assumed to follow along behind to set up the next ca
 
 At some point you may decide to establish a permanent camp or “home base”, such as a cave, frontier tower, tavern, or hideout. This gives you a secure place to store loot. You can have multiple bases, making fast-travel even more useful.
 
+##
+
+##
+
 ## Equipment {#equipment}
 
 Wåndyr assumes a traditional fantasy economy using gold pieces (gp), where quaint medieval items are available for sale in towns.
 
-### Equipment Price Guide
+#### Equipment Price Guide
 
 **Common items** cost 1gp per item slot. Examples: clothing, water skin, tools, etc.  
 **Specialty items** cost 10gp per item slot. Examples: books, lockpicks.  
@@ -569,7 +569,7 @@ To find your Alignment, count all relevant Advancements and divide by 3, roundin
 
 ## Game Flow {#game-flow}
 
-To add a sense of urgency, the Guide tracks 10-minute "Turns" using a "Turn Clock". This can be a glass or metal bowl on the table. The Guide loudly tosses a die into the clock each time you do something time-consuming. When the bowl is full with all six dice, an hour has passed and the Guide rolls the dice. Any 1's indicate a spicy complication such as a wandering monster. The Guide also rolls when you do something reckless. The clock only holds 6 dice; reset to 1 on the 7th.
+To add a sense of urgency, the Guide tracks 10-minute "Turns" using a "Turn Clock". This can be a glass or metal bowl on the table. The Guide loudly tosses a die into the clock each time you do something time-consuming. When the bowl is full with all six dice, an hour has passed and the Guide rolls the dice. Any 1's indicate a *spicy* complication such as a wandering monster. The Guide also rolls when you do something reckless. The clock only holds 6 dice; reset to 1 on the 7th.
 
 #### Combat Rounds
 
@@ -629,7 +629,7 @@ Sweet/Spicy add a twist.
 
 Your caster level is your level of Alignment with the magic school of the spell. This determines your level of magic literacy and the maximum spell level you can attempt. For example, if your Umbrakala level is 3 then you can attempt to cast Umbrakala spells of 3rd level or lower; you cannot even attempt a 4th level spell.
 
-Casting a spell from a spellbook or Arcana in which you have Skill is made with a +1 caster level bonus.
+*Casting a spell from a spellbook or Arcana in which you have Skill is made with a \+1 caster level bonus.*
 
 #### Alignment
 
@@ -945,6 +945,8 @@ Death, spirits, and decay. The forbidden magic of the Avathars, inscribed in blo
 **6.5** *Wizard Mark* \- death runes  
 **6.6** *Perfect Death* \- ultimate end
 
+![][image13]
+
 ####
 
 ### Canting
@@ -1015,7 +1017,7 @@ The Guide determines what happens next, following existing Lore, your Alignment 
 
 *The workings of otherworldly beings are often mysterious. They may interpret your request from a different perspective and sense of time.*
 
-![][image13]
+![][image14]
 
 #### Shaping Spirits
 
@@ -1041,7 +1043,7 @@ Sentient items are temperamental; when you first attempt to use one, ask the Ora
 
 If you carry a sentient item, your character grows in *Alignment* and may discover deeper mysteries. You should take Traits that reflect this growing attachment. For example, you might take a Trait such as "Wielder of Duskbringer". It's petty, but they *hate* anyone who offends their fragile egos, such as carrying them after being rejected, refusing to follow their agenda, abandoning, or "cheating" on them with a rival item.
 
-![Magic illustration][image14]
+![Magic illustration][image15]
 
 # Fighting {#fighting}
 
@@ -1073,9 +1075,13 @@ If you are targeted by an action (such as an attack or spell), you may take your
 
 The Guide decides “right of way”. In general, weapon attacks have “right of way” over everything else. Melee has right-of-way over missiles. The need to move can be used as a tie breaker. When approaching from a distance the weapon with the better reach (by item slots) has "right of way". In close quarters combat (under 10 feet of space per person) the smaller weapon has “right of way”.
 
-![][image15]
+### Area of Effect
 
-## Monsters {#monsters}
+If you and your companions are attacked by dragonbreath or some other area-of-effect attack, each of you will need to roll a defense.
+
+## If you attack your enemies with an area-of-effect attack, such as a *fireball* spell or rockslide, you will need to roll for *each* enemy (the Guide may group similar enemies)
+
+## Monsters
 
 Each monster (or trap, etc.) has a **Level** comparable to **Alignment Level**. The Guide sets the Oracle to “hard” if this is higher than Alignment Level; or “easy” if lower. Consider using the party leader's level when working together.
 
@@ -1104,6 +1110,8 @@ Characters and monsters die at 0 Hearts. If you reach 0 Hearts, choose whether y
 
 **Onscreen:** Describe one final heroic action on the next round; ask the Oracle if the action succeeds and then go Offscreen. *Heroic feats require Sweet.* *Spicy indicates immediate, final death*
 
+###
+
 ### Welcome to Wåndyr\
 
 Wåndyr is an adventure game about a band of adventurers wandering through a pulp fantasy world. The focus is on exploration, following rumors, discovering places, treasure hunting, camping, singing, storytelling, cleverly overcoming impossible odds, naming weapons, and coming back alive with tales to tell. In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again.
@@ -1112,9 +1120,9 @@ Wåndyr is an adventure game about a band of adventurers wandering through a pul
 
 The Guide describes the world and serves to answer your questions. The Guide consults existing “lore” (their memory/notes about established facts) and the Oracle for anything else.
 
-The local area remains wide open and undefined, even if some aspects of the wider world are known (or even part of a well-defined setting). This "sandbox" or “emergent play” style allows everyone at the table to discover the unexpected together. The Guide is also a player\!
+The local area remains wide open and undefined, even if some aspects of the wider world are known (or even part of a well-defined setting). Wander to discover the world together.
 
-The Guide does not prepare a predefined story beforehand. Instead, the Guide uses dice and random tables to determine what happens. Each new discovery is a surprise to everyone and adds to the growing lore of your world as you wander together.  
+The Guide does not prepare a predefined story beforehand. Instead, the Guide uses the Oracle and random tables to determine what happens. Each new discovery is a surprise to everyone and adds to the growing lore of your world as you wander together.  
 ![Oracle illustration][image3]
 
 #### The Oracle

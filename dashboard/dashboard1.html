@@ -407,10 +407,7 @@
         display: flex;
         justify-content: center;
         gap: 0.6rem;
-        padding: 1rem;
-        background: var(--parchment-dark);
-        border-radius: 8px;
-        border: 1px solid var(--accent);
+        padding: 0.5rem 0;
         min-height: 60px;
       }
 
@@ -579,6 +576,13 @@
       .blessed-star {
         color: var(--blessing-gold);
         text-shadow: 0 0 4px var(--blessing-gold);
+      }
+
+      .char-player {
+        font-size: 0.8rem;
+        color: var(--ink-light);
+        margin-bottom: 0.3rem;
+        opacity: 0.8;
       }
 
       .char-description {
@@ -972,6 +976,7 @@
               onclick="openEnvMenu(event, 'terrain_condition', TERRAIN_DATA.terrainConditions, 'Terrain Condition')"
             ></span>
           </p>
+
           <p class="env-conditions">
             Conditions:
             <span
@@ -984,8 +989,7 @@
               class="text-link"
               onclick="openEnvMenu(event, 'weather_condition', TERRAIN_DATA.weatherConditions, 'Weather Condition')"
             ></span>
-          </p>
-          <p
+          <span
             class="env-seasonal"
             id="text-seasonal-note"
             style="
@@ -995,18 +999,27 @@
               margin-top: 0.25rem;
             "
           ></p>
-          <p class="env-nearby">
-            Nearby:
+          <p class="env-features">
+            Point of Interest:
             <span
               id="text-poi"
               class="text-link"
               onclick="openEnvMenu(event, 'poi', TERRAIN_DATA.pois, 'Point of Interest')"
             ></span>
+          </p>
+          <p class="env-transition">
+            Transition:
             <span
               id="text-transition"
               class="text-link"
               style="font-style: italic"
               onclick="openEnvMenu(event, 'transition', TERRAIN_DATA.transitions, 'Transition')"
+            ></span>
+            <span
+              id="text-transition_to"
+              class="text-link"
+              style="font-style: italic"
+              onclick="openEnvMenu(event, 'transition_to', TERRAIN_DATA.landforms[state.environment.climate], 'Transition To')"
             ></span>
           </p>
         </div>
@@ -1060,70 +1073,75 @@
         <div id="roll-outcome" class="roll-outcome"></div>
 
         <!-- Ask the Oracle Card -->
-        <div
-          style="
-            margin-top: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.5rem;
-            padding: 0.5rem 0;
-          "
-        >
-          <!-- Label -->
+        <div class="panel" style="margin-top: 0.75rem">
           <div
-            class="insight-label"
-            style="
-              color: var(--ink-light);
-              font-size: 1rem;
-              font-family: 'Cinzel', serif;
-              font-weight: 600;
-            "
-          >
-            ORACLE
-          </div>
-
-          <!-- Dice & Result -->
-          <div
-            class="oracle-dice-display"
             style="
               display: flex;
               align-items: center;
-              gap: 0.5rem;
-              font-family: 'Cinzel', serif;
-              font-weight: 700;
-              color: var(--accent-dark);
-              flex: 1;
+              flex-wrap: wrap;
+              gap: 0.75rem;
             "
           >
-            <!-- Auto populated -->
-          </div>
+            <!-- Label -->
+            <div
+              class="insight-label"
+              style="
+                color: var(--ink-light);
+                font-size: 1rem;
+                font-family: 'Cinzel', serif;
+                font-weight: 600;
+              "
+            >
+              ORACLE
+            </div>
 
-          <!-- Controls -->
-          <div class="dice-controls" style="display: flex; gap: 0.2rem">
-            <button
-              class="btn"
-              style="padding: 0.2rem 0.4rem"
+            <!-- Dice & Result -->
+            <div
+              class="oracle-dice-display"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-family: 'Cinzel', serif;
+                font-weight: 700;
+                color: var(--accent-dark);
+                flex: 1;
+                min-width: 150px;
+                cursor: pointer;
+              "
               onclick="rollOracle('normal')"
+              title="Click to roll"
             >
-              ROLL
-            </button>
-            <button
-              class="btn"
-              style="padding: 0.2rem 0.4rem"
-              onclick="rollOracle('adv')"
-              title="Advantage (3d6 drop low)"
-            >
-              ADV
-            </button>
-            <button
-              class="btn"
-              style="padding: 0.2rem 0.4rem"
-              onclick="rollOracle('dis')"
-              title="Disadvantage (3d6 drop high)"
-            >
-              DIS
-            </button>
+              <!-- Auto populated -->
+            </div>
+
+            <!-- Controls -->
+            <div class="dice-controls" style="display: flex; gap: 0.3rem">
+              <button
+                class="btn icon-btn"
+                style="padding: 0.3rem; font-size: 1.2rem"
+                onclick="rollOracle('normal'); event.stopPropagation();"
+                title="Roll"
+              >
+                ⟳
+              </button>
+              <button
+                class="btn icon-btn"
+                style="padding: 0.3rem; font-size: 1.2rem"
+                onclick="rollOracle('adv'); event.stopPropagation();"
+                title="Advantage (3d6 drop low)"
+              >
+                +
+              </button>
+              <button
+                class="btn icon-btn"
+                style="padding: 0.3rem; font-size: 1.2rem"
+                onclick="rollOracle('dis'); event.stopPropagation();"
+                title="Disadvantage (3d6 drop high)"
+              >
+                −
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -1158,9 +1176,15 @@
               <input type="text" id="char-name" required />
             </div>
           </div>
-          <div class="form-group">
-            <label>Description</label>
-            <input type="text" id="char-desc" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>Player</label>
+              <input type="text" id="char-player" />
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <input type="text" id="char-desc" />
+            </div>
           </div>
           <div class="form-group">
             <label>Notes</label>
@@ -1294,6 +1318,7 @@
           climate: "Temperate",
           landform: "Deciduous forest",
           transition: "",
+          transition_to: "", // Landform you're transitioning to
           terrain_condition: "",
           poi: "",
           weather_pattern: "Clear skies",
@@ -1843,6 +1868,51 @@
       function selectEnvOption(key, val) {
         state.environment[key] = val;
 
+        // Special Logic for Transition - calculate transition_to
+        if (key === "transition") {
+          const transitionIndex = TERRAIN_DATA.transitions.indexOf(val);
+          const lfOpts =
+            TERRAIN_DATA.landforms[state.environment.climate] || [];
+          
+          if (transitionIndex >= 0 && lfOpts && lfOpts.length > 0) {
+            // Transitions 1-3 (indices 0-2): same terrain
+            // Transitions 4-6 (indices 3-5): different terrain
+            if (transitionIndex < 3) {
+              // Same terrain - use current landform
+              state.environment.transition_to = state.environment.landform;
+            } else {
+              // Different terrain - roll a new landform (different from current)
+              let newLandform;
+              let attempts = 0;
+              do {
+                newLandform = lfOpts[Math.floor(Math.random() * lfOpts.length)];
+                attempts++;
+                // If we've tried many times and it's still the same, just use it anyway
+                if (attempts > 10) break;
+              } while (
+                newLandform === state.environment.landform &&
+                lfOpts.length > 1
+              );
+              state.environment.transition_to = newLandform;
+            }
+          }
+        }
+        
+        // Special Logic for transition_to - allow manual selection
+        if (key === "transition_to") {
+          // User manually selected a transition_to landform
+          state.environment.transition_to = val;
+        }
+        
+        // Special Logic for landform change - update transition_to if transition is 1-3 (same terrain)
+        if (key === "landform" && state.environment.transition) {
+          const transitionIndex = TERRAIN_DATA.transitions.indexOf(state.environment.transition);
+          if (transitionIndex >= 0 && transitionIndex < 3) {
+            // Transitions 1-3 mean same terrain, so transition_to should match current landform
+            state.environment.transition_to = val;
+          }
+        }
+
         // Special Logic for Climate change - regenerate all other fields randomly
         if (key === "climate") {
           // Randomize landform (depends on climate)
@@ -1865,6 +1935,22 @@
               TERRAIN_DATA.transitions[
                 Math.floor(Math.random() * TERRAIN_DATA.transitions.length)
               ];
+            // Recalculate transition_to based on the new transition
+            const transitionIndex = TERRAIN_DATA.transitions.indexOf(state.environment.transition);
+            if (transitionIndex >= 0 && lfOpts && lfOpts.length > 0) {
+              if (transitionIndex < 3) {
+                state.environment.transition_to = state.environment.landform;
+              } else {
+                let newLandform;
+                let attempts = 0;
+                do {
+                  newLandform = lfOpts[Math.floor(Math.random() * lfOpts.length)];
+                  attempts++;
+                  if (attempts > 10) break;
+                } while (newLandform === state.environment.landform && lfOpts.length > 1);
+                state.environment.transition_to = newLandform;
+              }
+            }
           }
           if (TERRAIN_DATA.terrainConditions.length > 0) {
             state.environment.terrain_condition =
@@ -1902,6 +1988,8 @@
         else if (key === "landform")
           opts = TERRAIN_DATA.landforms[state.environment.climate] || [];
         else if (key === "transition") opts = TERRAIN_DATA.transitions;
+        else if (key === "transition_to")
+          opts = TERRAIN_DATA.landforms[state.environment.climate] || [];
         else if (key === "terrain_condition")
           opts = TERRAIN_DATA.terrainConditions;
         else if (key === "poi") opts = TERRAIN_DATA.pois;
@@ -2048,6 +2136,33 @@
         if (!env.transition) {
           const opts = TERRAIN_DATA.transitions;
           env.transition = opts[Math.floor(Math.random() * opts.length)];
+        }
+
+        // Calculate transition_to based on transition
+        if (env.transition && !env.transition_to) {
+          const transitionIndex = TERRAIN_DATA.transitions.indexOf(env.transition);
+          const lfOpts =
+            TERRAIN_DATA.landforms[env.climate] ||
+            TERRAIN_DATA.landforms["Temperate"];
+          
+          if (transitionIndex >= 0 && lfOpts && lfOpts.length > 0) {
+            // Transitions 1-3 (indices 0-2): same terrain
+            // Transitions 4-6 (indices 3-5): different terrain
+            if (transitionIndex < 3) {
+              // Same terrain - use current landform
+              env.transition_to = env.landform;
+            } else {
+              // Different terrain - roll a new landform (different from current)
+              let newLandform;
+              let attempts = 0;
+              do {
+                newLandform = lfOpts[Math.floor(Math.random() * lfOpts.length)];
+                attempts++;
+                if (attempts > 10) break;
+              } while (newLandform === env.landform && lfOpts.length > 1);
+              env.transition_to = newLandform;
+            }
+          }
         }
 
         // Weather Pattern (dependent on climate)
@@ -2484,6 +2599,8 @@
           env.landform || "[Landform]";
         document.getElementById("text-transition").textContent =
           env.transition || "[Transition]";
+        document.getElementById("text-transition_to").textContent =
+          env.transition_to || "[Transition To]";
         document.getElementById("text-weather_pattern").textContent =
           env.weather_pattern || "[Weather Pattern]";
         document.getElementById("text-weather_condition").textContent =
@@ -2652,6 +2769,11 @@
                     </div>
                 </div>
                 ${
+                  c.player
+                    ? `<div class="char-player">Player: ${c.player}</div>`
+                    : ""
+                }
+                ${
                   c.description
                     ? `<div class="char-description">${c.description}</div>`
                     : ""
@@ -2721,6 +2843,7 @@
           document.getElementById("char-id").value = c.id;
           document.getElementById("char-num").value = c.number;
           document.getElementById("char-name").value = c.name;
+          document.getElementById("char-player").value = c.player || "";
           document.getElementById("char-desc").value = c.description || "";
           document.getElementById("char-notes").value = c.notes || "";
           document.getElementById("char-hearts").value = c.hearts.max;
@@ -2737,6 +2860,7 @@
           document.getElementById("char-num").value =
             state.muster.length + state.camp.length + 1;
           document.getElementById("char-name").value = "";
+          document.getElementById("char-player").value = "";
           document.getElementById("char-desc").value = "";
           document.getElementById("char-notes").value = "";
           document.getElementById("char-hearts").value = 7;
@@ -2765,6 +2889,7 @@
           id: id || uuid(),
           number: parseInt(document.getElementById("char-num").value) || 0,
           name: document.getElementById("char-name").value,
+          player: document.getElementById("char-player").value,
           description: document.getElementById("char-desc").value,
           notes: document.getElementById("char-notes").value,
           leader: leader,
