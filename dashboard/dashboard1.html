@@ -417,7 +417,7 @@
       .clock-slot {
         width: 40px;
         height: 40px;
-        border: 2px solid var(--accent);
+        border: none;
         border-radius: 6px; /* Square for dice */
         background: rgba(255, 255, 255, 0.1);
         display: flex;
@@ -426,6 +426,7 @@
         font-size: 1.8rem;
         color: var(--accent);
         transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
       }
 
       /* Dice display - no outer box, just the inner content */
@@ -441,17 +442,14 @@
       .clock-slot.filled {
         background: var(--parchment-light);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border-color: var(--accent-dark);
       }
       .clock-slot.rolled-result {
         background: #fff;
         color: var(--ink);
-        border-color: var(--ink);
       }
       .clock-slot.rolled-one {
         background-color: #ff0000 !important;
         color: #ffffff !important;
-        border-color: #ff0000 !important;
       }
 
       .time-counters {
@@ -987,6 +985,16 @@
               onclick="openEnvMenu(event, 'weather_condition', TERRAIN_DATA.weatherConditions, 'Weather Condition')"
             ></span>
           </p>
+          <p
+            class="env-seasonal"
+            id="text-seasonal-note"
+            style="
+              font-size: 0.85rem;
+              font-style: italic;
+              color: var(--ink-light);
+              margin-top: 0.25rem;
+            "
+          ></p>
           <p class="env-nearby">
             Nearby:
             <span
@@ -1009,12 +1017,12 @@
         <h2>Turn Clock</h2>
         <div class="clock-display" id="clock-display">
           <!-- 6 slots -->
-          <div class="clock-slot"></div>
-          <div class="clock-slot"></div>
-          <div class="clock-slot"></div>
-          <div class="clock-slot"></div>
-          <div class="clock-slot"></div>
-          <div class="clock-slot"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
         </div>
         <div class="time-counters">
           <div class="counter">
@@ -1052,72 +1060,70 @@
         <div id="roll-outcome" class="roll-outcome"></div>
 
         <!-- Ask the Oracle Card -->
-        <div class="panel dice-card" style="margin-top: 0.75rem">
+        <div
+          style="
+            margin-top: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+          "
+        >
+          <!-- Label -->
           <div
-            class="insight-display"
+            class="insight-label"
             style="
-              background: var(--parchment-dark);
-              color: var(--ink);
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              justify-content: space-between;
-              padding: 0.5rem 1rem;
+              color: var(--ink-light);
+              font-size: 1rem;
+              font-family: 'Cinzel', serif;
+              font-weight: 600;
             "
           >
-            <!-- Label -->
-            <div
-              class="insight-label"
-              style="
-                color: var(--ink-light);
-                margin: 0px 10px 0px 0px;
-                font-size: 1rem;
-              "
-            >
-              ORACLE
-            </div>
+            ORACLE
+          </div>
 
-            <!-- Dice & Result -->
-            <div
-              class="oracle-dice-display"
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                font-family: 'Cinzel', serif;
-                font-weight: 700;
-                color: var(--accent-dark);
-              "
-            >
-              <!-- Auto populated -->
-            </div>
+          <!-- Dice & Result -->
+          <div
+            class="oracle-dice-display"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              font-family: 'Cinzel', serif;
+              font-weight: 700;
+              color: var(--accent-dark);
+              flex: 1;
+            "
+          >
+            <!-- Auto populated -->
+          </div>
 
-            <!-- Controls -->
-            <div class="dice-controls" style="display: flex; gap: 0.2rem">
-              <button
-                class="btn"
-                style="padding: 0.2rem 0.4rem"
-                onclick="rollOracle('normal')"
-              >
-                ROLL
-              </button>
-              <button
-                class="btn"
-                style="padding: 0.2rem 0.4rem"
-                onclick="rollOracle('adv')"
-                title="Advantage (3d6 drop low)"
-              >
-                ADV
-              </button>
-              <button
-                class="btn"
-                style="padding: 0.2rem 0.4rem"
-                onclick="rollOracle('dis')"
-                title="Disadvantage (3d6 drop high)"
-              >
-                DIS
-              </button>
-            </div>
+          <!-- Controls -->
+          <div class="dice-controls" style="display: flex; gap: 0.2rem">
+            <button
+              class="btn"
+              style="padding: 0.2rem 0.4rem"
+              onclick="rollOracle('normal')"
+            >
+              ROLL
+            </button>
+            <button
+              class="btn"
+              style="padding: 0.2rem 0.4rem"
+              onclick="rollOracle('adv')"
+              title="Advantage (3d6 drop low)"
+            >
+              ADV
+            </button>
+            <button
+              class="btn"
+              style="padding: 0.2rem 0.4rem"
+              onclick="rollOracle('dis')"
+              title="Disadvantage (3d6 drop high)"
+            >
+              DIS
+            </button>
           </div>
         </div>
       </section>
@@ -1465,6 +1471,17 @@
             "Torrential downpour",
             "Brief clearing",
           ],
+        },
+        seasonalNotes: {
+          Polar:
+            "Summer brings constant daylight and brief thaw. Winter brings constant darkness.",
+          Boreal:
+            "Summer is short but mild. Winter is long and brutal. Spring/Autumn bring mud and slush.",
+          Temperate:
+            "Spring brings rain, Summer warmth, Autumn fog and chill, Winter snow or frost.",
+          Subtropical: "Wet season and dry season rather than four seasons.",
+          Tropical: "Monsoon (wet) and dry seasons. Daily rain cycle common.",
+          Equatorial: "Little variation. Rain almost daily, usually afternoon.",
         },
         weatherShifts: [
           "Weather holds steady",
@@ -2475,6 +2492,18 @@
           env.poi || "[Point of Interest]";
         document.getElementById("text-terrain_condition").textContent =
           env.terrain_condition || "[Terrain Cond]";
+
+        // Display seasonal note based on climate
+        const seasonalNoteEl = document.getElementById("text-seasonal-note");
+        if (
+          seasonalNoteEl &&
+          env.climate &&
+          TERRAIN_DATA.seasonalNotes[env.climate]
+        ) {
+          seasonalNoteEl.textContent = TERRAIN_DATA.seasonalNotes[env.climate];
+        } else if (seasonalNoteEl) {
+          seasonalNoteEl.textContent = "";
+        }
       }
 
       function renderRumorBlessing() {
