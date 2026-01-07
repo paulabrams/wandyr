@@ -631,12 +631,6 @@ Your caster level is your level of Alignment with the magic school of the spell.
 
 *Casting a spell from a spellbook or Arcana in which you have Skill is made with a \+1 caster level bonus.*
 
-#### Alignment
-
-To find your Alignment, count all relevant Advancements (Traits, Skills, Names, etc.) and divide by 3, rounding down. For example, if you have an Umbrakala skill and know 6 Umbrakala spells, you are a 2nd level Umbrakala caster.
-
-*The Guide might ask for your Alignment to things other than magic schools or spells.*
-
 ### Learning Spells
 
 Once you have cast a spell with Sweet, you are eligible to learn the spell. (See [Experience](#experience).) You no longer need a spellbook to cast a *known spell*, although it still helps.
