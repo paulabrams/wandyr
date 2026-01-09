@@ -1007,7 +1007,7 @@ Call the True Name *thrice* and state your request. You lose d6 Hearts. Next, as
 
 #### An Answer?
 
-The Guide determines what happens next, following existing Lore, your Alignment with the being, context, and asking the Oracle various questions. The Guide sets an equivalent spell level for the effect up to the Hearts lost, and can limit Hearts lost for simple requests.
+Making an Invocation changes your character, aligning and molding you into the shape of their ideal "Saint". The Guide rolls on a secret Trait table for the being. If you already have the Trait, you are in harmony—no cost. Otherwise, you must buy the Trait for 3 XP. If the Trait suggests a special ability, you may want to develop a Knack.
 
 *The workings of otherworldly beings are often mysterious. They may interpret your request from a different perspective and sense of time.*
 
@@ -1015,7 +1015,7 @@ The Guide determines what happens next, following existing Lore, your Alignment 
 
 #### Shaping Spirits
 
-Making an Invocation changes your character, aligning and molding you into the shape of their ideal "Saint". The Guide rolls on a secret Trait table for the being. If you already have the Trait, you are in harmony—no cost. Otherwise, you must buy that Trait for 3 XP.
+Making an Invocation changes your character, aligning and molding you into the shape of their ideal "Saint". The Guide rolls on a secret Trait table for the being. If you already have the Trait, you are in harmony—no cost. Otherwise, you must buy that Trait for 3 XP. If the Trait suggests a special ability, you may want to develop a Knack.
 
 *Each being has their own nature. One might shape you toward “wrathful” or “storm-touched”; another might prefer “patient” or “sea-longing”.*
 
