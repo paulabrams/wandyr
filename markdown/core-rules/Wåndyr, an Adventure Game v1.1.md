@@ -293,18 +293,18 @@ Dropping Baggage takes 1 Round (10 sec), and accessing items inside takes 1 Turn
 You also have “Baggage” if your hands are occupied with something not listed in your item slots.  
 ![Camping illustration][image7]
 
-##### Item Slot Examples
+##### Starter Item Slots Examples
 
-**Small Items:** coin pouch 1, water skin 1, lockpicks 1  
-**Weapons:** dagger 1, sword 2, longsword 3, greatsword 4, halberd 4, pike 5  
-**Armor:** gauntlets 1, helm 1, gambeson 2, coat of plates 3, full brigandine 4  
-**Shields:** buckler 1, heater 2, round shield 3, tower shield 4  
-**Bows:** arrow quiver 1, bow 2, crossbow 3, arbalest 4  
-**Clothing:** shirt 1, pants 1, boots 1, cloak 1, hat 1, ring 1, formal attire 2, cold gear 3  
-**Light:** torch 1, oil flask 1, lantern 1, tinderbox 1, firewood 3  
-**Musical Instrument:** voice 1, pipe 1, lute 2, guitar 3, drum 4  
-**Hospitality:** spice pouch 1, tea kettle 1, pipe & leaf 1, cookpot 2, wine & cups 2, mess kit 3, kitchen 4  
-**Animals:** cat 1, hawk 1, dog 2, war dog 3, horse 4
+**Necessaries:** coin purse 1, handkerchief 1, water skin 1, lockpicks 1, chalk 1, small mirror 1, sack 1, broken blade 1, rope (50’) 1  
+**Weapon:** dagger 1, walking stick 2, sword 2, battle ax 3, longsword 3, staff 3, two-handed sword 4, polearm 4, long spear 5  
+**Armor:** gauntlets 1, open helm 1, gambeson 2, closed helm 2, greaves 2, coat of plates 3, brigandine 4, full scavenged kit 5  
+**Shield:** pot lid 1, buckler 2, heater 3, round shield 4, tower 5  
+**Bows:** arrow quiver 1, short bow 2, longbow 3, war bow 4, crossbow 5  
+**Clothing:** tunic 1, hose 1, gloves 1, doublet 1, colorful hooded cloak 1, traveling coat 2, winter furs 4  
+**Light:** tinderbox 1, candles 1, torch 1, rushlight 1, lantern 1, oil flask 1  
+**Musical Instrument:** voice 1, pipe 1, fiddle 2, lute 3, drum 4, harp 5  
+**Hospitality:** provisions 1, cleaver 1, skillet 1, tea kettle 1, spice pouch 1, pipe & leaf 1, cookpot 2, wine & cups 2, mess kit 3  
+**Animal:** cat 1, songbird 1, hound 2, pig 2, pony 3, horse 4, donkey 5
 
 ## Rumors {#rumors}
 
