@@ -5,8 +5,7 @@
 - Added Journeys as an alternative to Rumors
 - Replaced Turn Clock system with simpler Turns/Rounds/Adventures system
 - Two-handed weapons: roll 2d6, keep best (if used one-handed, keep worst)
-- Simplified combat right-of-way rules: ready beats unready; clearer hierarchy (melee > missiles, reach when approaching, smaller in close quarters); added "when in doubt, simultaneous" default
-- Clarified Invocation resolution: added guidance for Guide to determine effects using Lore, Alignment, context, and Oracle; spell level equivalent up to Hearts lost
+- Clarified combat right-of-way rules: removed vague general rule; reinforced clear hierarchy (ready beats unready first, then melee > missiles, reach when approaching, smaller in close quarters); added "when in doubt, simultaneous" to reinforce the default
 
 ---
 
