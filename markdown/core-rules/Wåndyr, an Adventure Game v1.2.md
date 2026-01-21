@@ -1059,7 +1059,9 @@ You can stand up OR move 40 feet (20 feet with Baggage). Each impediment (e.g. r
 
 ### Attack
 
-Ask the Oracle if you "hit"; this deals d6 Hearts. Using two hands is \+2. More lethal weapons may have a damage bonus, e.g. "greatsword \+1".
+Ask the Oracle if you "hit"; this deals d6 Hearts. More lethal weapons may have a damage bonus, e.g. "greatsword \+1".
+
+**Two-Handed**: A weapon optimized for two hands rolls 2d6, keep best. If used one-handed, keep worst.
 
 ### Defend
 
