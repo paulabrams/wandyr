@@ -206,7 +206,8 @@ Layout:
 ### Oracle Dice Card (Muster Mode)
 
 - **Heading**: "Oracle" is a standard card title on its own line (matches Adventure card styling).
-- **Buttons**: **Roll**, **Adv**, **Dis**.
+- **Buttons**: **Roll**, **Advantage**, **Disadvantage** (compact buttons).
+- **Emphasis**: **Roll** is visually emphasized as the primary action.
 - **Layout**: Buttons on one row; **result displayed beneath the buttons** (matches Adventure card).
 - **Display**:
   - Normal: 2 dice pips.
@@ -218,13 +219,17 @@ Layout:
 - **Purpose**: Quick “does trouble find you?” roll at the table.
 - **Buttons**:
   - **Easy** (Target 6) — safe areas
-  - **Average** (Target 8) — normal travel / uncertain spaces
+  - **Normal (8)** (Target 8) — normal travel / uncertain spaces
   - **Hard** (Target 10) — dangerous areas
   - **Extreme** (Target 12) — monster lairs / extremely dangerous places
+- **Layout**: Buttons fit on a **single line** (4-button row).
 - **Roll**: 2d6 vs target.
   - If \(total \ge target\): “All clear”
   - Else: “Adventure!”
-- **Display**: Shows last total, target, and result text.
+- **Sweet/Spicy**: Display indicators like the Oracle card:
+  - 🌿 if any die shows 6 (sweet)
+  - 💀 if any die shows 1 (spicy)
+- **Display**: Shows last total, target, result text, and sweet/spicy indicators.
 
 ### Rumor & Blessing (Camp Mode)
 
@@ -240,7 +245,7 @@ Layout:
 - **Header**: "Others" (previously Threats).
 - **List**: Display list of NPCs/monsters.
 - **Reorder (Drag & Drop)**:
-  - Other cards can be dragged to reorder the list.
+  - Other cards can be dragged to reorder the list via a **drag handle** on the **left** of the card.
   - Order persists (saved in session state).
 - **Card Content**:
   - **Name** (Cinzel Bold).
@@ -329,9 +334,20 @@ Title: "Add Character" or "Edit Character"
 | Leader | Checkbox | false | Only one leader allowed |
 | Blessed | Checkbox | false | — |
 
-Buttons: Cancel, Save
+Buttons: Close, Save
 
 When editing: current values are editable and are capped at max on save.
+
+UI note:
+
+- Name + Player are on the same line.
+- Party order field is moderately compact but wide enough for easy editing; Player field is compact.
+- Description is on its own line.
+- Hearts / Iron / Arcana inputs are shown as three separate rows, each with Current + Max.
+- Hearts numeric inputs are compact (sized for ~3 digits).
+- Hearts rows show inputs as `current / max` (slash separator; no separate min/max labels).
+- Labels use "Iron Hearts" and "Arcana Hearts" (not just Iron/Arcana).
+- Notes is the bottom (last) field before buttons.
 
 When setting leader: removes leader from all other characters.
 
@@ -399,6 +415,11 @@ Buttons: Cancel, Save
 | 4 | BYNAME |
 | 5 | FEAT |
 | 6 | EFFORT |
+
+### Insight UX Feedback
+
+- When Insight is rolled, the Insight panel **flashes once** to confirm an update.
+- A small **"updated"** indicator appears in the **bottom-right** of the Insight panel and **fades out after 5 seconds**.
 
 ### Complication Results
 

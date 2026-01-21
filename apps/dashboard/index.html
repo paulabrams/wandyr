@@ -96,6 +96,22 @@
       .btn.primary:active {
       background: var(--accent-dark);
     }
+    
+    .btn.compact {
+      font-size: 0.72rem;
+      padding: 0.35rem 0.45rem;
+      min-height: 30px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .btn.compact.primary {
+      background: var(--accent);
+      color: var(--parchment-light);
+    }
+    .btn.compact.primary:hover,
+    .btn.compact.primary:active {
+      background: var(--accent-dark);
+    }
 
     .panel {
         background: linear-gradient(
@@ -468,6 +484,7 @@
         );
         border-radius: 6px;
         color: var(--parchment-light);
+        position: relative;
       }
       .insight-label {
         font-size: 0.7rem;
@@ -479,6 +496,42 @@
         font-size: 1.6rem;
         font-weight: 700;
         margin: 0.2rem 0;
+      }
+      
+      .insight-display.flash {
+        animation: insightFlash 420ms ease-out 1;
+      }
+      @keyframes insightFlash {
+        0% {
+          box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+          filter: brightness(1);
+        }
+        35% {
+          box-shadow: 0 0 0.75rem rgba(250, 243, 227, 0.9);
+          filter: brightness(1.15);
+        }
+        100% {
+          box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+          filter: brightness(1);
+        }
+      }
+      
+      .updated-badge {
+        position: absolute;
+        right: 0.35rem;
+        bottom: 0.3rem;
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.04em;
+        opacity: 0;
+        transition: opacity 300ms ease;
+        color: rgba(250, 243, 227, 0.9);
+        pointer-events: none;
+        user-select: none;
+        text-transform: uppercase;
+      }
+      .updated-badge.show {
+        opacity: 1;
       }
 
       .clock-buttons {
@@ -499,6 +552,14 @@
     .adventure-card .clock-buttons {
       margin-top: 0.15rem;
     }
+    .adventure-card .clock-buttons {
+      gap: 0.35rem;
+    }
+    .adventure-card .btn.compact {
+      font-size: 0.68rem;
+      padding: 0.32rem 0.38rem;
+      min-height: 28px;
+    }
     .adventure-result {
       text-align: center;
       font-family: "Cinzel", serif;
@@ -517,6 +578,9 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+    }
+    .oracle-card .clock-buttons {
+      gap: 0.35rem;
     }
     .oracle-result {
       display: flex;
@@ -782,6 +846,32 @@
       opacity: 0.55;
       cursor: grabbing;
     }
+    .threat-card {
+      display: flex;
+      align-items: stretch;
+      gap: 0.5rem;
+    }
+    .other-drag-handle {
+      width: 22px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      user-select: none;
+      flex: 0 0 auto;
+    }
+    .threat-card.dragging .other-drag-handle {
+      cursor: grabbing;
+    }
+    .other-drag-handle:active {
+      transform: translateY(1px);
+    }
+    .threat-body {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
       .threat-card.hit {
         border-left-color: var(--hit-orange);
       }
@@ -889,6 +979,14 @@
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
+      }
+      .num-3 {
+        width: 5.2ch;
+        max-width: 5.2ch;
+      }
+      #char-num {
+        width: 4.2ch;
+        max-width: 4.2ch;
       }
       .form-group {
         display: flex;
@@ -1129,6 +1227,7 @@
         >
           <div class="insight-label">Insight</div>
           <div class="insight-value" id="insight-value">—</div>
+          <div class="updated-badge" id="insight-updated-badge">updated</div>
         </div>
 
         <div class="time-counters">
@@ -1156,13 +1255,11 @@
       <!-- Adventure Roll -->
       <section class="panel adventure-card">
         <h2>Adventure</h2>
-        <div class="clock-buttons" style="grid-template-columns: 1fr 1fr 1fr">
-          <button class="btn" onclick="rollAdventure('easy')">Easy</button>
-          <button class="btn" onclick="rollAdventure('average')">Average</button>
-          <button class="btn" onclick="rollAdventure('hard')">Hard</button>
-        </div>
-        <div class="clock-buttons" style="grid-template-columns: 1fr">
-          <button class="btn" onclick="rollAdventure('extreme')">Extreme</button>
+        <div class="clock-buttons" style="grid-template-columns: 1fr 1fr 1fr 1fr">
+          <button class="btn compact" onclick="rollAdventure('easy')">Easy</button>
+          <button class="btn compact primary" onclick="rollAdventure('normal')">Normal (8)</button>
+          <button class="btn compact" onclick="rollAdventure('hard')">Hard</button>
+          <button class="btn compact" onclick="rollAdventure('extreme')">Extreme</button>
         </div>
         <div id="adventure-result" class="adventure-result"></div>
       </section>
@@ -1171,14 +1268,14 @@
       <section class="panel oracle-card">
         <h2>Oracle</h2>
         <div class="clock-buttons" style="grid-template-columns: 1fr 1fr 1fr">
-          <button class="btn" onclick="rollOracle('normal'); event.stopPropagation();" title="Roll 2d6">
+          <button class="btn compact primary" onclick="rollOracle('normal'); event.stopPropagation();" title="Roll 2d6">
             Roll
           </button>
-          <button class="btn" onclick="rollOracle('adv'); event.stopPropagation();" title="Advantage (3d6 drop low)">
-            Adv
+          <button class="btn compact" onclick="rollOracle('adv'); event.stopPropagation();" title="Advantage (3d6 drop low)">
+            Advantage
           </button>
-          <button class="btn" onclick="rollOracle('dis'); event.stopPropagation();" title="Disadvantage (3d6 drop high)">
-            Dis
+          <button class="btn compact" onclick="rollOracle('dis'); event.stopPropagation();" title="Disadvantage (3d6 drop high)">
+            Disadvantage
           </button>
         </div>
         <div
@@ -1215,68 +1312,48 @@
       <form class="modal-form" onsubmit="saveCharacter(event)">
           <input type="hidden" id="char-id" />
         <div class="form-row">
-            <div class="form-group" style="flex: 0 0 60px">
-                <label>#</label>
-              <input type="number" id="char-num" min="1" max="99" />
-            </div>
-            <div class="form-group">
-                <label>Name</label>
-              <input type="text" id="char-name" required />
-            </div>
+          <div class="form-group" style="flex: 0 0 52px">
+            <label>#</label>
+            <input type="number" id="char-num" min="1" max="99" />
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Player</label>
-              <input type="text" id="char-player" />
+          <div class="form-group" style="flex: 2">
+            <label>Name</label>
+            <input type="text" id="char-name" required />
+          </div>
+          <div class="form-group" style="flex: 0 0 120px">
+            <label>Player</label>
+            <input type="text" id="char-player" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" id="char-desc" />
         </div>
         <div class="form-group">
-            <label>Description</label>
-              <input type="text" id="char-desc" />
-            </div>
+          <label>Hearts</label>
+          <div style="display:flex; gap:0.35rem; align-items:center;">
+            <input type="number" id="char-hearts-current" class="num-3" value="7" min="0" max="100" aria-label="Hearts current" />
+            <span style="color: var(--ink-light); font-family: 'Cinzel', serif;">/</span>
+            <input type="number" id="char-hearts-max" class="num-3" value="7" min="1" max="100" aria-label="Hearts max" />
+          </div>
         </div>
+
         <div class="form-group">
-            <label>Notes</label>
-            <textarea id="char-notes"></textarea>
+          <label>Iron Hearts</label>
+          <div style="display:flex; gap:0.35rem; align-items:center;">
+            <input type="number" id="char-iron-current" class="num-3" value="0" min="0" max="100" aria-label="Iron current" />
+            <span style="color: var(--ink-light); font-family: 'Cinzel', serif;">/</span>
+            <input type="number" id="char-iron-max" class="num-3" value="0" min="0" max="100" aria-label="Iron max" />
+          </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Hearts</label>
-            <div style="display:flex; gap:0.5rem; align-items:end;">
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Current</span>
-                <input type="number" id="char-hearts-current" value="7" min="0" max="100" />
-              </div>
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Max</span>
-                <input type="number" id="char-hearts-max" value="7" min="1" max="100" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Iron</label>
-            <div style="display:flex; gap:0.5rem; align-items:end;">
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Current</span>
-                <input type="number" id="char-iron-current" value="0" min="0" max="100" />
-              </div>
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Max</span>
-                <input type="number" id="char-iron-max" value="0" min="0" max="100" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Arcana</label>
-            <div style="display:flex; gap:0.5rem; align-items:end;">
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Current</span>
-                <input type="number" id="char-arcana-current" value="0" min="0" max="100" />
-              </div>
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Max</span>
-                <input type="number" id="char-arcana-max" value="0" min="0" max="100" />
-              </div>
-            </div>
+
+        <div class="form-group">
+          <label>Arcana Hearts</label>
+          <div style="display:flex; gap:0.35rem; align-items:center;">
+            <input type="number" id="char-arcana-current" class="num-3" value="0" min="0" max="100" aria-label="Arcana current" />
+            <span style="color: var(--ink-light); font-family: 'Cinzel', serif;">/</span>
+            <input type="number" id="char-arcana-max" class="num-3" value="0" min="0" max="100" aria-label="Arcana max" />
           </div>
         </div>
         <div class="checkbox-row">
@@ -1284,13 +1361,18 @@
             <label><input type="checkbox" id="char-blessed" /> Blessed</label>
             <label><input type="checkbox" id="char-incamp" /> In Camp</label>
         </div>
+        
+        <div class="form-group">
+          <label>Notes</label>
+          <textarea id="char-notes"></textarea>
+        </div>
         <div class="modal-buttons">
             <button
               type="button"
               class="btn"
               onclick="closeModal('character-modal')"
             >
-              Cancel
+              Close
             </button>
             <button type="submit" class="btn primary">Save</button>
         </div>
@@ -1362,7 +1444,7 @@
               class="btn"
               onclick="closeModal('other-modal')"
             >
-              Cancel
+              Close
             </button>
             <button type="submit" class="btn primary">Save</button>
           </div>
@@ -2494,8 +2576,34 @@
       return Math.floor(Math.random() * 6) + 1;
     }
 
-    function setInsightRoll() {
+    let insightBadgeTimeout = null;
+    let insightBadgeFadeTimeout = null;
+
+    function setInsightRoll({ animate } = { animate: false }) {
       state.session.insight = rollD6();
+      if (animate) triggerInsightUpdatedUi();
+    }
+
+    function triggerInsightUpdatedUi() {
+      const el = document.querySelector(".insight-display");
+      if (el) {
+        el.classList.remove("flash");
+        // Force reflow so the animation can restart reliably
+        void el.offsetWidth;
+        el.classList.add("flash");
+      }
+
+      const badge = document.getElementById("insight-updated-badge");
+      if (badge) {
+        badge.classList.add("show");
+        if (insightBadgeTimeout) clearTimeout(insightBadgeTimeout);
+        if (insightBadgeFadeTimeout) clearTimeout(insightBadgeFadeTimeout);
+
+        // Keep visible, then fade after 5s
+        insightBadgeTimeout = setTimeout(() => {
+          badge.classList.remove("show");
+        }, 5000);
+      }
     }
 
     function resetTurnCount() {
@@ -2509,31 +2617,34 @@
     function advanceTurn() {
       state.session.turn++;
       state.session.round = 0;
-      setInsightRoll();
+      setInsightRoll({ animate: true });
       saveState();
       renderTimePanel();
     }
 
     function advanceRound() {
       state.session.round++;
-      setInsightRoll();
+      setInsightRoll({ animate: true });
       saveState();
       renderTimePanel();
     }
 
     function rollInsight() {
-      setInsightRoll();
+      setInsightRoll({ animate: true });
       saveState();
       renderTimePanel();
     }
 
     // --- Adventure ---
     function rollAdventure(difficulty) {
-      const targets = { easy: 6, average: 8, hard: 10, extreme: 12 };
+      const targets = { easy: 6, normal: 8, hard: 10, extreme: 12 };
       const target = targets[difficulty] ?? 8;
-      const total = rollD6() + rollD6();
+      const r1 = rollD6();
+      const r2 = rollD6();
+      const rolls = [r1, r2];
+      const total = r1 + r2;
       const result = total >= target ? "All clear" : "Adventure!";
-      state.adventure = { target, total, result };
+      state.adventure = { target, total, result, rolls };
       saveState();
       renderAdventure();
     }
@@ -2546,7 +2657,18 @@
         el.className = "adventure-result";
         return;
       }
-      el.textContent = `${state.adventure.total} vs ${state.adventure.target} — ${state.adventure.result}`;
+      const rolls = state.adventure.rolls || [];
+      const sixes = rolls.filter((r) => r === 6).length;
+      const ones = rolls.filter((r) => r === 1).length;
+      let tagHtml = "";
+      if (sixes > 0)
+        tagHtml +=
+          '<span style="color:#2e7d32; font-size:0.75em; margin-left:0.25rem;" title="Sweet">🌿</span>';
+      if (ones > 0)
+        tagHtml +=
+          '<span style="color:#c62828; font-size:0.75em; margin-left:0.25rem;" title="Spicy">💀</span>';
+
+      el.innerHTML = `${state.adventure.total} vs ${state.adventure.target} — ${state.adventure.result}${tagHtml}`;
       el.className =
         "adventure-result" +
         (state.adventure.result === "Adventure!" ? " adventure" : "");
@@ -3180,7 +3302,9 @@
             const currentIcon = statusIcons[displayStatus] || "⚔️";
             
             return `
-            <div class="threat-card ${displayStatus}" draggable="true" data-other-id="${t.id}" style="border-left: 4px solid var(--accent);">
+            <div class="threat-card ${displayStatus}" data-other-id="${t.id}" style="border-left: 4px solid var(--accent);">
+              <div class="other-drag-handle" draggable="true" data-other-id="${t.id}" title="Drag to reorder">≡</div>
+              <div class="threat-body">
               <div class="threat-header">
                  <div style="flex:1; min-width:0;">
                    <div
@@ -3229,6 +3353,7 @@
                    </div>
                  </div>
               </div>
+              </div>
             </div>
             `;
           })
@@ -3239,6 +3364,7 @@
 
     // --- Others Reorder (Drag & Drop) ---
     let draggedOtherId = null;
+    let draggedOtherCardEl = null;
 
     function initOthersDnD() {
       const container = document.getElementById("others-list");
@@ -3247,18 +3373,20 @@
       container.ondragover = (e) => handleOtherDragOver(e, container);
       container.ondrop = (e) => handleOtherDrop(e, container);
 
-      container.querySelectorAll(".threat-card[draggable='true']").forEach((card) => {
-        card.ondragstart = (e) => {
-          draggedOtherId = card.dataset.otherId;
-          card.classList.add("dragging");
+      container.querySelectorAll(".other-drag-handle[draggable='true']").forEach((handle) => {
+        handle.ondragstart = (e) => {
+          draggedOtherId = handle.dataset.otherId;
+          draggedOtherCardEl = handle.closest(".threat-card");
+          if (draggedOtherCardEl) draggedOtherCardEl.classList.add("dragging");
           try {
             e.dataTransfer.effectAllowed = "move";
             e.dataTransfer.setData("text/plain", draggedOtherId);
           } catch {}
         };
-        card.ondragend = () => {
-          card.classList.remove("dragging");
+        handle.ondragend = () => {
+          if (draggedOtherCardEl) draggedOtherCardEl.classList.remove("dragging");
           draggedOtherId = null;
+          draggedOtherCardEl = null;
           applyOthersOrderFromDom(container);
         };
       });
