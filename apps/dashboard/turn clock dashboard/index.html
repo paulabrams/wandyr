@@ -28,9 +28,6 @@
       --dead-gray: #666;
       --fled-blue: #4a7090;
       --shadow: rgba(44, 24, 16, 0.2);
-      --muster-col-max: 400px;
-      --muster-gap: 0.75rem;
-      --muster-max-width: calc((var(--muster-col-max) * 3) + (var(--muster-gap) * 2));
     }
 
     * {
@@ -135,8 +132,7 @@
         );
       border: 2px solid var(--accent);
       border-radius: 8px;
-      max-width: var(--muster-max-width);
-      margin: 0 auto 0.75rem;
+      margin-bottom: 0.75rem;
       box-shadow: 0 2px 8px var(--shadow);
     }
 
@@ -370,37 +366,21 @@
       align-items: start;
     }
 
-    /* Muster Layout (3 equal columns, flex) */
+    /* Muster Grid */
     #view-muster.active {
-      display: flex;
+      grid-template-columns: 260px 1fr 300px;
       gap: 0.75rem;
-      align-items: flex-start;
-      justify-content: center;
-      flex-wrap: nowrap;
-    }
-    
-    /* Muster Columns (left / center / right) */
-    .muster-col {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      min-width: 0;
-      flex: 1 1 0;
-      max-width: 400px;
-    }
-    .muster-col .panel {
-      margin-bottom: 0;
+      align-items: start;
     }
 
     /* Responsive Views */
     @media (max-width: 1023px) {
       #view-muster.active {
-        flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr;
       }
-      .muster-col {
-        max-width: 400px;
-        flex: 1 1 340px;
-      }
+        .turn-clock-panel {
+          grid-column: 1 / -1;
+        }
     }
 
     @media (max-width: 767px) {
@@ -408,22 +388,43 @@
           grid-template-columns: 1fr;
         }
         #view-muster.active {
-          flex-direction: column;
-          flex-wrap: nowrap;
-          align-items: stretch;
+          grid-template-columns: 1fr;
         }
-      .muster-col {
-        max-width: none;
-        flex: 1 1 auto;
-      }
+        .turn-clock-panel {
+          display: flex;
+          flex-direction: column;
+        }
     }
 
-    /* Time Panel (Compact) */
-    .time-panel {
+    /* Turn Clock (Dice Style) */
+    .turn-clock-panel {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
+    
+    .clock-display {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem; 
+        padding: 0.5rem 0;
+      min-height: 60px;
+    }
+    
+    .clock-slot {
+        width: 40px;
+        height: 40px;
+        border: none;
+      border-radius: 6px; /* Square for dice */
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      font-size: 1.8rem;
+      color: var(--accent);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+      }
 
       /* Dice display - no outer box, just the inner content */
       .dice-face {
@@ -433,11 +434,24 @@
         font-size: 2.5rem;
         color: var(--ink);
         line-height: 1;
-        margin: 0 0.12rem;
+        margin: 0 0.2rem;
     }
+    .clock-slot.filled { 
+        background: var(--parchment-light); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .clock-slot.rolled-result {
+        background: #fff;
+        color: var(--ink);
+    }
+    .clock-slot.rolled-one {
+        background-color: #ff0000 !important;
+        color: #ffffff !important;
+    }
+    
     .time-counters {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 0.4rem;
         text-align: center;
       }
@@ -486,100 +500,19 @@
         grid-template-columns: 1fr 1fr;
         gap: 0.4rem;
       }
- 
-    /* Adventure Panel */
-    .adventure-card {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .adventure-card h2 {
-      line-height: 1.05;
-    }
-    .adventure-card .clock-buttons {
-      margin-top: 0.15rem;
-    }
-    .adventure-result {
-      text-align: center;
-      font-family: "Cinzel", serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--accent-dark);
-      min-height: 1.4em;
-      margin-top: -0.1rem;
-    }
-    .adventure-result.adventure {
-      color: var(--heart-red);
-    }
     
-    /* Oracle Panel */
-    .oracle-card {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    #roll-outcome {
+        text-align: center;
+        font-family: "Cinzel", serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--accent-dark);
+        min-height: 1.5em;
+        margin-top: 0.5rem;
     }
-    .oracle-result {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.2rem;
-      cursor: pointer;
-      min-height: 2.6rem;
-      user-select: none;
-    }
-    .oracle-result:active {
-      transform: translateY(1px);
-    }
-
-    /* Kebab Menu (Others) */
-    .kebab {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-    }
-    .kebab-btn {
-      font-family: "Cinzel", serif;
-      font-weight: 700;
-      border: 1px solid var(--ink-light);
-      background: var(--parchment);
-      border-radius: 6px;
-      padding: 0.15rem 0.45rem;
-      cursor: pointer;
-      line-height: 1.2;
-    }
-    .kebab-menu {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      margin-top: 0.25rem;
-      min-width: 190px;
-      background: var(--parchment-light);
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      box-shadow: 0 8px 18px var(--shadow);
-      padding: 0.35rem;
-      z-index: 20;
-      display: none;
-    }
-    .kebab-menu.active {
-      display: block;
-    }
-    .kebab-item {
-      width: 100%;
-      text-align: left;
-      font-family: "Crimson Text", serif;
-      font-size: 0.95rem;
-      padding: 0.35rem 0.4rem;
-      border: none;
-      background: transparent;
-      border-radius: 6px;
-      cursor: pointer;
-      color: var(--ink);
-    }
-    .kebab-item:hover {
-      background: var(--parchment-dark);
-    }
+      #roll-outcome.complication {
+        color: var(--heart-red);
+      }
 
     /* Character Cards ... (unchanged) */
     .character-list {
@@ -607,14 +540,6 @@
         opacity: 0.8;
         background: #e0cca0;
       }
-    
-    .character-card {
-      cursor: grab;
-    }
-    .character-card.dragging {
-      opacity: 0.55;
-      cursor: grabbing;
-    }
 
     .char-header {
         display: flex;
@@ -631,13 +556,6 @@
         align-items: center;
         gap: 0.4rem;
         flex-wrap: wrap;
-    }
-    .char-player-inline {
-      font-family: "Crimson Text", serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--ink-light);
-      opacity: 0.9;
     }
     .char-number {
         display: inline-flex;
@@ -676,35 +594,24 @@
 
       .char-stats {
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 0.75rem 1rem;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 0.3rem;
       }
       .stat-row {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 0.35rem;
-        min-width: 0;
+        gap: 0.4rem;
       }
       .stat-label {
         font-size: 0.75rem;
         color: var(--ink-light);
-        width: auto;
-        white-space: nowrap;
+        width: 50px;
       }
       .stat-value {
         font-family: "Cinzel", serif;
         font-weight: 700;
         font-size: 1rem;
-        min-width: 0;
-        white-space: nowrap;
-        text-align: left;
-        cursor: pointer;
-        user-select: none;
-      }
-      .stat-value:active {
-        transform: translateY(1px);
+        min-width: 55px;
       }
       .stat-value.hearts {
         color: var(--heart-red);
@@ -716,14 +623,23 @@
         color: var(--arcana-purple);
       }
     
-      /* +/- buttons removed: click value (-), shift-click (+) */
-
-    /* Prefer single-line stats; allow wrap on small screens */
-    @media (min-width: 768px) {
-      .char-stats {
-        flex-wrap: nowrap;
+    .stat-controls button {
+        width: 24px;
+        height: 24px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        border: 1px solid var(--ink-light);
+        border-radius: 3px;
+        background: var(--parchment);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-    }
+      .stat-controls button:hover {
+        background: var(--ink-light);
+        color: var(--parchment);
+      }
 
     .char-controls button {
         font-size: 0.7rem;
@@ -774,13 +690,6 @@
         border-radius: 6px;
         padding: 0.5rem;
       border-left: 4px solid var(--ink-light);
-    }
-    .threat-card {
-      cursor: grab;
-    }
-    .threat-card.dragging {
-      opacity: 0.55;
-      cursor: grabbing;
     }
       .threat-card.hit {
         border-left-color: var(--hit-orange);
@@ -1035,11 +944,11 @@
 
   <!-- MUSTER MODE VIEW -->
   <main id="view-muster">
-    <div class="muster-col left-col">
-      <!-- Environment Card -->
-      <section class="panel environment-card">
-        <h2>Where are we?</h2>
-        <div class="environment-story">
+    <!-- Environment Card -->
+    <!-- Environment Card -->
+      <section class="panel environment-card" style="grid-column: 1 / -1">
+      <h2>Where are we?</h2>
+      <div class="environment-story">
           <p class="env-sentence">
             Location:
             <span
@@ -1089,8 +998,7 @@
               color: var(--ink-light);
               margin-top: 0.25rem;
             "
-          ></span>
-          </p>
+          ></p>
           <p class="env-features">
             Point of Interest:
             <span
@@ -1114,24 +1022,26 @@
               onclick="openEnvMenu(event, 'transition_to', TERRAIN_DATA.landforms[state.environment.climate], 'Transition To')"
             ></span>
           </p>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Time + Insight (no Turn Clock dice) -->
-      <section class="panel time-panel">
-        <h2>Time</h2>
-
-        <div
-          class="insight-display"
-          style="cursor: pointer"
-          onclick="rollInsight()"
-          title="Click to roll Insight"
-        >
-          <div class="insight-label">Insight</div>
-          <div class="insight-value" id="insight-value">—</div>
-        </div>
-
-        <div class="time-counters">
+    <!-- Turn Clock -->
+    <section class="panel turn-clock-panel">
+      <h2>Turn Clock</h2>
+      <div class="clock-display" id="clock-display">
+        <!-- 6 slots -->
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+          <div class="clock-slot" onclick="rollClock()"></div>
+      </div>
+      <div class="time-counters">
+          <div class="counter">
+            <div class="counter-label">Round</div>
+            <div class="counter-value" id="count-round">0</div>
+          </div>
           <div
             class="counter"
             style="cursor: pointer"
@@ -1142,70 +1052,112 @@
             <div class="counter-value" id="count-turn">0</div>
           </div>
           <div class="counter">
-            <div class="counter-label">Round</div>
-            <div class="counter-value" id="count-round">0</div>
+            <div class="counter-label">Hour</div>
+            <div class="counter-value" id="count-hour">0</div>
           </div>
-        </div>
+          <div class="counter">
+            <div class="counter-label">Clock</div>
+            <div class="counter-value" id="count-clock">0</div>
+          </div>
+      </div>
+      <div class="insight-display">
+        <div class="insight-label">Insight</div>
+        <div class="insight-value" id="insight-value">—</div>
+      </div>
+      <div class="clock-buttons">
+        <button class="btn primary" onclick="advanceTurn()">+ Turn</button>
+        <button class="btn primary" onclick="advanceRound()">+ Round</button>
+        <button class="btn" onclick="rollClock()">Roll Clock</button>
+        <button class="btn" onclick="rollInsight()">Roll Insight</button>
+      </div>
+      <div id="roll-outcome" class="roll-outcome"></div>
+      
+      <!-- Ask the Oracle Card -->
+        <div class="panel" style="margin-top: 0.75rem">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 0.75rem;
+            "
+          >
+             <!-- Label -->
+            <div
+              class="insight-label"
+              style="
+                color: var(--ink-light);
+                font-size: 1rem;
+                font-family: 'Cinzel', serif;
+                font-weight: 600;
+              "
+            >
+              ORACLE
+            </div>
+             
+             <!-- Dice & Result -->
+            <div
+              class="oracle-dice-display"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-family: 'Cinzel', serif;
+                font-weight: 700;
+                color: var(--accent-dark);
+                flex: 1;
+                min-width: 150px;
+                cursor: pointer;
+              "
+              onclick="rollOracle('normal')"
+              title="Click to roll"
+            >
+                <!-- Auto populated -->
+             </div>
+             
+             <!-- Controls -->
+            <div class="dice-controls" style="display: flex; gap: 0.3rem">
+              <button
+                class="btn icon-btn"
+                style="padding: 0.3rem; font-size: 1.2rem"
+                onclick="rollOracle('normal'); event.stopPropagation();"
+                title="Roll"
+              >
+                ⟳
+              </button>
+              <button
+                class="btn icon-btn"
+                style="padding: 0.3rem; font-size: 1.2rem"
+                onclick="rollOracle('adv'); event.stopPropagation();"
+                title="Advantage (3d6 drop low)"
+              >
+                +
+              </button>
+              <button
+                class="btn icon-btn"
+                style="padding: 0.3rem; font-size: 1.2rem"
+                onclick="rollOracle('dis'); event.stopPropagation();"
+                title="Disadvantage (3d6 drop high)"
+              >
+                −
+              </button>
+             </div>
+          </div>
+      </div>
+    </section>
 
-        <div class="clock-buttons">
-          <button class="btn primary" onclick="advanceTurn()">+ Turn</button>
-          <button class="btn primary" onclick="advanceRound()">+ Round</button>
-        </div>
-      </section>
+    <!-- Muster List (Active Play) -->
+    <section class="panel">
+      <h2>Muster</h2>
+      <div class="character-list" id="play-muster-list"></div>
+    </section>
 
-      <!-- Adventure Roll -->
-      <section class="panel adventure-card">
-        <h2>Adventure</h2>
-        <div class="clock-buttons" style="grid-template-columns: 1fr 1fr 1fr">
-          <button class="btn" onclick="rollAdventure('easy')">Easy</button>
-          <button class="btn" onclick="rollAdventure('average')">Average</button>
-          <button class="btn" onclick="rollAdventure('hard')">Hard</button>
-        </div>
-        <div class="clock-buttons" style="grid-template-columns: 1fr">
-          <button class="btn" onclick="rollAdventure('extreme')">Extreme</button>
-        </div>
-        <div id="adventure-result" class="adventure-result"></div>
-      </section>
-
-      <!-- Ask the Oracle -->
-      <section class="panel oracle-card">
-        <h2>Oracle</h2>
-        <div class="clock-buttons" style="grid-template-columns: 1fr 1fr 1fr">
-          <button class="btn" onclick="rollOracle('normal'); event.stopPropagation();" title="Roll 2d6">
-            Roll
-          </button>
-          <button class="btn" onclick="rollOracle('adv'); event.stopPropagation();" title="Advantage (3d6 drop low)">
-            Adv
-          </button>
-          <button class="btn" onclick="rollOracle('dis'); event.stopPropagation();" title="Disadvantage (3d6 drop high)">
-            Dis
-          </button>
-        </div>
-        <div
-          id="oracle-result"
-          class="oracle-result"
-          onclick="rollOracle('normal')"
-          title="Click result to roll"
-        ></div>
-      </section>
-    </div>
-
-    <div class="muster-col center-col">
-      <!-- Muster List (Active Play) -->
-      <section class="panel">
-        <h2>Muster</h2>
-        <div class="character-list" id="play-muster-list"></div>
-      </section>
-    </div>
-
-    <div class="muster-col right-col">
-      <!-- Others (NPCs/Threats) -->
-      <section class="panel">
-        <h2>Others</h2>
-        <div class="threats-list" id="others-list"></div>
-        <button class="add-btn" onclick="openOtherModal()">+ Another</button>
-      </section>
-    </div>
+    <!-- Others (NPCs/Threats) -->
+    <section class="panel">
+      <h2>Others</h2>
+      <div class="threats-list" id="others-list"></div>
+      <button class="add-btn" onclick="openOtherModal()">+ Add Other</button>
+    </section>
   </main>
 
   <!-- Character Modal -->
@@ -1239,45 +1191,30 @@
             <textarea id="char-notes"></textarea>
         </div>
         <div class="form-row">
-          <div class="form-group">
-            <label>Hearts</label>
-            <div style="display:flex; gap:0.5rem; align-items:end;">
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Current</span>
-                <input type="number" id="char-hearts-current" value="7" min="0" max="100" />
-              </div>
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Max</span>
-                <input type="number" id="char-hearts-max" value="7" min="1" max="100" />
-              </div>
+            <div class="form-group">
+                <label>Hearts</label>
+              <input
+                type="number"
+                id="char-hearts"
+                value="7"
+                min="1"
+                max="100"
+              />
             </div>
-          </div>
-          <div class="form-group">
-            <label>Iron</label>
-            <div style="display:flex; gap:0.5rem; align-items:end;">
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Current</span>
-                <input type="number" id="char-iron-current" value="0" min="0" max="100" />
-              </div>
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Max</span>
-                <input type="number" id="char-iron-max" value="0" min="0" max="100" />
-              </div>
+            <div class="form-group">
+                <label>Iron</label>
+              <input type="number" id="char-iron" value="0" min="0" max="100" />
             </div>
-          </div>
-          <div class="form-group">
-            <label>Arcana</label>
-            <div style="display:flex; gap:0.5rem; align-items:end;">
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Current</span>
-                <input type="number" id="char-arcana-current" value="0" min="0" max="100" />
-              </div>
-              <div style="display:flex; flex-direction:column; gap:0.2rem; flex:1;">
-                <span style="font-size:0.75rem; color:var(--ink-light);">Max</span>
-                <input type="number" id="char-arcana-max" value="0" min="0" max="100" />
-              </div>
+            <div class="form-group">
+                <label>Arcana</label>
+              <input
+                type="number"
+                id="char-arcana"
+                value="0"
+                min="0"
+                max="10"
+              />
             </div>
-          </div>
         </div>
         <div class="checkbox-row">
             <label><input type="checkbox" id="char-leader" /> Leader</label>
@@ -1375,8 +1312,7 @@
     // --- Data & State ---
     const DEFAULT_STATE = {
         mode: "muster", // or 'camp'
-      session: { round: 0, turn: 0, insight: 0 },
-      adventure: { target: null, total: null, result: "" },
+      session: { round: 0, turn: 0, hour: 0, clock: 0, insight: 0 },
       environment: { 
           region: "Wåndyrwyld",
           climate: "Temperate",
@@ -1860,19 +1796,6 @@
               TERRAIN_DATA.weatherPatterns[state.environment.climate] || [];
           }
         }
-        
-        // Transition To special case:
-        // If Transition is 1-3 (same landform), Transition To must mirror current landform.
-        let lockTransitionTo = false;
-        if (stateKey === "transition_to" && state.environment.transition) {
-          const transitionIndex = TERRAIN_DATA.transitions.indexOf(
-            state.environment.transition
-          );
-          if (transitionIndex >= 0 && transitionIndex < 3) {
-            lockTransitionTo = true;
-            options = [state.environment.landform].filter(Boolean);
-          }
-        }
 
         if (!options || options.length === 0) {
           console.warn(`No options available for ${stateKey}`);
@@ -1892,11 +1815,7 @@
         let html = `
             <div class="popover-header">
                 <span style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.9rem;">${label}</span>
-                ${
-                  lockTransitionTo
-                    ? `<span style="font-size:0.8rem; color: var(--ink-light); font-style: italic;">(same landform)</span>`
-                    : `<button class="btn" onclick="randomizeAndSelect('${stateKey}'); event.stopPropagation();" title="Randomize">⟳</button>`
-                }
+                <button class="btn" onclick="randomizeAndSelect('${stateKey}'); event.stopPropagation();" title="Randomize">⟳</button>
             </div>
             <div class="popover-list">
         `;
@@ -1979,18 +1898,10 @@
           }
         }
         
-        // Special Logic for transition_to
+        // Special Logic for transition_to - allow manual selection
         if (key === "transition_to") {
-          const transitionIndex = TERRAIN_DATA.transitions.indexOf(
-            state.environment.transition
-          );
-          if (transitionIndex >= 0 && transitionIndex < 3) {
-            // Transitions 1-3 mean same landform, so Transition To must mirror Landform
-            state.environment.transition_to = state.environment.landform;
-          } else {
-            // User manually selected a transition_to landform (Transitions 4-6)
-            state.environment.transition_to = val;
-          }
+          // User manually selected a transition_to landform
+          state.environment.transition_to = val;
         }
         
         // Special Logic for landform change - update transition_to if transition is 1-3 (same terrain)
@@ -2077,17 +1988,8 @@
         else if (key === "landform")
           opts = TERRAIN_DATA.landforms[state.environment.climate] || [];
         else if (key === "transition") opts = TERRAIN_DATA.transitions;
-        else if (key === "transition_to") {
-          const transitionIndex = TERRAIN_DATA.transitions.indexOf(
-            state.environment.transition
-          );
-          if (transitionIndex >= 0 && transitionIndex < 3) {
-            // Locked to current landform for transitions 1-3
-            selectEnvOption("transition_to", state.environment.landform);
-            return;
-          }
+        else if (key === "transition_to")
           opts = TERRAIN_DATA.landforms[state.environment.climate] || [];
-        }
         else if (key === "terrain_condition")
           opts = TERRAIN_DATA.terrainConditions;
         else if (key === "poi") opts = TERRAIN_DATA.pois;
@@ -2136,7 +2038,6 @@
             ...DEFAULT_STATE,
             ...loaded,
             session: { ...DEFAULT_STATE.session, ...(loaded.session || {}) },
-            adventure: { ...DEFAULT_STATE.adventure, ...(loaded.adventure || {}) },
             environment: { 
                 ...DEFAULT_STATE.environment, 
                 ...(loaded.environment || {}),
@@ -2237,30 +2138,29 @@
           env.transition = opts[Math.floor(Math.random() * opts.length)];
         }
 
-        // Calculate / reconcile transition_to based on transition
-        if (env.transition) {
+        // Calculate transition_to based on transition
+        if (env.transition && !env.transition_to) {
           const transitionIndex = TERRAIN_DATA.transitions.indexOf(env.transition);
           const lfOpts =
             TERRAIN_DATA.landforms[env.climate] ||
             TERRAIN_DATA.landforms["Temperate"];
           
           if (transitionIndex >= 0 && lfOpts && lfOpts.length > 0) {
-            // Transitions 1-3: same landform (inherit current landform)
+            // Transitions 1-3 (indices 0-2): same terrain
+            // Transitions 4-6 (indices 3-5): different terrain
             if (transitionIndex < 3) {
+              // Same terrain - use current landform
               env.transition_to = env.landform;
             } else {
-              // Transitions 4-6: different landform
-              // If missing or accidentally equal to current landform, roll a different one (when possible)
-              if (!env.transition_to || env.transition_to === env.landform) {
-                let newLandform;
-                let attempts = 0;
-                do {
-                  newLandform = lfOpts[Math.floor(Math.random() * lfOpts.length)];
-                  attempts++;
-                  if (attempts > 10) break;
-                } while (newLandform === env.landform && lfOpts.length > 1);
-                env.transition_to = newLandform;
-              }
+              // Different terrain - roll a new landform (different from current)
+              let newLandform;
+              let attempts = 0;
+              do {
+                newLandform = lfOpts[Math.floor(Math.random() * lfOpts.length)];
+                attempts++;
+                if (attempts > 10) break;
+              } while (newLandform === env.landform && lfOpts.length > 1);
+              env.transition_to = newLandform;
             }
           }
         }
@@ -2318,7 +2218,6 @@
           document
             .getElementById("actions-dropdown")
             .classList.remove("active");
-        closeAllKebabMenus();
       });
       function toggleModeModeSwitch() {
         state.mode = state.mode === "muster" ? "camp" : "muster";
@@ -2363,7 +2262,6 @@
             state = {
               ...DEFAULT_STATE,
               ...loaded,
-              adventure: { ...DEFAULT_STATE.adventure, ...(loaded.adventure || {}) },
               environment: {
                 ...DEFAULT_STATE.environment,
                 ...loaded.environment,
@@ -2442,7 +2340,7 @@
     
     function renderDice() {
         const d = state.dice || { rolls: [1, 1], type: "normal", total: 2 };
-        const container = document.getElementById("oracle-result");
+        const container = document.querySelector(".oracle-dice-display");
         let html = "";
 
         // We will just show the pips without outer box
@@ -2465,7 +2363,7 @@
             '<span style="color:#c62828; font-size:0.5em; margin-left:0.2rem;" title="Spicy">💀</span>';
 
         // Add Total & Tags
-        html += `<span style="margin-left:0.2rem; font-size: 2rem; font-weight:bold; color:var(--accent-dark);">= ${d.total}${tagHtml}</span>`;
+        html += `<span style="margin-left:0.5rem; font-size: 2rem; font-weight:bold; color:var(--accent-dark);">= ${d.total}${tagHtml}</span>`;
         
         if (container) container.innerHTML = html;
     }
@@ -2489,67 +2387,175 @@
         renderCharacterLists();
     }
 
-    // --- Time / Insight (no Turn Clock dice) ---
-    function rollD6() {
-      return Math.floor(Math.random() * 6) + 1;
-    }
-
-    function setInsightRoll() {
-      state.session.insight = rollD6();
-    }
+    // --- Clock Logic ---
+      function rollD6() {
+        return Math.floor(Math.random() * 6) + 1;
+      }
 
     function resetTurnCount() {
-      if (confirm("Reset Turn Count to 0?")) {
-        state.session.turn = 0;
-        saveState();
-        renderTimePanel();
-      }
+        if (confirm("Reset Turn Count to 0?")) {
+            state.session.turn = 0;
+            saveState();
+            renderClockPanel();
+        }
     }
 
     function advanceTurn() {
+      // 1. Check if locked
+        const btn = document.querySelector(".turn-clock-panel button"); // rough check
+        if (btn && btn.disabled) return;
+
       state.session.turn++;
       state.session.round = 0;
-      setInsightRoll();
-      saveState();
-      renderTimePanel();
+      rollInsight(); 
+      
+        if (state.session.clock < 5) {
+          state.session.clock++;
+          saveState();
+          renderClockPanel();
+        } else if (state.session.clock === 5) {
+          // Fill 6th
+          state.session.clock = 6;
+          state.session.hour++;
+          saveState();
+          renderClockPanel();
+          
+          // Lock UI during wait + roll
+          toggleClockButtons(true);
+          
+          setTimeout(() => {
+              rollClockOnly();
+          }, 800); 
+        } else if (state.session.clock >= 6) {
+          state.session.clock = 1;
+          saveState();
+          renderClockPanel();
+      }
     }
 
     function advanceRound() {
-      state.session.round++;
-      setInsightRoll();
-      saveState();
-      renderTimePanel();
+        const btn = document.querySelector(".turn-clock-panel button");
+        if (btn && btn.disabled) return;
+        
+        state.session.round++;
+        rollInsight();
+        
+        if (state.session.round >= 60) {
+            state.session.round = 0;
+            state.session.turn++;
+          if (state.session.clock < 5) {
+                state.session.clock++;
+            saveState();
+            renderClockPanel();
+          } else if (state.session.clock === 5) {
+                state.session.clock = 6;
+                state.session.hour++;
+            saveState();
+            renderClockPanel();
+                
+                toggleClockButtons(true);
+            setTimeout(() => {
+              rollClockOnly();
+            }, 800);
+          } else if (state.session.clock >= 6) {
+                state.session.clock = 1;
+            saveState();
+            renderClockPanel();
+            }
+        } else {
+            saveState();
+            renderClockPanel();
+        }
+    }
+
+    function rollClock() {
+        if (state.session.clock === 0) {
+          showRollResult([], 0);
+          return;
+        }
+        const rolls = Array.from({ length: state.session.clock }, () =>
+          rollD6()
+        );
+        
+        toggleClockButtons(true);
+        showRollResult(rolls, rolls.filter((r) => r === 1).length);
+    }
+    
+    // Internal helper for animation
+    function showRollResult(finalRolls, onesCount) {
+        const slots = document.querySelectorAll(".clock-slot");
+         const count = finalRolls.length;
+         
+         // Ensure buttons are disabled if called directly
+         // toggleClockButtons(true); // handled by caller usually
+         
+         // 1. Animate Rolling
+         let ticks = 0;
+         const interval = setInterval(() => {
+             slots.forEach((s, i) => {
+            if (i < count)
+              s.textContent = DICE_FACES[Math.floor(Math.random() * 6)];
+             });
+             ticks++;
+          if (ticks > 8) {
+                 clearInterval(interval);
+            // 2. Show Final - Clear all classes first, then apply new ones
+                 finalRolls.forEach((val, i) => {
+              if (i < count) {
+                slots[i].className = "clock-slot"; // Reset classes
+                slots[i].textContent = DICE_FACES[val - 1];
+                slots[i].classList.add("filled", "rolled-result");
+                if (val === 1) slots[i].classList.add("rolled-one");
+                     }
+                 });
+                 
+                 // 3. Show Outcome Text
+            const oEl = document.getElementById("roll-outcome");
+            if (onesCount === 0) {
+              oEl.textContent = "All Clear";
+              oEl.className = "roll-outcome";
+            } else if (onesCount === 1) {
+              oEl.textContent = "💀 Complication!";
+              oEl.className = "roll-outcome complication";
+            } else {
+              oEl.textContent = `💀 ${onesCount} Complications!`;
+              oEl.className = "roll-outcome complication";
+            }
+                 
+                 // Unlock UI
+                 toggleClockButtons(false);
+             }
+         }, 80);
+    }
+    
+    function toggleClockButtons(disabled) {
+        const btns = document.querySelectorAll(".turn-clock-panel button");
+        btns.forEach((b) => (b.disabled = disabled));
+    }
+
+    function rollClockOnly() {
+        // Rolls 6 dice, does NOT clear clock (logic reset handled by next advanceTurn)
+        const rolls = Array.from({ length: 6 }, () => rollD6());
+        // toggleClockButtons(true); // Caller handled
+        showRollResult(rolls, rolls.filter((r) => r === 1).length);
+        // We do not save state here because 'rolling' is a transient event on top of state.clock=6
+    }
+
+    function rollClockAndClear() {
+        // Deprecated usually, but kept for Manual 'Roll Clock' if fully full? 
+        // Or if user manually resets. leaving as helper if needed.
+        const rolls = Array.from({ length: 6 }, () => rollD6());
+        showRollResult(rolls, rolls.filter((r) => r === 1).length);
+        state.session.clock = 0; 
+        state.session.hour++;
+        saveState();
+        renderClockPanel();
     }
 
     function rollInsight() {
-      setInsightRoll();
-      saveState();
-      renderTimePanel();
-    }
-
-    // --- Adventure ---
-    function rollAdventure(difficulty) {
-      const targets = { easy: 6, average: 8, hard: 10, extreme: 12 };
-      const target = targets[difficulty] ?? 8;
-      const total = rollD6() + rollD6();
-      const result = total >= target ? "All clear" : "Adventure!";
-      state.adventure = { target, total, result };
-      saveState();
-      renderAdventure();
-    }
-
-    function renderAdventure() {
-      const el = document.getElementById("adventure-result");
-      if (!el) return;
-      if (!state.adventure || state.adventure.total == null) {
-        el.textContent = "";
-        el.className = "adventure-result";
-        return;
-      }
-      el.textContent = `${state.adventure.total} vs ${state.adventure.target} — ${state.adventure.result}`;
-      el.className =
-        "adventure-result" +
-        (state.adventure.result === "Adventure!" ? " adventure" : "");
+        state.session.insight = rollD6();
+        saveState();
+        renderClockPanel();
     }
 
     // --- Rendering ---
@@ -2576,8 +2582,7 @@
           state.rumor.blessing.active;
 
         renderEnvironment();
-      renderTimePanel();
-      renderAdventure();
+      renderClockPanel();
       renderOTHERS(); // New Render Fn
       renderDice();
     }
@@ -2628,23 +2633,36 @@
           state.rumor.blessing.active;
     }
 
-    function renderTimePanel() {
-      const roundEl = document.getElementById("count-round");
-      if (roundEl) roundEl.textContent = state.session.round;
+    function renderClockPanel() {
+        const slots = document.querySelectorAll(".clock-slot");
+        // Clear outcome when re-rendering normal state
+        const oEl = document.getElementById("roll-outcome");
+        if (state.session.clock > 0 && oEl) {
+          oEl.textContent = "";
+          oEl.className = "roll-outcome";
+        }
+        
+        slots.forEach((s, i) => {
+          s.className = "clock-slot";
+            if (i < state.session.clock) {
+            s.classList.add("filled");
+                s.textContent = DICE_FACES[i]; 
+            } else {
+            s.textContent = "";
+          }
+        });
 
-      const turnEl = document.getElementById("count-turn");
-      if (turnEl) turnEl.textContent = state.session.turn;
-
-      const iVal = document.getElementById("insight-value");
-      if (iVal) iVal.textContent = INSIGHTS[state.session.insight];
+        document.getElementById("count-round").textContent =
+          state.session.round;
+        document.getElementById("count-turn").textContent = state.session.turn;
+        document.getElementById("count-hour").textContent = state.session.hour;
+        document.getElementById("count-clock").textContent =
+          state.session.clock;
+        const iVal = document.getElementById("insight-value");
+        if (iVal) iVal.textContent = INSIGHTS[state.session.insight];
     }
 
     function renderCharacterLists() {
-        // Ensure party order is always 1..n unique (fixes old saves / duplicates)
-        if (partyOrderNeedsNormalize()) {
-          normalizePartyOrder();
-          saveState();
-        }
         // We have 3 target lists in DOM: camp-muster-list, camp-camp-list, play-muster-list
         if (state.mode === "camp") {
           document.getElementById("camp-muster-list").innerHTML =
@@ -2655,7 +2673,6 @@
           document.getElementById("play-muster-list").innerHTML =
             generateCharHTML(state.muster, "play");
         }
-        initCharacterDnD();
     }
 
     function generateCharHTML(list, context) {
@@ -2670,62 +2687,68 @@
               isBlessed ? "blessed" : ""
             } ${context === "camp" ? "in-camp" : ""}`;
 
-            const moveAction =
-              context === "play"
-                ? { label: "Camp", dest: "camp" }
-                : context === "muster"
-                  ? { label: "Camp", dest: "camp" }
-                  : { label: "Muster", dest: "muster" };
+            let moveBtn = "";
+            if (context === "muster")
+              moveBtn = `<button onclick="moveChar('${c.id}', 'camp')" title="Move to Camp">To Camp ↓</button>`;
+            if (context === "camp")
+              moveBtn = `<button onclick="moveChar('${c.id}', 'muster')" title="Move to Muster">To Muster ↑</button>`;
             
             // In 'play' mode, we usually don't show move buttons as per spec, or only small ones. keeping it clean.
             // But we need controls.
             
             const stats = `
               <div class="char-stats">
-                <div class="stat-row">
-                  <span class="stat-label">Hearts</span>
-                  <span
-                    class="stat-value hearts"
-                    onclick="modStatClick('${c.id}', 'hearts', event)"
-                    title="Click: -1 • Shift-click: +1"
-                    draggable="false"
-                  >${c.hearts.current}/${c.hearts.max}</span>
-                </div>
-                ${
-                  c.iron.max > 0
-                    ? `
-                <div class="stat-row">
-                  <span class="stat-label">Iron</span>
-                  <span
-                    class="stat-value iron"
-                    onclick="modStatClick('${c.id}', 'iron', event)"
-                    title="Click: -1 • Shift-click: +1"
-                    draggable="false"
-                  >${c.iron.current}/${c.iron.max}</span>
-                </div>`
-                    : ""
-                }
-                ${
-                  c.arcana.max > 0
-                    ? `
-                <div class="stat-row">
-                  <span class="stat-label">Arcana</span>
-                  <span
-                    class="stat-value arcana"
-                    onclick="modStatClick('${c.id}', 'arcana', event)"
-                    title="Click: -1 • Shift-click: +1"
-                    draggable="false"
-                  >${c.arcana.current}/${c.arcana.max}</span>
-                </div>`
-                    : ""
-                }
+                  <div class="stat-row">
+                      <span class="stat-label">Hearts</span>
+                      <div class="stat-controls">
+                          <button onclick="modStat('${
+                            c.id
+                          }', 'hearts', -1)">-</button>
+                      </div>
+                      <span class="stat-value hearts">${c.hearts.current}/${
+              c.hearts.max
+            }</span>
+                      <div class="stat-controls">
+                          <button onclick="modStat('${
+                            c.id
+                          }', 'hearts', 1)">+</button>
+                      </div>
+                  </div>
+                  ${
+                    c.iron.max > 0
+                      ? `
+                  <div class="stat-row">
+                      <span class="stat-label">Iron</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'iron', -1)">-</button>
+                      </div>
+                      <span class="stat-value iron">${c.iron.current}/${c.iron.max}</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'iron', 1)">+</button>
+                      </div>
+                  </div>`
+                      : ""
+                  }
+                   ${
+                     c.arcana.max > 0
+                       ? `
+                  <div class="stat-row">
+                      <span class="stat-label">Arcana</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'arcana', -1)">-</button>
+                      </div>
+                      <span class="stat-value arcana">${c.arcana.current}/${c.arcana.max}</span>
+                       <div class="stat-controls">
+                          <button onclick="modStat('${c.id}', 'arcana', 1)">+</button>
+                      </div>
+                  </div>`
+                       : ""
+                   }
               </div>
             `;
 
-            const listName = context === "camp" ? "camp" : "muster";
-
             return `
-            <div class="${cardClass}" draggable="true" data-char-id="${c.id}" data-list="${listName}">
+            <div class="${cardClass}">
                 <div class="char-header">
                     <div class="char-name">
                         <span class="char-number">${c.number}</span>
@@ -2735,42 +2758,21 @@
                         ${
                           isBlessed ? '<span class="blessed-star">✦</span>' : ""
                         }
-                        <span
-                          style="cursor:pointer"
-                          onclick="openCharacterModal('${c.id}'); event.stopPropagation();"
-                          title="Edit character"
-                          draggable="false"
-                        >
-                          ${c.name}${c.player ? ` <span class="char-player-inline">(${c.player})</span>` : ""}
-                        </span>
+                        ${c.name}
                     </div>
-                    <div class="kebab" onclick="event.stopPropagation()">
-                      <button
-                        class="kebab-btn"
-                        onclick="toggleCharMenu('${c.id}', event)"
-                        title="Actions"
-                        aria-label="Character actions"
-                        draggable="false"
-                      >
-                        ⋮
-                      </button>
-                      <div class="kebab-menu" id="char-menu-${c.id}">
-                        ${
-                          moveAction
-                            ? `<button class="kebab-item" onclick="moveChar('${c.id}', '${moveAction.dest}'); closeAllKebabMenus(); event.stopPropagation();">${moveAction.label}</button>`
-                            : ""
-                        }
-                        ${
-                          moveAction
-                            ? `<div style="height:1px; background: rgba(0,0,0,0.12); margin: 0.25rem 0;"></div>`
-                            : ""
-                        }
-                        <button class="kebab-item" onclick="openCharacterModal('${c.id}'); closeAllKebabMenus(); event.stopPropagation();">✎ Edit</button>
-                        <button class="kebab-item" onclick="deleteChar('${c.id}'); closeAllKebabMenus(); event.stopPropagation();" style="color: var(--heart-red);">🗑 Delete</button>
-                      </div>
+                    <div class="char-controls">
+                        ${moveBtn}
+                        <button onclick="openCharacterModal('${
+                          c.id
+                        }')">Edit</button>
+                        <button onclick="deleteChar('${c.id}')">✕</button>
                     </div>
                 </div>
-                <!-- Player shown inline after name -->
+                ${
+                  c.player
+                    ? `<div class="char-player">Player: ${c.player}</div>`
+                    : ""
+                }
                 ${
                   c.description
                     ? `<div class="char-description">${c.description}</div>`
@@ -2788,205 +2790,6 @@
             `;
           })
           .join("");
-    }
-
-    // --- Character Reorder (Drag & Drop) ---
-    let draggedCharId = null;
-
-    function initCharacterDnD() {
-      const containers = [];
-      const campMuster = document.getElementById("camp-muster-list");
-      const campCamp = document.getElementById("camp-camp-list");
-      const playMuster = document.getElementById("play-muster-list");
-
-      if (campMuster) containers.push({ el: campMuster, list: "muster" });
-      if (campCamp) containers.push({ el: campCamp, list: "camp" });
-      if (playMuster) containers.push({ el: playMuster, list: "muster" });
-
-      containers.forEach(({ el, list }) => {
-        el.dataset.list = list;
-        // prevent duplicate listeners by resetting handlers
-        el.ondragover = (e) => handleCharDragOver(e, el);
-        el.ondrop = (e) => handleCharDrop(e, el, containers);
-      });
-
-      document.querySelectorAll(".character-card[draggable='true']").forEach((card) => {
-        card.ondragstart = (e) => {
-          draggedCharId = card.dataset.charId;
-          card.classList.add("dragging");
-          try {
-            e.dataTransfer.effectAllowed = "move";
-            e.dataTransfer.setData("text/plain", draggedCharId);
-          } catch {}
-        };
-        card.ondragend = () => {
-          card.classList.remove("dragging");
-          draggedCharId = null;
-          // After a drag completes (drop or cancel), ensure state reflects DOM if it changed.
-          // This is safe even if nothing moved.
-          applyPartyOrderFromDom(containers);
-        };
-      });
-    }
-
-    function handleCharDragOver(e, container) {
-      e.preventDefault();
-      const dragging = document.querySelector(".character-card.dragging");
-      if (!dragging) return;
-
-      const after = getDragAfterElement(container, e.clientY);
-      if (after == null) container.appendChild(dragging);
-      else container.insertBefore(dragging, after);
-    }
-
-    function handleCharDrop(e, container, containers) {
-      e.preventDefault();
-      // DOM has already been updated during dragover; now persist into state
-      applyPartyOrderFromDom(containers);
-    }
-
-    function getDragAfterElement(container, y, selector = ".character-card:not(.dragging)") {
-      const els = [...container.querySelectorAll(selector)];
-      return els.reduce(
-        (closest, child) => {
-          const box = child.getBoundingClientRect();
-          const offset = y - box.top - box.height / 2;
-          if (offset < 0 && offset > closest.offset) {
-            return { offset, element: child };
-          }
-          return closest;
-        },
-        { offset: Number.NEGATIVE_INFINITY, element: null }
-      ).element;
-    }
-
-    function applyPartyOrderFromDom(containers) {
-      // Build quick lookup of all chars
-      const byId = {};
-      [...state.muster, ...state.camp].forEach((c) => (byId[c.id] = c));
-
-      // In muster mode, camp lists may not be rendered/accurate; only trust visible containers
-      const active = containers.filter(({ el }) => el && el.children);
-      const idsForList = { muster: null, camp: null };
-
-      active.forEach(({ el }) => {
-        const list = el.dataset.list;
-        const ids = [...el.querySelectorAll(".character-card")].map((c) => c.dataset.charId);
-        if (ids.length) idsForList[list] = ids;
-      });
-
-      // Rebuild arrays based on DOM order where available; otherwise preserve current order by number
-      const fallbackSorted = (arr) =>
-        [...arr].sort((a, b) => (a.number || 99) - (b.number || 99));
-
-      const newMuster = idsForList.muster
-        ? idsForList.muster.map((id) => byId[id]).filter(Boolean)
-        : fallbackSorted(state.muster);
-
-      const newCamp = idsForList.camp
-        ? idsForList.camp.map((id) => byId[id]).filter(Boolean)
-        : fallbackSorted(state.camp);
-
-      // Remove any duplicates (safety) and ensure every character is present exactly once
-      const seen = new Set();
-      const uniq = (arr) =>
-        arr.filter((c) => {
-          if (!c || seen.has(c.id)) return false;
-          seen.add(c.id);
-          return true;
-        });
-
-      const must = uniq(newMuster);
-      const camp = uniq(newCamp);
-
-      // Add any missing (if DOM containers were empty/not present)
-      [...state.muster, ...state.camp].forEach((c) => {
-        if (!seen.has(c.id)) {
-          // Put missing into their existing list at the end
-          (state.camp.some((x) => x.id === c.id) ? camp : must).push(c);
-          seen.add(c.id);
-        }
-      });
-
-      // Assign unique sequential party order numbers across all characters
-      let n = 1;
-      must.forEach((c) => (c.number = n++));
-      camp.forEach((c) => (c.number = n++));
-
-      state.muster = must;
-      state.camp = camp;
-      saveState();
-      renderCharacterLists();
-    }
-
-    function normalizePartyOrder() {
-      // Ensures party order numbers are always 1..n and unique
-      const musterIds = new Set(state.muster.map((c) => c.id));
-      const campIds = new Set(state.camp.map((c) => c.id));
-      const all = [...state.muster, ...state.camp];
-
-      // Stable sort by current number (then original position)
-      const originalIndex = new Map(all.map((c, i) => [c.id, i]));
-      all.sort((a, b) => {
-        const an = a.number || 999;
-        const bn = b.number || 999;
-        return an - bn || (originalIndex.get(a.id) || 0) - (originalIndex.get(b.id) || 0);
-      });
-
-      let n = 1;
-      all.forEach((c) => (c.number = n++));
-
-      state.muster = all.filter((c) => musterIds.has(c.id));
-      state.camp = all.filter((c) => campIds.has(c.id));
-    }
-
-    function partyOrderNeedsNormalize() {
-      const all = [...state.muster, ...state.camp];
-      const n = all.length;
-      if (n <= 1) return false;
-
-      const nums = all.map((c) => parseInt(c.number, 10)).filter((x) => Number.isFinite(x));
-      if (nums.length !== n) return true;
-
-      const set = new Set(nums);
-      if (set.size !== n) return true;
-
-      // Must be exactly 1..n
-      for (let i = 1; i <= n; i++) {
-        if (!set.has(i)) return true;
-      }
-      return false;
-    }
-
-    function setPartyOrder(charId, desiredNumber) {
-      // Places the character at desiredNumber (1-indexed) in the overall party order,
-      // then renumbers sequentially 1..n.
-      const musterIds = new Set(state.muster.map((c) => c.id));
-      const campIds = new Set(state.camp.map((c) => c.id));
-      const all = [...state.muster, ...state.camp];
-
-      const originalIndex = new Map(all.map((c, i) => [c.id, i]));
-      const ordered = [...all].sort((a, b) => {
-        const an = a.number || 999;
-        const bn = b.number || 999;
-        return an - bn || (originalIndex.get(a.id) || 0) - (originalIndex.get(b.id) || 0);
-      });
-
-      const idx = ordered.findIndex((c) => c.id === charId);
-      if (idx === -1) {
-        normalizePartyOrder();
-        return;
-      }
-
-      const [char] = ordered.splice(idx, 1);
-      const clampTo = Math.max(1, Math.min(ordered.length + 1, desiredNumber || ordered.length + 1));
-      ordered.splice(clampTo - 1, 0, char);
-
-      let n = 1;
-      ordered.forEach((c) => (c.number = n++));
-
-      state.muster = ordered.filter((c) => musterIds.has(c.id));
-      state.camp = ordered.filter((c) => campIds.has(c.id));
     }
 
     // --- Character Actions ---
@@ -3010,18 +2813,11 @@
         }
     }
 
-    function modStatClick(id, stat, event) {
-      if (event) event.stopPropagation();
-      const delta = event && event.shiftKey ? 1 : -1;
-      modStat(id, stat, delta);
-    }
-
     function moveChar(id, dest) {
         const f = findChar(id);
         if (!f) return;
         state[f.list] = state[f.list].filter((x) => x.id !== id);
         state[dest].push(f.c);
-        normalizePartyOrder();
         saveState();
         renderCharacterLists();
     }
@@ -3030,7 +2826,6 @@
         if (confirm("Delete character?")) {
           state.muster = state.muster.filter((x) => x.id !== id);
           state.camp = state.camp.filter((x) => x.id !== id);
-          normalizePartyOrder();
           saveState();
           renderCharacterLists();
         }
@@ -3051,12 +2846,9 @@
           document.getElementById("char-player").value = c.player || "";
           document.getElementById("char-desc").value = c.description || "";
           document.getElementById("char-notes").value = c.notes || "";
-          document.getElementById("char-hearts-current").value = c.hearts.current;
-          document.getElementById("char-hearts-max").value = c.hearts.max;
-          document.getElementById("char-iron-current").value = c.iron.current;
-          document.getElementById("char-iron-max").value = c.iron.max;
-          document.getElementById("char-arcana-current").value = c.arcana.current;
-          document.getElementById("char-arcana-max").value = c.arcana.max;
+          document.getElementById("char-hearts").value = c.hearts.max;
+          document.getElementById("char-iron").value = c.iron.max;
+          document.getElementById("char-arcana").value = c.arcana.max;
           document.getElementById("char-leader").checked = c.leader;
           document.getElementById("char-blessed").checked = c.blessed;
           document.getElementById("char-incamp").checked = f.list === "camp";
@@ -3071,12 +2863,9 @@
           document.getElementById("char-player").value = "";
           document.getElementById("char-desc").value = "";
           document.getElementById("char-notes").value = "";
-          document.getElementById("char-hearts-current").value = 7;
-          document.getElementById("char-hearts-max").value = 7;
-          document.getElementById("char-iron-current").value = 0;
-          document.getElementById("char-iron-max").value = 0;
-          document.getElementById("char-arcana-current").value = 0;
-          document.getElementById("char-arcana-max").value = 0;
+          document.getElementById("char-hearts").value = 7;
+          document.getElementById("char-iron").value = 0;
+          document.getElementById("char-arcana").value = 0;
           document.getElementById("char-leader").checked = false;
           document.getElementById("char-blessed").checked = false;
           document.getElementById("char-incamp").checked =
@@ -3089,7 +2878,6 @@
         const id = document.getElementById("char-id").value;
         const leader = document.getElementById("char-leader").checked;
         const inCamp = document.getElementById("char-incamp").checked;
-        const desiredNumber = parseInt(document.getElementById("char-num").value) || 0;
         
         // Unset other leaders if this one is leader
         if (leader) {
@@ -3099,7 +2887,7 @@
 
         const charData = {
             id: id || uuid(),
-          number: desiredNumber,
+          number: parseInt(document.getElementById("char-num").value) || 0,
           name: document.getElementById("char-name").value,
           player: document.getElementById("char-player").value,
           description: document.getElementById("char-desc").value,
@@ -3108,48 +2896,48 @@
           blessed: document.getElementById("char-blessed").checked,
             baggage: false,
           hearts: {
-            max: parseInt(document.getElementById("char-hearts-max").value),
-            current: parseInt(document.getElementById("char-hearts-current").value),
+            max: parseInt(document.getElementById("char-hearts").value),
+            current: 0,
           }, // temp
           iron: {
-            max: parseInt(document.getElementById("char-iron-max").value),
-            current: parseInt(document.getElementById("char-iron-current").value),
+            max: parseInt(document.getElementById("char-iron").value),
+            current: 0,
           },
           arcana: {
-            max: parseInt(document.getElementById("char-arcana-max").value),
-            current: parseInt(document.getElementById("char-arcana-current").value),
+            max: parseInt(document.getElementById("char-arcana").value),
+            current: 0,
           },
         };
 
-        // Clamp current to [0..max], and treat NaN as sensible defaults
-        charData.hearts.max = Math.max(1, charData.hearts.max || 1);
-        charData.iron.max = Math.max(0, charData.iron.max || 0);
-        charData.arcana.max = Math.max(0, charData.arcana.max || 0);
-        charData.hearts.current = Math.max(0, Math.min(charData.hearts.max, charData.hearts.current || 0));
-        charData.iron.current = Math.max(0, Math.min(charData.iron.max, charData.iron.current || 0));
-        charData.arcana.current = Math.max(0, Math.min(charData.arcana.max, charData.arcana.current || 0));
-
-        // Remove from old list if editing
+        // Preserve current values if editing, or set to max if new
         if (id) {
-          const f = findChar(id);
-          if (f) state[f.list] = state[f.list].filter((x) => x.id !== id);
+             const f = findChar(id);
+          if (f) {
+            charData.hearts.current = Math.min(
+              f.c.hearts.current,
+              charData.hearts.max
+            );
+            charData.iron.current = Math.min(
+              f.c.iron.current,
+              charData.iron.max
+            );
+            charData.arcana.current = Math.min(
+              f.c.arcana.current,
+              charData.arcana.max
+            );
+                 
+                 // Remove from old list
+            state[f.list] = state[f.list].filter((x) => x.id !== id);
+             }
         } else {
-          // If new and current wasn't explicitly set, default to max
-          if (!document.getElementById("char-hearts-current").value)
             charData.hearts.current = charData.hearts.max;
-          if (!document.getElementById("char-iron-current").value)
             charData.iron.current = charData.iron.max;
-          if (!document.getElementById("char-arcana-current").value)
             charData.arcana.current = charData.arcana.max;
         }
 
         // Add to new list
         if (inCamp) state.camp.push(charData);
         else state.muster.push(charData);
-
-        // Enforce sequential unique party order numbers 1..n
-        if (desiredNumber > 0) setPartyOrder(charData.id, desiredNumber);
-        else normalizePartyOrder();
 
         saveState();
         closeModal("character-modal");
@@ -3180,16 +2968,10 @@
             const currentIcon = statusIcons[displayStatus] || "⚔️";
             
             return `
-            <div class="threat-card ${displayStatus}" draggable="true" data-other-id="${t.id}" style="border-left: 4px solid var(--accent);">
+            <div class="threat-card ${displayStatus}" style="border-left: 4px solid var(--accent);">
               <div class="threat-header">
-                 <div style="flex:1; min-width:0;">
-                   <div
-                     class="threat-name"
-                     style="cursor: pointer"
-                     onclick="openOtherModal('${t.id}'); closeAllKebabMenus(); event.stopPropagation();"
-                     title="Edit"
-                     draggable="false"
-                   >${
+                 <div style="flex:1;">
+                   <div class="threat-name">${
                      t.name
                    } <span style="font-size:0.8em; margin-left:0.5rem;">${currentIcon}</span></div>
                    <div class="threat-meta">
@@ -3207,121 +2989,40 @@
                        : ""
                    }
                  </div>
-                 <div class="kebab" onclick="event.stopPropagation()">
-                   <button
-                     class="kebab-btn"
-                     onclick="toggleOtherMenu('${t.id}', event)"
-                     title="Actions"
-                     aria-label="Other actions"
-                     draggable="false"
-                   >
-                     ⋮
-                   </button>
-                   <div class="kebab-menu" id="other-menu-${t.id}">
-                     <button class="kebab-item" onclick="updateOtherStatus('${t.id}', 'fighting'); closeAllOtherMenus(); event.stopPropagation();">⚔️ Fighting</button>
-                     <button class="kebab-item" onclick="updateOtherStatus('${t.id}', 'talking'); closeAllOtherMenus(); event.stopPropagation();">💬 Talking</button>
-                     <button class="kebab-item" onclick="updateOtherStatus('${t.id}', 'hit'); closeAllOtherMenus(); event.stopPropagation();">🩸 Hit</button>
-                     <button class="kebab-item" onclick="updateOtherStatus('${t.id}', 'fled'); closeAllOtherMenus(); event.stopPropagation();">💨 Fled</button>
-                     <button class="kebab-item" onclick="updateOtherStatus('${t.id}', 'dead'); closeAllOtherMenus(); event.stopPropagation();">💀 Dead</button>
-                     <div style="height:1px; background: rgba(0,0,0,0.12); margin: 0.25rem 0;"></div>
-                     <button class="kebab-item" onclick="openOtherModal('${t.id}'); closeAllOtherMenus(); event.stopPropagation();">✎ Edit</button>
-                     <button class="kebab-item" onclick="deleteOther('${t.id}'); closeAllOtherMenus(); event.stopPropagation();" style="color: var(--heart-red);">🗑 Delete</button>
-                   </div>
-                 </div>
+              </div>
+              
+              <div class="threat-controls" style="margin-top:0.5rem; border-top:1px solid rgba(0,0,0,0.1); padding-top:0.5rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
+                  <!-- Status Actions -->
+                  <div class="status-actions" style="display:flex; gap:0.2rem;">
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${
+                      t.id
+                    }', 'fighting')" title="Fighting">⚔️</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${
+                      t.id
+                    }', 'talking')" title="Talking">💬</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${
+                      t.id
+                    }', 'hit')" title="Hit">🩸</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${
+                      t.id
+                    }', 'fled')" title="Fled">💨</button>
+                    <button class="btn icon-btn" onclick="updateOtherStatus('${
+                      t.id
+                    }', 'dead')" title="Dead">💀</button>
+                  </div>
+                  
+                  <!-- Edit/Delete -->
+                  <div class="edit-actions" style="display:flex; gap:0.5rem;">
+                      <button onclick="openOtherModal('${t.id}')">Edit</button>
+                      <button onclick="deleteOther('${
+                        t.id
+                      }')" style="color:var(--danger);">Delete</button>
+                  </div>
               </div>
             </div>
             `;
           })
           .join("");
-          
-        initOthersDnD();
-    }
-
-    // --- Others Reorder (Drag & Drop) ---
-    let draggedOtherId = null;
-
-    function initOthersDnD() {
-      const container = document.getElementById("others-list");
-      if (!container) return;
-
-      container.ondragover = (e) => handleOtherDragOver(e, container);
-      container.ondrop = (e) => handleOtherDrop(e, container);
-
-      container.querySelectorAll(".threat-card[draggable='true']").forEach((card) => {
-        card.ondragstart = (e) => {
-          draggedOtherId = card.dataset.otherId;
-          card.classList.add("dragging");
-          try {
-            e.dataTransfer.effectAllowed = "move";
-            e.dataTransfer.setData("text/plain", draggedOtherId);
-          } catch {}
-        };
-        card.ondragend = () => {
-          card.classList.remove("dragging");
-          draggedOtherId = null;
-          applyOthersOrderFromDom(container);
-        };
-      });
-    }
-
-    function handleOtherDragOver(e, container) {
-      e.preventDefault();
-      const dragging = container.querySelector(".threat-card.dragging");
-      if (!dragging) return;
-      const after = getDragAfterElement(container, e.clientY, ".threat-card:not(.dragging)");
-      if (after == null) container.appendChild(dragging);
-      else container.insertBefore(dragging, after);
-    }
-
-    function handleOtherDrop(e, container) {
-      e.preventDefault();
-      applyOthersOrderFromDom(container);
-    }
-
-    function applyOthersOrderFromDom(container) {
-      const ids = [...container.querySelectorAll(".threat-card")].map((c) => c.dataset.otherId);
-      if (!ids.length) return;
-      const byId = new Map(state.others.map((o) => [o.id, o]));
-      const ordered = ids.map((id) => byId.get(id)).filter(Boolean);
-      if (ordered.length !== state.others.length) {
-        // Add any missing (safety)
-        state.others.forEach((o) => {
-          if (!ids.includes(o.id)) ordered.push(o);
-        });
-      }
-      state.others = ordered;
-      saveState();
-      renderOTHERS();
-    }
-
-    function toggleOtherMenu(id, event) {
-      event.stopPropagation();
-      const menu = document.getElementById(`other-menu-${id}`);
-      if (!menu) return;
-
-      const willOpen = !menu.classList.contains("active");
-      closeAllKebabMenus();
-      if (willOpen) menu.classList.add("active");
-    }
-
-    function closeAllKebabMenus() {
-      document
-        .querySelectorAll(".kebab-menu.active")
-        .forEach((m) => m.classList.remove("active"));
-    }
-    
-    // Back-compat name (used by older inline handlers)
-    function closeAllOtherMenus() {
-      closeAllKebabMenus();
-    }
-
-    function toggleCharMenu(id, event) {
-      event.stopPropagation();
-      const menu = document.getElementById(`char-menu-${id}`);
-      if (!menu) return;
-      const willOpen = !menu.classList.contains("active");
-      closeAllKebabMenus();
-      if (willOpen) menu.classList.add("active");
     }
 
     function randomizeReaction() {
