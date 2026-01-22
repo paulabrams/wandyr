@@ -679,6 +679,32 @@
       opacity: 0.55;
       cursor: grabbing;
     }
+    .character-card {
+      display: flex;
+      align-items: stretch;
+      gap: 0.5rem;
+    }
+    .char-drag-handle {
+      width: 22px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      user-select: none;
+      flex: 0 0 auto;
+    }
+    .character-card.dragging .char-drag-handle {
+      cursor: grabbing;
+    }
+    .char-drag-handle:active {
+      transform: translateY(1px);
+    }
+    .char-body {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
 
     .char-header {
         display: flex;
@@ -1240,7 +1266,12 @@
             <div class="counter-label">Turn</div>
             <div class="counter-value" id="count-turn">0</div>
           </div>
-          <div class="counter">
+          <div
+            class="counter"
+            style="cursor: pointer"
+            onclick="resetRoundCount()"
+            title="Click to Reset Round Count"
+          >
             <div class="counter-label">Round</div>
             <div class="counter-value" id="count-round">0</div>
           </div>
@@ -2614,6 +2645,14 @@
       }
     }
 
+    function resetRoundCount() {
+      if (confirm("Reset Round Count to 0?")) {
+        state.session.round = 0;
+        saveState();
+        renderTimePanel();
+      }
+    }
+
     function advanceTurn() {
       state.session.turn++;
       state.session.round = 0;
@@ -2847,7 +2886,9 @@
             const listName = context === "camp" ? "camp" : "muster";
 
             return `
-            <div class="${cardClass}" draggable="true" data-char-id="${c.id}" data-list="${listName}">
+            <div class="${cardClass}" data-char-id="${c.id}" data-list="${listName}">
+                <div class="char-drag-handle" draggable="true" data-char-id="${c.id}" title="Drag to reorder">≡</div>
+                <div class="char-body">
                 <div class="char-header">
                     <div class="char-name">
                         <span class="char-number">${c.number}</span>
@@ -2906,6 +2947,7 @@
                        : ""
                    }
                 </div>
+                </div>
             </div>
             `;
           })
@@ -2932,18 +2974,22 @@
         el.ondrop = (e) => handleCharDrop(e, el, containers);
       });
 
-      document.querySelectorAll(".character-card[draggable='true']").forEach((card) => {
-        card.ondragstart = (e) => {
-          draggedCharId = card.dataset.charId;
-          card.classList.add("dragging");
+      let draggedCharCardEl = null;
+
+      document.querySelectorAll(".char-drag-handle[draggable='true']").forEach((handle) => {
+        handle.ondragstart = (e) => {
+          draggedCharId = handle.dataset.charId;
+          draggedCharCardEl = handle.closest(".character-card");
+          if (draggedCharCardEl) draggedCharCardEl.classList.add("dragging");
           try {
             e.dataTransfer.effectAllowed = "move";
             e.dataTransfer.setData("text/plain", draggedCharId);
           } catch {}
         };
-        card.ondragend = () => {
-          card.classList.remove("dragging");
+        handle.ondragend = () => {
+          if (draggedCharCardEl) draggedCharCardEl.classList.remove("dragging");
           draggedCharId = null;
+          draggedCharCardEl = null;
           // After a drag completes (drop or cancel), ensure state reflects DOM if it changed.
           // This is safe even if nothing moved.
           applyPartyOrderFromDom(containers);

@@ -289,7 +289,7 @@ Layout:
     - Click the stat value to **decrement** (e.g., Hearts -1).
     - Shift-click the stat value to **increment**.
   - **Reorder (Drag & Drop)**:
-    - Characters can be dragged to reorder the list.
+    - Characters can be dragged to reorder the list via a **drag handle** on the **left** of the card (matches Others).
     - Dropping a character updates **party order numbers** so the displayed order becomes the new order.
     - **Uniqueness**: party order numbers are always **1–n** with **no duplicates**.
     - **Normalization triggers**: applied on drag/drop, manual number edits, and when adding/removing characters from the Muster.
@@ -404,6 +404,9 @@ Buttons: Cancel, Save
 | + Turn | Reset to 0 | +1 | Roll |
 | + Round | +1 | — | Roll |
 | Roll Insight | — | — | Roll |
+
+- Clicking the **Turn** counter offers to reset it to 0.
+- Clicking the **Round** counter offers to reset it to 0.
 
 ### Insight Values
 
