@@ -1055,7 +1055,7 @@ The Guide determines the order in which players and foes take their actions. You
 
 ### Move
 
-You can stand up OR move 40 feet (20 feet with Baggage). Each impediment (e.g. readying weapons, bad terrain, darkness) cuts this in half.
+You can stand up OR move 20 feet. You can possibly charge double this distance if not readying weapons, drawing arrows, carrying Baggage, etc. Bad terrain or darkness can impede movement.
 
 ### Attack
 
