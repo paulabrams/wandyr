@@ -1,10 +1,7 @@
-![Wåndyr cover image][image1]
 
 # Wåndyr
 
 ## an Adventure Game
-
-![Wåndyr title image][image2]
 
 ### Wåndyr, an Adventure Game
 
@@ -15,8 +12,8 @@ All rights reserved. No part of this book may be reproduced or transmitted in an
 Author: Paul Abrams  
 Illustrations: public domain
 
-Version: 1.2  
-Date: Jan 17, 2026
+Version: 1.2.7  
+Date: Jan 27, 2026
 
 About the Name: Wåndyr is “wander” as in travel about, but also “wonder” as in finding wondrous things in your travels, and maybe bringing them back.
 
@@ -25,8 +22,6 @@ About the Name: Wåndyr is “wander” as in travel about, but also “wonder�
 # Welcome to Wåndyr\! {#welcome-to-wåndyr!}
 
 **Wåndyr** is an adventure game about a band of adventurers wandering through a pulp fantasy world. The focus is on exploration, following rumors, discovering places, treasure hunting, camping, singing, storytelling, cleverly overcoming impossible odds, naming weapons, and coming back alive with tales to tell. In the spirit of The Hobbit, Wåndyr celebrates the journey of going there and back again.
-
-![Oracle illustration][image3]
 
 ### Contents
 
@@ -94,8 +89,6 @@ Create three characters, each with 2 Traits and 2 Skills:
 **Memneth**: fiery, energetic | elementale, staff  
 **Bel**: friendly, bard | Canting, lute
 
-![Character creation illustration][image4]
-
 #### 3 \- Muster a Character
 
 Roll 2d6 Hearts for each of your three characters to see how they are feeling today, then choose one to "Muster" (play). From now on, you play as your mustered character.
@@ -112,8 +105,6 @@ The Guide will provide you with a few "hand me down" items such as weapons, armo
 
 The Guide will narrate the start of your journey and provide a landmark or general directions so the path forward is clear. You play your mustered character; the Guide handles everything else.
 
-![Gameplay illustration][image5]
-
 ## Characters {#characters}
 
 Each character starts with an alias, two Traits and two Skills. The Traits are how you play the character, and the Skills are what the character knows how to do.
@@ -125,8 +116,6 @@ For example, "Rook: agile cunning | knife, (lockpicks)" goes by the alias "Rook"
 A Trait is a keyword that describes how your character is played. *This is perhaps more important than it sounds*. This is not about what your character knows or can do, but more about how they behave. For example, a character with the "bard" Trait *acts* like a musician or skald, while Skills determine what they know how to do. You can think of these as "soft skills" that complement their "hard” Skills.
 
 **Guidelines:** Each Trait must be a single word, or common compound word (e.g. "rat-catcher", "horse-thief"). Traits can describe physical appearance, personality, quirks, habits, customs, approach to solving problems, etc. Traits can refer to a culture, homeland, or ancestry (human, elf, dwarf, etc.) or whatever helps you paint a picture.
-
-![][image6]
 
 ### Skills
 
@@ -291,7 +280,6 @@ If you have a bag (sack, rucksack, haversack, etc.) you can carry a few items be
 Dropping Baggage takes 1 Round (10 sec), and accessing items inside takes 1 Turn (10 min).
 
 You also have “Baggage” if your hands are occupied with something not in your item slots. *Consider picking up something you find along the way—a shield, a torch, a stout branch.*  
-![Camping illustration][image7]
 
 ##### Starter Item Slots Examples
 
@@ -380,8 +368,6 @@ If any die rolls a 6 or a 1, add a twist\! 6s are Sweet (good surprises) and 1s 
 
 If your Double Sweet question is ambitious—a disarm, a mighty throw—use Attempting the Extraordinary. If you succeed with Sweet, you may learn it as a Knack (3 XP).​​​​​​​​​​​​​​​​
 
-### ![Oracle illustration][image8]
-
 ###
 
 ### Who Asks?
@@ -430,8 +416,6 @@ If you need more than yes/no, the Oracle can play "20 questions". The Guide shou
 
 *Guide Tip: Ask an AI to generate a table, then proof it, and then have a player roll on it.*
 
-![][image9]
-
 ## Attempting the Extraordinary {#attempting-the-extraordinary}
 
 When you attempt something beyond ordinary ability—a feat of heroism, a spell, an invocation—describe what you do. The Guide assigns a Level; you pay that Level in Hearts; then ask the Oracle if you succeed.
@@ -461,8 +445,6 @@ Morale grants extra Hearts and opportunities to replenish them.
 **Comforts:** Comforts are finer provisions—cold chicken and pickles, seed-cakes, bacon and eggs, a good cheese, pipe and leaf, or a proper tea. Buy \+1 Comforts in town (10 gp each). Exquisite \+2 Comforts are rare gifts: "Beorn's honey" or "elven waybread".
 
 **Host:** If you keep Comforts or hospitality gear in Item Slots from Muster, you are a "host." You can offer refreshment as an Action; each character who partakes (everyone needs to spend an Action) regains 1 Heart. Total Hearts per Muster limited to Item Slots plus Recipes.
-
-![Time illustration][image10]
 
 ### Music
 
@@ -592,7 +574,6 @@ Wåndyr is full of magic, and much of the game is about exploring and meddling w
 All magic in Wåndyr involves *True Names*, either written or spoken as words of power.
 
 Magic items and magical objects bear mystical inscriptions: sharp dwarven runes, flowing elven script, or shifting arcane glyphs, only decipherable by *magic-users*. If you have the correct magic school Skill you can read these words, else, they are just chicken scratch.  
-![Magic items illustration][image11]
 
 ## Magic-Users {#magic-users}
 
@@ -637,7 +618,7 @@ Sweet/Spicy add a twist.
 
 Your caster level is your level of Alignment with the magic school of the spell. This determines your level of magic literacy and the maximum spell level you can attempt. For example, if your Umbrakala level is 3 then you can attempt to cast Umbrakala spells of 3rd level or lower; you cannot even attempt a 4th level spell.
 
-*Casting a spell from a spellbook or Arcana in which you have Skill is made with a \+1 caster level bonus.*
+*Casting a spell from a spellbook or Arcana is made with a \+1 caster level bonus, IF you have Skill in that kind of spellbook or Arcana item. (Unusual spellbooks with multiple spells are their own item type.)*
 
 ### Learning Spells
 
@@ -654,8 +635,6 @@ Arcana can contain spells written in stylized words of power, and if so serve as
 #### Arcana Hearts
 
 If you are a magic-user and muster with Arcana, you gain 1 “Arcana Heart” per Arcana item, up to your Alignment across all Magic Schools. Requires a Skill in the Arcana item (e.g. wand, orb, etc). Arcana Hearts are used for casting spells and against hostile magic.
-
-![Spell lists illustration][image12]
 
 ##### Arcana vs Magic Items
 
@@ -947,8 +926,6 @@ Death, spirits, and decay. The forbidden magic of the Avathars, inscribed in blo
 **6.5** *Wizard Mark* \- death runes  
 **6.6** *Perfect Death* \- ultimate end
 
-![][image13]
-
 ####
 
 ### Canting
@@ -1017,7 +994,7 @@ Call the True Name *thrice* and state your request. You lose d6 Hearts. Next, as
 
 The Guide determines what happens next, following existing Lore, your Alignment with the being, context, and asking the Oracle various questions. The Guide sets an equivalent spell level for the effect up to the Hearts lost, and can limit Hearts lost for simple requests.
 
-*The workings of otherworldly beings are often mysterious. They may interpret your request from a different perspective and sense of time.*![][image14]
+*The workings of otherworldly beings are often mysterious. They may interpret your request from a different perspective and sense of time.*
 
 #### Shaping Spirits
 
@@ -1043,47 +1020,41 @@ Sentient items are temperamental; when you first attempt to use one, ask the Ora
 
 If you carry a sentient item, your character grows in *Alignment* and may discover deeper mysteries. You should take Traits that reflect this growing attachment. For example, you might take a Trait such as "Wielder of Duskbringer". It's petty, but they *hate* anyone who offends their fragile egos, such as carrying them after being rejected, refusing to follow their agenda, abandoning, or "cheating" on them with a rival item.
 
-![Magic illustration][image15]
-
 # Fighting {#fighting}
 
-In each Round, you can Move and Attack (or take another action).
-
-### Initiative
-
-The Guide determines the order in which players and foes take their actions. You are likely to be called on earlier if you are on the front line.
+A “combat round" is 10 seconds—time to take one action. The Guide determines the order in which you and others take actions. You may be called on earlier if you are on the front line.
 
 ### Move
 
-You can stand up OR move 20 feet. You can possibly charge double this distance if not readying weapons, drawing arrows, carrying Baggage, etc. Bad terrain or darkness can impede movement.
+You can stand up OR move up to 40 feet. Moving more than 20 feet (“sprinting”) requires your full attention—no readying weapons, drawing arrows, Baggage, etc.
 
 ### Attack
 
-Ask the Oracle if you "hit"; this deals d6 Hearts. More lethal weapons may have a damage bonus, e.g. "greatsword \+1".
+Ask the Oracle if you "hit"; this deals d6 Hearts. Some may add a bonus, e.g. "greatsword \+1".
 
-**Two-Handed**: A weapon optimized for two hands rolls 2d6, keep best. If used one-handed, keep worst.
+**Two-Handed**: A melee weapon optimized for two hands rolls 2d6, keep best, but if used one-handed, keep the worst.
 
 ### Defend
 
-When you are attacked or otherwise endangered, ask the Oracle if you avoid getting "hit". If you are hit, the Guide rolls Hearts lost (often d6).
+When you are attacked or endangered, ask the Oracle if you avoid getting "hit". If you are hit, the Guide rolls Hearts lost (often d6).
 
-Reduce melee damage by 1 Heart if you melee attack or parry that foe this round.
+Reduce damage by 1 Heart if you melee attack that foe this round.
 
-Armor and shields give 1 "iron" Heart per item slot, usable only against weapons. More protective items may have a bonus, such as "shield \+1".
+Armor and shields give 1 "iron" Heart per item slot, usable against weapons. Some add a bonus, e.g. "shield \+1".
 
 #### At the Same Time
 
-If you are targeted by an action (such as an attack or spell), you may take your action at the same time. Both actions resolve together unless one has “right of way”.
+When you are targeted by an action (such as an attack or spell), you may take your action “at the same time”. Both actions resolve together unless one has “right of way”. The Guide decides, but when in doubt, it’s simultaneous.
 
-The Guide decides “right of way”. A ready weapon beats an unready one. Among ready weapons: melee beats missiles; when approaching, better reach (by item slots) wins; in close quarters (under 10 feet per person), smaller wins. The need to move or draw can break ties. When in doubt, it’s simultaneous.
+**Weapons**: A ready weapon (blade in hand, aimed bow) has right of way over everything else. Drawing, reloading, or readying is “unready”.
+
+**Measure**: When closing distance, the largest weapon (by item slots) wins. In close quarters (under 10 feet per person) such as a narrow tunnel or small room, the smallest melee weapon has right of way.
+
+*Example: A crossbow (5) beats a sword (2) when closing. In melee, reloading is unready—sword wins. A sword (2) beats a dagger (1) when closing and in melee, but in close quarters the dagger wins.*
 
 ### Area of Effect
 
-If you and your companions are attacked by dragonbreath or some other area-of-effect attack, each of you will need to roll a defense.
-
-## If you attack your enemies with an area-of-effect attack, such as a *fireball* spell or rockslide, you will need to roll for *each* enemy (the Guide may group similar enemies)
-
-##
+If you and your companions are attacked by dragonbreath or some other area-of-effect attack, each must roll a defense. If you attack your enemies with an area-of-effect attack, such as a *fireball* spell or rockslide, you will need to roll for *each* enemy (the Guide may group similar enemies).
 
 ## Monsters
 
@@ -1103,8 +1074,7 @@ Each monster (or trap, etc.) has a **Level** comparable to **Alignment Level**. 
 
 For more detail, the Guide can use OSR monsters or wing it as follows.  
 **Pack/tribal monsters** have d6 Hearts and deal d6 damage per hit; leaders are tougher.  
-**A solitary “apex predator” monster** has 2d6 or 3d6 Hearts per Level, multiple attacks, plus a deadly attack of 2d6 or 3d6, or d6 Hearts per Round for Level Turns (for paralysis, poison, petrification, etc).  
-![Monsters illustration][image16]
+**A solitary “apex predator” monster** has 2d6 or 3d6 Hearts per Level, multiple attacks, plus a deadly attack of 2d6 or 3d6, or d6 Hearts per Round for Level Turns (for paralysis, poison, petrification, etc).
 
 ## Death {#death}
 
@@ -1114,7 +1084,6 @@ Characters and monsters die at 0 Hearts. If you reach 0 Hearts, choose whether y
 
 **Onscreen:** Describe one final heroic action on the next round; ask the Oracle if the action succeeds and then go Offscreen. *Heroic feats require Sweet.* *Spicy indicates immediate, final death*
 
-###
 
 ### Welcome to Wåndyr\
 
@@ -1127,7 +1096,6 @@ The Guide describes the world and serves to answer your questions. The Guide con
 The local area remains wide open and undefined, even if some aspects of the wider world are known (or even part of a well-defined setting). Wander to discover the world together.
 
 The Guide does not prepare a predefined story beforehand. Instead, the Guide uses the Oracle and random tables to determine what happens. Each new discovery is a surprise to everyone and adds to the growing lore of your world as you wander together.  
-![Oracle illustration][image3]
 
 #### The Oracle
 

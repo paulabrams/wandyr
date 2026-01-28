@@ -14,6 +14,54 @@ However, if you have a creative idea of your own then feel free to discuss it wi
 
 ---
 
+## Magic Schools and Ancestry
+
+Magic in the Dragon Isles is deeply tied to specific ancestries and cultures. Each magic school has its own language, writing system, and practitioners who have developed these arts over aeons. Understanding these connections helps explain why certain characters naturally gravitate toward particular forms of magic, and why magic items bear the inscriptions of specific peoples.
+
+### Vitae (Life Magic)
+
+**Ancestry:** Aethiiri (Elves)  
+**Writing:** Living ink that grows and changes like vines  
+**Practitioners:** The hallow channel beneficial energies, promote growth, and keep nature's balance. Elven magic is written in flowing script that seems alive, with runes that shift and grow like living plants. This magic is sacred and tied to the light of Lunara and the natural world.
+
+### Elementale (Elemental Magic)
+
+**Ancestry:** Baal  
+**Writing:** Burning runes carved in stone  
+**Practitioners:** The Baal inscribe dragon magic in burning runes carved in stone. This is the magic of primal forces, elements, and weather—the power of dragons made manifest. Practitioners control weather, create barriers of ice and fire, command gravity, and shape elements.
+
+### Thaumaturgy (Engineering Magic)
+
+**Ancestry:** Dwür (Dwarves)  
+**Writing:** Foundational runes that command reality  
+**Practitioners:** The engineering magic of the Dwur, written in foundational runes that command reality. This is the magic of physical laws, mechanisms, and force. Practitioners control objects, manipulate energy, bind powers, and impose their will upon matter. Dwur use these runes in their guns, golems, and great works of engineering.
+
+### Illusione (Illusion Magic)
+
+**Ancestry:** Belerions (Southmarens)  
+**Writing:** Phantasmal scripts that deceive the senses  
+**Practitioners:** The subtle magic of the Belerions, woven from phantasmal scripts that deceive the senses. Illusionists create illusions, alter memories, influence minds, and bend perceived reality. This magic is favored by the sophisticated and artistic Southmaren culture.
+
+### Umbrakala (Shadow Magic)
+
+**Ancestry:** Alu  
+**Writing:** Written in darkness and void  
+**Practitioners:** The secret magic of the Alu, written in darkness and void. Practitioners create Kalla gates, walk between shadows, craft dimensional spaces, and traverse the boundaries between realms. This is the magic of shadows, thresholds, and dimensional paths—the domain of the shadow warriors who hunt demons.
+
+### Necromantia (Death Magic)
+
+**Ancestry:** Avathars  
+**Writing:** Inscribed in blood and bone  
+**Practitioners:** The forbidden magic of the Avathars, inscribed in blood and bone. Practitioners bind spirits, animate dead, drain life force, and manipulate the boundary between life and death. This is the unholy magic of the demi-vampires, feared and hunted across the Dragon Isles.
+
+### Canting (Thievery Magic)
+
+**Ancestry:** Southmarens (especially Aquilans)  
+**Writing:** Flash papers and brotherhood marks  
+**Practitioners:** The art of deception and manipulation, spoken in Thieves' Cant, the secret language of thieves. This magic is written in flash papers and brotherhood marks. If you can't flash the patter, best stay out of the Darkmans. This is the magic of the City of Thieves and the Southmaren underworld.
+
+---
+
 ## Northmarens
 
 Northmarens are widely varied peoples from river and sea-side kingdoms on the northwestern shores of the Dragon Sea, such as Alglondor, Dorthonien, and Lyonesse. They are young and impetuous and eager for glory in battle, conquest, exploration and trade, however they are not as advanced as their smaller southern cousins, the Southmarens. They are divided into countless kingdoms and free cities, such as Alglondor, Dorthonien, Belerion, and Lyonesse, but stand united against the threat of bloodthirsty Nan-Avathar. They are allies with Eldar such as of Elves, Belerions and Dwür, and plagued by foes such as the Avathars and Illythrhi.
