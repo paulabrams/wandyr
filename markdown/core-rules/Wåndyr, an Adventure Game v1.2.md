@@ -259,6 +259,8 @@ Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skill
 **6.5**  Bear: strong, warrior | maul, bearskin cloak
 **6.6**  Thalia: keen-eyed, Elf | bow, sword
 
+##
+
 ## The Muster {#the-muster}
 
 *Ok boys, check your kit, check your weapons, it's today. You get a pint and a chaser, no more. Let's go*
@@ -274,7 +276,7 @@ Most items use one slot; larger items use multiple slots. These are your “hot 
 
 #### Baggage
 
-If you have a bag (sack, rucksack, haversack, etc.) you can carry a few items beyond your 10 Item Slots. This counts as "Baggage”, which limits movement and may prevent safely swimming, climbing, leaping, etc.
+If you have a bag (sack, rucksack, haversack, etc.) you can carry a few items beyond your 10 Item Slots. This counts as "Baggage”, which is tiring and limits swimming, scrambling, climbing, leaping, etc.
 
 Dropping Baggage takes 1 Round (10 sec), and accessing items inside takes 1 Turn (10 min).
 
@@ -282,16 +284,16 @@ You also have “Baggage” if your hands are occupied with something not in you
 
 ##### Starter Item Slots Examples
 
-**Necessaries:** coin purse 1, handkerchief 1, water skin 1, lockpicks 1, chalk 1, small mirror 1, sack 1, broken blade 1, rope (50’) 1  
-**Weapon:** dagger 1, walking stick 2, sword 2, battle ax 3, longsword 3, staff 3, two-handed sword 4, polearm 4, long spear 5  
-**Armor:** gauntlets 1, open helm 1, gambeson 2, closed helm 2, greaves 2, coat of plates 3, brigandine 4, full scavenged kit 5  
-**Shield:** pot lid 1, buckler 2, heater 3, round shield 4, tower 5  
-**Bows:** arrow quiver 1, short bow 2, longbow 3, war bow 4, crossbow 5  
-**Clothing:** tunic 1, hose 1, gloves 1, doublet 1, colorful hooded cloak 1, traveling coat 2, winter furs 4  
+**Necessaries:** coin purse 1, knife 1, handkerchief 1, water skin 1, chalk 1, lockpicks 1, pen & ink 1, small mirror 1, sack 1, rope 1, umbrella 1  
+**Weapon:** dagger 1, sword 2, walking stick 2, ax 2, battle ax 3, staff 3, longsword 3, spear 3+, two-handed sword 4, polearm 4+  
+**Ranged**: sling 1, arrow quiver 2, bow 3, crossbow 3, longbow 4+  
+**Armor:** gauntlets 1, kettle hat 1, greaves 1, helm 2, gambeson 2, coat of plates 3, scavenged kit 4+  
+**Shield:** pot lid 1, buckler 2, heater 3, round shield 4, tower 4+  
+**Clothing:** tunic 1, hose 1, gloves 1, doublet 1, colorful hooded cloak 1, waistcoat 1, traveling coat 2
 **Light:** tinderbox 1, candles 1, torch 1, rushlight 1, lantern 1, oil flask 1  
-**Musical Instrument:** voice 1, pipe 1, fiddle 2, lute 3, drum 4, harp 5  
-**Hospitality:** provisions 1, cleaver 1, skillet 1, tea kettle 1, spice pouch 1, pipe & leaf 1, cookpot 2, wine & cups 2, mess kit 3  
-**Animal:** cat 1, songbird 1, hound 2, pig 2, pony 3, horse 4, donkey 5
+**Music:** voice 1, pipe 1, horn 1, bells 1, fiddle 2, drum 2+, lute 3, lap harp 3  
+**Hospitality:** provisions 1, cleaver 1, skillet 1, spice bottle 1, tea & kettle 1, pipe & leaf 1, blanket 1, cookpot 2, wine & cups 2, mess kit 3  
+**Animal:** songbird 1, hound 2, pony 3
 
 ## Rumors
 
@@ -989,7 +991,7 @@ Call the True Name *thrice* and state your request. You lose d6 Hearts. Next, as
 
 The Guide determines what happens next, following existing Lore, your Alignment with the being, context, and asking the Oracle various questions. The Guide sets an equivalent spell level for the effect up to the Hearts lost, and can limit Hearts lost for simple requests.
 
-*The workings of otherworldly beings are often mysterious. They may interpret your request from a different perspective and sense of time.*
+*The workings of otherworldly beings are often mysterious. They may interpret your request from a different perspective and sense of time.*  
 
 #### Shaping Spirits
 
@@ -1021,9 +1023,9 @@ A “combat round" is 1 minute—time to take one action. The Guide determines t
 
 ### Attack
 
-Ask the Oracle if you "hit"; this deals d6 Hearts. Some may add a bonus, e.g. "greatsword \+1".
+Ask the Oracle if you "hit"; a weapon deals d6 Hearts. Some may add a bonus, e.g. "greatsword \+1". *Improvised \-2; unarmed \-4.*
 
-**Two-Handed**: A melee weapon optimized for two hands rolls 2d6, keep best, but if used one-handed, keep the worst.
+**Two-Handed**: A melee weapon optimized for two handed use rolls 2d6, keep best, but if used one-handed, keep the worst.
 
 ### Defend
 
@@ -1045,13 +1047,14 @@ The Guide will decide who is faster if it comes to a chase or contested movement
 
 #### At the Same Time
 
-When you have the potential to be affected by an action (e.g. an attack, change in position, or nearby spell), you may take your action “at the same time”. Both actions resolve together unless one has “right of way”. The Guide decides, but when in doubt, it’s simultaneous.
+When you have the potential to be affected by an action (e.g. an attack, changing position, readying a weapon, a spell, etc), you may take your action “at the same time”.
+The actions are resolved together unless one has “right of way”. *When in doubt, it’s simultaneous.*
 
-**Weapons**: A ready weapon (blade in hand, aimed bow) has right of way over everything else. Drawing, reloading, or readying is “unready”.
+**Weapons**: A ready weapon (drawn blade in hand, aimed bow) has right of way over everything else. *A fired bow is unready until reloaded.*
 
-**Measure**: When closing distance, the largest weapon (by item slots) wins. In “close quarters” such as a small room or tunnel, the smallest melee weapon has right of way.
+**Measure**: When closing distance, the largest weapon (by item slots) wins. In “close quarters” such as a small room or tunnel, the smallest ready weapon has right of way.
 
-*Example: A crossbow (5) beats a sword (2) when closing. In melee, reloading is unready—sword wins. A sword (2) beats a dagger (1) when closing and in melee, but in close quarters the dagger wins.*
+*A bow (4) beats a sword (2) when closing. Once fired, the bow is unready—sword wins. A sword (2) and dagger (1) are "at the same time" unless closing (sword wins) or close quarters (dagger wins).*
 
 ### Area of Effect
 
