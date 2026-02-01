@@ -1,4 +1,3 @@
-
 # Wåndyr
 
 ## an Adventure Game
@@ -12,8 +11,8 @@ All rights reserved. No part of this book may be reproduced or transmitted in an
 Author: Paul Abrams  
 Illustrations: public domain
 
-Version: 1.2.7  
-Date: Jan 27, 2026
+Version: 1.2.9  
+Date: Jan 31, 2026
 
 About the Name: Wåndyr is “wander” as in travel about, but also “wonder” as in finding wondrous things in your travels, and maybe bringing them back.
 
@@ -368,8 +367,6 @@ If any die rolls a 6 or a 1, add a twist\! 6s are Sweet (good surprises) and 1s 
 
 If your Double Sweet question is ambitious—a disarm, a mighty throw—use Attempting the Extraordinary. If you succeed with Sweet, you may learn it as a Knack (3 XP).​​​​​​​​​​​​​​​​
 
-###
-
 ### Who Asks?
 
 Your character can try anything\! When you say your character attempts a direct action, then you roll to ask the Oracle if it happens. Otherwise, the Guide rolls, especially for unestablished facts:
@@ -557,7 +554,7 @@ Much of the game is a loose conversation between players and the Guide. When the
 
 **Turns**: A “Turn” is 10 minutes—time to search a room, loot a body, move the group along, etc.
 
-**Combat Rounds**: A “Round” is 10 seconds—time for one action.
+**Combat Rounds**: A “Round” is up to 1 minute—time for one action.
 
 **Adventures**: Adventures are trouble that finds you. The Guide asks the Oracle if you avoid adventures:
 
@@ -926,8 +923,6 @@ Death, spirits, and decay. The forbidden magic of the Avathars, inscribed in blo
 **6.5** *Wizard Mark* \- death runes  
 **6.6** *Perfect Death* \- ultimate end
 
-####
-
 ### Canting
 
 The art of deception and manipulation. Spoken in Thieves' Cant, the secret language of thieves, written in flash papers and brotherhood marks. If you can't flash the patter, best stay out of the Darkmans.
@@ -1022,11 +1017,7 @@ If you carry a sentient item, your character grows in *Alignment* and may discov
 
 # Fighting {#fighting}
 
-A “combat round" is 10 seconds—time to take one action. The Guide determines the order in which you and others take actions. You may be called on earlier if you are on the front line.
-
-### Move
-
-You can stand up OR move up to 40 feet. Moving more than 20 feet (“sprinting”) requires your full attention—no readying weapons, drawing arrows, Baggage, etc.
+A “combat round" is 1 minute—time to take one action. The Guide determines the order in which you and others take actions. You may be called on earlier if on the front line.
 
 ### Attack
 
@@ -1040,25 +1031,43 @@ When you are attacked or endangered, ask the Oracle if you avoid getting "hit". 
 
 Reduce damage by 1 Heart if you melee attack that foe this round.
 
-Armor and shields give 1 "iron" Heart per item slot, usable against weapons. Some add a bonus, e.g. "shield \+1".
+**Iron Hearts**: Armor and shields give 1 "iron" Heart per item slot, usable against weapons. Some add a bonus, e.g. "shield \+1".
+
+### Changing Position
+
+You can change your “position” along with your action: e.g. you can “charge to attack”, “take cover”, “withdraw”, etc.
+
+You should be able to gain your desired position and still take your action this round, barring some kind of obstacle in the way.
+
+The Guide will decide who is faster if it comes to a chase or contested movement. Drawing/reloading a weapon, carrying Baggage slows you down considerably.
+
+*Wåndyr plays in “theatre of the mind” style, not a tactical sim.*
 
 #### At the Same Time
 
-When you are targeted by an action (such as an attack or spell), you may take your action “at the same time”. Both actions resolve together unless one has “right of way”. The Guide decides, but when in doubt, it’s simultaneous.
+When you have the potential to be affected by an action (e.g. an attack, change in position, or nearby spell), you may take your action “at the same time”. Both actions resolve together unless one has “right of way”. The Guide decides, but when in doubt, it’s simultaneous.
 
 **Weapons**: A ready weapon (blade in hand, aimed bow) has right of way over everything else. Drawing, reloading, or readying is “unready”.
 
-**Measure**: When closing distance, the largest weapon (by item slots) wins. In close quarters (under 10 feet per person) such as a narrow tunnel or small room, the smallest melee weapon has right of way.
+**Measure**: When closing distance, the largest weapon (by item slots) wins. In “close quarters” such as a small room or tunnel, the smallest melee weapon has right of way.
 
 *Example: A crossbow (5) beats a sword (2) when closing. In melee, reloading is unready—sword wins. A sword (2) beats a dagger (1) when closing and in melee, but in close quarters the dagger wins.*
 
 ### Area of Effect
 
-If you and your companions are attacked by dragonbreath or some other area-of-effect attack, each must roll a defense. If you attack your enemies with an area-of-effect attack, such as a *fireball* spell or rockslide, you will need to roll for *each* enemy (the Guide may group similar enemies).
+If you are part of a group targeted by dragonbreath or some other area-of-effect attack, you must roll your defense independently from the group. If you target others with an area-of-effect, you must roll for *each* enemy (or group similar enemies).
+
+## Death {#death}
+
+Characters and monsters die at 0 Hearts. If you reach 0 Hearts, choose whether you die "offscreen" or "onscreen".
+
+**Offscreen:** We cut away as your character drops; bring in another character next round. Offscreen deaths are uncertain. At any future Muster, you may let the character pass on, or let them make an Invocation to return. On **Double Spicy** (double 1s) they are dead with no uncertainty.
+
+**Onscreen:** Describe one final heroic action on the next round; ask the Oracle if the action succeeds and then go Offscreen. *Heroic feats require Sweet.* *Spicy indicates immediate, final death*
 
 ## Monsters
 
-Each monster (or trap, etc.) has a **Level** comparable to **Alignment Level**. The Guide sets the Oracle to “hard” if this is higher than Alignment Level; or “easy” if lower. Consider using the party leader's level when working together.
+Each monster (or trap, etc.) has a **Level** comparable to **Alignment Level**. The Guide can set the Oracle to “hard” if this is higher than Alignment Level; or “easy” if lower, and may use the party leader's level when working together.
 
 **Lvl 0:** giant rat, vermin, goblin  
 **Lvl 1:** orc, skeleton, deathsquito  
@@ -1073,17 +1082,9 @@ Each monster (or trap, etc.) has a **Level** comparable to **Alignment Level**. 
 **Lvl 10:** golem, dragon
 
 For more detail, the Guide can use OSR monsters or wing it as follows.  
-**Pack/tribal monsters** have d6 Hearts and deal d6 damage per hit; leaders are tougher.  
+**Pack/tribal monsters** have d6 Hearts and deal d6 damage per hit; leaders are tougher.
+
 **A solitary “apex predator” monster** has 2d6 or 3d6 Hearts per Level, multiple attacks, plus a deadly attack of 2d6 or 3d6, or d6 Hearts per Round for Level Turns (for paralysis, poison, petrification, etc).
-
-## Death {#death}
-
-Characters and monsters die at 0 Hearts. If you reach 0 Hearts, choose whether you die "offscreen" or "onscreen".
-
-**Offscreen:** We cut away as your character drops; bring in another character next round. Offscreen deaths are uncertain. At any future Muster, you may let the character pass on, or let them make an Invocation to return. On **Double Spicy** (double 1s) they are dead with no uncertainty.
-
-**Onscreen:** Describe one final heroic action on the next round; ask the Oracle if the action succeeds and then go Offscreen. *Heroic feats require Sweet.* *Spicy indicates immediate, final death*
-
 
 ### Welcome to Wåndyr\
 
