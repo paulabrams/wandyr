@@ -259,8 +259,6 @@ Choose or roll d66, or mix n’ match parts. The format is Alias: traits | skill
 **6.5**  Bear: strong, warrior | maul, bearskin cloak
 **6.6**  Thalia: keen-eyed, Elf | bow, sword
 
-##
-
 ## The Muster {#the-muster}
 
 *Ok boys, check your kit, check your weapons, it's today. You get a pint and a chaser, no more. Let's go*
@@ -278,9 +276,9 @@ Most items use one slot; larger items use multiple slots. These are your “hot 
 
 If you have a bag (sack, rucksack, haversack, etc.) you can carry a few items beyond your 10 Item Slots. This counts as "Baggage”, which is tiring and limits swimming, scrambling, climbing, leaping, etc.
 
-Dropping Baggage takes 1 Round (10 sec), and accessing items inside takes 1 Turn (10 min).
+Getting an item from Baggage takes 3 actions: drop Baggage, access item, pick up Baggage.
 
-You also have “Baggage” if your hands are occupied with something not in your item slots. *Consider picking up something you find along the way—a shield, a torch, a stout branch.*  
+You also have “Baggage” if your hands are occupied with something not in your 10 Item Slots. *Consider picking up something you find along the way—a shield, a torch, a stout branch.*
 
 ##### Starter Item Slots Examples
 
