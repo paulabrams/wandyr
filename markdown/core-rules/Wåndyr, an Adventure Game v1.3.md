@@ -993,36 +993,33 @@ The art of deception and manipulation. Spoken in Thieves' Cant, the secret langu
 **6.5** *Jarkman's Gift* \- living forgeries  
 **6.6** *Prince of Thieves* \- inspire loyalty
 
-##
-
-## Invocations {#invocations}
+## Invocations
 
 You can make an Invocation to an *otherworldly being* by loudly and formally calling their True Name *thrice* and making a request.
 
-#### Lore
+### Lore
 
 Look for True Names in mythic places, written on runestones, tombs, or magic amulets. Randomly generate each name; *beings have many names*. You might want to ask the Oracle “have I heard this name before?”, “are they aligned with Law?”, etc. All this adds to the known Lore of the being.
 
 Each being has a secret random table of Traits reflecting their nature—kept by the Guide and revealed only through Invocations.
 
-#### Making an Invocation
+### Making an Invocation
 
 Call the True Name *thrice* and state your request. You lose d6 Hearts. Next, ask the Oracle if the being responds. On Sweet they *like* the request, on Spicy they *dislike* it.
 
-#### An Answer?
+#### An Offer
 
-The Guide determines what happens next, following existing Lore, your Alignment with the being, context, and asking the Oracle various questions. The Guide sets an equivalent spell level for the effect up to the Hearts lost, and can limit Hearts lost for simple requests.
+If the being responds, it makes an Offer — what it will do for you — and an Ask — what it wants in return. The Guide determines the Offer and Ask using existing Lore, your Alignment, context, and asking Oracle questions. The Guide sets an equivalent spell level for the Offer up to the Hearts lost.  
+You may accept, refuse, or try to negotiate. Refusing costs nothing further. Negotiating may require another Oracle roll.  
+![][image1]
 
-*The workings of otherworldly beings are often mysterious. They may interpret your request from a different perspective and sense of time.*  
-![][image13]
-
-#### Shaping Spirits
+### Shaping Spirits
 
 Making an Invocation changes your character, aligning and molding you into the shape of their ideal "Saint". The Guide rolls on a secret Trait table for the being. If you already have the Trait, you are in harmony—no cost. Otherwise, you must buy the Trait for 3 XP. If the Trait suggests a special ability, you may want to develop a Knack.
 
 *Each being has their own nature. One might shape you toward “wrathful” or “storm-touched”; another might prefer “patient” or “sea-longing”.*
 
-#### Relics
+### Relics
 
 A Relic is a sacred object that serves as conduit and ark—a rallying flag—to an otherworldly being. To the uninitiated, they may appear to be “cursed” or Sentient Items, as the being can use any powers of the item.
 
