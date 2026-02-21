@@ -473,7 +473,8 @@ Morale grants extra Hearts and opportunities to replenish them.
 
 *Music is important because it makes everything better.*
 
-**Performance:** You can play music to restore Hearts once per Muster. The performance takes 1 hour and restores 1 Heart per character who participates (requires a music instrument and Skill). If you combine a performance with a meal, the “host”.
+**Performance:** You can play music to restore Hearts once per Muster. The performance takes 1 hour and restores 1 Heart per character who participates (requires a music instrument and Skill).  
+*If you combine a performance with a meal, the “host” is considered to be a participant in the music.*
 
 **Bard:** If you equip a musical instrument at Muster, you are a “bard". You can play (Action) to restore 1 Heart to whoever needs it most. Total Hearts per Muster limited to Item Slots plus Songs.
 
@@ -515,7 +516,7 @@ Wåndyr assumes a traditional fantasy economy using gold pieces (gp), where quai
 **Specialty items** cost 10gp per item slot. Examples: books, lockpicks.  
 **Provisions** cost 1gp per meal (for the group), or 10gp for \+1.  
 **Armaments** cost 5gp per item slot. Examples: weapons, armor, shields. Heavy armaments are \+1 (100gp) or \+2 (1,000gp, rare). Naturally heavy items (ax, polearm, mail) are common; others take finding.  
-**Music Instruments** cost 10gp per item slot. Fine instruments are \+1 and cost up to an extra 100gp; or \+2 for up to 1000gp.
+**Music Instruments** cost 10gp per item slot. Fine instruments are \+1 and cost up to an extra 100gp; or \+2 for up to 1000gp.  
 **Elevated items** are 10gp more for “fine”, 100gp “rich”, 1,000gp for “noble”, and so on.  
 **Magic items** have a magical feature. Elven boots silence footsteps, a hero's belt bestows strength, and a magic shield is more protective. You can usually discover its enchantment through use, especially with Skill in the item. Magic items are rarely sold.
 
@@ -626,13 +627,13 @@ If you are a magic-user, you can use an Action to cast a spell. You must say the
 
 **Roll for Control:** Ask the Oracle if you controlled the spell. On YES: you did, but on NO: you did not.
 
-*The Guide sets the Oracle target number based on the situation. This does not usually involve the spell level or caster level.*
+*The Guide sets the Oracle target number based on the situation. This does not usually involve the spell level or magic-user level.*
 
 **Effects:** If you controlled the spell it should work as expected. Sweet/Spicy add a twist. The Guide will describe your spell effects (or may ask you to do so).
 
 If you did not control the spell, something else happens, ranging from different effects, collateral damage, or backlash damage to you. *You can mitigate these risks by casting below your limit.*
 
-**Spell Duration**: Exactly how long a spell lasts is a factor in determining Spell Level, but it is *at most* as long as its Hearts remain spent.
+**Spell Duration**: How long a spell lasts is a factor in determining Spell Level. Spells end when you Camp.
 
 **Learning Spells**: Once you have cast a spell with Sweet, you are eligible to learn the spell. (See [Experience](#experience).)
 

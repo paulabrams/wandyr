@@ -447,7 +447,9 @@ Morale grants extra Hearts and opportunities to replenish them.
 
 *Music is important because it makes everything better.*
 
-**Performance:** You can play music to restore Hearts once per Muster. The performance takes 1 hour and restores 1 Heart per character who participates (requires a music instrument and Skill). If you combine a performance with a meal, the “host”.
+**Performance:** You can play music to restore Hearts once per Muster. The performance takes 1 hour and restores 1 Heart per character who participates (requires a music instrument and Skill).
+
+*If you combine a performance with a meal, the “host” is considered to be a participant in the music.*
 
 **Bard:** If you equip a musical instrument at Muster, you are a “bard". You can play (Action) to restore 1 Heart to whoever needs it most. Total Hearts per Muster limited to Item Slots plus Songs.
 
