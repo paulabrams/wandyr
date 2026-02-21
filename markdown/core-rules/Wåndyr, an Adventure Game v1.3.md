@@ -514,8 +514,8 @@ Wåndyr assumes a traditional fantasy economy using gold pieces (gp), where quai
 **Common items** cost 1gp per item slot. Examples: clothing, water skin, tools, etc.  
 **Specialty items** cost 10gp per item slot. Examples: books, lockpicks.  
 **Provisions** cost 1gp per meal (for the group), or 10gp for \+1.  
-**Armaments** cost 5 gp per item slot. Examples: weapons, armor, shields. Marked armaments bear a smith's mark of quality (500 gp). Marked weapons reroll 1s on damage; marked armor and shields force attackers to reroll 6s. When marked meets marked, both cancel—roll straight.  
-**Music Instruments** cost 10gp per item slot. Fine instruments are \+1 and cost up to an extra 100gp; or \+2 for up to 1000gp.  
+**Armaments** cost 5gp per item slot. Examples: weapons, armor, shields. Heavy armaments are \+1 (100gp) or \+2 (1,000gp, rare). Naturally heavy items (ax, polearm, mail) are common; others take finding.  
+**Music Instruments** cost 10gp per item slot. Fine instruments are \+1 and cost up to an extra 100gp; or \+2 for up to 1000gp.
 **Elevated items** are 10gp more for “fine”, 100gp “rich”, 1,000gp for “noble”, and so on.  
 **Magic items** have a magical feature. Elven boots silence footsteps, a hero's belt bestows strength, and a magic shield is more protective. You can usually discover its enchantment through use, especially with Skill in the item. Magic items are rarely sold.
 
