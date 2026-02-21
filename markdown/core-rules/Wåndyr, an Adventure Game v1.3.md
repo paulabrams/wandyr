@@ -572,7 +572,7 @@ A Knack is a signature move learned through Double Sweet (see The Oracle: Sweet 
 
 Alignment measures your level of connection to a specific concept—a magic school, combat style, faction, otherworldly being, etc.
 
-To find your Alignment, simply count all relevant Advancements and divide by three (round down)..
+To find your Alignment, simply count all relevant Advancements and divide by three (round down).
 
 For example, a character with the advancements knight, tough, iron, sword, shield, armor, axe has 7 advancements relevant to "Fighter" — that's level 2\.
 
