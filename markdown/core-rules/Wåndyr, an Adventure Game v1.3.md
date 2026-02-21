@@ -1003,11 +1003,11 @@ Look for True Names in mythic places, written on runestones, tombs, or magic amu
 
 Each being has a secret random table of Traits reflecting their nature—kept by the Guide and revealed only through Invocations.
 
-#### Making an Invocation
+### Making an Invocation
 
 Call the True Name *thrice* and state your request. You lose d6 Hearts. Next, ask the Oracle if the being responds. On Sweet they *like* the request, on Spicy they *dislike* it.
 
-#### An Offer
+### An Offer
 
 If the being responds, it makes an Offer — what it will do for you — and an Ask — what it wants in return. The Guide sets the Offer Level up to your Alignment with the being (see Attempting the Extraordinary). You may accept or refuse; refusing costs nothing more.
 
