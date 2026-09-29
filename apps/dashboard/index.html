@@ -1,248 +1,251 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no"
     />
-  <title>Wåndyr Session Dashboard</title>
+    <title>Wåndyr Session Dashboard</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
-  <style>
-    :root {
-      --parchment: #f4e4bc;
-      --parchment-dark: #e8d4a8;
-      --parchment-light: #faf3e3;
-      --ink: #2c1810;
-      --ink-light: #5c4030;
-      --accent: #8b4513;
-      --accent-dark: #6b3410;
-      --heart-red: #a83232;
-      --iron-blue: #4a6670;
-      --arcana-purple: #6b4a8c;
-      --blessing-gold: #d4a017;
-      --hit-orange: #c47f17;
-      --dead-gray: #666;
-      --fled-blue: #4a7090;
-      --shadow: rgba(44, 24, 16, 0.2);
-      --muster-col-max: 400px;
-      --muster-gap: 0.75rem;
-      --muster-max-width: calc((var(--muster-col-max) * 3) + (var(--muster-gap) * 2));
-    }
+    <style>
+      :root {
+        --parchment: #f4e4bc;
+        --parchment-dark: #e8d4a8;
+        --parchment-light: #faf3e3;
+        --ink: #2c1810;
+        --ink-light: #5c4030;
+        --accent: #8b4513;
+        --accent-dark: #6b3410;
+        --heart-red: #a83232;
+        --iron-blue: #4a6670;
+        --arcana-purple: #6b4a8c;
+        --blessing-gold: #d4a017;
+        --hit-orange: #c47f17;
+        --dead-gray: #666;
+        --fled-blue: #4a7090;
+        --shadow: rgba(44, 24, 16, 0.2);
+        --muster-col-max: 400px;
+        --muster-gap: 0.75rem;
+        --muster-max-width: calc(
+          (var(--muster-col-max) * 3) + (var(--muster-gap) * 2)
+        );
+      }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    body {
+      body {
         font-family: "Crimson Text", Georgia, serif;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23f4e4bc" width="100" height="100"/><circle fill="%23e8d4a8" cx="25" cy="25" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="75" cy="75" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="50" cy="10" r="0.5" opacity="0.2"/></svg>'),
+        background:
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23f4e4bc" width="100" height="100"/><circle fill="%23e8d4a8" cx="25" cy="25" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="75" cy="75" r="1" opacity="0.3"/><circle fill="%23e8d4a8" cx="50" cy="10" r="0.5" opacity="0.2"/></svg>'),
           linear-gradient(
             135deg,
             var(--parchment) 0%,
             var(--parchment-dark) 50%,
             var(--parchment) 100%
           );
-      color: var(--ink);
-      min-height: 100vh;
-      padding: 0.75rem;
-    }
+        color: var(--ink);
+        min-height: 100vh;
+        padding: 0.75rem;
+      }
 
       h1,
       h2,
       h3,
       h4 {
         font-family: "Cinzel", serif;
-      font-weight: 600;
-    }
+        font-weight: 600;
+      }
 
-    /* Common Components */
-    .btn {
+      /* Common Components */
+      .btn {
         font-family: "Cinzel", serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.5rem 0.4rem;
-      border: 2px solid var(--accent);
-      border-radius: 6px;
-      background: var(--parchment);
-      color: var(--accent-dark);
-      cursor: pointer;
-      transition: all 0.2s;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      min-height: 36px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.5rem 0.4rem;
+        border: 2px solid var(--accent);
+        border-radius: 6px;
+        background: var(--parchment);
+        color: var(--accent-dark);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        min-height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       .btn:hover,
       .btn:active {
-      background: var(--accent);
-      color: var(--parchment-light);
-    }
+        background: var(--accent);
+        color: var(--parchment-light);
+      }
 
-    .btn.primary {
-      background: var(--accent);
-      color: var(--parchment-light);
-    }
+      .btn.primary {
+        background: var(--accent);
+        color: var(--parchment-light);
+      }
 
       .btn.primary:hover,
       .btn.primary:active {
-      background: var(--accent-dark);
-    }
-    
-    .btn.compact {
-      font-size: 0.72rem;
-      padding: 0.35rem 0.45rem;
-      min-height: 30px;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-    }
-    .btn.compact.primary {
-      background: var(--accent);
-      color: var(--parchment-light);
-    }
-    .btn.compact.primary:hover,
-    .btn.compact.primary:active {
-      background: var(--accent-dark);
-    }
+        background: var(--accent-dark);
+      }
 
-    .panel {
+      .btn.compact {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.45rem;
+        min-height: 30px;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+      .btn.compact.primary {
+        background: var(--accent);
+        color: var(--parchment-light);
+      }
+      .btn.compact.primary:hover,
+      .btn.compact.primary:active {
+        background: var(--accent-dark);
+      }
+
+      .panel {
         background: linear-gradient(
           to bottom,
           var(--parchment-light),
           var(--parchment)
         );
-      border: 2px solid var(--accent);
-      border-radius: 8px;
-      padding: 0.75rem;
-      box-shadow: 0 2px 8px var(--shadow);
-      margin-bottom: 0.75rem;
-    }
+        border: 2px solid var(--accent);
+        border-radius: 8px;
+        padding: 0.75rem;
+        box-shadow: 0 2px 8px var(--shadow);
+        margin-bottom: 0.75rem;
+      }
 
       input,
       select,
       textarea {
         font-family: "Crimson Text", serif;
-      font-size: 1rem;
-      padding: 0.4rem;
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      background: var(--parchment-light);
-      color: var(--ink);
-    }
+        font-size: 1rem;
+        padding: 0.4rem;
+        border: 1px solid var(--accent);
+        border-radius: 4px;
+        background: var(--parchment-light);
+        color: var(--ink);
+      }
 
-    /* Header */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.6rem 0.75rem;
+      /* Header */
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 0.75rem;
         background: linear-gradient(
           to bottom,
           var(--parchment-light),
           var(--parchment)
         );
-      border: 2px solid var(--accent);
-      border-radius: 8px;
-      max-width: var(--muster-max-width);
-      margin: 0 auto 0.75rem;
-      box-shadow: 0 2px 8px var(--shadow);
-    }
+        border: 2px solid var(--accent);
+        border-radius: 8px;
+        max-width: var(--muster-max-width);
+        margin: 0 auto 0.75rem;
+        box-shadow: 0 2px 8px var(--shadow);
+      }
 
-    .top-bar h1 {
-      font-size: 1.4rem;
-      color: var(--accent-dark);
-      letter-spacing: 0.1em;
-    }
+      .top-bar h1 {
+        font-size: 1.4rem;
+        color: var(--accent-dark);
+        letter-spacing: 0.1em;
+      }
 
-    .actions-menu {
-      position: relative;
-    }
+      .actions-menu {
+        position: relative;
+      }
 
-    .actions-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      margin-top: 0.5rem;
-      background: var(--parchment);
-      border: 2px solid var(--accent);
-      border-radius: 6px;
-      min-width: 200px;
-      box-shadow: 0 4px 12px var(--shadow);
-      z-index: 50;
-    }
+      .actions-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 0.5rem;
+        background: var(--parchment);
+        border: 2px solid var(--accent);
+        border-radius: 6px;
+        min-width: 200px;
+        box-shadow: 0 4px 12px var(--shadow);
+        z-index: 50;
+      }
 
-    .actions-dropdown.active {
-      display: block;
-    }
+      .actions-dropdown.active {
+        display: block;
+      }
 
-    .action-item {
-      display: block;
-      width: 100%;
-      padding: 0.75rem 1rem;
-      text-align: left;
-      background: none;
-      border: none;
-      border-bottom: 1px solid rgba(139, 69, 19, 0.2);
-      color: var(--ink);
+      .action-item {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        background: none;
+        border: none;
+        border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+        color: var(--ink);
         font-family: "Cinzel", serif;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
 
-    .action-item:last-child {
-      border-bottom: none;
-    }
+      .action-item:last-child {
+        border-bottom: none;
+      }
 
-    .action-item:hover {
-      background: var(--accent);
-      color: var(--parchment-light);
-    }
+      .action-item:hover {
+        background: var(--accent);
+        color: var(--parchment-light);
+      }
 
-    /* Environment Card (Muster) */
-    .environment-card {
-      /* Keep standard panel style */
-      display: block; 
-    }
-    
-    .env-group-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-    }
+      /* Environment Card (Muster) */
+      .environment-card {
+        /* Keep standard panel style */
+        display: block;
+      }
 
-    .env-field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
+      .env-group-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+      }
 
-    .env-field label {
+      .env-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .env-field label {
         font-family: "Cinzel", serif;
-      font-size: 0.75rem;
-      color: var(--ink-light);
-      text-transform: uppercase;
-    }
-    
-    .input-with-btn {
-      display: flex;
-      gap: 0.3rem;
-    }
-    
-    .icon-btn {
-      min-width: 32px;
-      padding: 0;
-      font-size: 1.1rem;
-    }
+        font-size: 0.75rem;
+        color: var(--ink-light);
+        text-transform: uppercase;
+      }
+
+      .input-with-btn {
+        display: flex;
+        gap: 0.3rem;
+      }
+
+      .icon-btn {
+        min-width: 32px;
+        padding: 0;
+        font-size: 1.1rem;
+      }
 
       /* Text Links & Popover */
       .text-link {
@@ -300,126 +303,126 @@
         font-weight: 600;
       }
 
-    /* Dice Card */
-    .dice-card-content {
-      display: flex;
-      flex-wrap: wrap; /* Fix: Allow wrapping so buttons don't overlap dice */
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
+      /* Dice Card */
+      .dice-card-content {
+        display: flex;
+        flex-wrap: wrap; /* Fix: Allow wrapping so buttons don't overlap dice */
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
 
-    .oracle-dice-display {
-      font-size: 1rem;
-      color: var(--ink);
-      flex: 1 1 auto; /* Allow it to grow/shrink */
-      min-width: 120px; /* Ensure some space for dice */
-      white-space: nowrap;
-      /* background: var(--parchment-dark); REMOVED */
-      padding: 0; /* REMOVED padding */
-      /* border: 1px solid var(--accent); REMOVED */
-    }
-    
-    .dice-controls {
-        display: flex; 
+      .oracle-dice-display {
+        font-size: 1rem;
+        color: var(--ink);
+        flex: 1 1 auto; /* Allow it to grow/shrink */
+        min-width: 120px; /* Ensure some space for dice */
+        white-space: nowrap;
+        /* background: var(--parchment-dark); REMOVED */
+        padding: 0; /* REMOVED padding */
+        /* border: 1px solid var(--accent); REMOVED */
+      }
+
+      .dice-controls {
+        display: flex;
         gap: 0.3rem;
         flex: 0 0 auto; /* Keep buttons from shrinking too much */
-    }
+      }
 
-    .weather-die {
-      font-size: 1.5rem;
-      line-height: 1;
-      color: var(--ink);
-    }
+      .weather-die {
+        font-size: 1.5rem;
+        line-height: 1;
+        color: var(--ink);
+      }
 
-    /* Rumor & Blessing (Camp) */
-    .rumor-blessing-card {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+      /* Rumor & Blessing (Camp) */
+      .rumor-blessing-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
 
       .rumor-row,
       .blessing-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: flex-end;
-    }
-    
-    .rumor-row {
-      width: 100%;
-    }
-    .rumor-row .env-field {
-      flex: 1;
-    }
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: flex-end;
+      }
 
-    .blessing-row input[type="number"] {
-      width: 60px;
-    }
+      .rumor-row {
+        width: 100%;
+      }
+      .rumor-row .env-field {
+        flex: 1;
+      }
 
-    .blessing-toggle-label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      .blessing-row input[type="number"] {
+        width: 60px;
+      }
+
+      .blessing-toggle-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         font-family: "Cinzel", serif;
-      color: var(--accent-dark);
-      cursor: pointer;
-      padding-bottom: 0.5rem;
-    }
+        color: var(--accent-dark);
+        cursor: pointer;
+        padding-bottom: 0.5rem;
+      }
 
-    /* Views */
+      /* Views */
       #view-camp,
       #view-muster {
-      display: none;
-    }
+        display: none;
+      }
 
       #view-camp.active,
       #view-muster.active {
-      display: grid;
-    }
+        display: grid;
+      }
 
-    /* Camp Grid */
-    #view-camp.active {
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      align-items: start;
-    }
+      /* Camp Grid */
+      #view-camp.active {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        align-items: start;
+      }
 
-    /* Muster Layout (3 equal columns, flex) */
-    #view-muster.active {
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
-      justify-content: center;
-      flex-wrap: nowrap;
-    }
-    
-    /* Muster Columns (left / center / right) */
-    .muster-col {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      min-width: 0;
-      flex: 1 1 0;
-      max-width: 400px;
-    }
-    .muster-col .panel {
-      margin-bottom: 0;
-    }
-
-    /* Responsive Views */
-    @media (max-width: 1023px) {
+      /* Muster Layout (3 equal columns, flex) */
       #view-muster.active {
-        flex-wrap: wrap;
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: nowrap;
       }
-      .muster-col {
-        max-width: 400px;
-        flex: 1 1 340px;
-      }
-    }
 
-    @media (max-width: 767px) {
+      /* Muster Columns (left / center / right) */
+      .muster-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-width: 0;
+        flex: 1 1 0;
+        max-width: 400px;
+      }
+      .muster-col .panel {
+        margin-bottom: 0;
+      }
+
+      /* Responsive Views */
+      @media (max-width: 1023px) {
+        #view-muster.active {
+          flex-wrap: wrap;
+        }
+        .muster-col {
+          max-width: 400px;
+          flex: 1 1 340px;
+        }
+      }
+
+      @media (max-width: 767px) {
         #view-camp.active {
           grid-template-columns: 1fr;
         }
@@ -428,18 +431,18 @@
           flex-wrap: nowrap;
           align-items: stretch;
         }
-      .muster-col {
-        max-width: none;
-        flex: 1 1 auto;
+        .muster-col {
+          max-width: none;
+          flex: 1 1 auto;
+        }
       }
-    }
 
-    /* Time Panel (Compact) */
-    .time-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+      /* Time Panel (Compact) */
+      .time-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
 
       /* Dice display - no outer box, just the inner content */
       .dice-face {
@@ -450,8 +453,8 @@
         color: var(--ink);
         line-height: 1;
         margin: 0 0.12rem;
-    }
-    .time-counters {
+      }
+      .time-counters {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.4rem;
@@ -473,8 +476,8 @@
         font-weight: 700;
         color: var(--accent-dark);
       }
-    
-    .insight-display {
+
+      .insight-display {
         text-align: center;
         padding: 0.75rem;
         background: linear-gradient(
@@ -497,7 +500,7 @@
         font-weight: 700;
         margin: 0.2rem 0;
       }
-      
+
       .insight-display.flash {
         animation: insightFlash 420ms ease-out 1;
       }
@@ -515,7 +518,7 @@
           filter: brightness(1);
         }
       }
-      
+
       .updated-badge {
         position: absolute;
         right: 0.35rem;
@@ -539,128 +542,128 @@
         grid-template-columns: 1fr 1fr;
         gap: 0.4rem;
       }
- 
-    /* Adventure Panel */
-    .adventure-card {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .adventure-card h2 {
-      line-height: 1.05;
-    }
-    .adventure-card .clock-buttons {
-      margin-top: 0.15rem;
-    }
-    .adventure-card .clock-buttons {
-      gap: 0.35rem;
-    }
-    .adventure-card .btn.compact {
-      font-size: 0.68rem;
-      padding: 0.32rem 0.38rem;
-      min-height: 28px;
-    }
-    .adventure-result {
-      text-align: center;
-      font-family: "Cinzel", serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--accent-dark);
-      min-height: 1.4em;
-      margin-top: -0.1rem;
-    }
-    .adventure-result.adventure {
-      color: var(--heart-red);
-    }
-    
-    /* Oracle Panel */
-    .oracle-card {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .oracle-card .clock-buttons {
-      gap: 0.35rem;
-    }
-    .oracle-result {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.2rem;
-      cursor: pointer;
-      min-height: 2.6rem;
-      user-select: none;
-    }
-    .oracle-result:active {
-      transform: translateY(1px);
-    }
 
-    /* Kebab Menu (Others) */
-    .kebab {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-    }
-    .kebab-btn {
-      font-family: "Cinzel", serif;
-      font-weight: 700;
-      border: 1px solid var(--ink-light);
-      background: var(--parchment);
-      border-radius: 6px;
-      padding: 0.15rem 0.45rem;
-      cursor: pointer;
-      line-height: 1.2;
-    }
-    .kebab-menu {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      margin-top: 0.25rem;
-      min-width: 190px;
-      background: var(--parchment-light);
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      box-shadow: 0 8px 18px var(--shadow);
-      padding: 0.35rem;
-      z-index: 20;
-      display: none;
-    }
-    .kebab-menu.active {
-      display: block;
-    }
-    .kebab-item {
-      width: 100%;
-      text-align: left;
-      font-family: "Crimson Text", serif;
-      font-size: 0.95rem;
-      padding: 0.35rem 0.4rem;
-      border: none;
-      background: transparent;
-      border-radius: 6px;
-      cursor: pointer;
-      color: var(--ink);
-    }
-    .kebab-item:hover {
-      background: var(--parchment-dark);
-    }
+      /* Adventure Panel */
+      .adventure-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .adventure-card h2 {
+        line-height: 1.05;
+      }
+      .adventure-card .clock-buttons {
+        margin-top: 0.15rem;
+      }
+      .adventure-card .clock-buttons {
+        gap: 0.35rem;
+      }
+      .adventure-card .btn.compact {
+        font-size: 0.68rem;
+        padding: 0.32rem 0.38rem;
+        min-height: 28px;
+      }
+      .adventure-result {
+        text-align: center;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--accent-dark);
+        min-height: 1.4em;
+        margin-top: -0.1rem;
+      }
+      .adventure-result.adventure {
+        color: var(--heart-red);
+      }
 
-    /* Character Cards ... (unchanged) */
-    .character-list {
+      /* Oracle Panel */
+      .oracle-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .oracle-card .clock-buttons {
+        gap: 0.35rem;
+      }
+      .oracle-result {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.2rem;
+        cursor: pointer;
+        min-height: 2.6rem;
+        user-select: none;
+      }
+      .oracle-result:active {
+        transform: translateY(1px);
+      }
+
+      /* Kebab Menu (Others) */
+      .kebab {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+      }
+      .kebab-btn {
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        border: 1px solid var(--ink-light);
+        background: var(--parchment);
+        border-radius: 6px;
+        padding: 0.15rem 0.45rem;
+        cursor: pointer;
+        line-height: 1.2;
+      }
+      .kebab-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 0.25rem;
+        min-width: 190px;
+        background: var(--parchment-light);
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        box-shadow: 0 8px 18px var(--shadow);
+        padding: 0.35rem;
+        z-index: 20;
+        display: none;
+      }
+      .kebab-menu.active {
+        display: block;
+      }
+      .kebab-item {
+        width: 100%;
+        text-align: left;
+        font-family: "Crimson Text", serif;
+        font-size: 0.95rem;
+        padding: 0.35rem 0.4rem;
+        border: none;
+        background: transparent;
+        border-radius: 6px;
+        cursor: pointer;
+        color: var(--ink);
+      }
+      .kebab-item:hover {
+        background: var(--parchment-dark);
+      }
+
+      /* Character Cards ... (unchanged) */
+      .character-list {
         display: flex;
         flex-direction: column;
         gap: 0.6rem;
-      min-height: 100px;
-    }
-    /* ... */
+        min-height: 100px;
+      }
+      /* ... */
 
-    .character-card {
-      background: var(--parchment-dark);
+      .character-card {
+        background: var(--parchment-dark);
         border-radius: 6px;
         padding: 0.6rem;
-      border-left: 4px solid var(--accent);
-      position: relative;
-    }
+        border-left: 4px solid var(--accent);
+        position: relative;
+      }
       .character-card.leader {
         border-left-color: gold;
       }
@@ -671,49 +674,49 @@
         opacity: 0.8;
         background: #e0cca0;
       }
-    
-    .character-card {
-      cursor: grab;
-    }
-    .character-card.dragging {
-      opacity: 0.55;
-      cursor: grabbing;
-    }
-    .character-card {
-      display: flex;
-      align-items: stretch;
-      gap: 0.5rem;
-    }
-    .char-drag-handle {
-      width: 22px;
-      border-radius: 6px;
-      background: rgba(0, 0, 0, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: grab;
-      user-select: none;
-      flex: 0 0 auto;
-    }
-    .character-card.dragging .char-drag-handle {
-      cursor: grabbing;
-    }
-    .char-drag-handle:active {
-      transform: translateY(1px);
-    }
-    .char-body {
-      flex: 1 1 auto;
-      min-width: 0;
-    }
 
-    .char-header {
+      .character-card {
+        cursor: grab;
+      }
+      .character-card.dragging {
+        opacity: 0.55;
+        cursor: grabbing;
+      }
+      .character-card {
+        display: flex;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+      .char-drag-handle {
+        width: 22px;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: grab;
+        user-select: none;
+        flex: 0 0 auto;
+      }
+      .character-card.dragging .char-drag-handle {
+        cursor: grabbing;
+      }
+      .char-drag-handle:active {
+        transform: translateY(1px);
+      }
+      .char-body {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .char-header {
         display: flex;
         justify-content: space-between;
         align-items: start;
         gap: 0.5rem;
         margin-bottom: 0.4rem;
-    }
-    .char-name {
+      }
+      .char-name {
         font-family: "Cinzel", serif;
         font-weight: 600;
         font-size: 1rem;
@@ -721,15 +724,15 @@
         align-items: center;
         gap: 0.4rem;
         flex-wrap: wrap;
-    }
-    .char-player-inline {
-      font-family: "Crimson Text", serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--ink-light);
-      opacity: 0.9;
-    }
-    .char-number {
+      }
+      .char-player-inline {
+        font-family: "Crimson Text", serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--ink-light);
+        opacity: 0.9;
+      }
+      .char-number {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -805,17 +808,17 @@
       .stat-value.arcana {
         color: var(--arcana-purple);
       }
-    
+
       /* +/- buttons removed: click value (-), shift-click (+) */
 
-    /* Prefer single-line stats; allow wrap on small screens */
-    @media (min-width: 768px) {
-      .char-stats {
-        flex-wrap: nowrap;
+      /* Prefer single-line stats; allow wrap on small screens */
+      @media (min-width: 768px) {
+        .char-stats {
+          flex-wrap: nowrap;
+        }
       }
-    }
 
-    .char-controls button {
+      .char-controls button {
         font-size: 0.7rem;
         padding: 0.2rem 0.4rem;
         border: 1px solid var(--ink-light);
@@ -853,51 +856,51 @@
         display: block;
       }
 
-    /* Threat Cards */
+      /* Threat Cards */
       .threats-list {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
       }
-    .threat-card {
+      .threat-card {
         background: var(--parchment-dark);
         border-radius: 6px;
         padding: 0.5rem;
-      border-left: 4px solid var(--ink-light);
-    }
-    .threat-card {
-      cursor: grab;
-    }
-    .threat-card.dragging {
-      opacity: 0.55;
-      cursor: grabbing;
-    }
-    .threat-card {
-      display: flex;
-      align-items: stretch;
-      gap: 0.5rem;
-    }
-    .other-drag-handle {
-      width: 22px;
-      border-radius: 6px;
-      background: rgba(0, 0, 0, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: grab;
-      user-select: none;
-      flex: 0 0 auto;
-    }
-    .threat-card.dragging .other-drag-handle {
-      cursor: grabbing;
-    }
-    .other-drag-handle:active {
-      transform: translateY(1px);
-    }
-    .threat-body {
-      flex: 1 1 auto;
-      min-width: 0;
-    }
+        border-left: 4px solid var(--ink-light);
+      }
+      .threat-card {
+        cursor: grab;
+      }
+      .threat-card.dragging {
+        opacity: 0.55;
+        cursor: grabbing;
+      }
+      .threat-card {
+        display: flex;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+      .other-drag-handle {
+        width: 22px;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: grab;
+        user-select: none;
+        flex: 0 0 auto;
+      }
+      .threat-card.dragging .other-drag-handle {
+        cursor: grabbing;
+      }
+      .other-drag-handle:active {
+        transform: translateY(1px);
+      }
+      .threat-body {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
       .threat-card.hit {
         border-left-color: var(--hit-orange);
       }
@@ -949,8 +952,8 @@
         border-radius: 3px;
       }
 
-    /* Floating Add Btn */
-    .add-btn {
+      /* Floating Add Btn */
+      .add-btn {
         width: 100%;
         margin-top: 0.5rem;
         padding: 0.5rem;
@@ -968,8 +971,8 @@
         border-style: solid;
       }
 
-    /* Modal */
-    .modal-overlay {
+      /* Modal */
+      .modal-overlay {
         display: none;
         position: fixed;
         top: 0;
@@ -985,7 +988,7 @@
       .modal-overlay.active {
         display: flex;
       }
-    .modal {
+      .modal {
         background: var(--parchment);
         border: 3px solid var(--accent);
         border-radius: 8px;
@@ -994,8 +997,8 @@
         max-width: 450px;
         max-height: 90vh;
         overflow-y: auto;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
       .modal h3 {
         margin-bottom: 0.75rem;
         color: var(--accent-dark);
@@ -1055,15 +1058,22 @@
       #import-file {
         display: none;
       }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header class="top-bar">
-    <h1 id="app-title">Wåndyr</h1>
-    <div class="actions-menu">
-      <button class="btn" onclick="toggleActions()">☰ Actions</button>
-      <div class="actions-dropdown" id="actions-dropdown">
+    </style>
+    <script
+      async
+      src="https://paul-abrams.phvtrack.dev/bambino.js"
+      data-phv-tenant="paul-abrams"
+      data-phv-key="phv_wk_LVb15xeqyibMAve5A2CsxMQczwUrghRU"
+      data-phv-consent="opt_out"
+    ></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="top-bar">
+      <h1 id="app-title">Wåndyr</h1>
+      <div class="actions-menu">
+        <button class="btn" onclick="toggleActions()">☰ Actions</button>
+        <div class="actions-dropdown" id="actions-dropdown">
           <button class="action-item" onclick="toggleModeModeSwitch()">
             Switch Mode
           </button>
@@ -1079,44 +1089,44 @@
           <button class="action-item" onclick="resetSession()">
             Reset Session
           </button>
+        </div>
       </div>
-    </div>
       <input
         type="file"
         id="import-file"
         accept=".json"
         onchange="importData(event)"
       />
-  </header>
+    </header>
 
-  <!-- CAMP MODE VIEW -->
-  <main id="view-camp">
-    <!-- Rumor & Blessing -->
+    <!-- CAMP MODE VIEW -->
+    <main id="view-camp">
+      <!-- Rumor & Blessing -->
       <section class="panel rumor-blessing-card" style="grid-column: 1 / -1">
-      <h2>Rumors & Blessings</h2>
-      <div class="rumor-row">
-        <div class="env-field">
-          <label>Current Rumor</label>
+        <h2>Rumors & Blessings</h2>
+        <div class="rumor-row">
+          <div class="env-field">
+            <label>Current Rumor</label>
             <input
               type="text"
               id="camp-rumor"
               placeholder="What do they say..."
               onchange="updateRumor()"
             />
+          </div>
         </div>
-      </div>
-      <div class="blessing-row">
+        <div class="blessing-row">
           <div class="env-field" style="flex: 2">
-          <label>Blessing Source</label>
+            <label>Blessing Source</label>
             <input
               type="text"
               id="camp-bless-source"
               placeholder="e.g. The Forest Spirit"
               onchange="updateBlessing()"
             />
-        </div>
-        <div class="env-field">
-          <label>Value</label>
+          </div>
+          <div class="env-field">
+            <label>Value</label>
             <input
               type="number"
               id="camp-bless-value"
@@ -1124,8 +1134,8 @@
               min="0"
               onchange="updateBlessing()"
             />
-        </div>
-        <div class="blessing-toggle-label">
+          </div>
+          <div class="blessing-toggle-label">
             <label
               ><input
                 type="checkbox"
@@ -1134,270 +1144,429 @@
               />
               Blessing Active</label
             >
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Mustering List -->
-    <section class="panel">
-      <h2>Mustering</h2>
-      <div class="character-list" id="camp-muster-list"></div>
+      <!-- Mustering List -->
+      <section class="panel">
+        <h2>Mustering</h2>
+        <div class="character-list" id="camp-muster-list"></div>
         <button class="add-btn" onclick="openCharacterModal(null, false)">
           + Add Character
         </button>
-    </section>
+      </section>
 
-    <!-- Camping List -->
-    <section class="panel">
-      <h2>Camping</h2>
-      <div class="character-list" id="camp-camp-list"></div>
+      <!-- Camping List -->
+      <section class="panel">
+        <h2>Camping</h2>
+        <div class="character-list" id="camp-camp-list"></div>
         <button class="add-btn" onclick="openCharacterModal(null, true)">
           + Add Character
         </button>
-    </section>
-  </main>
-
-  <!-- MUSTER MODE VIEW -->
-  <main id="view-muster">
-    <div class="muster-col left-col">
-      <!-- Environment Card -->
-      <section class="panel environment-card">
-        <h2>Where are we?</h2>
-        <div class="environment-story">
-          <p class="env-sentence">
-            Location:
-            <span
-              id="text-region"
-              class="text-link"
-              onclick="openLocationMenu(event)"
-            ></span>
-          </p>
-          <p class="env-conditions">
-            Terrain:
-            <span
-              id="text-climate"
-              class="text-link"
-              onclick="openEnvMenu(event, 'climate', TERRAIN_DATA.zones, 'Climate Zone')"
-            ></span>
-            <span
-              id="text-landform"
-              class="text-link"
-              onclick="openEnvMenu(event, 'landform', TERRAIN_DATA.landforms[state.environment.climate], 'Landform')"
-            ></span>
-            <span
-              id="text-terrain_condition"
-              class="text-link"
-              style="font-style: italic"
-              onclick="openEnvMenu(event, 'terrain_condition', TERRAIN_DATA.terrainConditions, 'Terrain Condition')"
-            ></span>
-          </p>
-
-          <p class="env-conditions">
-            Conditions:
-            <span
-              id="text-weather_pattern"
-              class="text-link"
-              onclick="openEnvMenu(event, 'weather_pattern', TERRAIN_DATA.weatherPatterns[state.environment.climate], 'Weather Pattern')"
-            ></span>
-            <span
-              id="text-weather_condition"
-              class="text-link"
-              onclick="openEnvMenu(event, 'weather_condition', TERRAIN_DATA.weatherConditions, 'Weather Condition')"
-            ></span>
-          <span
-            class="env-seasonal"
-            id="text-seasonal-note"
-            style="
-              font-size: 0.85rem;
-              font-style: italic;
-              color: var(--ink-light);
-              margin-top: 0.25rem;
-            "
-          ></span>
-          </p>
-          <p class="env-features">
-            Point of Interest:
-            <span
-              id="text-poi"
-              class="text-link"
-              onclick="openEnvMenu(event, 'poi', TERRAIN_DATA.pois, 'Point of Interest')"
-            ></span>
-          </p>
-          <p class="env-transition">
-            Transition:
-            <span
-              id="text-transition"
-              class="text-link"
-              style="font-style: italic"
-              onclick="openEnvMenu(event, 'transition', TERRAIN_DATA.transitions, 'Transition')"
-            ></span>
-            <span
-              id="text-transition_to"
-              class="text-link"
-              style="font-style: italic"
-              onclick="openEnvMenu(event, 'transition_to', TERRAIN_DATA.landforms[state.environment.climate], 'Transition To')"
-            ></span>
-          </p>
-        </div>
       </section>
+    </main>
 
-      <!-- Time + Insight (no Turn Clock dice) -->
-      <section class="panel time-panel">
-        <h2>Time</h2>
+    <!-- MUSTER MODE VIEW -->
+    <main id="view-muster">
+      <div class="muster-col left-col">
+        <!-- Environment Card -->
+        <section class="panel environment-card">
+          <h2>Where are we?</h2>
+          <div class="environment-story">
+            <p class="env-sentence">
+              Location:
+              <span
+                id="text-region"
+                class="text-link"
+                onclick="openLocationMenu(event)"
+              ></span>
+            </p>
+            <p class="env-conditions">
+              Terrain:
+              <span
+                id="text-climate"
+                class="text-link"
+                onclick="
+                  openEnvMenu(
+                    event,
+                    'climate',
+                    TERRAIN_DATA.zones,
+                    'Climate Zone',
+                  )
+                "
+              ></span>
+              <span
+                id="text-landform"
+                class="text-link"
+                onclick="
+                  openEnvMenu(
+                    event,
+                    'landform',
+                    TERRAIN_DATA.landforms[state.environment.climate],
+                    'Landform',
+                  )
+                "
+              ></span>
+              <span
+                id="text-terrain_condition"
+                class="text-link"
+                style="font-style: italic"
+                onclick="
+                  openEnvMenu(
+                    event,
+                    'terrain_condition',
+                    TERRAIN_DATA.terrainConditions,
+                    'Terrain Condition',
+                  )
+                "
+              ></span>
+            </p>
 
-        <div
-          class="insight-display"
-          style="cursor: pointer"
-          onclick="rollInsight()"
-          title="Click to roll Insight"
-        >
-          <div class="insight-label">Insight</div>
-          <div class="insight-value" id="insight-value">—</div>
-          <div class="updated-badge" id="insight-updated-badge">updated</div>
-        </div>
+            <p class="env-conditions">
+              Conditions:
+              <span
+                id="text-weather_pattern"
+                class="text-link"
+                onclick="
+                  openEnvMenu(
+                    event,
+                    'weather_pattern',
+                    TERRAIN_DATA.weatherPatterns[state.environment.climate],
+                    'Weather Pattern',
+                  )
+                "
+              ></span>
+              <span
+                id="text-weather_condition"
+                class="text-link"
+                onclick="
+                  openEnvMenu(
+                    event,
+                    'weather_condition',
+                    TERRAIN_DATA.weatherConditions,
+                    'Weather Condition',
+                  )
+                "
+              ></span>
+              <span
+                class="env-seasonal"
+                id="text-seasonal-note"
+                style="
+                  font-size: 0.85rem;
+                  font-style: italic;
+                  color: var(--ink-light);
+                  margin-top: 0.25rem;
+                "
+              ></span>
+            </p>
+            <p class="env-features">
+              Point of Interest:
+              <span
+                id="text-poi"
+                class="text-link"
+                onclick="
+                  openEnvMenu(
+                    event,
+                    'poi',
+                    TERRAIN_DATA.pois,
+                    'Point of Interest',
+                  )
+                "
+              ></span>
+            </p>
+            <p class="env-transition">
+              Transition:
+              <span
+                id="text-transition"
+                class="text-link"
+                style="font-style: italic"
+                onclick="
+                  openEnvMenu(
+                    event,
+                    'transition',
+                    TERRAIN_DATA.transitions,
+                    'Transition',
+                  )
+                "
+              ></span>
+              <span
+                id="text-transition_to"
+                class="text-link"
+                style="font-style: italic"
+                onclick="
+                  openEnvMenu(
+                    event,
+                    'transition_to',
+                    TERRAIN_DATA.landforms[state.environment.climate],
+                    'Transition To',
+                  )
+                "
+              ></span>
+            </p>
+          </div>
+        </section>
 
-        <div class="time-counters">
+        <!-- Time + Insight (no Turn Clock dice) -->
+        <section class="panel time-panel">
+          <h2>Time</h2>
+
           <div
-            class="counter"
+            class="insight-display"
             style="cursor: pointer"
-            onclick="resetTurnCount()"
-            title="Click to Reset Turn Count"
+            onclick="rollInsight()"
+            title="Click to roll Insight"
           >
-            <div class="counter-label">Turn</div>
-            <div class="counter-value" id="count-turn">0</div>
+            <div class="insight-label">Insight</div>
+            <div class="insight-value" id="insight-value">—</div>
+            <div class="updated-badge" id="insight-updated-badge">updated</div>
+          </div>
+
+          <div class="time-counters">
+            <div
+              class="counter"
+              style="cursor: pointer"
+              onclick="resetTurnCount()"
+              title="Click to Reset Turn Count"
+            >
+              <div class="counter-label">Turn</div>
+              <div class="counter-value" id="count-turn">0</div>
+            </div>
+            <div
+              class="counter"
+              style="cursor: pointer"
+              onclick="resetRoundCount()"
+              title="Click to Reset Round Count"
+            >
+              <div class="counter-label">Round</div>
+              <div class="counter-value" id="count-round">0</div>
+            </div>
+          </div>
+
+          <div class="clock-buttons">
+            <button class="btn primary" onclick="advanceTurn()">+ Turn</button>
+            <button class="btn primary" onclick="advanceRound()">
+              + Round
+            </button>
+          </div>
+        </section>
+
+        <!-- Adventure Roll -->
+        <section class="panel adventure-card">
+          <h2>Adventure</h2>
+          <div
+            class="clock-buttons"
+            style="grid-template-columns: 1fr 1fr 1fr 1fr"
+          >
+            <button class="btn compact" onclick="rollAdventure('easy')">
+              Easy
+            </button>
+            <button
+              class="btn compact primary"
+              onclick="rollAdventure('normal')"
+            >
+              Normal (8)
+            </button>
+            <button class="btn compact" onclick="rollAdventure('hard')">
+              Hard
+            </button>
+            <button class="btn compact" onclick="rollAdventure('extreme')">
+              Extreme
+            </button>
+          </div>
+          <div id="adventure-result" class="adventure-result"></div>
+        </section>
+
+        <!-- Ask the Oracle -->
+        <section class="panel oracle-card">
+          <h2>Oracle</h2>
+          <div class="clock-buttons" style="grid-template-columns: 1fr 1fr 1fr">
+            <button
+              class="btn compact primary"
+              onclick="
+                rollOracle('normal');
+                event.stopPropagation();
+              "
+              title="Roll 2d6"
+            >
+              Roll
+            </button>
+            <button
+              class="btn compact"
+              onclick="
+                rollOracle('adv');
+                event.stopPropagation();
+              "
+              title="Advantage (3d6 drop low)"
+            >
+              Advantage
+            </button>
+            <button
+              class="btn compact"
+              onclick="
+                rollOracle('dis');
+                event.stopPropagation();
+              "
+              title="Disadvantage (3d6 drop high)"
+            >
+              Disadvantage
+            </button>
           </div>
           <div
-            class="counter"
-            style="cursor: pointer"
-            onclick="resetRoundCount()"
-            title="Click to Reset Round Count"
-          >
-            <div class="counter-label">Round</div>
-            <div class="counter-value" id="count-round">0</div>
-          </div>
-        </div>
+            id="oracle-result"
+            class="oracle-result"
+            onclick="rollOracle('normal')"
+            title="Click result to roll"
+          ></div>
+        </section>
+      </div>
 
-        <div class="clock-buttons">
-          <button class="btn primary" onclick="advanceTurn()">+ Turn</button>
-          <button class="btn primary" onclick="advanceRound()">+ Round</button>
-        </div>
-      </section>
+      <div class="muster-col center-col">
+        <!-- Muster List (Active Play) -->
+        <section class="panel">
+          <h2>Muster</h2>
+          <div class="character-list" id="play-muster-list"></div>
+        </section>
+      </div>
 
-      <!-- Adventure Roll -->
-      <section class="panel adventure-card">
-        <h2>Adventure</h2>
-        <div class="clock-buttons" style="grid-template-columns: 1fr 1fr 1fr 1fr">
-          <button class="btn compact" onclick="rollAdventure('easy')">Easy</button>
-          <button class="btn compact primary" onclick="rollAdventure('normal')">Normal (8)</button>
-          <button class="btn compact" onclick="rollAdventure('hard')">Hard</button>
-          <button class="btn compact" onclick="rollAdventure('extreme')">Extreme</button>
-        </div>
-        <div id="adventure-result" class="adventure-result"></div>
-      </section>
+      <div class="muster-col right-col">
+        <!-- Others (NPCs/Threats) -->
+        <section class="panel">
+          <h2>Others</h2>
+          <div class="threats-list" id="others-list"></div>
+          <button class="add-btn" onclick="openOtherModal()">+ Another</button>
+        </section>
+      </div>
+    </main>
 
-      <!-- Ask the Oracle -->
-      <section class="panel oracle-card">
-        <h2>Oracle</h2>
-        <div class="clock-buttons" style="grid-template-columns: 1fr 1fr 1fr">
-          <button class="btn compact primary" onclick="rollOracle('normal'); event.stopPropagation();" title="Roll 2d6">
-            Roll
-          </button>
-          <button class="btn compact" onclick="rollOracle('adv'); event.stopPropagation();" title="Advantage (3d6 drop low)">
-            Advantage
-          </button>
-          <button class="btn compact" onclick="rollOracle('dis'); event.stopPropagation();" title="Disadvantage (3d6 drop high)">
-            Disadvantage
-          </button>
-        </div>
-        <div
-          id="oracle-result"
-          class="oracle-result"
-          onclick="rollOracle('normal')"
-          title="Click result to roll"
-        ></div>
-      </section>
-    </div>
-
-    <div class="muster-col center-col">
-      <!-- Muster List (Active Play) -->
-      <section class="panel">
-        <h2>Muster</h2>
-        <div class="character-list" id="play-muster-list"></div>
-      </section>
-    </div>
-
-    <div class="muster-col right-col">
-      <!-- Others (NPCs/Threats) -->
-      <section class="panel">
-        <h2>Others</h2>
-        <div class="threats-list" id="others-list"></div>
-        <button class="add-btn" onclick="openOtherModal()">+ Another</button>
-      </section>
-    </div>
-  </main>
-
-  <!-- Character Modal -->
-  <div class="modal-overlay" id="character-modal">
-    <div class="modal">
-      <h3 id="char-modal-title">Edit Character</h3>
-      <form class="modal-form" onsubmit="saveCharacter(event)">
+    <!-- Character Modal -->
+    <div class="modal-overlay" id="character-modal">
+      <div class="modal">
+        <h3 id="char-modal-title">Edit Character</h3>
+        <form class="modal-form" onsubmit="saveCharacter(event)">
           <input type="hidden" id="char-id" />
-        <div class="form-row">
-          <div class="form-group" style="flex: 0 0 72px">
-            <label>#</label>
-            <input type="number" id="char-num" min="1" max="99" />
+          <div class="form-row">
+            <div class="form-group" style="flex: 0 0 72px">
+              <label>#</label>
+              <input type="number" id="char-num" min="1" max="99" />
+            </div>
+            <div class="form-group" style="flex: 2">
+              <label>Name</label>
+              <input type="text" id="char-name" required />
+            </div>
+            <div class="form-group" style="flex: 0 0 96px">
+              <label>Player</label>
+              <input type="text" id="char-player" />
+            </div>
           </div>
-          <div class="form-group" style="flex: 2">
-            <label>Name</label>
-            <input type="text" id="char-name" required />
-          </div>
-          <div class="form-group" style="flex: 0 0 96px">
-            <label>Player</label>
-            <input type="text" id="char-player" />
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label>Description</label>
-          <input type="text" id="char-desc" />
-        </div>
-        <div class="form-group">
-          <label>Hearts</label>
-          <div style="display:flex; gap:0.35rem; align-items:center;">
-            <input type="number" id="char-hearts-current" class="num-3" value="7" min="0" max="100" aria-label="Hearts current" />
-            <span style="color: var(--ink-light); font-family: 'Cinzel', serif;">/</span>
-            <input type="number" id="char-hearts-max" class="num-3" value="7" min="1" max="100" aria-label="Hearts max" />
+          <div class="form-group">
+            <label>Description</label>
+            <input type="text" id="char-desc" />
           </div>
-        </div>
+          <div class="form-group">
+            <label>Hearts</label>
+            <div style="display: flex; gap: 0.35rem; align-items: center">
+              <input
+                type="number"
+                id="char-hearts-current"
+                class="num-3"
+                value="7"
+                min="0"
+                max="100"
+                aria-label="Hearts current"
+              />
+              <span
+                style="
+                  color: var(--ink-light);
+                  font-family: &quot;Cinzel&quot;, serif;
+                "
+                >/</span
+              >
+              <input
+                type="number"
+                id="char-hearts-max"
+                class="num-3"
+                value="7"
+                min="1"
+                max="100"
+                aria-label="Hearts max"
+              />
+            </div>
+          </div>
 
-        <div class="form-group">
-          <label>Iron Hearts</label>
-          <div style="display:flex; gap:0.35rem; align-items:center;">
-            <input type="number" id="char-iron-current" class="num-3" value="0" min="0" max="100" aria-label="Iron current" />
-            <span style="color: var(--ink-light); font-family: 'Cinzel', serif;">/</span>
-            <input type="number" id="char-iron-max" class="num-3" value="0" min="0" max="100" aria-label="Iron max" />
+          <div class="form-group">
+            <label>Iron Hearts</label>
+            <div style="display: flex; gap: 0.35rem; align-items: center">
+              <input
+                type="number"
+                id="char-iron-current"
+                class="num-3"
+                value="0"
+                min="0"
+                max="100"
+                aria-label="Iron current"
+              />
+              <span
+                style="
+                  color: var(--ink-light);
+                  font-family: &quot;Cinzel&quot;, serif;
+                "
+                >/</span
+              >
+              <input
+                type="number"
+                id="char-iron-max"
+                class="num-3"
+                value="0"
+                min="0"
+                max="100"
+                aria-label="Iron max"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label>Arcana Hearts</label>
-          <div style="display:flex; gap:0.35rem; align-items:center;">
-            <input type="number" id="char-arcana-current" class="num-3" value="0" min="0" max="100" aria-label="Arcana current" />
-            <span style="color: var(--ink-light); font-family: 'Cinzel', serif;">/</span>
-            <input type="number" id="char-arcana-max" class="num-3" value="0" min="0" max="100" aria-label="Arcana max" />
+          <div class="form-group">
+            <label>Arcana Hearts</label>
+            <div style="display: flex; gap: 0.35rem; align-items: center">
+              <input
+                type="number"
+                id="char-arcana-current"
+                class="num-3"
+                value="0"
+                min="0"
+                max="100"
+                aria-label="Arcana current"
+              />
+              <span
+                style="
+                  color: var(--ink-light);
+                  font-family: &quot;Cinzel&quot;, serif;
+                "
+                >/</span
+              >
+              <input
+                type="number"
+                id="char-arcana-max"
+                class="num-3"
+                value="0"
+                min="0"
+                max="100"
+                aria-label="Arcana max"
+              />
+            </div>
           </div>
-        </div>
-        <div class="checkbox-row">
+          <div class="checkbox-row">
             <label><input type="checkbox" id="char-leader" /> Leader</label>
             <label><input type="checkbox" id="char-blessed" /> Blessed</label>
             <label><input type="checkbox" id="char-incamp" /> In Camp</label>
-        </div>
-        
-        <div class="form-group">
-          <label>Notes</label>
-          <textarea id="char-notes"></textarea>
-        </div>
-        <div class="modal-buttons">
+          </div>
+
+          <div class="form-group">
+            <label>Notes</label>
+            <textarea id="char-notes"></textarea>
+          </div>
+          <div class="modal-buttons">
             <button
               type="button"
               class="btn"
@@ -1406,13 +1575,13 @@
               Close
             </button>
             <button type="submit" class="btn primary">Save</button>
-        </div>
-      </form>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <!-- Other/Threat Modal -->
-  <div class="modal-overlay" id="other-modal">
+    <!-- Other/Threat Modal -->
+    <div class="modal-overlay" id="other-modal">
       <div class="modal">
         <h3 id="other-modal-title">Other</h3>
         <form class="modal-form" onsubmit="saveOther(event)">
@@ -1426,22 +1595,22 @@
             <textarea id="other-desc"></textarea>
           </div>
           <div class="form-row">
-              <div class="form-group">
-                 <label>Reaction</label>
+            <div class="form-group">
+              <label>Reaction</label>
               <div style="display: flex; gap: 0.5rem">
                 <select id="other-reaction" style="flex: 1">
-                        <option value="Hostile">Hostile</option>
-                        <option value="Suspicious">Suspicious</option>
-                        <option value="Fearful">Fearful</option>
-                        <option value="Dismissive">Dismissive</option>
-                        <option value="Reluctant">Reluctant</option>
-                        <option value="Neutral">Neutral</option>
-                        <option value="Interested">Interested</option>
-                        <option value="Pleasant">Pleasant</option>
-                        <option value="Friendly">Friendly</option>
-                        <option value="Enthusiastic">Enthusiastic</option>
-                        <option value="Trusting">Trusting</option>
-                     </select>
+                  <option value="Hostile">Hostile</option>
+                  <option value="Suspicious">Suspicious</option>
+                  <option value="Fearful">Fearful</option>
+                  <option value="Dismissive">Dismissive</option>
+                  <option value="Reluctant">Reluctant</option>
+                  <option value="Neutral">Neutral</option>
+                  <option value="Interested">Interested</option>
+                  <option value="Pleasant">Pleasant</option>
+                  <option value="Friendly">Friendly</option>
+                  <option value="Enthusiastic">Enthusiastic</option>
+                  <option value="Trusting">Trusting</option>
+                </select>
                 <button
                   type="button"
                   class="btn icon-btn"
@@ -1450,8 +1619,8 @@
                 >
                   ⟳
                 </button>
-                 </div>
               </div>
+            </div>
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -1481,16 +1650,16 @@
           </div>
         </form>
       </div>
-  </div>
+    </div>
 
-  <script>
-    // --- Data & State ---
-    // --- Data & State ---
-    const DEFAULT_STATE = {
+    <script>
+      // --- Data & State ---
+      // --- Data & State ---
+      const DEFAULT_STATE = {
         mode: "muster", // or 'camp'
-      session: { round: 0, turn: 0, insight: 0 },
-      adventure: { target: null, total: null, result: "" },
-      environment: { 
+        session: { round: 0, turn: 0, insight: 0 },
+        adventure: { target: null, total: null, result: "" },
+        environment: {
           region: "Wåndyrwyld",
           climate: "Temperate",
           landform: "Deciduous forest",
@@ -1505,13 +1674,13 @@
         },
         dice: { rolls: [3, 4], type: "normal", total: 7 },
         rumor: { text: "", blessing: { active: false, source: "", value: 0 } },
-      muster: [],
-      camp: [],
+        muster: [],
+        camp: [],
         others: [],
         previousLocations: [], // Track previously used location names
-    };
-    
-    let state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+      };
+
+      let state = JSON.parse(JSON.stringify(DEFAULT_STATE));
 
       const INSIGHTS = [
         "—",
@@ -1523,9 +1692,9 @@
         "EFFORT",
       ];
       const DICE_FACES = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
-    
-    // NPC Reactions 2d6
-    const NPC_REACTIONS = {
+
+      // NPC Reactions 2d6
+      const NPC_REACTIONS = {
         2: "Hostile",
         3: "Suspicious",
         4: "Fearful",
@@ -1537,10 +1706,10 @@
         10: "Friendly",
         11: "Enthusiastic",
         12: "Trusting",
-    };
+      };
 
-    // Terrain & Weather Data
-    const TERRAIN_DATA = {
+      // Terrain & Weather Data
+      const TERRAIN_DATA = {
         zones: [
           "Polar",
           "Boreal",
@@ -1623,7 +1792,7 @@
           "Natural shelter",
           "Signs of habitation",
         ],
-        
+
         weatherPatterns: {
           Polar: [
             "Clear and frigid",
@@ -1789,10 +1958,10 @@
           "The Fisherman's Net",
           "The Spring's Bounty",
         ],
-    };
+      };
 
-    // --- Popover Logic ---
-    let currentPopover = null;
+      // --- Popover Logic ---
+      let currentPopover = null;
 
       function openLocationMenu(event) {
         event.stopPropagation();
@@ -1956,11 +2125,11 @@
         renderEnvironment();
       }
 
-    function openEnvMenu(event, stateKey, options, label) {
+      function openEnvMenu(event, stateKey, options, label) {
         event.stopPropagation();
         const target = event.target;
         const rect = target.getBoundingClientRect();
-        
+
         // Close existing
         closePopover();
 
@@ -1973,13 +2142,13 @@
               TERRAIN_DATA.weatherPatterns[state.environment.climate] || [];
           }
         }
-        
+
         // Transition To special case:
         // If Transition is 1-3 (same landform), Transition To must mirror current landform.
         let lockTransitionTo = false;
         if (stateKey === "transition_to" && state.environment.transition) {
           const transitionIndex = TERRAIN_DATA.transitions.indexOf(
-            state.environment.transition
+            state.environment.transition,
           );
           if (transitionIndex >= 0 && transitionIndex < 3) {
             lockTransitionTo = true;
@@ -1991,16 +2160,16 @@
           console.warn(`No options available for ${stateKey}`);
           return;
         }
-        
+
         // Create/Get Popover
         let popover = document.getElementById("env-popover");
         if (!popover) {
           popover = document.createElement("div");
           popover.id = "env-popover";
           popover.className = "popover-menu";
-            document.body.appendChild(popover);
+          document.body.appendChild(popover);
         }
-        
+
         // Content
         let html = `
             <div class="popover-header">
@@ -2013,42 +2182,42 @@
             </div>
             <div class="popover-list">
         `;
-        
+
         options.forEach((opt) => {
-            const isSel = state.environment[stateKey] === opt;
+          const isSel = state.environment[stateKey] === opt;
           const escapedOpt = opt.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
           html += `<div class="popover-option ${
             isSel ? "selected" : ""
           }" data-key="${stateKey}" data-value="${escapedOpt}" onclick="selectEnvOptionFromElement(this)">${opt}</div>`;
         });
         html += `</div>`;
-        
+
         popover.innerHTML = html;
         popover.classList.add("active");
-        
+
         // Position
         popover.style.top = rect.bottom + window.scrollY + 5 + "px";
         popover.style.left = rect.left + window.scrollX + "px";
-        
+
         currentPopover = popover;
-        
+
         // Global click to close
         document.addEventListener("click", closePopoverOnClickOutside);
-    }
-    
-    function closePopover() {
+      }
+
+      function closePopover() {
         if (currentPopover) {
           currentPopover.classList.remove("active");
-            currentPopover = null;
+          currentPopover = null;
           document.removeEventListener("click", closePopoverOnClickOutside);
         }
-    }
-    
-    function closePopoverOnClickOutside(e) {
+      }
+
+      function closePopoverOnClickOutside(e) {
         if (currentPopover && !currentPopover.contains(e.target)) {
-            closePopover();
+          closePopover();
         }
-    }
+      }
 
       function selectEnvOptionFromElement(el) {
         const key = el.getAttribute("data-key");
@@ -2058,16 +2227,16 @@
           .replace(/&quot;/g, '"');
         selectEnvOption(key, val);
       }
-    
-    function selectEnvOption(key, val) {
+
+      function selectEnvOption(key, val) {
         state.environment[key] = val;
-        
+
         // Special Logic for Transition - calculate transition_to
         if (key === "transition") {
           const transitionIndex = TERRAIN_DATA.transitions.indexOf(val);
           const lfOpts =
             TERRAIN_DATA.landforms[state.environment.climate] || [];
-          
+
           if (transitionIndex >= 0 && lfOpts && lfOpts.length > 0) {
             // Transitions 1-3 (indices 0-2): same terrain
             // Transitions 4-6 (indices 3-5): different terrain
@@ -2091,11 +2260,11 @@
             }
           }
         }
-        
+
         // Special Logic for transition_to
         if (key === "transition_to") {
           const transitionIndex = TERRAIN_DATA.transitions.indexOf(
-            state.environment.transition
+            state.environment.transition,
           );
           if (transitionIndex >= 0 && transitionIndex < 3) {
             // Transitions 1-3 mean same landform, so Transition To must mirror Landform
@@ -2105,10 +2274,12 @@
             state.environment.transition_to = val;
           }
         }
-        
+
         // Special Logic for landform change - update transition_to if transition is 1-3 (same terrain)
         if (key === "landform" && state.environment.transition) {
-          const transitionIndex = TERRAIN_DATA.transitions.indexOf(state.environment.transition);
+          const transitionIndex = TERRAIN_DATA.transitions.indexOf(
+            state.environment.transition,
+          );
           if (transitionIndex >= 0 && transitionIndex < 3) {
             // Transitions 1-3 mean same terrain, so transition_to should match current landform
             state.environment.transition_to = val;
@@ -2118,14 +2289,14 @@
         // Special Logic for Climate change - regenerate all other fields randomly
         if (key === "climate") {
           // Randomize landform (depends on climate)
-            const lfOpts = TERRAIN_DATA.landforms[val];
+          const lfOpts = TERRAIN_DATA.landforms[val];
           if (lfOpts && lfOpts.length > 0) {
             state.environment.landform =
               lfOpts[Math.floor(Math.random() * lfOpts.length)];
           }
 
           // Randomize weather pattern (depends on climate)
-            const wpOpts = TERRAIN_DATA.weatherPatterns[val];
+          const wpOpts = TERRAIN_DATA.weatherPatterns[val];
           if (wpOpts && wpOpts.length > 0) {
             state.environment.weather_pattern =
               wpOpts[Math.floor(Math.random() * wpOpts.length)];
@@ -2138,7 +2309,9 @@
                 Math.floor(Math.random() * TERRAIN_DATA.transitions.length)
               ];
             // Recalculate transition_to based on the new transition
-            const transitionIndex = TERRAIN_DATA.transitions.indexOf(state.environment.transition);
+            const transitionIndex = TERRAIN_DATA.transitions.indexOf(
+              state.environment.transition,
+            );
             if (transitionIndex >= 0 && lfOpts && lfOpts.length > 0) {
               if (transitionIndex < 3) {
                 state.environment.transition_to = state.environment.landform;
@@ -2146,10 +2319,14 @@
                 let newLandform;
                 let attempts = 0;
                 do {
-                  newLandform = lfOpts[Math.floor(Math.random() * lfOpts.length)];
+                  newLandform =
+                    lfOpts[Math.floor(Math.random() * lfOpts.length)];
                   attempts++;
                   if (attempts > 10) break;
-                } while (newLandform === state.environment.landform && lfOpts.length > 1);
+                } while (
+                  newLandform === state.environment.landform &&
+                  lfOpts.length > 1
+                );
                 state.environment.transition_to = newLandform;
               }
             }
@@ -2158,7 +2335,7 @@
             state.environment.terrain_condition =
               TERRAIN_DATA.terrainConditions[
                 Math.floor(
-                  Math.random() * TERRAIN_DATA.terrainConditions.length
+                  Math.random() * TERRAIN_DATA.terrainConditions.length,
                 )
               ];
           }
@@ -2172,18 +2349,18 @@
             state.environment.weather_condition =
               TERRAIN_DATA.weatherConditions[
                 Math.floor(
-                  Math.random() * TERRAIN_DATA.weatherConditions.length
+                  Math.random() * TERRAIN_DATA.weatherConditions.length,
                 )
               ];
           }
         }
-        
+
         saveState();
         renderEnvironment();
         closePopover();
-    }
-    
-    function randomizeAndSelect(key) {
+      }
+
+      function randomizeAndSelect(key) {
         // Find options based on key
         let opts = [];
         if (key === "climate") opts = TERRAIN_DATA.zones;
@@ -2192,7 +2369,7 @@
         else if (key === "transition") opts = TERRAIN_DATA.transitions;
         else if (key === "transition_to") {
           const transitionIndex = TERRAIN_DATA.transitions.indexOf(
-            state.environment.transition
+            state.environment.transition,
           );
           if (transitionIndex >= 0 && transitionIndex < 3) {
             // Locked to current landform for transitions 1-3
@@ -2200,8 +2377,7 @@
             return;
           }
           opts = TERRAIN_DATA.landforms[state.environment.climate] || [];
-        }
-        else if (key === "terrain_condition")
+        } else if (key === "terrain_condition")
           opts = TERRAIN_DATA.terrainConditions;
         else if (key === "poi") opts = TERRAIN_DATA.pois;
         else if (key === "weather_pattern")
@@ -2212,59 +2388,62 @@
         else if (key === "weather_event") opts = TERRAIN_DATA.weatherEvents;
 
         if (opts && opts.length > 0) {
-            const rand = Math.floor(Math.random() * opts.length);
-            selectEnvOption(key, opts[rand]);
+          const rand = Math.floor(Math.random() * opts.length);
+          selectEnvOption(key, opts[rand]);
         }
-    }
-
-    function init() {
-      try {
-        loadState();
-        } catch (e) {
-        console.error("Failed to load state:", e);
       }
-      render();
-    }
-    
-    // Cleanup old helpers no longer needed for direct select manipulation
-    // but generic randomizers might still be useful via buttons if we kept them?
-    // User wants "text values should open a menu", implying the menu handles it.
-    // I put randomize button IN the popover header.
-    
-    // --- Environment Helpers ---
-    function updateEnvironment() {
-        // Region is now handled via location menu, this function kept for compatibility
-           saveState();
-    }
-    
-    // Legacy functions removed: populateClimateSelect, updateLandformOptions, onClimateChange, randomize...
-    // New logic handled via openEnvMenu / selectEnvOption / randomizeAndSelect logic.
 
-    function loadState() {
+      function init() {
+        try {
+          loadState();
+        } catch (e) {
+          console.error("Failed to load state:", e);
+        }
+        render();
+      }
+
+      // Cleanup old helpers no longer needed for direct select manipulation
+      // but generic randomizers might still be useful via buttons if we kept them?
+      // User wants "text values should open a menu", implying the menu handles it.
+      // I put randomize button IN the popover header.
+
+      // --- Environment Helpers ---
+      function updateEnvironment() {
+        // Region is now handled via location menu, this function kept for compatibility
+        saveState();
+      }
+
+      // Legacy functions removed: populateClimateSelect, updateLandformOptions, onClimateChange, randomize...
+      // New logic handled via openEnvMenu / selectEnvOption / randomizeAndSelect logic.
+
+      function loadState() {
         const stored = localStorage.getItem("wandyr-session-v3");
-      if (stored) {
-        const loaded = JSON.parse(stored);
-        
-        state = {
+        if (stored) {
+          const loaded = JSON.parse(stored);
+
+          state = {
             ...DEFAULT_STATE,
             ...loaded,
             session: { ...DEFAULT_STATE.session, ...(loaded.session || {}) },
-            adventure: { ...DEFAULT_STATE.adventure, ...(loaded.adventure || {}) },
-            environment: { 
-                ...DEFAULT_STATE.environment, 
-                ...(loaded.environment || {}),
+            adventure: {
+              ...DEFAULT_STATE.adventure,
+              ...(loaded.adventure || {}),
             },
-            rumor: { 
-                ...DEFAULT_STATE.rumor, 
-                ...(loaded.rumor || {}),
+            environment: {
+              ...DEFAULT_STATE.environment,
+              ...(loaded.environment || {}),
+            },
+            rumor: {
+              ...DEFAULT_STATE.rumor,
+              ...(loaded.rumor || {}),
               blessing: {
                 ...DEFAULT_STATE.rumor.blessing,
                 ...(loaded.rumor?.blessing || {}),
-            },
+              },
             },
             dice: { ...DEFAULT_STATE.dice, ...(loaded.dice || {}) },
-        };
-        // Ensure new fields exist if migrating
+          };
+          // Ensure new fields exist if migrating
           if (!state.environment.climate)
             state.environment.climate = "Temperate";
           if (
@@ -2272,16 +2451,16 @@
             state.environment.conditions
           ) {
             // If old 'conditions' exists, migrate it to 'weather_pattern'
-            state.environment.weather_pattern = state.environment.conditions; 
-        }
-        // Remove old 'conditions' field if it exists after migration
-        if (state.environment.conditions !== undefined) {
+            state.environment.weather_pattern = state.environment.conditions;
+          }
+          // Remove old 'conditions' field if it exists after migration
+          if (state.environment.conditions !== undefined) {
             delete state.environment.conditions;
-        }
+          }
 
           if (loaded.muster) state.muster = loaded.muster;
           if (loaded.camp) state.camp = loaded.camp;
-        
+
           if (loaded.others) {
             state.others = loaded.others;
           } else if (loaded.threats) {
@@ -2291,37 +2470,37 @@
               if (t.condition === "fled") s = "fled";
               if (t.condition === "dead") s = "dead";
               if (t.condition === "active") s = "fresh";
-                return {
-                    id: t.id,
-                    name: t.name,
-                    description: t.description,
-                    level: t.level,
-                    oracle: t.oracle,
-                    status: s,
+              return {
+                id: t.id,
+                name: t.name,
+                description: t.description,
+                level: t.level,
+                oracle: t.oracle,
+                status: s,
                 reaction: t.reaction || "Neutral",
-                };
+              };
             });
-        }
-        
+          }
+
           if (typeof loaded.rumor?.blessingActive === "boolean") {
-             state.rumor.blessing.active = loaded.rumor.blessingActive;
-        }
+            state.rumor.blessing.active = loaded.rumor.blessingActive;
+          }
 
           // Initialize previousLocations if missing
           if (!state.previousLocations) {
             state.previousLocations = [];
           }
-      } else {
+        } else {
           // New session or no data: Randomize Environment immediately
           initialRandomizeEnv();
           state.previousLocations = [];
-      }
-      
-      // Safety check: if loaded state has empty env fields (e.g. from partial previous state), fill them
-      ensureEnvData();
-    }
+        }
 
-    function initialRandomizeEnv() {
+        // Safety check: if loaded state has empty env fields (e.g. from partial previous state), fill them
+        ensureEnvData();
+      }
+
+      function initialRandomizeEnv() {
         // Pick random Climate first
         const zones = TERRAIN_DATA.zones;
         state.environment.climate =
@@ -2329,19 +2508,19 @@
         // ensureEnvData will randomize all other fields that are empty
         ensureEnvData();
         saveState();
-    }
-    
-    function ensureEnvData() {
+      }
+
+      function ensureEnvData() {
         const env = state.environment;
         // Climate
         if (!env.climate) env.climate = "Temperate";
-        
+
         // Landform (dependent on climate)
         if (!env.landform) {
           const opts =
             TERRAIN_DATA.landforms[env.climate] ||
             TERRAIN_DATA.landforms["Temperate"];
-            env.landform = opts[Math.floor(Math.random() * opts.length)];
+          env.landform = opts[Math.floor(Math.random() * opts.length)];
         }
 
         // Transition
@@ -2352,11 +2531,13 @@
 
         // Calculate / reconcile transition_to based on transition
         if (env.transition) {
-          const transitionIndex = TERRAIN_DATA.transitions.indexOf(env.transition);
+          const transitionIndex = TERRAIN_DATA.transitions.indexOf(
+            env.transition,
+          );
           const lfOpts =
             TERRAIN_DATA.landforms[env.climate] ||
             TERRAIN_DATA.landforms["Temperate"];
-          
+
           if (transitionIndex >= 0 && lfOpts && lfOpts.length > 0) {
             // Transitions 1-3: same landform (inherit current landform)
             if (transitionIndex < 3) {
@@ -2368,7 +2549,8 @@
                 let newLandform;
                 let attempts = 0;
                 do {
-                  newLandform = lfOpts[Math.floor(Math.random() * lfOpts.length)];
+                  newLandform =
+                    lfOpts[Math.floor(Math.random() * lfOpts.length)];
                   attempts++;
                   if (attempts > 10) break;
                 } while (newLandform === env.landform && lfOpts.length > 1);
@@ -2377,51 +2559,51 @@
             }
           }
         }
-        
+
         // Weather Pattern (dependent on climate)
         if (!env.weather_pattern) {
           const opts =
             TERRAIN_DATA.weatherPatterns[env.climate] ||
             TERRAIN_DATA.weatherPatterns["Temperate"];
-             env.weather_pattern = opts[Math.floor(Math.random() * opts.length)];
+          env.weather_pattern = opts[Math.floor(Math.random() * opts.length)];
         }
-        
+
         // Others basic
         if (!env.terrain_condition) {
-            const opts = TERRAIN_DATA.terrainConditions;
-            env.terrain_condition = opts[Math.floor(Math.random() * opts.length)];
+          const opts = TERRAIN_DATA.terrainConditions;
+          env.terrain_condition = opts[Math.floor(Math.random() * opts.length)];
         }
         if (!env.poi) {
-            const opts = TERRAIN_DATA.pois;
-            env.poi = opts[Math.floor(Math.random() * opts.length)];
+          const opts = TERRAIN_DATA.pois;
+          env.poi = opts[Math.floor(Math.random() * opts.length)];
         }
         if (!env.weather_shift) {
-            const opts = TERRAIN_DATA.weatherShifts;
-            env.weather_shift = opts[Math.floor(Math.random() * opts.length)];
+          const opts = TERRAIN_DATA.weatherShifts;
+          env.weather_shift = opts[Math.floor(Math.random() * opts.length)];
         }
         if (!env.weather_condition) {
-            const opts = TERRAIN_DATA.weatherConditions;
-            env.weather_condition = opts[Math.floor(Math.random() * opts.length)];
+          const opts = TERRAIN_DATA.weatherConditions;
+          env.weather_condition = opts[Math.floor(Math.random() * opts.length)];
         }
         if (!env.weather_event) {
-            const opts = TERRAIN_DATA.weatherEvents;
-            env.weather_event = opts[Math.floor(Math.random() * opts.length)];
+          const opts = TERRAIN_DATA.weatherEvents;
+          env.weather_event = opts[Math.floor(Math.random() * opts.length)];
         }
-    }
+      }
 
-    function saveState() {
+      function saveState() {
         localStorage.setItem("wandyr-session-v3", JSON.stringify(state));
-    }
-    
-    // ... uuid ...
-    function uuid() {
+      }
+
+      // ... uuid ...
+      function uuid() {
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
           const r = (Math.random() * 16) | 0;
           return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
-      });
-    }
+        });
+      }
 
-    // ... Actions ... (toggleActions, toggleMode, reset, export, import)
+      // ... Actions ... (toggleActions, toggleMode, reset, export, import)
       function toggleActions() {
         document.getElementById("actions-dropdown").classList.toggle("active");
       }
@@ -2438,22 +2620,22 @@
         saveState();
         render();
       }
-    function resetSession() {
+      function resetSession() {
         if (
           confirm(
-            "Are you sure you want to reset everything? cannot be undone."
+            "Are you sure you want to reset everything? cannot be undone.",
           )
         ) {
-        state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+          state = JSON.parse(JSON.stringify(DEFAULT_STATE));
           saveState();
           render();
+        }
       }
-    }
-    function exportData() {
+      function exportData() {
         const blob = new Blob([JSON.stringify(state, null, 2)], {
           type: "application/json",
         });
-      const url = URL.createObjectURL(blob);
+        const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
         a.download = `wandyr-session-${new Date()
@@ -2463,20 +2645,23 @@
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-    }
-    function importData(event) {
-      const file = event.target.files[0];
+      }
+      function importData(event) {
+        const file = event.target.files[0];
         if (!file) return;
-      const reader = new FileReader();
+        const reader = new FileReader();
         reader.onload = (e) => {
-        try {
-          const loaded = JSON.parse(e.target.result);
+          try {
+            const loaded = JSON.parse(e.target.result);
             if (!loaded || typeof loaded !== "object")
               throw new Error("Invalid JSON structure");
             state = {
               ...DEFAULT_STATE,
               ...loaded,
-              adventure: { ...DEFAULT_STATE.adventure, ...(loaded.adventure || {}) },
+              adventure: {
+                ...DEFAULT_STATE.adventure,
+                ...(loaded.adventure || {}),
+              },
               environment: {
                 ...DEFAULT_STATE.environment,
                 ...loaded.environment,
@@ -2497,8 +2682,8 @@
                 status:
                   (t.condition === "active" ? "fresh" : t.condition) || "fresh",
                 reaction: t.reaction || "Neutral",
-                }));
-           }
+              }));
+            }
             saveState();
             render();
             alert("Session imported successfully!");
@@ -2506,65 +2691,65 @@
             console.error(err);
             alert("Invalid JSON file: " + err.message);
           }
-      };
-      reader.readAsText(file);
-    }
+        };
+        reader.readAsText(file);
+      }
 
-    // --- Environment ---
-    function updateEnvironment() {
+      // --- Environment ---
+      function updateEnvironment() {
         state.environment.region = document.getElementById("env-region").value;
-      saveState();
-    }
+        saveState();
+      }
 
-    // --- Dice ---
-    
-    function rollOracle(type) {
-      const rolls = [];
+      // --- Dice ---
+
+      function rollOracle(type) {
+        const rolls = [];
         const count = type === "normal" ? 2 : 3;
-      
+
         for (let i = 0; i < count; i++)
           rolls.push(Math.floor(Math.random() * 6) + 1);
-      
-      let total = 0;
-      let kept = [];
-      
-      // clone to sort
+
+        let total = 0;
+        let kept = [];
+
+        // clone to sort
         const sorted = [...rolls].sort((a, b) => a - b);
-      
+
         if (type === "normal") {
-        kept = sorted; // keep all 2
+          kept = sorted; // keep all 2
           total = kept.reduce((a, c) => a + c, 0);
         } else if (type === "adv") {
-        // Drop lowest (first) UNLESS it is a 1.
+          // Drop lowest (first) UNLESS it is a 1.
           if (sorted[0] === 1) {
             kept = sorted; // Keep all 3
-        } else {
+          } else {
             kept = sorted.slice(1);
-        }
+          }
           total = kept.reduce((a, c) => a + c, 0);
         } else if (type === "dis") {
-        // Drop highest (last)
-        kept = sorted.slice(0, 2);
+          // Drop highest (last)
+          kept = sorted.slice(0, 2);
           total = kept.reduce((a, c) => a + c, 0);
+        }
+
+        state.dice = { rolls: rolls, type: type, total: total };
+        saveState();
+        renderDice();
       }
-      
-      state.dice = { rolls: rolls, type: type, total: total };
-      saveState();
-      renderDice();
-    }
-    
-    function renderDice() {
+
+      function renderDice() {
         const d = state.dice || { rolls: [1, 1], type: "normal", total: 2 };
         const container = document.getElementById("oracle-result");
         let html = "";
 
         // We will just show the pips without outer box
         const rolls = d.rolls || [];
-        
+
         rolls.forEach((val) => {
           html += `<span class="dice-face">${DICE_FACES[val - 1]}</span>`;
         });
-        
+
         // Calculate Tags
         const sixes = rolls.filter((r) => r === 6).length;
         const ones = rolls.filter((r) => r === 1).length;
@@ -2579,17 +2764,17 @@
 
         // Add Total & Tags
         html += `<span style="margin-left:0.2rem; font-size: 2rem; font-weight:bold; color:var(--accent-dark);">= ${d.total}${tagHtml}</span>`;
-        
-        if (container) container.innerHTML = html;
-    }
 
-    // --- Rumor & Blessing ---
-    function updateRumor() {
+        if (container) container.innerHTML = html;
+      }
+
+      // --- Rumor & Blessing ---
+      function updateRumor() {
         state.rumor.text = document.getElementById("camp-rumor").value;
         saveState();
-    }
+      }
 
-    function updateBlessing() {
+      function updateBlessing() {
         state.rumor.blessing.source =
           document.getElementById("camp-bless-source").value;
         state.rumor.blessing.value =
@@ -2600,134 +2785,134 @@
         // Since blessing visual glow affects cards, we re-render cards too?
         // Actually full render is safer.
         renderCharacterLists();
-    }
-
-    // --- Time / Insight (no Turn Clock dice) ---
-    function rollD6() {
-      return Math.floor(Math.random() * 6) + 1;
-    }
-
-    let insightBadgeTimeout = null;
-    let insightBadgeFadeTimeout = null;
-
-    function setInsightRoll({ animate } = { animate: false }) {
-      state.session.insight = rollD6();
-      if (animate) triggerInsightUpdatedUi();
-    }
-
-    function triggerInsightUpdatedUi() {
-      const el = document.querySelector(".insight-display");
-      if (el) {
-        el.classList.remove("flash");
-        // Force reflow so the animation can restart reliably
-        void el.offsetWidth;
-        el.classList.add("flash");
       }
 
-      const badge = document.getElementById("insight-updated-badge");
-      if (badge) {
-        badge.classList.add("show");
-        if (insightBadgeTimeout) clearTimeout(insightBadgeTimeout);
-        if (insightBadgeFadeTimeout) clearTimeout(insightBadgeFadeTimeout);
-
-        // Keep visible, then fade after 5s
-        insightBadgeTimeout = setTimeout(() => {
-          badge.classList.remove("show");
-        }, 5000);
+      // --- Time / Insight (no Turn Clock dice) ---
+      function rollD6() {
+        return Math.floor(Math.random() * 6) + 1;
       }
-    }
 
-    function resetTurnCount() {
-      if (confirm("Reset Turn Count to 0?")) {
-        state.session.turn = 0;
-        saveState();
-        renderTimePanel();
+      let insightBadgeTimeout = null;
+      let insightBadgeFadeTimeout = null;
+
+      function setInsightRoll({ animate } = { animate: false }) {
+        state.session.insight = rollD6();
+        if (animate) triggerInsightUpdatedUi();
       }
-    }
 
-    function resetRoundCount() {
-      if (confirm("Reset Round Count to 0?")) {
+      function triggerInsightUpdatedUi() {
+        const el = document.querySelector(".insight-display");
+        if (el) {
+          el.classList.remove("flash");
+          // Force reflow so the animation can restart reliably
+          void el.offsetWidth;
+          el.classList.add("flash");
+        }
+
+        const badge = document.getElementById("insight-updated-badge");
+        if (badge) {
+          badge.classList.add("show");
+          if (insightBadgeTimeout) clearTimeout(insightBadgeTimeout);
+          if (insightBadgeFadeTimeout) clearTimeout(insightBadgeFadeTimeout);
+
+          // Keep visible, then fade after 5s
+          insightBadgeTimeout = setTimeout(() => {
+            badge.classList.remove("show");
+          }, 5000);
+        }
+      }
+
+      function resetTurnCount() {
+        if (confirm("Reset Turn Count to 0?")) {
+          state.session.turn = 0;
+          saveState();
+          renderTimePanel();
+        }
+      }
+
+      function resetRoundCount() {
+        if (confirm("Reset Round Count to 0?")) {
+          state.session.round = 0;
+          saveState();
+          renderTimePanel();
+        }
+      }
+
+      function advanceTurn() {
+        state.session.turn++;
         state.session.round = 0;
+        setInsightRoll({ animate: true });
         saveState();
         renderTimePanel();
       }
-    }
 
-    function advanceTurn() {
-      state.session.turn++;
-      state.session.round = 0;
-      setInsightRoll({ animate: true });
-      saveState();
-      renderTimePanel();
-    }
-
-    function advanceRound() {
-      state.session.round++;
-      setInsightRoll({ animate: true });
-      saveState();
-      renderTimePanel();
-    }
-
-    function rollInsight() {
-      setInsightRoll({ animate: true });
-      saveState();
-      renderTimePanel();
-    }
-
-    // --- Adventure ---
-    function rollAdventure(difficulty) {
-      const targets = { easy: 6, normal: 8, hard: 10, extreme: 12 };
-      const target = targets[difficulty] ?? 8;
-      const r1 = rollD6();
-      const r2 = rollD6();
-      const rolls = [r1, r2];
-      const total = r1 + r2;
-      const result = total >= target ? "All clear" : "Adventure!";
-      state.adventure = { target, total, result, rolls };
-      saveState();
-      renderAdventure();
-    }
-
-    function renderAdventure() {
-      const el = document.getElementById("adventure-result");
-      if (!el) return;
-      if (!state.adventure || state.adventure.total == null) {
-        el.textContent = "";
-        el.className = "adventure-result";
-        return;
+      function advanceRound() {
+        state.session.round++;
+        setInsightRoll({ animate: true });
+        saveState();
+        renderTimePanel();
       }
-      const rolls = state.adventure.rolls || [];
-      const sixes = rolls.filter((r) => r === 6).length;
-      const ones = rolls.filter((r) => r === 1).length;
-      let tagHtml = "";
-      if (sixes > 0)
-        tagHtml +=
-          '<span style="color:#2e7d32; font-size:0.75em; margin-left:0.25rem;" title="Sweet">🌿</span>';
-      if (ones > 0)
-        tagHtml +=
-          '<span style="color:#c62828; font-size:0.75em; margin-left:0.25rem;" title="Spicy">💀</span>';
 
-      el.innerHTML = `${state.adventure.total} vs ${state.adventure.target} — ${state.adventure.result}${tagHtml}`;
-      el.className =
-        "adventure-result" +
-        (state.adventure.result === "Adventure!" ? " adventure" : "");
-    }
+      function rollInsight() {
+        setInsightRoll({ animate: true });
+        saveState();
+        renderTimePanel();
+      }
 
-    // --- Rendering ---
+      // --- Adventure ---
+      function rollAdventure(difficulty) {
+        const targets = { easy: 6, normal: 8, hard: 10, extreme: 12 };
+        const target = targets[difficulty] ?? 8;
+        const r1 = rollD6();
+        const r2 = rollD6();
+        const rolls = [r1, r2];
+        const total = r1 + r2;
+        const result = total >= target ? "All clear" : "Adventure!";
+        state.adventure = { target, total, result, rolls };
+        saveState();
+        renderAdventure();
+      }
 
-    function render() {
-      // Toggle Views
+      function renderAdventure() {
+        const el = document.getElementById("adventure-result");
+        if (!el) return;
+        if (!state.adventure || state.adventure.total == null) {
+          el.textContent = "";
+          el.className = "adventure-result";
+          return;
+        }
+        const rolls = state.adventure.rolls || [];
+        const sixes = rolls.filter((r) => r === 6).length;
+        const ones = rolls.filter((r) => r === 1).length;
+        let tagHtml = "";
+        if (sixes > 0)
+          tagHtml +=
+            '<span style="color:#2e7d32; font-size:0.75em; margin-left:0.25rem;" title="Sweet">🌿</span>';
+        if (ones > 0)
+          tagHtml +=
+            '<span style="color:#c62828; font-size:0.75em; margin-left:0.25rem;" title="Spicy">💀</span>';
+
+        el.innerHTML = `${state.adventure.total} vs ${state.adventure.target} — ${state.adventure.result}${tagHtml}`;
+        el.className =
+          "adventure-result" +
+          (state.adventure.result === "Adventure!" ? " adventure" : "");
+      }
+
+      // --- Rendering ---
+
+      function render() {
+        // Toggle Views
         if (state.mode === "camp") {
           document.getElementById("view-camp").classList.add("active");
           document.getElementById("view-muster").classList.remove("active");
           renderCharacterLists("camp");
-      } else {
+        } else {
           document.getElementById("view-muster").classList.add("active");
           document.getElementById("view-camp").classList.remove("active");
           renderCharacterLists("muster");
-      }
-      
-      // Update Inputs
+        }
+
+        // Update Inputs
         document.getElementById("camp-rumor").value = state.rumor.text;
         document.getElementById("camp-bless-source").value =
           state.rumor.blessing.source;
@@ -2737,11 +2922,11 @@
           state.rumor.blessing.active;
 
         renderEnvironment();
-      renderTimePanel();
-      renderAdventure();
-      renderOTHERS(); // New Render Fn
-      renderDice();
-    }
+        renderTimePanel();
+        renderAdventure();
+        renderOTHERS(); // New Render Fn
+        renderDice();
+      }
 
       function renderEnvironment() {
         // Display actual values in text links, or show placeholder if empty
@@ -2779,7 +2964,7 @@
         }
       }
 
-    function renderRumorBlessing() {
+      function renderRumorBlessing() {
         document.getElementById("camp-rumor").value = state.rumor.text || "";
         document.getElementById("camp-bless-source").value =
           state.rumor.blessing.source || "";
@@ -2787,20 +2972,20 @@
           state.rumor.blessing.value || 0;
         document.getElementById("camp-bless-active").checked =
           state.rumor.blessing.active;
-    }
+      }
 
-    function renderTimePanel() {
-      const roundEl = document.getElementById("count-round");
-      if (roundEl) roundEl.textContent = state.session.round;
+      function renderTimePanel() {
+        const roundEl = document.getElementById("count-round");
+        if (roundEl) roundEl.textContent = state.session.round;
 
-      const turnEl = document.getElementById("count-turn");
-      if (turnEl) turnEl.textContent = state.session.turn;
+        const turnEl = document.getElementById("count-turn");
+        if (turnEl) turnEl.textContent = state.session.turn;
 
-      const iVal = document.getElementById("insight-value");
-      if (iVal) iVal.textContent = INSIGHTS[state.session.insight];
-    }
+        const iVal = document.getElementById("insight-value");
+        if (iVal) iVal.textContent = INSIGHTS[state.session.insight];
+      }
 
-    function renderCharacterLists() {
+      function renderCharacterLists() {
         // Ensure party order is always 1..n unique (fixes old saves / duplicates)
         if (partyOrderNeedsNormalize()) {
           normalizePartyOrder();
@@ -2817,12 +3002,12 @@
             generateCharHTML(state.muster, "play");
         }
         initCharacterDnD();
-    }
+      }
 
-    function generateCharHTML(list, context) {
+      function generateCharHTML(list, context) {
         // context: 'muster' (in camp view), 'camp' (in camp view), 'play' (in muster view)
         const sorted = [...list].sort(
-          (a, b) => (a.number || 99) - (b.number || 99)
+          (a, b) => (a.number || 99) - (b.number || 99),
         );
         return sorted
           .map((c) => {
@@ -2837,10 +3022,10 @@
                 : context === "muster"
                   ? { label: "Camp", dest: "camp" }
                   : { label: "Muster", dest: "muster" };
-            
+
             // In 'play' mode, we usually don't show move buttons as per spec, or only small ones. keeping it clean.
             // But we need controls.
-            
+
             const stats = `
               <div class="char-stats">
                 <div class="stat-row">
@@ -2952,239 +3137,260 @@
             `;
           })
           .join("");
-    }
+      }
 
-    // --- Character Reorder (Drag & Drop) ---
-    let draggedCharId = null;
+      // --- Character Reorder (Drag & Drop) ---
+      let draggedCharId = null;
 
-    function initCharacterDnD() {
-      const containers = [];
-      const campMuster = document.getElementById("camp-muster-list");
-      const campCamp = document.getElementById("camp-camp-list");
-      const playMuster = document.getElementById("play-muster-list");
+      function initCharacterDnD() {
+        const containers = [];
+        const campMuster = document.getElementById("camp-muster-list");
+        const campCamp = document.getElementById("camp-camp-list");
+        const playMuster = document.getElementById("play-muster-list");
 
-      if (campMuster) containers.push({ el: campMuster, list: "muster" });
-      if (campCamp) containers.push({ el: campCamp, list: "camp" });
-      if (playMuster) containers.push({ el: playMuster, list: "muster" });
+        if (campMuster) containers.push({ el: campMuster, list: "muster" });
+        if (campCamp) containers.push({ el: campCamp, list: "camp" });
+        if (playMuster) containers.push({ el: playMuster, list: "muster" });
 
-      containers.forEach(({ el, list }) => {
-        el.dataset.list = list;
-        // prevent duplicate listeners by resetting handlers
-        el.ondragover = (e) => handleCharDragOver(e, el);
-        el.ondrop = (e) => handleCharDrop(e, el, containers);
-      });
-
-      let draggedCharCardEl = null;
-
-      document.querySelectorAll(".char-drag-handle[draggable='true']").forEach((handle) => {
-        handle.ondragstart = (e) => {
-          draggedCharId = handle.dataset.charId;
-          draggedCharCardEl = handle.closest(".character-card");
-          if (draggedCharCardEl) draggedCharCardEl.classList.add("dragging");
-          try {
-            e.dataTransfer.effectAllowed = "move";
-            e.dataTransfer.setData("text/plain", draggedCharId);
-          } catch {}
-        };
-        handle.ondragend = () => {
-          if (draggedCharCardEl) draggedCharCardEl.classList.remove("dragging");
-          draggedCharId = null;
-          draggedCharCardEl = null;
-          // After a drag completes (drop or cancel), ensure state reflects DOM if it changed.
-          // This is safe even if nothing moved.
-          applyPartyOrderFromDom(containers);
-        };
-      });
-    }
-
-    function handleCharDragOver(e, container) {
-      e.preventDefault();
-      const dragging = document.querySelector(".character-card.dragging");
-      if (!dragging) return;
-
-      const after = getDragAfterElement(container, e.clientY);
-      if (after == null) container.appendChild(dragging);
-      else container.insertBefore(dragging, after);
-    }
-
-    function handleCharDrop(e, container, containers) {
-      e.preventDefault();
-      // DOM has already been updated during dragover; now persist into state
-      applyPartyOrderFromDom(containers);
-    }
-
-    function getDragAfterElement(container, y, selector = ".character-card:not(.dragging)") {
-      const els = [...container.querySelectorAll(selector)];
-      return els.reduce(
-        (closest, child) => {
-          const box = child.getBoundingClientRect();
-          const offset = y - box.top - box.height / 2;
-          if (offset < 0 && offset > closest.offset) {
-            return { offset, element: child };
-          }
-          return closest;
-        },
-        { offset: Number.NEGATIVE_INFINITY, element: null }
-      ).element;
-    }
-
-    function applyPartyOrderFromDom(containers) {
-      // Build quick lookup of all chars
-      const byId = {};
-      [...state.muster, ...state.camp].forEach((c) => (byId[c.id] = c));
-
-      // In muster mode, camp lists may not be rendered/accurate; only trust visible containers
-      const active = containers.filter(({ el }) => el && el.children);
-      const idsForList = { muster: null, camp: null };
-
-      active.forEach(({ el }) => {
-        const list = el.dataset.list;
-        const ids = [...el.querySelectorAll(".character-card")].map((c) => c.dataset.charId);
-        if (ids.length) idsForList[list] = ids;
-      });
-
-      // Rebuild arrays based on DOM order where available; otherwise preserve current order by number
-      const fallbackSorted = (arr) =>
-        [...arr].sort((a, b) => (a.number || 99) - (b.number || 99));
-
-      const newMuster = idsForList.muster
-        ? idsForList.muster.map((id) => byId[id]).filter(Boolean)
-        : fallbackSorted(state.muster);
-
-      const newCamp = idsForList.camp
-        ? idsForList.camp.map((id) => byId[id]).filter(Boolean)
-        : fallbackSorted(state.camp);
-
-      // Remove any duplicates (safety) and ensure every character is present exactly once
-      const seen = new Set();
-      const uniq = (arr) =>
-        arr.filter((c) => {
-          if (!c || seen.has(c.id)) return false;
-          seen.add(c.id);
-          return true;
+        containers.forEach(({ el, list }) => {
+          el.dataset.list = list;
+          // prevent duplicate listeners by resetting handlers
+          el.ondragover = (e) => handleCharDragOver(e, el);
+          el.ondrop = (e) => handleCharDrop(e, el, containers);
         });
 
-      const must = uniq(newMuster);
-      const camp = uniq(newCamp);
+        let draggedCharCardEl = null;
 
-      // Add any missing (if DOM containers were empty/not present)
-      [...state.muster, ...state.camp].forEach((c) => {
-        if (!seen.has(c.id)) {
-          // Put missing into their existing list at the end
-          (state.camp.some((x) => x.id === c.id) ? camp : must).push(c);
-          seen.add(c.id);
+        document
+          .querySelectorAll(".char-drag-handle[draggable='true']")
+          .forEach((handle) => {
+            handle.ondragstart = (e) => {
+              draggedCharId = handle.dataset.charId;
+              draggedCharCardEl = handle.closest(".character-card");
+              if (draggedCharCardEl)
+                draggedCharCardEl.classList.add("dragging");
+              try {
+                e.dataTransfer.effectAllowed = "move";
+                e.dataTransfer.setData("text/plain", draggedCharId);
+              } catch {}
+            };
+            handle.ondragend = () => {
+              if (draggedCharCardEl)
+                draggedCharCardEl.classList.remove("dragging");
+              draggedCharId = null;
+              draggedCharCardEl = null;
+              // After a drag completes (drop or cancel), ensure state reflects DOM if it changed.
+              // This is safe even if nothing moved.
+              applyPartyOrderFromDom(containers);
+            };
+          });
+      }
+
+      function handleCharDragOver(e, container) {
+        e.preventDefault();
+        const dragging = document.querySelector(".character-card.dragging");
+        if (!dragging) return;
+
+        const after = getDragAfterElement(container, e.clientY);
+        if (after == null) container.appendChild(dragging);
+        else container.insertBefore(dragging, after);
+      }
+
+      function handleCharDrop(e, container, containers) {
+        e.preventDefault();
+        // DOM has already been updated during dragover; now persist into state
+        applyPartyOrderFromDom(containers);
+      }
+
+      function getDragAfterElement(
+        container,
+        y,
+        selector = ".character-card:not(.dragging)",
+      ) {
+        const els = [...container.querySelectorAll(selector)];
+        return els.reduce(
+          (closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) {
+              return { offset, element: child };
+            }
+            return closest;
+          },
+          { offset: Number.NEGATIVE_INFINITY, element: null },
+        ).element;
+      }
+
+      function applyPartyOrderFromDom(containers) {
+        // Build quick lookup of all chars
+        const byId = {};
+        [...state.muster, ...state.camp].forEach((c) => (byId[c.id] = c));
+
+        // In muster mode, camp lists may not be rendered/accurate; only trust visible containers
+        const active = containers.filter(({ el }) => el && el.children);
+        const idsForList = { muster: null, camp: null };
+
+        active.forEach(({ el }) => {
+          const list = el.dataset.list;
+          const ids = [...el.querySelectorAll(".character-card")].map(
+            (c) => c.dataset.charId,
+          );
+          if (ids.length) idsForList[list] = ids;
+        });
+
+        // Rebuild arrays based on DOM order where available; otherwise preserve current order by number
+        const fallbackSorted = (arr) =>
+          [...arr].sort((a, b) => (a.number || 99) - (b.number || 99));
+
+        const newMuster = idsForList.muster
+          ? idsForList.muster.map((id) => byId[id]).filter(Boolean)
+          : fallbackSorted(state.muster);
+
+        const newCamp = idsForList.camp
+          ? idsForList.camp.map((id) => byId[id]).filter(Boolean)
+          : fallbackSorted(state.camp);
+
+        // Remove any duplicates (safety) and ensure every character is present exactly once
+        const seen = new Set();
+        const uniq = (arr) =>
+          arr.filter((c) => {
+            if (!c || seen.has(c.id)) return false;
+            seen.add(c.id);
+            return true;
+          });
+
+        const must = uniq(newMuster);
+        const camp = uniq(newCamp);
+
+        // Add any missing (if DOM containers were empty/not present)
+        [...state.muster, ...state.camp].forEach((c) => {
+          if (!seen.has(c.id)) {
+            // Put missing into their existing list at the end
+            (state.camp.some((x) => x.id === c.id) ? camp : must).push(c);
+            seen.add(c.id);
+          }
+        });
+
+        // Assign unique sequential party order numbers across all characters
+        let n = 1;
+        must.forEach((c) => (c.number = n++));
+        camp.forEach((c) => (c.number = n++));
+
+        state.muster = must;
+        state.camp = camp;
+        saveState();
+        renderCharacterLists();
+      }
+
+      function normalizePartyOrder() {
+        // Ensures party order numbers are always 1..n and unique
+        const musterIds = new Set(state.muster.map((c) => c.id));
+        const campIds = new Set(state.camp.map((c) => c.id));
+        const all = [...state.muster, ...state.camp];
+
+        // Stable sort by current number (then original position)
+        const originalIndex = new Map(all.map((c, i) => [c.id, i]));
+        all.sort((a, b) => {
+          const an = a.number || 999;
+          const bn = b.number || 999;
+          return (
+            an - bn ||
+            (originalIndex.get(a.id) || 0) - (originalIndex.get(b.id) || 0)
+          );
+        });
+
+        let n = 1;
+        all.forEach((c) => (c.number = n++));
+
+        state.muster = all.filter((c) => musterIds.has(c.id));
+        state.camp = all.filter((c) => campIds.has(c.id));
+      }
+
+      function partyOrderNeedsNormalize() {
+        const all = [...state.muster, ...state.camp];
+        const n = all.length;
+        if (n <= 1) return false;
+
+        const nums = all
+          .map((c) => parseInt(c.number, 10))
+          .filter((x) => Number.isFinite(x));
+        if (nums.length !== n) return true;
+
+        const set = new Set(nums);
+        if (set.size !== n) return true;
+
+        // Must be exactly 1..n
+        for (let i = 1; i <= n; i++) {
+          if (!set.has(i)) return true;
         }
-      });
-
-      // Assign unique sequential party order numbers across all characters
-      let n = 1;
-      must.forEach((c) => (c.number = n++));
-      camp.forEach((c) => (c.number = n++));
-
-      state.muster = must;
-      state.camp = camp;
-      saveState();
-      renderCharacterLists();
-    }
-
-    function normalizePartyOrder() {
-      // Ensures party order numbers are always 1..n and unique
-      const musterIds = new Set(state.muster.map((c) => c.id));
-      const campIds = new Set(state.camp.map((c) => c.id));
-      const all = [...state.muster, ...state.camp];
-
-      // Stable sort by current number (then original position)
-      const originalIndex = new Map(all.map((c, i) => [c.id, i]));
-      all.sort((a, b) => {
-        const an = a.number || 999;
-        const bn = b.number || 999;
-        return an - bn || (originalIndex.get(a.id) || 0) - (originalIndex.get(b.id) || 0);
-      });
-
-      let n = 1;
-      all.forEach((c) => (c.number = n++));
-
-      state.muster = all.filter((c) => musterIds.has(c.id));
-      state.camp = all.filter((c) => campIds.has(c.id));
-    }
-
-    function partyOrderNeedsNormalize() {
-      const all = [...state.muster, ...state.camp];
-      const n = all.length;
-      if (n <= 1) return false;
-
-      const nums = all.map((c) => parseInt(c.number, 10)).filter((x) => Number.isFinite(x));
-      if (nums.length !== n) return true;
-
-      const set = new Set(nums);
-      if (set.size !== n) return true;
-
-      // Must be exactly 1..n
-      for (let i = 1; i <= n; i++) {
-        if (!set.has(i)) return true;
-      }
-      return false;
-    }
-
-    function setPartyOrder(charId, desiredNumber) {
-      // Places the character at desiredNumber (1-indexed) in the overall party order,
-      // then renumbers sequentially 1..n.
-      const musterIds = new Set(state.muster.map((c) => c.id));
-      const campIds = new Set(state.camp.map((c) => c.id));
-      const all = [...state.muster, ...state.camp];
-
-      const originalIndex = new Map(all.map((c, i) => [c.id, i]));
-      const ordered = [...all].sort((a, b) => {
-        const an = a.number || 999;
-        const bn = b.number || 999;
-        return an - bn || (originalIndex.get(a.id) || 0) - (originalIndex.get(b.id) || 0);
-      });
-
-      const idx = ordered.findIndex((c) => c.id === charId);
-      if (idx === -1) {
-        normalizePartyOrder();
-        return;
+        return false;
       }
 
-      const [char] = ordered.splice(idx, 1);
-      const clampTo = Math.max(1, Math.min(ordered.length + 1, desiredNumber || ordered.length + 1));
-      ordered.splice(clampTo - 1, 0, char);
+      function setPartyOrder(charId, desiredNumber) {
+        // Places the character at desiredNumber (1-indexed) in the overall party order,
+        // then renumbers sequentially 1..n.
+        const musterIds = new Set(state.muster.map((c) => c.id));
+        const campIds = new Set(state.camp.map((c) => c.id));
+        const all = [...state.muster, ...state.camp];
 
-      let n = 1;
-      ordered.forEach((c) => (c.number = n++));
+        const originalIndex = new Map(all.map((c, i) => [c.id, i]));
+        const ordered = [...all].sort((a, b) => {
+          const an = a.number || 999;
+          const bn = b.number || 999;
+          return (
+            an - bn ||
+            (originalIndex.get(a.id) || 0) - (originalIndex.get(b.id) || 0)
+          );
+        });
 
-      state.muster = ordered.filter((c) => musterIds.has(c.id));
-      state.camp = ordered.filter((c) => campIds.has(c.id));
-    }
+        const idx = ordered.findIndex((c) => c.id === charId);
+        if (idx === -1) {
+          normalizePartyOrder();
+          return;
+        }
 
-    // --- Character Actions ---
-    function findChar(id) {
+        const [char] = ordered.splice(idx, 1);
+        const clampTo = Math.max(
+          1,
+          Math.min(ordered.length + 1, desiredNumber || ordered.length + 1),
+        );
+        ordered.splice(clampTo - 1, 0, char);
+
+        let n = 1;
+        ordered.forEach((c) => (c.number = n++));
+
+        state.muster = ordered.filter((c) => musterIds.has(c.id));
+        state.camp = ordered.filter((c) => campIds.has(c.id));
+      }
+
+      // --- Character Actions ---
+      function findChar(id) {
         let c = state.muster.find((x) => x.id === id);
         if (c) return { c, list: "muster" };
         c = state.camp.find((x) => x.id === id);
         if (c) return { c, list: "camp" };
         return null;
-    }
+      }
 
-    function modStat(id, stat, delta) {
+      function modStat(id, stat, delta) {
         const f = findChar(id);
         if (f) {
           f.c[stat].current = Math.max(
             0,
-            Math.min(f.c[stat].max, f.c[stat].current + delta)
+            Math.min(f.c[stat].max, f.c[stat].current + delta),
           );
           saveState();
           renderCharacterLists();
         }
-    }
+      }
 
-    function modStatClick(id, stat, event) {
-      if (event) event.stopPropagation();
-      const delta = event && event.shiftKey ? 1 : -1;
-      modStat(id, stat, delta);
-    }
+      function modStatClick(id, stat, event) {
+        if (event) event.stopPropagation();
+        const delta = event && event.shiftKey ? 1 : -1;
+        modStat(id, stat, delta);
+      }
 
-    function moveChar(id, dest) {
+      function moveChar(id, dest) {
         const f = findChar(id);
         if (!f) return;
         state[f.list] = state[f.list].filter((x) => x.id !== id);
@@ -3192,9 +3398,9 @@
         normalizePartyOrder();
         saveState();
         renderCharacterLists();
-    }
-    
-    function deleteChar(id) {
+      }
+
+      function deleteChar(id) {
         if (confirm("Delete character?")) {
           state.muster = state.muster.filter((x) => x.id !== id);
           state.camp = state.camp.filter((x) => x.id !== id);
@@ -3202,15 +3408,15 @@
           saveState();
           renderCharacterLists();
         }
-    }
+      }
 
-    // Modal
-    function openCharacterModal(id, forceCamp) {
+      // Modal
+      function openCharacterModal(id, forceCamp) {
         document.getElementById("character-modal").classList.add("active");
         const f = id ? findChar(id) : null;
-        
+
         if (f) {
-            const c = f.c;
+          const c = f.c;
           document.getElementById("char-modal-title").textContent =
             "Edit Character";
           document.getElementById("char-id").value = c.id;
@@ -3219,17 +3425,19 @@
           document.getElementById("char-player").value = c.player || "";
           document.getElementById("char-desc").value = c.description || "";
           document.getElementById("char-notes").value = c.notes || "";
-          document.getElementById("char-hearts-current").value = c.hearts.current;
+          document.getElementById("char-hearts-current").value =
+            c.hearts.current;
           document.getElementById("char-hearts-max").value = c.hearts.max;
           document.getElementById("char-iron-current").value = c.iron.current;
           document.getElementById("char-iron-max").value = c.iron.max;
-          document.getElementById("char-arcana-current").value = c.arcana.current;
+          document.getElementById("char-arcana-current").value =
+            c.arcana.current;
           document.getElementById("char-arcana-max").value = c.arcana.max;
           document.getElementById("char-leader").checked = c.leader;
           document.getElementById("char-blessed").checked = c.blessed;
           document.getElementById("char-incamp").checked = f.list === "camp";
         } else {
-            // New
+          // New
           document.getElementById("char-modal-title").textContent =
             "Add Character";
           document.getElementById("char-id").value = "";
@@ -3250,15 +3458,16 @@
           document.getElementById("char-incamp").checked =
             typeof forceCamp === "boolean" ? forceCamp : state.mode === "camp";
         }
-    }
+      }
 
-    function saveCharacter(e) {
+      function saveCharacter(e) {
         e.preventDefault();
         const id = document.getElementById("char-id").value;
         const leader = document.getElementById("char-leader").checked;
         const inCamp = document.getElementById("char-incamp").checked;
-        const desiredNumber = parseInt(document.getElementById("char-num").value) || 0;
-        
+        const desiredNumber =
+          parseInt(document.getElementById("char-num").value) || 0;
+
         // Unset other leaders if this one is leader
         if (leader) {
           state.muster.forEach((c) => (c.leader = false));
@@ -3266,26 +3475,32 @@
         }
 
         const charData = {
-            id: id || uuid(),
+          id: id || uuid(),
           number: desiredNumber,
           name: document.getElementById("char-name").value,
           player: document.getElementById("char-player").value,
           description: document.getElementById("char-desc").value,
           notes: document.getElementById("char-notes").value,
-            leader: leader,
+          leader: leader,
           blessed: document.getElementById("char-blessed").checked,
-            baggage: false,
+          baggage: false,
           hearts: {
             max: parseInt(document.getElementById("char-hearts-max").value),
-            current: parseInt(document.getElementById("char-hearts-current").value),
+            current: parseInt(
+              document.getElementById("char-hearts-current").value,
+            ),
           }, // temp
           iron: {
             max: parseInt(document.getElementById("char-iron-max").value),
-            current: parseInt(document.getElementById("char-iron-current").value),
+            current: parseInt(
+              document.getElementById("char-iron-current").value,
+            ),
           },
           arcana: {
             max: parseInt(document.getElementById("char-arcana-max").value),
-            current: parseInt(document.getElementById("char-arcana-current").value),
+            current: parseInt(
+              document.getElementById("char-arcana-current").value,
+            ),
           },
         };
 
@@ -3293,9 +3508,18 @@
         charData.hearts.max = Math.max(1, charData.hearts.max || 1);
         charData.iron.max = Math.max(0, charData.iron.max || 0);
         charData.arcana.max = Math.max(0, charData.arcana.max || 0);
-        charData.hearts.current = Math.max(0, Math.min(charData.hearts.max, charData.hearts.current || 0));
-        charData.iron.current = Math.max(0, Math.min(charData.iron.max, charData.iron.current || 0));
-        charData.arcana.current = Math.max(0, Math.min(charData.arcana.max, charData.arcana.current || 0));
+        charData.hearts.current = Math.max(
+          0,
+          Math.min(charData.hearts.max, charData.hearts.current || 0),
+        );
+        charData.iron.current = Math.max(
+          0,
+          Math.min(charData.iron.max, charData.iron.current || 0),
+        );
+        charData.arcana.current = Math.max(
+          0,
+          Math.min(charData.arcana.max, charData.arcana.current || 0),
+        );
 
         // Remove from old list if editing
         if (id) {
@@ -3322,17 +3546,17 @@
         saveState();
         closeModal("character-modal");
         renderCharacterLists();
-    }
+      }
 
-    function closeModal(id) {
+      function closeModal(id) {
         document.getElementById(id).classList.remove("active");
-    }
+      }
 
-    // --- Others (NPCs/Threats) ---
-    function renderOTHERS() {
+      // --- Others (NPCs/Threats) ---
+      function renderOTHERS() {
         const list = document.getElementById("others-list");
         if (!list) return;
-        
+
         list.innerHTML = state.others
           .map((t) => {
             // Map 'fresh' to 'fighting' visually if state hasn't migrated
@@ -3346,7 +3570,7 @@
               dead: "💀",
             };
             const currentIcon = statusIcons[displayStatus] || "⚔️";
-            
+
             return `
             <div class="threat-card ${displayStatus}" data-other-id="${t.id}" style="border-left: 4px solid var(--accent);">
               <div class="other-drag-handle" draggable="true" data-other-id="${t.id}" title="Drag to reorder">≡</div>
@@ -3404,108 +3628,118 @@
             `;
           })
           .join("");
-          
+
         initOthersDnD();
-    }
-
-    // --- Others Reorder (Drag & Drop) ---
-    let draggedOtherId = null;
-    let draggedOtherCardEl = null;
-
-    function initOthersDnD() {
-      const container = document.getElementById("others-list");
-      if (!container) return;
-
-      container.ondragover = (e) => handleOtherDragOver(e, container);
-      container.ondrop = (e) => handleOtherDrop(e, container);
-
-      container.querySelectorAll(".other-drag-handle[draggable='true']").forEach((handle) => {
-        handle.ondragstart = (e) => {
-          draggedOtherId = handle.dataset.otherId;
-          draggedOtherCardEl = handle.closest(".threat-card");
-          if (draggedOtherCardEl) draggedOtherCardEl.classList.add("dragging");
-          try {
-            e.dataTransfer.effectAllowed = "move";
-            e.dataTransfer.setData("text/plain", draggedOtherId);
-          } catch {}
-        };
-        handle.ondragend = () => {
-          if (draggedOtherCardEl) draggedOtherCardEl.classList.remove("dragging");
-          draggedOtherId = null;
-          draggedOtherCardEl = null;
-          applyOthersOrderFromDom(container);
-        };
-      });
-    }
-
-    function handleOtherDragOver(e, container) {
-      e.preventDefault();
-      const dragging = container.querySelector(".threat-card.dragging");
-      if (!dragging) return;
-      const after = getDragAfterElement(container, e.clientY, ".threat-card:not(.dragging)");
-      if (after == null) container.appendChild(dragging);
-      else container.insertBefore(dragging, after);
-    }
-
-    function handleOtherDrop(e, container) {
-      e.preventDefault();
-      applyOthersOrderFromDom(container);
-    }
-
-    function applyOthersOrderFromDom(container) {
-      const ids = [...container.querySelectorAll(".threat-card")].map((c) => c.dataset.otherId);
-      if (!ids.length) return;
-      const byId = new Map(state.others.map((o) => [o.id, o]));
-      const ordered = ids.map((id) => byId.get(id)).filter(Boolean);
-      if (ordered.length !== state.others.length) {
-        // Add any missing (safety)
-        state.others.forEach((o) => {
-          if (!ids.includes(o.id)) ordered.push(o);
-        });
       }
-      state.others = ordered;
-      saveState();
-      renderOTHERS();
-    }
 
-    function toggleOtherMenu(id, event) {
-      event.stopPropagation();
-      const menu = document.getElementById(`other-menu-${id}`);
-      if (!menu) return;
+      // --- Others Reorder (Drag & Drop) ---
+      let draggedOtherId = null;
+      let draggedOtherCardEl = null;
 
-      const willOpen = !menu.classList.contains("active");
-      closeAllKebabMenus();
-      if (willOpen) menu.classList.add("active");
-    }
+      function initOthersDnD() {
+        const container = document.getElementById("others-list");
+        if (!container) return;
 
-    function closeAllKebabMenus() {
-      document
-        .querySelectorAll(".kebab-menu.active")
-        .forEach((m) => m.classList.remove("active"));
-    }
-    
-    // Back-compat name (used by older inline handlers)
-    function closeAllOtherMenus() {
-      closeAllKebabMenus();
-    }
+        container.ondragover = (e) => handleOtherDragOver(e, container);
+        container.ondrop = (e) => handleOtherDrop(e, container);
 
-    function toggleCharMenu(id, event) {
-      event.stopPropagation();
-      const menu = document.getElementById(`char-menu-${id}`);
-      if (!menu) return;
-      const willOpen = !menu.classList.contains("active");
-      closeAllKebabMenus();
-      if (willOpen) menu.classList.add("active");
-    }
+        container
+          .querySelectorAll(".other-drag-handle[draggable='true']")
+          .forEach((handle) => {
+            handle.ondragstart = (e) => {
+              draggedOtherId = handle.dataset.otherId;
+              draggedOtherCardEl = handle.closest(".threat-card");
+              if (draggedOtherCardEl)
+                draggedOtherCardEl.classList.add("dragging");
+              try {
+                e.dataTransfer.effectAllowed = "move";
+                e.dataTransfer.setData("text/plain", draggedOtherId);
+              } catch {}
+            };
+            handle.ondragend = () => {
+              if (draggedOtherCardEl)
+                draggedOtherCardEl.classList.remove("dragging");
+              draggedOtherId = null;
+              draggedOtherCardEl = null;
+              applyOthersOrderFromDom(container);
+            };
+          });
+      }
 
-    function randomizeReaction() {
+      function handleOtherDragOver(e, container) {
+        e.preventDefault();
+        const dragging = container.querySelector(".threat-card.dragging");
+        if (!dragging) return;
+        const after = getDragAfterElement(
+          container,
+          e.clientY,
+          ".threat-card:not(.dragging)",
+        );
+        if (after == null) container.appendChild(dragging);
+        else container.insertBefore(dragging, after);
+      }
+
+      function handleOtherDrop(e, container) {
+        e.preventDefault();
+        applyOthersOrderFromDom(container);
+      }
+
+      function applyOthersOrderFromDom(container) {
+        const ids = [...container.querySelectorAll(".threat-card")].map(
+          (c) => c.dataset.otherId,
+        );
+        if (!ids.length) return;
+        const byId = new Map(state.others.map((o) => [o.id, o]));
+        const ordered = ids.map((id) => byId.get(id)).filter(Boolean);
+        if (ordered.length !== state.others.length) {
+          // Add any missing (safety)
+          state.others.forEach((o) => {
+            if (!ids.includes(o.id)) ordered.push(o);
+          });
+        }
+        state.others = ordered;
+        saveState();
+        renderOTHERS();
+      }
+
+      function toggleOtherMenu(id, event) {
+        event.stopPropagation();
+        const menu = document.getElementById(`other-menu-${id}`);
+        if (!menu) return;
+
+        const willOpen = !menu.classList.contains("active");
+        closeAllKebabMenus();
+        if (willOpen) menu.classList.add("active");
+      }
+
+      function closeAllKebabMenus() {
+        document
+          .querySelectorAll(".kebab-menu.active")
+          .forEach((m) => m.classList.remove("active"));
+      }
+
+      // Back-compat name (used by older inline handlers)
+      function closeAllOtherMenus() {
+        closeAllKebabMenus();
+      }
+
+      function toggleCharMenu(id, event) {
+        event.stopPropagation();
+        const menu = document.getElementById(`char-menu-${id}`);
+        if (!menu) return;
+        const willOpen = !menu.classList.contains("active");
+        closeAllKebabMenus();
+        if (willOpen) menu.classList.add("active");
+      }
+
+      function randomizeReaction() {
         const roll =
           Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1;
         const result = NPC_REACTIONS[roll] || "Neutral";
         document.getElementById("other-reaction").value = result;
-    }
+      }
 
-    function openOtherModal(id) {
+      function openOtherModal(id) {
         document.getElementById("other-modal").classList.add("active");
         document.getElementById("other-id").value = id || "";
         if (id) {
@@ -3516,12 +3750,12 @@
           document.getElementById("other-oracle").value = t.oracle;
           document.getElementById("other-reaction").value = t.reaction;
         } else {
-            // New
+          // New
           document.getElementById("other-name").value = "";
           document.getElementById("other-desc").value = "";
           document.getElementById("other-level").value = "";
           document.getElementById("other-oracle").value = "";
-            // Auto-roll reaction
+          // Auto-roll reaction
           const roll =
             Math.floor(Math.random() * 6) +
             1 +
@@ -3530,13 +3764,13 @@
           document.getElementById("other-reaction").value =
             NPC_REACTIONS[roll] || "Neutral";
         }
-    }
+      }
 
-    function saveOther(e) {
+      function saveOther(e) {
         e.preventDefault();
         const id = document.getElementById("other-id").value;
         const data = {
-            id: id || uuid(),
+          id: id || uuid(),
           name: document.getElementById("other-name").value,
           description: document.getElementById("other-desc").value,
           level: document.getElementById("other-level").value,
@@ -3547,38 +3781,38 @@
         if (id) {
           const idx = state.others.findIndex((x) => x.id === id);
           if (idx >= 0) {
-                // preserve status
-                data.status = state.others[idx].status;
-                state.others[idx] = data;
-            }
+            // preserve status
+            data.status = state.others[idx].status;
+            state.others[idx] = data;
+          }
         } else {
           data.status = "fresh";
-            state.others.push(data);
+          state.others.push(data);
         }
         saveState();
         closeModal("other-modal");
         renderOTHERS();
-    }
+      }
 
-    function updateOtherStatus(id, stat) {
+      function updateOtherStatus(id, stat) {
         const t = state.others.find((x) => x.id === id);
         if (t) {
           t.status = stat;
           saveState();
           renderOTHERS();
         }
-    }
-    
-    function deleteOther(id) {
+      }
+
+      function deleteOther(id) {
         if (confirm("Delete this entry?")) {
           state.others = state.others.filter((x) => x.id !== id);
           saveState();
           renderOTHERS();
         }
-    }
+      }
 
-    // Init
-    init();
-  </script>
-</body>
+      // Init
+      init();
+    </script>
+  </body>
 </html>

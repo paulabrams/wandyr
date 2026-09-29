@@ -1,1114 +1,1225 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wandyr Card Oracle</title>
     <style>
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #2c1810, #4a2c1a);
-            color: #f5e6d3;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
+      body {
+        font-family: "Georgia", serif;
+        background: linear-gradient(135deg, #2c1810, #4a2c1a);
+        color: #f5e6d3;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #d4af37;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 30px;
+      }
+
+      .mode-selector {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .controls {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      button {
+        background: linear-gradient(45deg, #8b4513, #a0522d);
+        color: #f5e6d3;
+        border: 2px solid #d4af37;
+        padding: 12px 24px;
+        margin: 0 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      button:hover {
+        background: linear-gradient(45deg, #a0522d, #cd853f);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      button:disabled {
+        background: #666;
+        border-color: #888;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .deck-count {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #d4af37;
+      }
+
+      .table-container {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #d4af37;
+        border-radius: 12px;
+        padding: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        overflow-x: auto;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(0, 0, 0, 0.2);
+        table-layout: auto;
+      }
+
+      th,
+      td {
+        border: 1px solid #d4af37;
+        padding: 8px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: rgba(212, 175, 55, 0.2);
+        color: #d4af37;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+      }
+
+      tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      tr:hover {
+        background: rgba(212, 175, 55, 0.1);
+      }
+
+      .card-symbol {
+        display: inline;
+        font-weight: bold;
+        margin-right: 4px;
+      }
+
+      .card-symbol.red {
+        color: #dc143c;
+      }
+
+      .card-code {
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        color: #d4af37;
+      }
+
+      .combination-cell {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: #d4af37;
+        word-break: break-all;
+      }
+
+      .newest-card {
+        font-weight: bold;
+        color: #f5e6d3;
+      }
+
+      .current-card-display {
+        background: rgba(212, 175, 55, 0.2);
+        border: 2px solid #d4af37;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .card-layout-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 20px;
+      }
+
+      .card-layout-table td {
+        vertical-align: top;
+        border: none;
+        padding: 0;
+      }
+
+      .card-cell {
+        width: 140px;
+      }
+
+      .oracle-cell {
+        width: auto;
+      }
+
+      .combo-cell {
+        width: 220px;
+      }
+
+      .card-visual-large {
+        width: 120px;
+        height: 180px;
+        background: white;
+        border: 3px solid #333;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px;
+        position: relative;
+        color: black;
+        font-weight: bold;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .card-visual-large.red {
+        color: #dc143c;
+      }
+
+      .card-visual-large .top-corner {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .card-visual-large .bottom-corner {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        font-size: 16px;
+        line-height: 1;
+        transform: rotate(180deg);
+      }
+
+      .card-visual-large .center {
+        font-size: 36px;
+      }
+
+      .oracle-text {
+        font-style: italic;
+        line-height: 1.5;
+        font-size: 18px;
+        color: #f5e6d3;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #d4af37;
+        margin: 0;
+      }
+
+      .combo-section {
+        text-align: right;
+        min-width: 200px;
+      }
+
+      .combo-section h4 {
+        margin: 0 0 8px 0;
+        color: #d4af37;
+        font-size: 16px;
+      }
+
+      .combo-display {
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        font-weight: bold;
+        color: #f5e6d3;
+        margin-bottom: 8px;
+      }
+
+      .named-combo-display {
+        font-size: 12px;
+        color: #d4af37;
+        font-weight: bold;
+      }
+
+      .poker-hand-alert {
+        background: linear-gradient(45deg, #d4af37, #f5e6d3);
+        color: #2c1810;
+        padding: 10px;
+        margin-top: 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: none;
+        border: 3px solid #d4af37;
+        animation: glow 2s ease-in-out infinite alternate;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .poker-hand-text {
+        margin: 0 10px;
+      }
+
+      .mini-card {
+        width: 20px;
+        height: 30px;
+        background: white;
+        border: 1px solid #333;
+        border-radius: 3px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: bold;
+        color: black;
+        margin: 0 1px;
+      }
+
+      .mini-card.red {
+        color: #dc143c;
+      }
+
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 10px #d4af37;
         }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
+        to {
+          box-shadow:
+            0 0 20px #d4af37,
+            0 0 30px #d4af37;
         }
-        
-        h1 {
-            text-align: center;
-            color: #d4af37;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 30px;
-        }
-        
-        .mode-selector {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .controls {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        button {
+      }
+
+      .history-title {
+        color: #d4af37;
+        margin-bottom: 15px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .interpretation-cell {
+        font-style: italic;
+        line-height: 1.3;
+      }
+
+      .empty-state {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        margin: 40px 0;
+      }
+
+      .copy-hint {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #888;
+        font-style: italic;
+      }
+    </style>
+    <script
+      async
+      src="https://paul-abrams.phvtrack.dev/bambino.js"
+      data-phv-tenant="paul-abrams"
+      data-phv-key="phv_wk_LVb15xeqyibMAve5A2CsxMQczwUrghRU"
+      data-phv-consent="opt_out"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Wandyr Card Oracle</h1>
+
+      <div class="mode-selector">
+        <label
+          for="locationMode"
+          style="color: #d4af37; font-weight: bold; margin-right: 10px"
+          >Location Mode:</label
+        >
+        <select
+          id="locationMode"
+          onchange="updateMode()"
+          style="
             background: linear-gradient(45deg, #8b4513, #a0522d);
             color: #f5e6d3;
             border: 2px solid #d4af37;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+          "
+        >
+          <option value="city">City</option>
+          <option value="wilderness">Wilderness</option>
+          <option value="dungeon">Dungeon</option>
+        </select>
+      </div>
+
+      <div class="controls">
+        <button id="drawButton" onclick="drawCard()">Draw Card</button>
+        <button id="resetButton" onclick="resetDeck()">Reset Deck</button>
+        <a
+          href="about.html"
+          style="
+            display: inline-block;
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            color: #f5e6d3;
+            text-decoration: none;
             padding: 12px 24px;
             margin: 0 10px;
             border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
-            cursor: pointer;
             transition: all 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-        
-        button:hover {
-            background: linear-gradient(45deg, #a0522d, #cd853f);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        
-        button:disabled {
-            background: #666;
-            border-color: #888;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .deck-count {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 18px;
-            color: #d4af37;
-        }
-        
-        .table-container {
-            background: rgba(255, 255, 255, 0.1);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             border: 2px solid #d4af37;
-            border-radius: 12px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            overflow-x: auto;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(0,0,0,0.2);
-            table-layout: auto;
-        }
-        
-        th, td {
-            border: 1px solid #d4af37;
-            padding: 8px 12px;
-            text-align: left;
-            vertical-align: top;
-        }
-        
-        th {
-            background: rgba(212, 175, 55, 0.2);
-            color: #d4af37;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
-        }
-        
-        tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        tr:hover {
-            background: rgba(212, 175, 55, 0.1);
-        }
-        
-        .card-symbol {
-            display: inline;
-            font-weight: bold;
-            margin-right: 4px;
-        }
-        
-        .card-symbol.red {
-            color: #dc143c;
-        }
-        
-        .card-code {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            color: #d4af37;
-        }
-        
-        .combination-cell {
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            color: #d4af37;
-            word-break: break-all;
-        }
-        
-        .newest-card {
-            font-weight: bold;
-            color: #f5e6d3;
-        }
-        
-        .current-card-display {
-            background: rgba(212, 175, 55, 0.2);
-            border: 2px solid #d4af37;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        .card-layout-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 20px;
-        }
-        
-        .card-layout-table td {
-            vertical-align: top;
-            border: none;
-            padding: 0;
-        }
-        
-        .card-cell {
-            width: 140px;
-        }
-        
-        .oracle-cell {
-            width: auto;
-        }
-        
-        .combo-cell {
-            width: 220px;
-        }
-        
-        .card-visual-large {
-            width: 120px;
-            height: 180px;
-            background: white;
-            border: 3px solid #333;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px;
-            position: relative;
-            color: black;
-            font-weight: bold;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-        
-        .card-visual-large.red {
-            color: #dc143c;
-        }
-        
-        .card-visual-large .top-corner {
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            font-size: 16px;
-            line-height: 1;
-        }
-        
-        .card-visual-large .bottom-corner {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            font-size: 16px;
-            line-height: 1;
-            transform: rotate(180deg);
-        }
-        
-        .card-visual-large .center {
-            font-size: 36px;
-        }
-        
-        
-        .oracle-text {
-            font-style: italic;
-            line-height: 1.5;
-            font-size: 18px;
-            color: #f5e6d3;
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #d4af37;
-            margin: 0;
-        }
-        
-        .combo-section {
-            text-align: right;
-            min-width: 200px;
-        }
-        
-        .combo-section h4 {
-            margin: 0 0 8px 0;
-            color: #d4af37;
-            font-size: 16px;
-        }
-        
-        .combo-display {
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            font-weight: bold;
-            color: #f5e6d3;
-            margin-bottom: 8px;
-        }
-        
-        .named-combo-display {
-            font-size: 12px;
-            color: #d4af37;
-            font-weight: bold;
-        }
-        
-        .poker-hand-alert {
-            background: linear-gradient(45deg, #d4af37, #f5e6d3);
-            color: #2c1810;
-            padding: 10px;
-            margin-top: 15px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-shadow: none;
-            border: 3px solid #d4af37;
-            animation: glow 2s ease-in-out infinite alternate;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        .poker-hand-text {
-            margin: 0 10px;
-        }
-        
-        .mini-card {
-            width: 20px;
-            height: 30px;
-            background: white;
-            border: 1px solid #333;
-            border-radius: 3px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: bold;
-            color: black;
-            margin: 0 1px;
-        }
-        
-        .mini-card.red {
-            color: #dc143c;
-        }
-        
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 10px #d4af37;
-            }
-            to {
-                box-shadow: 0 0 20px #d4af37, 0 0 30px #d4af37;
-            }
-        }
-        
-        .history-title {
-            color: #d4af37;
-            margin-bottom: 15px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        
-        .interpretation-cell {
-            font-style: italic;
-            line-height: 1.3;
-        }
-        
-        .empty-state {
-            text-align: center;
-            color: #888;
-            font-style: italic;
-            margin: 40px 0;
-        }
-        
-        .copy-hint {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #888;
-            font-style: italic;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Wandyr Card Oracle</h1>
-        
-        <div class="mode-selector">
-            <label for="locationMode" style="color: #d4af37; font-weight: bold; margin-right: 10px;">Location Mode:</label>
-            <select id="locationMode" onchange="updateMode()" style="background: linear-gradient(45deg, #8b4513, #a0522d); color: #f5e6d3; border: 2px solid #d4af37; padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: bold;">
-                <option value="city">City</option>
-                <option value="wilderness">Wilderness</option>
-                <option value="dungeon">Dungeon</option>
-            </select>
+          "
+          >About</a
+        >
+      </div>
+
+      <div class="deck-count">
+        <span id="deckCount">52 cards remaining</span>
+      </div>
+
+      <div
+        id="currentCardDisplay"
+        class="current-card-display"
+        style="display: none"
+      >
+        <table class="card-layout-table">
+          <tr>
+            <td class="card-cell">
+              <div id="cardVisualLarge" class="card-visual-large"></div>
+            </td>
+            <td class="oracle-cell">
+              <div id="oracleText" class="oracle-text"></div>
+            </td>
+            <td class="combo-cell">
+              <div class="combo-section">
+                <h4>Current Hand</h4>
+                <div id="comboDisplay" class="combo-display"></div>
+                <div id="namedComboDisplay" class="named-combo-display"></div>
+              </div>
+              <div
+                id="pokerHandAlert"
+                class="poker-hand-alert"
+                style="display: none"
+              ></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="tableContainer" class="table-container" style="display: none">
+        <div class="history-title">Draw History</div>
+        <table id="cardsTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Symbol</th>
+              <th>Name</th>
+              <th>Code</th>
+              <th>Card Oracle</th>
+              <th>Named Combo</th>
+              <th>Poker Hand</th>
+            </tr>
+          </thead>
+          <tbody id="cardsTableBody"></tbody>
+        </table>
+        <div class="copy-hint">
+          Tip: Select and copy the table to paste into a spreadsheet
         </div>
-        
-        <div class="controls">
-            <button id="drawButton" onclick="drawCard()">Draw Card</button>
-            <button id="resetButton" onclick="resetDeck()">Reset Deck</button>
-            <a href="about.html" style="display: inline-block; background: linear-gradient(45deg, #8b4513, #a0522d); color: #f5e6d3; text-decoration: none; padding: 12px 24px; margin: 0 10px; border-radius: 8px; font-size: 16px; font-weight: bold; transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); border: 2px solid #d4af37;">About</a>
-        </div>
-        
-        <div class="deck-count">
-            <span id="deckCount">52 cards remaining</span>
-        </div>
-        
-        <div id="currentCardDisplay" class="current-card-display" style="display: none;">
-            <table class="card-layout-table">
-                <tr>
-                    <td class="card-cell">
-                        <div id="cardVisualLarge" class="card-visual-large"></div>
-                    </td>
-                    <td class="oracle-cell">
-                        <div id="oracleText" class="oracle-text"></div>
-                    </td>
-                    <td class="combo-cell">
-                        <div class="combo-section">
-                            <h4>Current Hand</h4>
-                            <div id="comboDisplay" class="combo-display"></div>
-                            <div id="namedComboDisplay" class="named-combo-display"></div>
-                        </div>
-                        <div id="pokerHandAlert" class="poker-hand-alert" style="display: none;"></div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        
-        <div id="tableContainer" class="table-container" style="display: none;">
-            <div class="history-title">Draw History</div>
-            <table id="cardsTable">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Code</th>
-                        <th>Card Oracle</th>
-                        <th>Named Combo</th>
-                        <th>Poker Hand</th>
-                    </tr>
-                </thead>
-                <tbody id="cardsTableBody">
-                </tbody>
-            </table>
-            <div class="copy-hint">
-                Tip: Select and copy the table to paste into a spreadsheet
-            </div>
-        </div>
-        
-        <div id="emptyState" class="empty-state">
-            Draw a card to begin the oracle reading...
-        </div>
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        Draw a card to begin the oracle reading...
+      </div>
     </div>
 
     <script>
-        let deck = [];
-        let drawnCards = [];
-        let currentMode = 'city';
-        
-        const suits = {
-            'hearts': { symbol: '♥', name: 'Hearts', color: 'red' },
-            'diamonds': { symbol: '♦', name: 'Diamonds', color: 'red' },
-            'clubs': { symbol: '♣', name: 'Clubs', color: 'black' },
-            'spades': { symbol: '♠', name: 'Spades', color: 'black' }
-        };
-        
-        const ranks = {
-            1: { display: 'A', name: 'Ace' },
-            2: { display: '2', name: 'Two' },
-            3: { display: '3', name: 'Three' },
-            4: { display: '4', name: 'Four' },
-            5: { display: '5', name: 'Five' },
-            6: { display: '6', name: 'Six' },
-            7: { display: '7', name: 'Seven' },
-            8: { display: '8', name: 'Eight' },
-            9: { display: '9', name: 'Nine' },
-            10: { display: '10', name: 'Ten' },
-            11: { display: 'J', name: 'Jack' },
-            12: { display: 'Q', name: 'Queen' },
-            13: { display: 'K', name: 'King' }
-        };
-        
-        function initializeDeck() {
-            deck = [];
-            for (let suit in suits) {
-                for (let rank = 1; rank <= 13; rank++) {
-                    deck.push({ suit, rank });
-                }
+      let deck = [];
+      let drawnCards = [];
+      let currentMode = "city";
+
+      const suits = {
+        hearts: { symbol: "♥", name: "Hearts", color: "red" },
+        diamonds: { symbol: "♦", name: "Diamonds", color: "red" },
+        clubs: { symbol: "♣", name: "Clubs", color: "black" },
+        spades: { symbol: "♠", name: "Spades", color: "black" },
+      };
+
+      const ranks = {
+        1: { display: "A", name: "Ace" },
+        2: { display: "2", name: "Two" },
+        3: { display: "3", name: "Three" },
+        4: { display: "4", name: "Four" },
+        5: { display: "5", name: "Five" },
+        6: { display: "6", name: "Six" },
+        7: { display: "7", name: "Seven" },
+        8: { display: "8", name: "Eight" },
+        9: { display: "9", name: "Nine" },
+        10: { display: "10", name: "Ten" },
+        11: { display: "J", name: "Jack" },
+        12: { display: "Q", name: "Queen" },
+        13: { display: "K", name: "King" },
+      };
+
+      function initializeDeck() {
+        deck = [];
+        for (let suit in suits) {
+          for (let rank = 1; rank <= 13; rank++) {
+            deck.push({ suit, rank });
+          }
+        }
+        shuffleDeck();
+      }
+
+      function shuffleDeck() {
+        for (let i = deck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+      }
+
+      function drawCard() {
+        if (deck.length === 0) return;
+
+        const card = deck.pop();
+        drawnCards.push(card);
+        updateDisplay();
+      }
+
+      function resetDeck() {
+        drawnCards = [];
+        initializeDeck();
+        updateDisplay();
+      }
+
+      function getCardCode(card) {
+        return `${ranks[card.rank].display}${card.suit.charAt(0).toUpperCase()}`;
+      }
+
+      function getCombinationString(cardSequence) {
+        return cardSequence.map((card) => getCardCode(card)).join("+");
+      }
+
+      function getCombinationStringWithHighlight(cardSequence, highlightIndex) {
+        return cardSequence
+          .map((card, index) => {
+            const code = getCardCode(card);
+            return index === highlightIndex
+              ? `<span class="newest-card">${code}</span>`
+              : code;
+          })
+          .join("+");
+      }
+
+      function getNamedCombo(cardSequence) {
+        if (cardSequence.length < 2) return "";
+
+        const ranks = cardSequence.map((c) => c.rank).sort((a, b) => a - b);
+        const suits = cardSequence.map((c) => c.suit);
+        const rankCounts = {};
+        const suitCounts = {};
+
+        ranks.forEach(
+          (rank) => (rankCounts[rank] = (rankCounts[rank] || 0) + 1),
+        );
+        suits.forEach(
+          (suit) => (suitCounts[suit] = (suitCounts[suit] || 0) + 1),
+        );
+
+        const counts = Object.values(rankCounts).sort((a, b) => b - a);
+        const isFlush =
+          cardSequence.length >= 5 &&
+          Object.values(suitCounts).some((count) => count >= 5);
+        let isStraight = false;
+
+        // Check for straight in 5+ card sequences
+        if (cardSequence.length >= 5) {
+          const sortedUniqueRanks = [...new Set(ranks)].sort((a, b) => a - b);
+          for (let i = 0; i <= sortedUniqueRanks.length - 5; i++) {
+            if (isSequential(sortedUniqueRanks.slice(i, i + 5))) {
+              isStraight = true;
+              break;
             }
-            shuffleDeck();
+          }
         }
-        
-        function shuffleDeck() {
-            for (let i = deck.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [deck[i], deck[j]] = [deck[j], deck[i]];
+
+        if (cardSequence.length >= 5) {
+          if (isStraight && isFlush) return "Straight Flush";
+          if (counts[0] === 4) return "Four of a Kind";
+          if (counts[0] === 3 && counts[1] === 2) return "Full House";
+          if (isFlush) return "Flush";
+          if (isStraight) return "Straight";
+          if (counts[0] === 3) return "Three of a Kind";
+          if (counts[0] === 2 && counts[1] === 2) return "Two Pair";
+          if (counts[0] === 2) return "One Pair";
+          return "High Card";
+        } else if (cardSequence.length === 4) {
+          if (counts[0] === 4) return "Four of a Kind";
+          if (counts[0] === 3) return "Three of a Kind";
+          if (counts[0] === 2 && counts[1] === 2) return "Two Pair";
+          if (counts[0] === 2) return "One Pair";
+        } else if (cardSequence.length === 3) {
+          if (counts[0] === 3) return "Three of a Kind";
+          if (counts[0] === 2) return "One Pair";
+        } else if (cardSequence.length === 2) {
+          if (counts[0] === 2) return "One Pair";
+        }
+
+        return "";
+      }
+
+      function isSequential(sortedRanks) {
+        for (let i = 1; i < sortedRanks.length; i++) {
+          if (sortedRanks[i] !== sortedRanks[i - 1] + 1) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function createMiniCard(card) {
+        const suit = suits[card.suit];
+        const rank = ranks[card.rank];
+        const miniCard = document.createElement("div");
+        miniCard.className = `mini-card ${suit.color}`;
+        miniCard.innerHTML = `${rank.display}<br>${suit.symbol}`;
+        return miniCard;
+      }
+
+      function getPokerHandCards(cardSequence, handType) {
+        // Return the specific cards that make up the poker hand
+        const ranks = cardSequence.map((c) => c.rank);
+        const suits = cardSequence.map((c) => c.suit);
+        const rankCounts = {};
+        const suitCounts = {};
+
+        ranks.forEach(
+          (rank) => (rankCounts[rank] = (rankCounts[rank] || 0) + 1),
+        );
+        suits.forEach(
+          (suit) => (suitCounts[suit] = (suitCounts[suit] || 0) + 1),
+        );
+        const sortedRanks = Object.keys(rankCounts)
+          .map((r) => parseInt(r))
+          .sort((a, b) => rankCounts[b] - rankCounts[a] || b - a);
+
+        switch (handType) {
+          case "Four of a Kind":
+            return cardSequence.filter((c) => c.rank === sortedRanks[0]);
+
+          case "Full House":
+            // Show the three of a kind + the pair
+            return cardSequence.filter((c) => rankCounts[c.rank] >= 2);
+
+          case "Three of a Kind":
+            return cardSequence.filter((c) => c.rank === sortedRanks[0]);
+
+          case "Two Pair":
+            // Show all cards that are part of pairs
+            return cardSequence.filter((c) => rankCounts[c.rank] === 2);
+
+          case "One Pair":
+            return cardSequence.filter((c) => rankCounts[c.rank] === 2);
+
+          case "Straight":
+          case "Straight Flush":
+            // Find the 5-card straight
+            const sortedCards = cardSequence
+              .slice()
+              .sort((a, b) => a.rank - b.rank);
+            for (let i = 0; i <= sortedCards.length - 5; i++) {
+              const fiveCards = sortedCards.slice(i, i + 5);
+              if (isSequential(fiveCards.map((c) => c.rank))) {
+                return fiveCards;
+              }
             }
+            return cardSequence.slice(-5); // fallback
+
+          case "Flush":
+            // Find the 5 cards of the same suit
+            const flushSuit = Object.keys(suitCounts).find(
+              (suit) => suitCounts[suit] >= 5,
+            );
+            return cardSequence.filter((c) => c.suit === flushSuit).slice(-5);
+
+          case "High Card":
+            // Show the highest 5 cards
+            return cardSequence
+              .slice()
+              .sort((a, b) => b.rank - a.rank)
+              .slice(0, 5);
+
+          default:
+            return cardSequence.slice(-5); // Show last 5 cards as fallback
         }
-        
-        function drawCard() {
-            if (deck.length === 0) return;
-            
-            const card = deck.pop();
-            drawnCards.push(card);
-            updateDisplay();
+      }
+
+      function updateDisplay() {
+        const deckCountEl = document.getElementById("deckCount");
+        const tableContainer = document.getElementById("tableContainer");
+        const currentCardDisplay =
+          document.getElementById("currentCardDisplay");
+        const emptyState = document.getElementById("emptyState");
+        const cardsTableBody = document.getElementById("cardsTableBody");
+        const drawButtonEl = document.getElementById("drawButton");
+
+        deckCountEl.textContent = `${deck.length} cards remaining`;
+        drawButtonEl.disabled = deck.length === 0;
+
+        if (drawnCards.length === 0) {
+          tableContainer.style.display = "none";
+          currentCardDisplay.style.display = "none";
+          emptyState.style.display = "block";
+          return;
         }
-        
-        function resetDeck() {
-            drawnCards = [];
-            initializeDeck();
-            updateDisplay();
-        }
-        
-        function getCardCode(card) {
-            return `${ranks[card.rank].display}${card.suit.charAt(0).toUpperCase()}`;
-        }
-        
-        function getCombinationString(cardSequence) {
-            return cardSequence.map(card => getCardCode(card)).join('+');
-        }
-        
-        function getCombinationStringWithHighlight(cardSequence, highlightIndex) {
-            return cardSequence.map((card, index) => {
-                const code = getCardCode(card);
-                return index === highlightIndex ? `<span class="newest-card">${code}</span>` : code;
-            }).join('+');
-        }
-        
-        function getNamedCombo(cardSequence) {
-            if (cardSequence.length < 2) return '';
-            
-            const ranks = cardSequence.map(c => c.rank).sort((a, b) => a - b);
-            const suits = cardSequence.map(c => c.suit);
-            const rankCounts = {};
-            const suitCounts = {};
-            
-            ranks.forEach(rank => rankCounts[rank] = (rankCounts[rank] || 0) + 1);
-            suits.forEach(suit => suitCounts[suit] = (suitCounts[suit] || 0) + 1);
-            
-            const counts = Object.values(rankCounts).sort((a, b) => b - a);
-            const isFlush = cardSequence.length >= 5 && Object.values(suitCounts).some(count => count >= 5);
-            let isStraight = false;
-            
-            // Check for straight in 5+ card sequences
-            if (cardSequence.length >= 5) {
-                const sortedUniqueRanks = [...new Set(ranks)].sort((a, b) => a - b);
-                for (let i = 0; i <= sortedUniqueRanks.length - 5; i++) {
-                    if (isSequential(sortedUniqueRanks.slice(i, i + 5))) {
-                        isStraight = true;
-                        break;
-                    }
-                }
-            }
-            
-            if (cardSequence.length >= 5) {
-                if (isStraight && isFlush) return 'Straight Flush';
-                if (counts[0] === 4) return 'Four of a Kind';
-                if (counts[0] === 3 && counts[1] === 2) return 'Full House';
-                if (isFlush) return 'Flush';
-                if (isStraight) return 'Straight';
-                if (counts[0] === 3) return 'Three of a Kind';
-                if (counts[0] === 2 && counts[1] === 2) return 'Two Pair';
-                if (counts[0] === 2) return 'One Pair';
-                return 'High Card';
-            } else if (cardSequence.length === 4) {
-                if (counts[0] === 4) return 'Four of a Kind';
-                if (counts[0] === 3) return 'Three of a Kind';
-                if (counts[0] === 2 && counts[1] === 2) return 'Two Pair';
-                if (counts[0] === 2) return 'One Pair';
-            } else if (cardSequence.length === 3) {
-                if (counts[0] === 3) return 'Three of a Kind';
-                if (counts[0] === 2) return 'One Pair';
-            } else if (cardSequence.length === 2) {
-                if (counts[0] === 2) return 'One Pair';
-            }
-            
-            return '';
-        }
-        
-        function isSequential(sortedRanks) {
-            for (let i = 1; i < sortedRanks.length; i++) {
-                if (sortedRanks[i] !== sortedRanks[i-1] + 1) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        
-        function createMiniCard(card) {
-            const suit = suits[card.suit];
-            const rank = ranks[card.rank];
-            const miniCard = document.createElement('div');
-            miniCard.className = `mini-card ${suit.color}`;
-            miniCard.innerHTML = `${rank.display}<br>${suit.symbol}`;
-            return miniCard;
-        }
-        
-        function getPokerHandCards(cardSequence, handType) {
-            // Return the specific cards that make up the poker hand
-            const ranks = cardSequence.map(c => c.rank);
-            const suits = cardSequence.map(c => c.suit);
-            const rankCounts = {};
-            const suitCounts = {};
-            
-            ranks.forEach(rank => rankCounts[rank] = (rankCounts[rank] || 0) + 1);
-            suits.forEach(suit => suitCounts[suit] = (suitCounts[suit] || 0) + 1);
-            const sortedRanks = Object.keys(rankCounts).map(r => parseInt(r)).sort((a, b) => rankCounts[b] - rankCounts[a] || b - a);
-            
-            switch(handType) {
-                case 'Four of a Kind':
-                    return cardSequence.filter(c => c.rank === sortedRanks[0]);
-                    
-                case 'Full House':
-                    // Show the three of a kind + the pair
-                    return cardSequence.filter(c => rankCounts[c.rank] >= 2);
-                    
-                case 'Three of a Kind':
-                    return cardSequence.filter(c => c.rank === sortedRanks[0]);
-                    
-                case 'Two Pair':
-                    // Show all cards that are part of pairs
-                    return cardSequence.filter(c => rankCounts[c.rank] === 2);
-                    
-                case 'One Pair':
-                    return cardSequence.filter(c => rankCounts[c.rank] === 2);
-                    
-                case 'Straight':
-                case 'Straight Flush':
-                    // Find the 5-card straight
-                    const sortedCards = cardSequence.slice().sort((a, b) => a.rank - b.rank);
-                    for (let i = 0; i <= sortedCards.length - 5; i++) {
-                        const fiveCards = sortedCards.slice(i, i + 5);
-                        if (isSequential(fiveCards.map(c => c.rank))) {
-                            return fiveCards;
-                        }
-                    }
-                    return cardSequence.slice(-5); // fallback
-                    
-                case 'Flush':
-                    // Find the 5 cards of the same suit
-                    const flushSuit = Object.keys(suitCounts).find(suit => suitCounts[suit] >= 5);
-                    return cardSequence.filter(c => c.suit === flushSuit).slice(-5);
-                    
-                case 'High Card':
-                    // Show the highest 5 cards
-                    return cardSequence.slice().sort((a, b) => b.rank - a.rank).slice(0, 5);
-                    
-                default:
-                    return cardSequence.slice(-5); // Show last 5 cards as fallback
-            }
-        }
-        
-        function updateDisplay() {
-            const deckCountEl = document.getElementById('deckCount');
-            const tableContainer = document.getElementById('tableContainer');
-            const currentCardDisplay = document.getElementById('currentCardDisplay');
-            const emptyState = document.getElementById('emptyState');
-            const cardsTableBody = document.getElementById('cardsTableBody');
-            const drawButtonEl = document.getElementById('drawButton');
-            
-            deckCountEl.textContent = `${deck.length} cards remaining`;
-            drawButtonEl.disabled = deck.length === 0;
-            
-            if (drawnCards.length === 0) {
-                tableContainer.style.display = 'none';
-                currentCardDisplay.style.display = 'none';
-                emptyState.style.display = 'block';
-                return;
-            }
-            
-            tableContainer.style.display = 'block';
-            currentCardDisplay.style.display = 'block';
-            emptyState.style.display = 'none';
-            
-            // Update current card display
-            updateCurrentCardDisplay();
-            
-            // Clear and rebuild the table
-            cardsTableBody.innerHTML = '';
-            
-            drawnCards.slice().reverse().forEach((card, reverseIndex) => {
-                const originalIndex = drawnCards.length - 1 - reverseIndex;
-                const row = createTableRow(card, originalIndex);
-                cardsTableBody.appendChild(row);
-            });
-        }
-        
-        function updateCurrentCardDisplay() {
-            if (drawnCards.length === 0) return;
-            
-            const latestCard = drawnCards[drawnCards.length - 1];
-            const suit = suits[latestCard.suit];
-            const rank = ranks[latestCard.rank];
-            
-            // Update card visual
-            const cardVisualLarge = document.getElementById('cardVisualLarge');
-            cardVisualLarge.className = `card-visual-large ${suit.color}`;
-            cardVisualLarge.innerHTML = `
+
+        tableContainer.style.display = "block";
+        currentCardDisplay.style.display = "block";
+        emptyState.style.display = "none";
+
+        // Update current card display
+        updateCurrentCardDisplay();
+
+        // Clear and rebuild the table
+        cardsTableBody.innerHTML = "";
+
+        drawnCards
+          .slice()
+          .reverse()
+          .forEach((card, reverseIndex) => {
+            const originalIndex = drawnCards.length - 1 - reverseIndex;
+            const row = createTableRow(card, originalIndex);
+            cardsTableBody.appendChild(row);
+          });
+      }
+
+      function updateCurrentCardDisplay() {
+        if (drawnCards.length === 0) return;
+
+        const latestCard = drawnCards[drawnCards.length - 1];
+        const suit = suits[latestCard.suit];
+        const rank = ranks[latestCard.rank];
+
+        // Update card visual
+        const cardVisualLarge = document.getElementById("cardVisualLarge");
+        cardVisualLarge.className = `card-visual-large ${suit.color}`;
+        cardVisualLarge.innerHTML = `
                 <div class="top-corner">${rank.display}<br>${suit.symbol}</div>
                 <div class="center">${suit.symbol}</div>
                 <div class="bottom-corner">${rank.display}<br>${suit.symbol}</div>
             `;
-            
-            // Update oracle text
-            const oracleText = document.getElementById('oracleText');
-            oracleText.textContent = getInterpretation(drawnCards);
-            
-            // Update combo displays
-            const comboDisplay = document.getElementById('comboDisplay');
-            const namedComboDisplay = document.getElementById('namedComboDisplay');
-            const pokerHandAlert = document.getElementById('pokerHandAlert');
-            
-            comboDisplay.innerHTML = getCombinationStringWithHighlight(drawnCards, drawnCards.length - 1);
-            
-            const namedCombo = getNamedCombo(drawnCards);
-            namedComboDisplay.textContent = namedCombo || 'No poker hand';
-            
-            // Show prominent poker hand alert
-            if (namedCombo) {
-                pokerHandAlert.innerHTML = '';
-                
-                // Add poker hand cards
-                const handCards = getPokerHandCards(drawnCards, namedCombo);
-                handCards.forEach(card => {
-                    pokerHandAlert.appendChild(createMiniCard(card));
-                });
-                
-                // Add text
-                const textSpan = document.createElement('span');
-                textSpan.className = 'poker-hand-text';
-                textSpan.textContent = `${namedCombo.toUpperCase()}!`;
-                pokerHandAlert.appendChild(textSpan);
-                
-                pokerHandAlert.style.display = 'flex';
+
+        // Update oracle text
+        const oracleText = document.getElementById("oracleText");
+        oracleText.textContent = getInterpretation(drawnCards);
+
+        // Update combo displays
+        const comboDisplay = document.getElementById("comboDisplay");
+        const namedComboDisplay = document.getElementById("namedComboDisplay");
+        const pokerHandAlert = document.getElementById("pokerHandAlert");
+
+        comboDisplay.innerHTML = getCombinationStringWithHighlight(
+          drawnCards,
+          drawnCards.length - 1,
+        );
+
+        const namedCombo = getNamedCombo(drawnCards);
+        namedComboDisplay.textContent = namedCombo || "No poker hand";
+
+        // Show prominent poker hand alert
+        if (namedCombo) {
+          pokerHandAlert.innerHTML = "";
+
+          // Add poker hand cards
+          const handCards = getPokerHandCards(drawnCards, namedCombo);
+          handCards.forEach((card) => {
+            pokerHandAlert.appendChild(createMiniCard(card));
+          });
+
+          // Add text
+          const textSpan = document.createElement("span");
+          textSpan.className = "poker-hand-text";
+          textSpan.textContent = `${namedCombo.toUpperCase()}!`;
+          pokerHandAlert.appendChild(textSpan);
+
+          pokerHandAlert.style.display = "flex";
+        } else {
+          pokerHandAlert.style.display = "none";
+        }
+      }
+
+      function createTableRow(card, index) {
+        const suit = suits[card.suit];
+        const rank = ranks[card.rank];
+        const cardSequence = drawnCards.slice(0, index + 1);
+
+        const row = document.createElement("tr");
+
+        // Draw number
+        const drawCell = document.createElement("td");
+        drawCell.textContent = index + 1;
+        row.appendChild(drawCell);
+
+        // Card symbol
+        const symbolCell = document.createElement("td");
+        const cardSymbol = document.createElement("span");
+        cardSymbol.className = `card-symbol ${suit.color}`;
+        cardSymbol.textContent = `${rank.display}${suit.symbol}`;
+        symbolCell.appendChild(cardSymbol);
+        row.appendChild(symbolCell);
+
+        // Card name
+        const nameCell = document.createElement("td");
+        nameCell.textContent = `${rank.name} of ${suit.name}`;
+        row.appendChild(nameCell);
+
+        // Card code
+        const codeCell = document.createElement("td");
+        codeCell.className = "card-code";
+        codeCell.textContent = getCardCode(card);
+        row.appendChild(codeCell);
+
+        // Card Oracle
+        const oracleCell = document.createElement("td");
+        oracleCell.className = "interpretation-cell";
+        oracleCell.textContent = getInterpretation(cardSequence);
+        row.appendChild(oracleCell);
+
+        // Named Combo
+        const namedComboCell = document.createElement("td");
+        namedComboCell.textContent = getNamedCombo(cardSequence);
+        namedComboCell.style.fontWeight = "bold";
+        namedComboCell.style.color = getNamedCombo(cardSequence)
+          ? "#d4af37"
+          : "#888";
+        row.appendChild(namedComboCell);
+
+        // Combination (last column)
+        const combinationCell = document.createElement("td");
+        combinationCell.className = "combination-cell";
+        combinationCell.innerHTML = getCombinationStringWithHighlight(
+          cardSequence,
+          index,
+        );
+        row.appendChild(combinationCell);
+
+        return row;
+      }
+
+      function getInterpretation(cardSequence) {
+        if (cardSequence.length === 1) {
+          return getSingleCardInterpretation(cardSequence[0]);
+        }
+
+        return getCombinationInterpretation(cardSequence);
+      }
+
+      function getCityInterpretation(card) {
+        const cityInterpretations = {
+          hearts: {
+            1: "A stranger offers a warm smile and friendly conversation.\n\nWeather: Light drizzle dampens the cobblestones, making them slippery.",
+            2: "Two children excitedly share gossip about something they witnessed near the temple.\n\nNeighborhood: The upper-class district maintains its pristine gardens and clean streets.",
+            3: "Three city guards discuss their patrol routes while sharing a meal.\n\nA local priest offers blessings to travelers passing through the temple quarter.",
+            4: "Four merchants debate the terms of a trade agreement in the market square.\n\nWeather: Crisp morning air carries the scent of baking bread from nearby shops.",
+            5: "Five noble families gather for a public ceremony at the courthouse.\n\nServants in their house colors carry ceremonial banners through the streets.",
+            6: "Six dock workers unload exotic cargo while customs officials inspect the goods.\n\nThe harbor district bustles with merchants and sailors from distant ports.",
+            7: "Seven cloaked figures meet briefly in an alley before going their separate ways.\n\nThe blacksmith works late, fulfilling a large order that came in recently.",
+            8: "Eight members of the city watch patrol the walls during evening festival activities.\n\nWeather: A warm evening breeze carries music and laughter through the streets.",
+            9: "Nine citizens gather around a town crier announcing new royal edicts.\n\nThe crowd discusses the implications with animated gestures.",
+            10: "Ten palace guards escort a foreign diplomat through the noble quarter.\n\nElaborate carriages from various houses line the ceremonial route.",
+            11: "A young noble heir practices swordwork in the courtyard while tutors observe.\n\nThe training session appears more intensive than usual.",
+            12: "The high priestess conducts evening prayers as bell towers chime across the city.\n\nThe divine quarter maintains its atmosphere of peace and contemplation.",
+            13: "The city lord holds court, hearing petitions and dispensing justice.\n\nThe great hall sees a steady stream of citizens seeking royal audience.",
+          },
+          diamonds: {
+            1: "A merchant carefully counts coins while discussing recent business ventures.\n\nTrade quarter: Early morning activity as shops prepare for the day.",
+            2: "Two money changers debate current exchange rates near the banking district.\n\nWeather: Clear skies provide favorable conditions for commerce.",
+            3: "Three gem merchants display their finest stones to interested buyers.\n\nCity guards ensure the valuable transactions proceed safely.",
+            4: "Four trade caravans make final preparations before departing the city.\n\nNeighborhood: The commercial district bustles with loading and provisioning.",
+            5: "Five noble houses negotiate the terms of a significant marriage alliance.\n\nThe dowry negotiations involve considerable political implications.",
+            6: "Six guild masters convene to discuss new taxation policies affecting their crafts.\n\nWeather: Overcast skies cast shadows over the worried craftsmen's meeting.",
+            7: "Seven treasure hunters offer recently discovered artifacts to collectors.\n\nMembers of the thieves' guild observe the transactions with professional interest.",
+            8: "Eight wealthy patrons attend an exclusive auction in the upper city.\n\nRare and valuable items command surprisingly high prices.",
+            9: "Nine tax collectors make their regular rounds through residential neighborhoods.\n\nCitizens pay their civic duties, though some grumble about the amounts.",
+            10: "Ten merchant princes gather to discuss trade route security and profitability.\n\nThe harbor master coordinates with them on shipping schedules.",
+            11: "A master treasurer reviews the royal coffers with his scribes.\n\nDetailed records document various state expenditures and income.",
+            12: "The guild mistress of commerce mediates a complex trade dispute.\n\nDiplomatic solutions help preserve important business relationships.",
+            13: "The merchant king announces new trade agreements with distant kingdoms.\n\nEconomic prosperity and opportunity spread throughout the city.",
+          },
+          clubs: {
+            1: "A small herb garden thrives behind the local apothecary's shop.\n\nWeather: Morning dew dampens the residential district streets.",
+            2: "Two park rangers tend the royal gardens within the city walls.\n\nNature finds its place amid the stone architecture and busy streets.",
+            3: "Three druids visit the city's sacred grove in the temple quarter.\n\nUrban wildlife gathers peacefully in the green spaces.",
+            4: "Four groundskeepers maintain elaborate topiary gardens on noble estates.\n\nNeighborhood: The wealthy residential area displays its horticultural pride.",
+            5: "Five street cats prowl the alleyways of the warehouse district.\n\nRats scurry into the sewers and hidden passages below.",
+            6: "Six messenger birds return to the communications tower with news.\n\nWeather: Clear flying conditions favor reliable message delivery.",
+            7: "Seven wild dogs roam near the outer city walls where civilization meets wilderness.\n\nGuards keep watch but the animals seem harmless enough.",
+            8: "Eight horses await shoeing at the blacksmith's stable.\n\nTravelers make preparations for upcoming journeys.",
+            9: "Nine ravens perch on the cathedral spires, observed by clergy below.\n\nThe priests discuss various interpretations of natural omens.",
+            10: "Ten hunting hounds accompany a noble party preparing for expedition.\n\nThe group plans to venture into the forest beyond the gates.",
+            11: "A druid emissary arrives seeking audience with city leaders.\n\nEnvironmental concerns and land management issues require discussion.",
+            12: "The royal beast master tends exotic creatures in the palace menagerie.\n\nThese diplomatic gifts from foreign lands require specialized care.",
+            13: "A forest lord from nearby woods requests tribute and tax agreements.\n\nAncient pacts between city and wilderness need renewed negotiation.",
+          },
+          spades: {
+            1: "A hooded figure moves quietly through shadows near the docks.\n\nWeather: Fog rolls in from the harbor, reducing visibility.",
+            2: "Two city guards investigate reports of break-ins in the merchant quarter.\n\nThievery appears to be increasing lately.",
+            3: "Three executioners prepare the gallows for a public justice ceremony.\n\nThe grim work of law enforcement continues as scheduled.",
+            4: "Four grave diggers work through the night in the city cemetery.\n\nNeighborhood: The burial district maintains its somber, respectful atmosphere.",
+            5: "Five mercenaries sharpen their weapons in a tavern basement.\n\nTension hangs in the air as they prepare for upcoming work.",
+            6: "Six prisoners await trial in the dungeon beneath the courthouse.\n\nJustice proceeds methodically through proper legal channels.",
+            7: "Seven plague victims remain quarantined in the outer city district.\n\nMedical efforts continue to contain the spreading illness.",
+            8: "Eight soldiers patrol the walls as scouts report movement beyond.\n\nMilitary readiness increases in response to potential threats.",
+            9: "Nine cultists conduct secretive rituals in abandoned buildings.\n\nThe city watch investigates these disturbing religious activities.",
+            10: "Ten additional guards provide security during the public festival.\n\nRoyal protection measures ensure citizen safety at large gatherings.",
+            11: "A foreign dignitary arrives under heavy diplomatic security.\n\nTheir presence creates an atmosphere of nervous formality.",
+            12: "The chief executioner carries out sentences with professional efficiency.\n\nFear of legal consequences helps maintain order in the streets.",
+            13: "City rulers negotiate tribute and taxes with various external powers.\n\nPolitical debts and obligations require careful diplomatic management.",
+          },
+        };
+
+        return cityInterpretations[card.suit][card.rank];
+      }
+
+      function getWildernessInterpretation(card) {
+        const wildernessInterpretations = {
+          hearts: {
+            1: "A lone traveler shares their campfire and offers food to passing strangers.\n\nWeather: Clear night with gentle breeze rustling through the pine trees.",
+            2: "Two rangers exchange information about safe paths and potential hazards ahead.\n\nTerrain: Rolling hills covered with wildflowers and scattered groves.",
+            3: "Three pilgrims rest at a woodland shrine, seeking divine protection for their journey.\n\nAnimals: Deer graze peacefully in nearby meadows, undisturbed by human presence.",
+            4: "Four merchants fortify their camp against potential night predators.\n\nWeather: Heavy rainfall creates muddy trails and swollen stream crossings.",
+            5: "Five druids gather for seasonal rituals in a sacred grove.\n\nTerrain: Ancient oak forest with natural stone circles and moss-covered rocks.",
+            6: "Six refugees fleeing conflict seek shelter in a hidden valley.\n\nAnimals: Songbirds provide a comforting backdrop of natural melodies.",
+            7: "Seven nomads share tribal wisdom around their evening cooking fires.\n\nWeather: Warm evening under a canopy of brilliant stars.",
+            8: "Eight travelers celebrate successfully crossing a dangerous mountain pass.\n\nTerrain: High altitude meadows surrounded by snow-capped peaks.",
+            9: "Nine villagers evacuate their settlement due to approaching danger.\n\nAnimals: Livestock are driven hastily along forest paths to safety.",
+            10: "Ten soldiers establish a forward camp in disputed territory.\n\nWeather: Morning mist provides natural concealment for troop movements.",
+            11: "A mysterious hermit offers cryptic guidance to lost wanderers.\n\nTerrain: Deep wilderness far from any civilized settlement.",
+            12: "An elven ranger provides safe escort through treacherous mountain terrain.\n\nAnimals: Mountain goats navigate seemingly impossible cliff faces.",
+            13: "The forest king grants safe passage through his ancient woodland realm.\n\nWeather: A magical aurora dances across the midnight sky.",
+          },
+          diamonds: {
+            1: "A glint of precious ore catches sunlight in a rocky outcrop.\n\nTerrain: Mineral-rich cliffs offer promising veins for future mining.",
+            2: "Two prospectors pan for gold in a clear mountain stream.\n\nWeather: Cool morning provides perfect conditions for creek work.",
+            3: "Three gemstones lie scattered near an old, abandoned mining claim.\n\nAnimals: Curious raccoons investigate the shiny objects with interest.",
+            4: "Four trading posts mark a profitable wilderness route between settlements.\n\nTerrain: Well-traveled paths connect distant communities and markets.",
+            5: "Five treasure hunters follow an ancient map through challenging badlands.\n\nWeather: Scorching sun beats down mercilessly on the expedition.",
+            6: "Six merchant caravans converge at a crossroads trading post.\n\nAnimals: Camels and pack horses rest and water after long journeys.",
+            7: "Seven gold coins spill from a bandit's hastily abandoned cache.\n\nTerrain: Hidden cave system in limestone cliffs provides natural shelter.",
+            8: "Eight silver ingots mark payment for safe passage through dangerous territory.\n\nWeather: A thunderstorm approaches rapidly from the horizon.",
+            9: "Nine precious artifacts emerge from recently excavated ruins.\n\nAnimals: Bats flee from disturbed underground chambers and passages.",
+            10: "Ten chests of valuable trade goods await transport to distant markets.\n\nTerrain: A fortified way-station provides security in dangerous territory.",
+            11: "A master trader establishes new supply routes through virgin wilderness.\n\nWeather: Perfect traveling conditions favor exploration and expansion.",
+            12: "A merchant prince claims exclusive rights to newly discovered resources.\n\nAnimals: Exotic creatures naturally guard the valuable mineral deposits.",
+            13: "An ancient dragon's hoard tempts brave souls to attempt the impossible.\n\nTerrain: Volcanic lair accessible only through treacherous mountain paths.",
+          },
+          clubs: {
+            1: "A single seedling sprouts through cracked stone and rubble.\n\nTerrain: Rocky wasteland beginning to show signs of natural reclamation.",
+            2: "Two ancient trees form a natural archway across the forest path.\n\nWeather: Gentle rain nourishes the forest canopy and undergrowth.",
+            3: "Three brown bears fish for salmon in a rushing river.\n\nAnimals: The forest ecosystem thrives in this pristine wilderness area.",
+            4: "Four wolves howl territorial warnings to protect their pack.\n\nTerrain: Dense woodland crisscrossed with well-worn game trails.",
+            5: "Five owls hoot mysterious messages through the darkness.\n\nWeather: Foggy night obscures vision beyond immediate torchlight.",
+            6: "Six deer bound gracefully across a sunny meadow clearing.\n\nAnimals: Peaceful herbivores indicate this is a relatively safe area.",
+            7: "Seven ravens circle overhead, delivering omens of changing seasons.\n\nTerrain: Windswept plateau provides panoramic views of surrounding lands.",
+            8: "Eight wild horses gallop freely across open grasslands.\n\nWeather: Strong winds bend the prairie grass in rolling waves.",
+            9: "Nine vultures soar above the remains of recent battlefield carnage.\n\nAnimals: Scavengers claim their grim share of war's aftermath.",
+            10: "Ten eagles nest in the inaccessible peaks of high mountains.\n\nTerrain: Treacherous cliff faces require expert climbing skills to navigate.",
+            11: "A great stag leads hunters deeper into enchanted woodland.\n\nWeather: Magical mists conceal hidden paths and ancient secrets.",
+            12: "The druid queen commands forest creatures in territorial defense.\n\nAnimals: Coordinated wildlife protects the sacred groves from intruders.",
+            13: "The nature lord awakens to reclaim land from human encroachment.\n\nTerrain: Primordial forest completely untouched by civilization.",
+          },
+          spades: {
+            1: "A single arrow shaft protrudes from an old tree trunk.\n\nWeather: Dark storm clouds gather ominously on the horizon.",
+            2: "Two weathered skeletons mark where travelers met their unfortunate end.\n\nTerrain: Treacherous bog where unwary souls have perished over time.",
+            3: "Three hungry wolves circle around the edges of your campfire.\n\nAnimals: Predators test your defenses, looking for signs of weakness.",
+            4: "Four bandits establish ambush positions along the trade route.\n\nWeather: Heavy fog provides perfect concealment for criminal activity.",
+            5: "Five giant footprints crush everything in their destructive path.\n\nTerrain: Devastated landscape shows clear signs of titanic passage.",
+            6: "Six poisonous snakes guard access to a vital water source.\n\nAnimals: Venomous creatures aggressively defend their territorial claims.",
+            7: "Seven orc raiders leave burning settlements in their wake.\n\nWeather: Smoke from destruction darkens the sky for miles around.",
+            8: "Eight dire wolves hunt in coordinated pack formation.\n\nTerrain: Snow-covered forest where prey has little chance of escape.",
+            9: "Nine shambling undead wander through cursed marshlands.\n\nAnimals: Normal wildlife flees from the spreading supernatural corruption.",
+            10: "Ten dragons engage in territorial dispute, scorching the earth.\n\nWeather: Unnatural heat radiates from their devastating aerial conflict.",
+            11: "A death knight patrols the borders between life and undeath.\n\nTerrain: Blighted wasteland where nothing living can take root.",
+            12: "A lich lord commands vast legions of skeletal warriors.\n\nWeather: Perpetual winter grips this cursed and forsaken realm.",
+            13: "An avatar of destruction razes entire regions to barren ash.\n\nTerrain: Apocalyptic devastation stretches beyond the visible horizon.",
+          },
+        };
+
+        return wildernessInterpretations[card.suit][card.rank];
+      }
+
+      function getDungeonInterpretation(card) {
+        const dungeonInterpretations = {
+          hearts: {
+            1: "A lone prisoner extends friendship through the cell bars.\n\nRoom: Cramped holding cell with straw bedding and stone walls.",
+            2: "Two guards share gossip during their watch rotation.\n\nMonster: A friendly kobold offers useful information in exchange for food.",
+            3: "Three carved hearts mark a secret lovers' meeting place.\n\nTreasure: Love letters hidden carefully within a wall cavity.",
+            4: "Four healing potions rest in a shrine to the god of mercy.\n\nRoom: Small chapel with a functional altar and religious artwork.",
+            5: "Five spirits of the grateful dead bless worthy adventurers.\n\nMonster: A benevolent ghost provides helpful warnings about dangers.",
+            6: "Six refugees have found sanctuary in a hidden chamber.\n\nTreasure: A holy symbol worth approximately 50 gold pieces.",
+            7: "Seven candles burn eternally before a portrait of peace.\n\nRoom: Memorial chamber maintaining a peaceful, contemplative atmosphere.",
+            8: "Eight noble prisoners coordinate a carefully planned escape attempt.\n\nMonster: An intelligent minotaur seeks redemption by offering aid.",
+            9: "Nine martyrs' bones provide supernatural protection against undead.\n\nTreasure: A blessed relic that grants +2 protection versus evil.",
+            10: "Ten paladins' spirits rise from death to defend innocent travelers.\n\nRoom: Sacred crypt where fallen heroes have been entombed.",
+            11: "A celestial guardian offers divine assistance to pure hearts.\n\nMonster: An angel provides guidance and healing to worthy souls.",
+            12: "The high priest's ghost grants blessings to faithful followers.\n\nTreasure: A staff of healing containing 10 magical charges.",
+            13: "The saint's preserved heart beats with continuing divine power.\n\nRoom: Sanctified reliquary radiating protective holy energy.",
+          },
+          diamonds: {
+            1: "A single coin gleams prominently in the accumulated dust.\n\nTreasure: 1d6 gold pieces hidden beneath debris and rubble.",
+            2: "Two gems are embedded decoratively in the door frame.\n\nTrap: Removing gems triggers a poisoned needle (1d4 damage).",
+            3: "Three silver goblets sit abandoned on a dusty shelf.\n\nRoom: Abandoned dining hall with the remains of a rotting feast.",
+            4: "Four jeweled rings adorn the fingers of skeletal remains.\n\nMonster: A wight wearing valuable jewelry from its former life.",
+            5: "Five golden idols guard the entrance to a secret vault.\n\nTreasure: Religious artifacts worth approximately 200 gold total.",
+            6: "Six treasure chests line the chamber walls in formation.\n\nTrap: Two chests are mimics, four contain 3d6 gold pieces each.",
+            7: "Seven crystal formations contain trapped wealth and valuables.\n\nRoom: Natural cave chamber with extensive mineral deposits.",
+            8: "Eight platinum pieces form part of a complex ritual circle.\n\nMonster: A summoned demon demands tribute for safe passage.",
+            9: "Nine diamond shards power the dungeon's magical ward system.\n\nTrap: Touching diamonds triggers lightning bolt (2d6 damage).",
+            10: "Ten emerald eyes watch from carved statue faces.\n\nTreasure: Each eye worth 100 gold if carefully removed.",
+            11: "A master thief's final heist awaits in a locked vault.\n\nTrap: Master-level lock with multiple complex mechanisms.",
+            12: "The merchant lord's treasure room overflows with accumulated riches.\n\nRoom: Lavish vault with organized displays of wealth.",
+            13: "The dragon's portion of an ancient hoard lies unguarded.\n\nTreasure: 1000 gold pieces plus various magical items.",
+          },
+          clubs: {
+            1: "A single mushroom glows with natural bioluminescent light.\n\nRoom: Damp cave chamber showing extensive fungal growth.",
+            2: "Two root systems breach through the stone foundation.\n\nMonster: A shambling mound emerges from accumulated decay.",
+            3: "Three brown bears have established a hibernation chamber.\n\nRoom: Natural cave system with various animal dens.",
+            4: "Four giant centipedes scuttle across the ceiling above.\n\nTrap: Creatures drop when triggered (poison damage 1d4+1).",
+            5: "Five owlbears nest in an abandoned storage room.\n\nMonster: Protective parents defend their cubs viciously.",
+            6: "Six dire rats infest the old grain storage area.\n\nRoom: Ruined storehouse with thoroughly gnawed supplies.",
+            7: "Seven giant spiders weave webs across the corridor.\n\nTrap: Web blocks passage, spiders attack entangled victims.",
+            8: "Eight stirges drain blood from previous helpless victims.\n\nMonster: Vampire bats cluster in dark alcoves.",
+            9: "Nine purple worms tunnel through the foundation stones.\n\nRoom: Structurally compromised chamber risks collapse.",
+            10: "Ten bulezau demons corrupt everything they touch.\n\nMonster: Fiendish creatures spread disease and decay.",
+            11: "A treant's roots break through the dungeon walls.\n\nRoom: Indoor grove where nature reclaims the stonework.",
+            12: "The druid's revenge transforms stone into living wood.\n\nMonster: Awakened trees attack intruders aggressively.",
+            13: "The green dragon's breath weapon created this toxic garden.\n\nRoom: Poisonous plants fill chamber with deadly spores.",
+          },
+          spades: {
+            1: "A single blade pierces through the stone wall.\n\nTrap: Pressure plate triggers spear (1d6 damage).",
+            2: "Two skeletons guard the entrance passageway.\n\nMonster: Animated bones attack all living creatures.",
+            3: "Three iron spikes protrude from a concealed pit trap.\n\nTrap: 10-foot pit with spikes (2d6 damage).",
+            4: "Four suits of armor stand ready for battle.\n\nMonster: Animated armor attacks when approached.",
+            5: "Five executioner's axes hang from rusted chains.\n\nRoom: Torture chamber with gruesome implements.",
+            6: "Six zombies shamble through the mortuary chamber.\n\nMonster: Undead workers continue their grim tasks.",
+            7: "Seven poisoned darts fire from concealed wall mechanisms.\n\nTrap: Hallway triggers volley (1d4+poison damage each).",
+            8: "Eight wraiths drain life force from living souls.\n\nMonster: Incorporeal undead phase through walls.",
+            9: "Nine shadows detach from walls to attack.\n\nMonster: Level-draining creatures lurk in darkness.",
+            10: "Ten death knights patrol the lower levels.\n\nMonster: Powerful undead warriors command lesser undead.",
+            11: "A lich lord conducts necromantic experiments on captured victims.\n\nRoom: Laboratory with horrific research.",
+            12: "The vampire count holds court in his grand crypt.\n\nRoom: Elaborate throne room with undead courtiers.",
+            13: "The death god's avatar manifests in the deepest chamber.\n\nMonster: Divine aspect of destruction and endings.",
+          },
+        };
+
+        return dungeonInterpretations[card.suit][card.rank];
+      }
+
+      function getSingleCardInterpretation(card) {
+        if (currentMode === "city") {
+          return getCityInterpretation(card);
+        } else if (currentMode === "wilderness") {
+          return getWildernessInterpretation(card);
+        } else if (currentMode === "dungeon") {
+          return getDungeonInterpretation(card);
+        }
+
+        // Fallback to original interpretations
+        const detailedInterpretations = {
+          hearts: {
+            1: "A new friendship blooms or an old love rekindles. The hospitable innkeeper welcomes weary travelers with warm bread and stories of distant lands.",
+            2: "Voices carry on the wind - perhaps 2d6 drunk patrons starting a friendly argument over old war stories, or information brokers selling valuable secrets.",
+            3: "Gathering energy builds as people come together. A mercenary captain might be recruiting able warriors, or a traveling sage shares wisdom by the fireside.",
+            4: "Social bonds strengthen through shared hardship. An honest merchant seeks trustworthy guards for the dangerous road ahead.",
+            5: "Community celebration or festival atmosphere. The tavern fills with laughter as a diplomatic negotiation succeeds and alliances are forged.",
+            6: "Harmony prevails as conflicts resolve. A friendly local guide offers assistance, and celestial beings bless the establishment with good fortune.",
+            7: "Deep emotional connections form. Pilgrims share camp stories that reveal hidden truths about the journey ahead.",
+            8: "Passionate emotions run high - either celebration turns to revelry or disagreement escalates to heated debate among noble houses.",
+            9: "Emotional intensity peaks. A doppelganger might be replacing someone close, testing the bonds of trust and friendship.",
+            10: "Hearts unite in common cause. 2d6 holy warriors gather to face a great evil threatening the realm.",
+            11: "A charismatic stranger arrives who will change everything. Perhaps a dragon in human form or an avatar walking among mortals.",
+            12: "Refined social grace and diplomatic solutions. A diplomat conducts secret meetings that will reshape political alliances.",
+            13: "Love conquers all obstacles. The queen of hearts rules through compassion, uniting disparate factions under a banner of hope.",
+          },
+          diamonds: {
+            1: "A glint of something valuable catches the eye. Perhaps a well-crafted sword in a decorated leather scabbard or silver merchant scales.",
+            2: "Early signs of prosperity emerge. A heavy coin purse containing 3d6 gold pieces suggests profitable ventures ahead.",
+            3: "Trade opportunities present themselves. An ornate holy symbol on a silver chain might unlock religious patronage or merchant connections.",
+            4: "Material concerns demand attention. A master's tool set in oiled leather wrap represents the foundation of honest craft and trade.",
+            5: "Wealth flows freely through skilled hands. A gold signet ring bearing a noble crest opens doors to high society and profitable contracts.",
+            6: "Prosperity is shared generously. A healer's satchel of herbs and bandages shows wealth invested in helping others rather than hoarding.",
+            7: "Trade networks expand and flourish. A merchant's ledger bound in red leather contains valuable information about profitable routes.",
+            8: "Greed or generosity reaches its peak. A guild badge with precious stones represents either corrupt influence or righteous prosperity.",
+            9: "Material desires consume rational thought. A holy relic in a silver reliquary tempts both the faithful and the avaricious.",
+            10: "Wealth brings both power and responsibility. A set of illuminated manuscripts contains knowledge worth more than gold.",
+            11: "A merchant prince or noble dealer arrives. Their cartographer's kit with ivory tools maps new territories ripe for exploitation.",
+            12: "Elegant wealth and refined taste. A ceremonial dagger with jade hilt represents power wielded with precision and grace.",
+            13: "Ultimate material success achieved. A navigator's compass in a brass case points toward untold riches across uncharted seas.",
+          },
+          clubs: {
+            1: "New growth stirs in the wilderness. Brown bears forage for berries while ancient secrets awaken in forgotten groves.",
+            2: "Nature's presence grows stronger. Wild boars with 1d6 piglets remind travelers that the forest has its own rules and rhythms.",
+            3: "The wild calls to those who listen. A helpful druid tends plants that hold medicinal secrets, offering aid to respectful visitors.",
+            4: "Organic threats emerge from overgrowth. Giant spiders spin webs in tree-covered paths, while wise elders share ancient forest lore.",
+            5: "Primal forces demand respect. An owlbear defends its territory fiercely, teaching that some boundaries should never be crossed.",
+            6: "Nature's wisdom guides the worthy. A friendly ranger offers guidance through treacherous paths, reading signs invisible to city dwellers.",
+            7: "The wilderness tests resolve and character. Ancient treants awaken to judge whether travelers deserve safe passage through sacred groves.",
+            8: "Savage beauty and terrible danger intertwine. A dire wolf with glowing eyes hunts beneath moonlight, following instincts older than civilization.",
+            9: "Natural order asserts dominance over human ambition. 2d6 goblins raid supply caches, claiming resources for their forest kingdom.",
+            10: "The wild reclaims what was taken. Vines burst through castle walls as nature reclaims ancient ruins long forgotten.",
+            11: "A creature of legend emerges from deep wilderness. Perhaps a unicorn drinking from a pure stream or a griffon soaring majestically overhead.",
+            12: "Refined harmony between civilization and nature. A wise elder shares woodland lore that bridges human needs with natural balance.",
+            13: "The forest king holds absolute dominion. Every creature from the smallest stirge to the mightiest treant acknowledges this ancient authority.",
+          },
+          spades: {
+            1: "A shadow appears on the horizon, barely visible but unmistakably present. 2d6 bandits set roadside ambushes in the gathering dusk.",
+            2: "Danger approaches with deliberate intent. 1d6 thieves plan their heist while assassins sharpen blades in darkened rooms.",
+            3: "Hidden threats reveal themselves gradually. A spy master recruits agents for missions that will determine the fate of kingdoms.",
+            4: "Conflict becomes inevitable as tensions rise. Mountain lions stalk from rocks while death cults prepare their dark rituals.",
+            5: "Open warfare erupts as peace negotiations fail. 1d6 orcs return from raids carrying bloodied weapons and stolen goods.",
+            6: "Battle lines are drawn as enemies mass for assault. A paladin investigates evil presence while preparing for righteous combat.",
+            7: "Steel rings against steel in deadly combat. A troll lurks under the bridge, demanding toll in blood rather than coin.",
+            8: "Violence reaches its crescendo as mercy becomes weakness. 2d6 necromancers discuss forbidden magic that will reshape the battlefield.",
+            9: "Death stalks the living with relentless purpose. A lich in human disguise walks among mortals, plotting eternal dominion.",
+            10: "Ultimate sacrifice becomes necessary for victory. Vampire spawn recruit new soldiers for their undead army's final campaign.",
+            11: "A warrior of legend takes the field. Their presence alone shifts the balance between light and darkness, hope and despair.",
+            12: "Elegant precision in the art of war. Strategic brilliance turns certain defeat into crushing victory through superior tactics.",
+            13: "Death itself commands the battlefield. All combatants - living and undead alike - acknowledge the ultimate authority of the grave.",
+          },
+        };
+
+        return detailedInterpretations[card.suit][card.rank];
+      }
+
+      function getCombinationInterpretation(cardSequence) {
+        const currentCard = cardSequence[cardSequence.length - 1];
+        const namedCombo = getNamedCombo(cardSequence);
+
+        let interpretation = getSingleCardInterpretation(currentCard);
+
+        // Poker hand profoundly affects the interpretation
+        if (namedCombo) {
+          let pokerInterpretations = {};
+
+          if (currentMode === "city") {
+            pokerInterpretations = {
+              "One Pair":
+                " Paired interests align - two merchants form partnership, twin guards coordinate patrol, or matching bribes ensure cooperation.",
+              "Two Pair":
+                " Dual alliances emerge - noble houses and merchant guilds unite, while thieves and corrupt officials form parallel agreements.",
+              "Three of a Kind":
+                " Trinity of power manifests - city council, temple hierarchy, and merchant princes unite in common cause.",
+              Straight:
+                " Sequential events unfold - market day leads to festival, which triggers political ceremony, culminating in royal decree.",
+              Flush:
+                " Single faction dominance - one guild controls all trade, one noble house rules politics, or one criminal organization owns the streets.",
+              "Full House":
+                " Perfect political marriage - military might backs diplomatic wisdom as guard captain and high priestess unite their influences.",
+              "Four of a Kind":
+                " Legendary convergence - four city districts unite, four guilds merge, or four noble families form unbreakable alliance.",
+              "Straight Flush":
+                " Ultimate urban harmony - all social classes, from beggar to king, work in perfect coordination toward common prosperity.",
+              "High Card":
+                " Individual authority rises - a single leader emerges to guide city through crisis using personal charisma over institutional power.",
+            };
+          } else if (currentMode === "wilderness") {
+            pokerInterpretations = {
+              "One Pair":
+                " Natural symmetry emerges - twin peaks frame the valley, paired predators hunt together, or two weather fronts converge.",
+              "Two Pair":
+                " Balanced ecosystems - predator and prey, summer and winter patterns, or mountain and forest terrains complement each other.",
+              "Three of a Kind":
+                " Primal trinity manifests - earth, air, and water unite; or past, present, and future reveal themselves through natural signs.",
+              Straight:
+                " Natural progression unfolds - seasons change in perfect sequence, animal migrations follow ancient paths, terrain shifts predictably.",
+              Flush:
+                " Elemental dominance - fire consumes forest, water floods plains, earth avalanches mountainside, or wind storms across grasslands.",
+              "Full House":
+                " Perfect wilderness balance - predator populations control prey numbers while terrain provides exactly the resources needed.",
+              "Four of a Kind":
+                " Legendary natural convergence - four sacred groves unite, four elemental forces align, or four ancient beasts awaken simultaneously.",
+              "Straight Flush":
+                " Ultimate natural harmony - all creatures, weather, and terrain work in perfect ecological balance.",
+              "High Card":
+                " Apex emergence - single alpha predator, dominant weather pattern, or master of wilderness rises above all other natural forces.",
+            };
+          } else if (currentMode === "dungeon") {
+            pokerInterpretations = {
+              "One Pair":
+                " Matched threats emerge - twin guardians protect chamber, paired traps work together, or two treasure caches complement each other.",
+              "Two Pair":
+                " Dual defense systems - magical and mechanical traps combine, while undead and construct guardians coordinate attacks.",
+              "Three of a Kind":
+                " Trinity of dungeon power - trap, monster, and treasure form perfect deadly triangle in chamber design.",
+              Straight:
+                " Sequential challenges unfold - each chamber leads logically to next, traps build in complexity, guardians increase in power.",
+              Flush:
+                " Unified dungeon theme - all elements serve single purpose: undead dominion, draconic hoard protection, or elemental containment.",
+              "Full House":
+                " Perfect dungeon design - architectural strength combines with magical complexity as physical and supernatural defenses unite.",
+              "Four of a Kind":
+                " Legendary dungeon convergence - four keystones unlock final chamber, four guardian types unite, or four treasure hoards merge.",
+              "Straight Flush":
+                " Ultimate dungeon mastery - all chambers, traps, monsters, and treasures work in perfect harmony toward single grand purpose.",
+              "High Card":
+                " Supreme dungeon authority - single powerful entity (lich lord, dragon, demon prince) dominates all lesser dungeon elements.",
+            };
+          }
+
+          interpretation += pokerInterpretations[namedCombo] || "";
+        } else {
+          // Standard combination patterns for non-poker hands
+          const cardSuits = cardSequence.map((c) => c.suit);
+          const ranks = cardSequence.map((c) => c.rank);
+          const colors = cardSequence.map((c) => suits[c.suit].color);
+
+          if (cardSuits.every((s) => s === cardSuits[0])) {
+            interpretation += ` — The ${cardSuits[0]} theme intensifies and develops.`;
+          } else if (colors.every((c) => c === colors[0])) {
+            if (colors[0] === "red") {
+              interpretation += " — Harmony and positive energy flow.";
             } else {
-                pokerHandAlert.style.display = 'none';
+              interpretation += " — A foreboding atmosphere grows.";
             }
+          }
         }
-        
-        function createTableRow(card, index) {
-            const suit = suits[card.suit];
-            const rank = ranks[card.rank];
-            const cardSequence = drawnCards.slice(0, index + 1);
-            
-            const row = document.createElement('tr');
-            
-            // Draw number
-            const drawCell = document.createElement('td');
-            drawCell.textContent = index + 1;
-            row.appendChild(drawCell);
-            
-            // Card symbol
-            const symbolCell = document.createElement('td');
-            const cardSymbol = document.createElement('span');
-            cardSymbol.className = `card-symbol ${suit.color}`;
-            cardSymbol.textContent = `${rank.display}${suit.symbol}`;
-            symbolCell.appendChild(cardSymbol);
-            row.appendChild(symbolCell);
-            
-            // Card name
-            const nameCell = document.createElement('td');
-            nameCell.textContent = `${rank.name} of ${suit.name}`;
-            row.appendChild(nameCell);
-            
-            // Card code
-            const codeCell = document.createElement('td');
-            codeCell.className = 'card-code';
-            codeCell.textContent = getCardCode(card);
-            row.appendChild(codeCell);
-            
-            // Card Oracle
-            const oracleCell = document.createElement('td');
-            oracleCell.className = 'interpretation-cell';
-            oracleCell.textContent = getInterpretation(cardSequence);
-            row.appendChild(oracleCell);
-            
-            // Named Combo
-            const namedComboCell = document.createElement('td');
-            namedComboCell.textContent = getNamedCombo(cardSequence);
-            namedComboCell.style.fontWeight = 'bold';
-            namedComboCell.style.color = getNamedCombo(cardSequence) ? '#d4af37' : '#888';
-            row.appendChild(namedComboCell);
-            
-            // Combination (last column)
-            const combinationCell = document.createElement('td');
-            combinationCell.className = 'combination-cell';
-            combinationCell.innerHTML = getCombinationStringWithHighlight(cardSequence, index);
-            row.appendChild(combinationCell);
-            
-            return row;
-        }
-        
-        function getInterpretation(cardSequence) {
-            if (cardSequence.length === 1) {
-                return getSingleCardInterpretation(cardSequence[0]);
-            }
-            
-            return getCombinationInterpretation(cardSequence);
-        }
-        
-        function getCityInterpretation(card) {
-            const cityInterpretations = {
-                'hearts': {
-                    1: 'A stranger offers a warm smile and friendly conversation.\n\nWeather: Light drizzle dampens the cobblestones, making them slippery.',
-                    2: 'Two children excitedly share gossip about something they witnessed near the temple.\n\nNeighborhood: The upper-class district maintains its pristine gardens and clean streets.',
-                    3: 'Three city guards discuss their patrol routes while sharing a meal.\n\nA local priest offers blessings to travelers passing through the temple quarter.',
-                    4: 'Four merchants debate the terms of a trade agreement in the market square.\n\nWeather: Crisp morning air carries the scent of baking bread from nearby shops.',
-                    5: 'Five noble families gather for a public ceremony at the courthouse.\n\nServants in their house colors carry ceremonial banners through the streets.',
-                    6: 'Six dock workers unload exotic cargo while customs officials inspect the goods.\n\nThe harbor district bustles with merchants and sailors from distant ports.',
-                    7: 'Seven cloaked figures meet briefly in an alley before going their separate ways.\n\nThe blacksmith works late, fulfilling a large order that came in recently.',
-                    8: 'Eight members of the city watch patrol the walls during evening festival activities.\n\nWeather: A warm evening breeze carries music and laughter through the streets.',
-                    9: 'Nine citizens gather around a town crier announcing new royal edicts.\n\nThe crowd discusses the implications with animated gestures.',
-                    10: 'Ten palace guards escort a foreign diplomat through the noble quarter.\n\nElaborate carriages from various houses line the ceremonial route.',
-                    11: 'A young noble heir practices swordwork in the courtyard while tutors observe.\n\nThe training session appears more intensive than usual.',
-                    12: 'The high priestess conducts evening prayers as bell towers chime across the city.\n\nThe divine quarter maintains its atmosphere of peace and contemplation.',
-                    13: 'The city lord holds court, hearing petitions and dispensing justice.\n\nThe great hall sees a steady stream of citizens seeking royal audience.'
-                },
-                'diamonds': {
-                    1: 'A merchant carefully counts coins while discussing recent business ventures.\n\nTrade quarter: Early morning activity as shops prepare for the day.',
-                    2: 'Two money changers debate current exchange rates near the banking district.\n\nWeather: Clear skies provide favorable conditions for commerce.',
-                    3: 'Three gem merchants display their finest stones to interested buyers.\n\nCity guards ensure the valuable transactions proceed safely.',
-                    4: 'Four trade caravans make final preparations before departing the city.\n\nNeighborhood: The commercial district bustles with loading and provisioning.',
-                    5: 'Five noble houses negotiate the terms of a significant marriage alliance.\n\nThe dowry negotiations involve considerable political implications.',
-                    6: 'Six guild masters convene to discuss new taxation policies affecting their crafts.\n\nWeather: Overcast skies cast shadows over the worried craftsmen\'s meeting.',
-                    7: 'Seven treasure hunters offer recently discovered artifacts to collectors.\n\nMembers of the thieves\' guild observe the transactions with professional interest.',
-                    8: 'Eight wealthy patrons attend an exclusive auction in the upper city.\n\nRare and valuable items command surprisingly high prices.',
-                    9: 'Nine tax collectors make their regular rounds through residential neighborhoods.\n\nCitizens pay their civic duties, though some grumble about the amounts.',
-                    10: 'Ten merchant princes gather to discuss trade route security and profitability.\n\nThe harbor master coordinates with them on shipping schedules.',
-                    11: 'A master treasurer reviews the royal coffers with his scribes.\n\nDetailed records document various state expenditures and income.',
-                    12: 'The guild mistress of commerce mediates a complex trade dispute.\n\nDiplomatic solutions help preserve important business relationships.',
-                    13: 'The merchant king announces new trade agreements with distant kingdoms.\n\nEconomic prosperity and opportunity spread throughout the city.'
-                },
-                'clubs': {
-                    1: 'A small herb garden thrives behind the local apothecary\'s shop.\n\nWeather: Morning dew dampens the residential district streets.',
-                    2: 'Two park rangers tend the royal gardens within the city walls.\n\nNature finds its place amid the stone architecture and busy streets.',
-                    3: 'Three druids visit the city\'s sacred grove in the temple quarter.\n\nUrban wildlife gathers peacefully in the green spaces.',
-                    4: 'Four groundskeepers maintain elaborate topiary gardens on noble estates.\n\nNeighborhood: The wealthy residential area displays its horticultural pride.',
-                    5: 'Five street cats prowl the alleyways of the warehouse district.\n\nRats scurry into the sewers and hidden passages below.',
-                    6: 'Six messenger birds return to the communications tower with news.\n\nWeather: Clear flying conditions favor reliable message delivery.',
-                    7: 'Seven wild dogs roam near the outer city walls where civilization meets wilderness.\n\nGuards keep watch but the animals seem harmless enough.',
-                    8: 'Eight horses await shoeing at the blacksmith\'s stable.\n\nTravelers make preparations for upcoming journeys.',
-                    9: 'Nine ravens perch on the cathedral spires, observed by clergy below.\n\nThe priests discuss various interpretations of natural omens.',
-                    10: 'Ten hunting hounds accompany a noble party preparing for expedition.\n\nThe group plans to venture into the forest beyond the gates.',
-                    11: 'A druid emissary arrives seeking audience with city leaders.\n\nEnvironmental concerns and land management issues require discussion.',
-                    12: 'The royal beast master tends exotic creatures in the palace menagerie.\n\nThese diplomatic gifts from foreign lands require specialized care.',
-                    13: 'A forest lord from nearby woods requests tribute and tax agreements.\n\nAncient pacts between city and wilderness need renewed negotiation.'
-                },
-                'spades': {
-                    1: 'A hooded figure moves quietly through shadows near the docks.\n\nWeather: Fog rolls in from the harbor, reducing visibility.',
-                    2: 'Two city guards investigate reports of break-ins in the merchant quarter.\n\nThievery appears to be increasing lately.',
-                    3: 'Three executioners prepare the gallows for a public justice ceremony.\n\nThe grim work of law enforcement continues as scheduled.',
-                    4: 'Four grave diggers work through the night in the city cemetery.\n\nNeighborhood: The burial district maintains its somber, respectful atmosphere.',
-                    5: 'Five mercenaries sharpen their weapons in a tavern basement.\n\nTension hangs in the air as they prepare for upcoming work.',
-                    6: 'Six prisoners await trial in the dungeon beneath the courthouse.\n\nJustice proceeds methodically through proper legal channels.',
-                    7: 'Seven plague victims remain quarantined in the outer city district.\n\nMedical efforts continue to contain the spreading illness.',
-                    8: 'Eight soldiers patrol the walls as scouts report movement beyond.\n\nMilitary readiness increases in response to potential threats.',
-                    9: 'Nine cultists conduct secretive rituals in abandoned buildings.\n\nThe city watch investigates these disturbing religious activities.',
-                    10: 'Ten additional guards provide security during the public festival.\n\nRoyal protection measures ensure citizen safety at large gatherings.',
-                    11: 'A foreign dignitary arrives under heavy diplomatic security.\n\nTheir presence creates an atmosphere of nervous formality.',
-                    12: 'The chief executioner carries out sentences with professional efficiency.\n\nFear of legal consequences helps maintain order in the streets.',
-                    13: 'City rulers negotiate tribute and taxes with various external powers.\n\nPolitical debts and obligations require careful diplomatic management.'
-                }
-            };
-            
-            return cityInterpretations[card.suit][card.rank];
-        }
-        
-        function getWildernessInterpretation(card) {
-            const wildernessInterpretations = {
-                'hearts': {
-                    1: 'A lone traveler shares their campfire and offers food to passing strangers.\n\nWeather: Clear night with gentle breeze rustling through the pine trees.',
-                    2: 'Two rangers exchange information about safe paths and potential hazards ahead.\n\nTerrain: Rolling hills covered with wildflowers and scattered groves.',
-                    3: 'Three pilgrims rest at a woodland shrine, seeking divine protection for their journey.\n\nAnimals: Deer graze peacefully in nearby meadows, undisturbed by human presence.',
-                    4: 'Four merchants fortify their camp against potential night predators.\n\nWeather: Heavy rainfall creates muddy trails and swollen stream crossings.',
-                    5: 'Five druids gather for seasonal rituals in a sacred grove.\n\nTerrain: Ancient oak forest with natural stone circles and moss-covered rocks.',
-                    6: 'Six refugees fleeing conflict seek shelter in a hidden valley.\n\nAnimals: Songbirds provide a comforting backdrop of natural melodies.',
-                    7: 'Seven nomads share tribal wisdom around their evening cooking fires.\n\nWeather: Warm evening under a canopy of brilliant stars.',
-                    8: 'Eight travelers celebrate successfully crossing a dangerous mountain pass.\n\nTerrain: High altitude meadows surrounded by snow-capped peaks.',
-                    9: 'Nine villagers evacuate their settlement due to approaching danger.\n\nAnimals: Livestock are driven hastily along forest paths to safety.',
-                    10: 'Ten soldiers establish a forward camp in disputed territory.\n\nWeather: Morning mist provides natural concealment for troop movements.',
-                    11: 'A mysterious hermit offers cryptic guidance to lost wanderers.\n\nTerrain: Deep wilderness far from any civilized settlement.',
-                    12: 'An elven ranger provides safe escort through treacherous mountain terrain.\n\nAnimals: Mountain goats navigate seemingly impossible cliff faces.',
-                    13: 'The forest king grants safe passage through his ancient woodland realm.\n\nWeather: A magical aurora dances across the midnight sky.'
-                },
-                'diamonds': {
-                    1: 'A glint of precious ore catches sunlight in a rocky outcrop.\n\nTerrain: Mineral-rich cliffs offer promising veins for future mining.',
-                    2: 'Two prospectors pan for gold in a clear mountain stream.\n\nWeather: Cool morning provides perfect conditions for creek work.',
-                    3: 'Three gemstones lie scattered near an old, abandoned mining claim.\n\nAnimals: Curious raccoons investigate the shiny objects with interest.',
-                    4: 'Four trading posts mark a profitable wilderness route between settlements.\n\nTerrain: Well-traveled paths connect distant communities and markets.',
-                    5: 'Five treasure hunters follow an ancient map through challenging badlands.\n\nWeather: Scorching sun beats down mercilessly on the expedition.',
-                    6: 'Six merchant caravans converge at a crossroads trading post.\n\nAnimals: Camels and pack horses rest and water after long journeys.',
-                    7: 'Seven gold coins spill from a bandit\'s hastily abandoned cache.\n\nTerrain: Hidden cave system in limestone cliffs provides natural shelter.',
-                    8: 'Eight silver ingots mark payment for safe passage through dangerous territory.\n\nWeather: A thunderstorm approaches rapidly from the horizon.',
-                    9: 'Nine precious artifacts emerge from recently excavated ruins.\n\nAnimals: Bats flee from disturbed underground chambers and passages.',
-                    10: 'Ten chests of valuable trade goods await transport to distant markets.\n\nTerrain: A fortified way-station provides security in dangerous territory.',
-                    11: 'A master trader establishes new supply routes through virgin wilderness.\n\nWeather: Perfect traveling conditions favor exploration and expansion.',
-                    12: 'A merchant prince claims exclusive rights to newly discovered resources.\n\nAnimals: Exotic creatures naturally guard the valuable mineral deposits.',
-                    13: 'An ancient dragon\'s hoard tempts brave souls to attempt the impossible.\n\nTerrain: Volcanic lair accessible only through treacherous mountain paths.'
-                },
-                'clubs': {
-                    1: 'A single seedling sprouts through cracked stone and rubble.\n\nTerrain: Rocky wasteland beginning to show signs of natural reclamation.',
-                    2: 'Two ancient trees form a natural archway across the forest path.\n\nWeather: Gentle rain nourishes the forest canopy and undergrowth.',
-                    3: 'Three brown bears fish for salmon in a rushing river.\n\nAnimals: The forest ecosystem thrives in this pristine wilderness area.',
-                    4: 'Four wolves howl territorial warnings to protect their pack.\n\nTerrain: Dense woodland crisscrossed with well-worn game trails.',
-                    5: 'Five owls hoot mysterious messages through the darkness.\n\nWeather: Foggy night obscures vision beyond immediate torchlight.',
-                    6: 'Six deer bound gracefully across a sunny meadow clearing.\n\nAnimals: Peaceful herbivores indicate this is a relatively safe area.',
-                    7: 'Seven ravens circle overhead, delivering omens of changing seasons.\n\nTerrain: Windswept plateau provides panoramic views of surrounding lands.',
-                    8: 'Eight wild horses gallop freely across open grasslands.\n\nWeather: Strong winds bend the prairie grass in rolling waves.',
-                    9: 'Nine vultures soar above the remains of recent battlefield carnage.\n\nAnimals: Scavengers claim their grim share of war\'s aftermath.',
-                    10: 'Ten eagles nest in the inaccessible peaks of high mountains.\n\nTerrain: Treacherous cliff faces require expert climbing skills to navigate.',
-                    11: 'A great stag leads hunters deeper into enchanted woodland.\n\nWeather: Magical mists conceal hidden paths and ancient secrets.',
-                    12: 'The druid queen commands forest creatures in territorial defense.\n\nAnimals: Coordinated wildlife protects the sacred groves from intruders.',
-                    13: 'The nature lord awakens to reclaim land from human encroachment.\n\nTerrain: Primordial forest completely untouched by civilization.'
-                },
-                'spades': {
-                    1: 'A single arrow shaft protrudes from an old tree trunk.\n\nWeather: Dark storm clouds gather ominously on the horizon.',
-                    2: 'Two weathered skeletons mark where travelers met their unfortunate end.\n\nTerrain: Treacherous bog where unwary souls have perished over time.',
-                    3: 'Three hungry wolves circle around the edges of your campfire.\n\nAnimals: Predators test your defenses, looking for signs of weakness.',
-                    4: 'Four bandits establish ambush positions along the trade route.\n\nWeather: Heavy fog provides perfect concealment for criminal activity.',
-                    5: 'Five giant footprints crush everything in their destructive path.\n\nTerrain: Devastated landscape shows clear signs of titanic passage.',
-                    6: 'Six poisonous snakes guard access to a vital water source.\n\nAnimals: Venomous creatures aggressively defend their territorial claims.',
-                    7: 'Seven orc raiders leave burning settlements in their wake.\n\nWeather: Smoke from destruction darkens the sky for miles around.',
-                    8: 'Eight dire wolves hunt in coordinated pack formation.\n\nTerrain: Snow-covered forest where prey has little chance of escape.',
-                    9: 'Nine shambling undead wander through cursed marshlands.\n\nAnimals: Normal wildlife flees from the spreading supernatural corruption.',
-                    10: 'Ten dragons engage in territorial dispute, scorching the earth.\n\nWeather: Unnatural heat radiates from their devastating aerial conflict.',
-                    11: 'A death knight patrols the borders between life and undeath.\n\nTerrain: Blighted wasteland where nothing living can take root.',
-                    12: 'A lich lord commands vast legions of skeletal warriors.\n\nWeather: Perpetual winter grips this cursed and forsaken realm.',
-                    13: 'An avatar of destruction razes entire regions to barren ash.\n\nTerrain: Apocalyptic devastation stretches beyond the visible horizon.'
-                }
-            };
-            
-            return wildernessInterpretations[card.suit][card.rank];
-        }
-        
-        function getDungeonInterpretation(card) {
-            const dungeonInterpretations = {
-                'hearts': {
-                    1: 'A lone prisoner extends friendship through the cell bars.\n\nRoom: Cramped holding cell with straw bedding and stone walls.',
-                    2: 'Two guards share gossip during their watch rotation.\n\nMonster: A friendly kobold offers useful information in exchange for food.',
-                    3: 'Three carved hearts mark a secret lovers\' meeting place.\n\nTreasure: Love letters hidden carefully within a wall cavity.',
-                    4: 'Four healing potions rest in a shrine to the god of mercy.\n\nRoom: Small chapel with a functional altar and religious artwork.',
-                    5: 'Five spirits of the grateful dead bless worthy adventurers.\n\nMonster: A benevolent ghost provides helpful warnings about dangers.',
-                    6: 'Six refugees have found sanctuary in a hidden chamber.\n\nTreasure: A holy symbol worth approximately 50 gold pieces.',
-                    7: 'Seven candles burn eternally before a portrait of peace.\n\nRoom: Memorial chamber maintaining a peaceful, contemplative atmosphere.',
-                    8: 'Eight noble prisoners coordinate a carefully planned escape attempt.\n\nMonster: An intelligent minotaur seeks redemption by offering aid.',
-                    9: 'Nine martyrs\' bones provide supernatural protection against undead.\n\nTreasure: A blessed relic that grants +2 protection versus evil.',
-                    10: 'Ten paladins\' spirits rise from death to defend innocent travelers.\n\nRoom: Sacred crypt where fallen heroes have been entombed.',
-                    11: 'A celestial guardian offers divine assistance to pure hearts.\n\nMonster: An angel provides guidance and healing to worthy souls.',
-                    12: 'The high priest\'s ghost grants blessings to faithful followers.\n\nTreasure: A staff of healing containing 10 magical charges.',
-                    13: 'The saint\'s preserved heart beats with continuing divine power.\n\nRoom: Sanctified reliquary radiating protective holy energy.'
-                },
-                'diamonds': {
-                    1: 'A single coin gleams prominently in the accumulated dust.\n\nTreasure: 1d6 gold pieces hidden beneath debris and rubble.',
-                    2: 'Two gems are embedded decoratively in the door frame.\n\nTrap: Removing gems triggers a poisoned needle (1d4 damage).',
-                    3: 'Three silver goblets sit abandoned on a dusty shelf.\n\nRoom: Abandoned dining hall with the remains of a rotting feast.',
-                    4: 'Four jeweled rings adorn the fingers of skeletal remains.\n\nMonster: A wight wearing valuable jewelry from its former life.',
-                    5: 'Five golden idols guard the entrance to a secret vault.\n\nTreasure: Religious artifacts worth approximately 200 gold total.',
-                    6: 'Six treasure chests line the chamber walls in formation.\n\nTrap: Two chests are mimics, four contain 3d6 gold pieces each.',
-                    7: 'Seven crystal formations contain trapped wealth and valuables.\n\nRoom: Natural cave chamber with extensive mineral deposits.',
-                    8: 'Eight platinum pieces form part of a complex ritual circle.\n\nMonster: A summoned demon demands tribute for safe passage.',
-                    9: 'Nine diamond shards power the dungeon\'s magical ward system.\n\nTrap: Touching diamonds triggers lightning bolt (2d6 damage).',
-                    10: 'Ten emerald eyes watch from carved statue faces.\n\nTreasure: Each eye worth 100 gold if carefully removed.',
-                    11: 'A master thief\'s final heist awaits in a locked vault.\n\nTrap: Master-level lock with multiple complex mechanisms.',
-                    12: 'The merchant lord\'s treasure room overflows with accumulated riches.\n\nRoom: Lavish vault with organized displays of wealth.',
-                    13: 'The dragon\'s portion of an ancient hoard lies unguarded.\n\nTreasure: 1000 gold pieces plus various magical items.'
-                },
-                'clubs': {
-                    1: 'A single mushroom glows with natural bioluminescent light.\n\nRoom: Damp cave chamber showing extensive fungal growth.',
-                    2: 'Two root systems breach through the stone foundation.\n\nMonster: A shambling mound emerges from accumulated decay.',
-                    3: 'Three brown bears have established a hibernation chamber.\n\nRoom: Natural cave system with various animal dens.',
-                    4: 'Four giant centipedes scuttle across the ceiling above.\n\nTrap: Creatures drop when triggered (poison damage 1d4+1).',
-                    5: 'Five owlbears nest in an abandoned storage room.\n\nMonster: Protective parents defend their cubs viciously.',
-                    6: 'Six dire rats infest the old grain storage area.\n\nRoom: Ruined storehouse with thoroughly gnawed supplies.',
-                    7: 'Seven giant spiders weave webs across the corridor.\n\nTrap: Web blocks passage, spiders attack entangled victims.',
-                    8: 'Eight stirges drain blood from previous helpless victims.\n\nMonster: Vampire bats cluster in dark alcoves.',
-                    9: 'Nine purple worms tunnel through the foundation stones.\n\nRoom: Structurally compromised chamber risks collapse.',
-                    10: 'Ten bulezau demons corrupt everything they touch.\n\nMonster: Fiendish creatures spread disease and decay.',
-                    11: 'A treant\'s roots break through the dungeon walls.\n\nRoom: Indoor grove where nature reclaims the stonework.',
-                    12: 'The druid\'s revenge transforms stone into living wood.\n\nMonster: Awakened trees attack intruders aggressively.',
-                    13: 'The green dragon\'s breath weapon created this toxic garden.\n\nRoom: Poisonous plants fill chamber with deadly spores.'
-                },
-                'spades': {
-                    1: 'A single blade pierces through the stone wall.\n\nTrap: Pressure plate triggers spear (1d6 damage).',
-                    2: 'Two skeletons guard the entrance passageway.\n\nMonster: Animated bones attack all living creatures.',
-                    3: 'Three iron spikes protrude from a concealed pit trap.\n\nTrap: 10-foot pit with spikes (2d6 damage).',
-                    4: 'Four suits of armor stand ready for battle.\n\nMonster: Animated armor attacks when approached.',
-                    5: 'Five executioner\'s axes hang from rusted chains.\n\nRoom: Torture chamber with gruesome implements.',
-                    6: 'Six zombies shamble through the mortuary chamber.\n\nMonster: Undead workers continue their grim tasks.',
-                    7: 'Seven poisoned darts fire from concealed wall mechanisms.\n\nTrap: Hallway triggers volley (1d4+poison damage each).',
-                    8: 'Eight wraiths drain life force from living souls.\n\nMonster: Incorporeal undead phase through walls.',
-                    9: 'Nine shadows detach from walls to attack.\n\nMonster: Level-draining creatures lurk in darkness.',
-                    10: 'Ten death knights patrol the lower levels.\n\nMonster: Powerful undead warriors command lesser undead.',
-                    11: 'A lich lord conducts necromantic experiments on captured victims.\n\nRoom: Laboratory with horrific research.',
-                    12: 'The vampire count holds court in his grand crypt.\n\nRoom: Elaborate throne room with undead courtiers.',
-                    13: 'The death god\'s avatar manifests in the deepest chamber.\n\nMonster: Divine aspect of destruction and endings.'
-                }
-            };
-            
-            return dungeonInterpretations[card.suit][card.rank];
-        }
-        
-        function getSingleCardInterpretation(card) {
-            if (currentMode === 'city') {
-                return getCityInterpretation(card);
-            } else if (currentMode === 'wilderness') {
-                return getWildernessInterpretation(card);
-            } else if (currentMode === 'dungeon') {
-                return getDungeonInterpretation(card);
-            }
-            
-            // Fallback to original interpretations
-            const detailedInterpretations = {
-                'hearts': {
-                    1: 'A new friendship blooms or an old love rekindles. The hospitable innkeeper welcomes weary travelers with warm bread and stories of distant lands.',
-                    2: 'Voices carry on the wind - perhaps 2d6 drunk patrons starting a friendly argument over old war stories, or information brokers selling valuable secrets.',
-                    3: 'Gathering energy builds as people come together. A mercenary captain might be recruiting able warriors, or a traveling sage shares wisdom by the fireside.',
-                    4: 'Social bonds strengthen through shared hardship. An honest merchant seeks trustworthy guards for the dangerous road ahead.',
-                    5: 'Community celebration or festival atmosphere. The tavern fills with laughter as a diplomatic negotiation succeeds and alliances are forged.',
-                    6: 'Harmony prevails as conflicts resolve. A friendly local guide offers assistance, and celestial beings bless the establishment with good fortune.',
-                    7: 'Deep emotional connections form. Pilgrims share camp stories that reveal hidden truths about the journey ahead.',
-                    8: 'Passionate emotions run high - either celebration turns to revelry or disagreement escalates to heated debate among noble houses.',
-                    9: 'Emotional intensity peaks. A doppelganger might be replacing someone close, testing the bonds of trust and friendship.',
-                    10: 'Hearts unite in common cause. 2d6 holy warriors gather to face a great evil threatening the realm.',
-                    11: 'A charismatic stranger arrives who will change everything. Perhaps a dragon in human form or an avatar walking among mortals.',
-                    12: 'Refined social grace and diplomatic solutions. A diplomat conducts secret meetings that will reshape political alliances.',
-                    13: 'Love conquers all obstacles. The queen of hearts rules through compassion, uniting disparate factions under a banner of hope.'
-                },
-                'diamonds': {
-                    1: 'A glint of something valuable catches the eye. Perhaps a well-crafted sword in a decorated leather scabbard or silver merchant scales.',
-                    2: 'Early signs of prosperity emerge. A heavy coin purse containing 3d6 gold pieces suggests profitable ventures ahead.',
-                    3: 'Trade opportunities present themselves. An ornate holy symbol on a silver chain might unlock religious patronage or merchant connections.',
-                    4: 'Material concerns demand attention. A master\'s tool set in oiled leather wrap represents the foundation of honest craft and trade.',
-                    5: 'Wealth flows freely through skilled hands. A gold signet ring bearing a noble crest opens doors to high society and profitable contracts.',
-                    6: 'Prosperity is shared generously. A healer\'s satchel of herbs and bandages shows wealth invested in helping others rather than hoarding.',
-                    7: 'Trade networks expand and flourish. A merchant\'s ledger bound in red leather contains valuable information about profitable routes.',
-                    8: 'Greed or generosity reaches its peak. A guild badge with precious stones represents either corrupt influence or righteous prosperity.',
-                    9: 'Material desires consume rational thought. A holy relic in a silver reliquary tempts both the faithful and the avaricious.',
-                    10: 'Wealth brings both power and responsibility. A set of illuminated manuscripts contains knowledge worth more than gold.',
-                    11: 'A merchant prince or noble dealer arrives. Their cartographer\'s kit with ivory tools maps new territories ripe for exploitation.',
-                    12: 'Elegant wealth and refined taste. A ceremonial dagger with jade hilt represents power wielded with precision and grace.',
-                    13: 'Ultimate material success achieved. A navigator\'s compass in a brass case points toward untold riches across uncharted seas.'
-                },
-                'clubs': {
-                    1: 'New growth stirs in the wilderness. Brown bears forage for berries while ancient secrets awaken in forgotten groves.',
-                    2: 'Nature\'s presence grows stronger. Wild boars with 1d6 piglets remind travelers that the forest has its own rules and rhythms.',
-                    3: 'The wild calls to those who listen. A helpful druid tends plants that hold medicinal secrets, offering aid to respectful visitors.',
-                    4: 'Organic threats emerge from overgrowth. Giant spiders spin webs in tree-covered paths, while wise elders share ancient forest lore.',
-                    5: 'Primal forces demand respect. An owlbear defends its territory fiercely, teaching that some boundaries should never be crossed.',
-                    6: 'Nature\'s wisdom guides the worthy. A friendly ranger offers guidance through treacherous paths, reading signs invisible to city dwellers.',
-                    7: 'The wilderness tests resolve and character. Ancient treants awaken to judge whether travelers deserve safe passage through sacred groves.',
-                    8: 'Savage beauty and terrible danger intertwine. A dire wolf with glowing eyes hunts beneath moonlight, following instincts older than civilization.',
-                    9: 'Natural order asserts dominance over human ambition. 2d6 goblins raid supply caches, claiming resources for their forest kingdom.',
-                    10: 'The wild reclaims what was taken. Vines burst through castle walls as nature reclaims ancient ruins long forgotten.',
-                    11: 'A creature of legend emerges from deep wilderness. Perhaps a unicorn drinking from a pure stream or a griffon soaring majestically overhead.',
-                    12: 'Refined harmony between civilization and nature. A wise elder shares woodland lore that bridges human needs with natural balance.',
-                    13: 'The forest king holds absolute dominion. Every creature from the smallest stirge to the mightiest treant acknowledges this ancient authority.'
-                },
-                'spades': {
-                    1: 'A shadow appears on the horizon, barely visible but unmistakably present. 2d6 bandits set roadside ambushes in the gathering dusk.',
-                    2: 'Danger approaches with deliberate intent. 1d6 thieves plan their heist while assassins sharpen blades in darkened rooms.',
-                    3: 'Hidden threats reveal themselves gradually. A spy master recruits agents for missions that will determine the fate of kingdoms.',
-                    4: 'Conflict becomes inevitable as tensions rise. Mountain lions stalk from rocks while death cults prepare their dark rituals.',
-                    5: 'Open warfare erupts as peace negotiations fail. 1d6 orcs return from raids carrying bloodied weapons and stolen goods.',
-                    6: 'Battle lines are drawn as enemies mass for assault. A paladin investigates evil presence while preparing for righteous combat.',
-                    7: 'Steel rings against steel in deadly combat. A troll lurks under the bridge, demanding toll in blood rather than coin.',
-                    8: 'Violence reaches its crescendo as mercy becomes weakness. 2d6 necromancers discuss forbidden magic that will reshape the battlefield.',
-                    9: 'Death stalks the living with relentless purpose. A lich in human disguise walks among mortals, plotting eternal dominion.',
-                    10: 'Ultimate sacrifice becomes necessary for victory. Vampire spawn recruit new soldiers for their undead army\'s final campaign.',
-                    11: 'A warrior of legend takes the field. Their presence alone shifts the balance between light and darkness, hope and despair.',
-                    12: 'Elegant precision in the art of war. Strategic brilliance turns certain defeat into crushing victory through superior tactics.',
-                    13: 'Death itself commands the battlefield. All combatants - living and undead alike - acknowledge the ultimate authority of the grave.'
-                }
-            };
-            
-            return detailedInterpretations[card.suit][card.rank];
-        }
-        
-        function getCombinationInterpretation(cardSequence) {
-            const currentCard = cardSequence[cardSequence.length - 1];
-            const namedCombo = getNamedCombo(cardSequence);
-            
-            let interpretation = getSingleCardInterpretation(currentCard);
-            
-            // Poker hand profoundly affects the interpretation
-            if (namedCombo) {
-                let pokerInterpretations = {};
-                
-                if (currentMode === 'city') {
-                    pokerInterpretations = {
-                        'One Pair': ' Paired interests align - two merchants form partnership, twin guards coordinate patrol, or matching bribes ensure cooperation.',
-                        'Two Pair': ' Dual alliances emerge - noble houses and merchant guilds unite, while thieves and corrupt officials form parallel agreements.',
-                        'Three of a Kind': ' Trinity of power manifests - city council, temple hierarchy, and merchant princes unite in common cause.',
-                        'Straight': ' Sequential events unfold - market day leads to festival, which triggers political ceremony, culminating in royal decree.',
-                        'Flush': ' Single faction dominance - one guild controls all trade, one noble house rules politics, or one criminal organization owns the streets.',
-                        'Full House': ' Perfect political marriage - military might backs diplomatic wisdom as guard captain and high priestess unite their influences.',
-                        'Four of a Kind': ' Legendary convergence - four city districts unite, four guilds merge, or four noble families form unbreakable alliance.',
-                        'Straight Flush': ' Ultimate urban harmony - all social classes, from beggar to king, work in perfect coordination toward common prosperity.',
-                        'High Card': ' Individual authority rises - a single leader emerges to guide city through crisis using personal charisma over institutional power.'
-                    };
-                } else if (currentMode === 'wilderness') {
-                    pokerInterpretations = {
-                        'One Pair': ' Natural symmetry emerges - twin peaks frame the valley, paired predators hunt together, or two weather fronts converge.',
-                        'Two Pair': ' Balanced ecosystems - predator and prey, summer and winter patterns, or mountain and forest terrains complement each other.',
-                        'Three of a Kind': ' Primal trinity manifests - earth, air, and water unite; or past, present, and future reveal themselves through natural signs.',
-                        'Straight': ' Natural progression unfolds - seasons change in perfect sequence, animal migrations follow ancient paths, terrain shifts predictably.',
-                        'Flush': ' Elemental dominance - fire consumes forest, water floods plains, earth avalanches mountainside, or wind storms across grasslands.',
-                        'Full House': ' Perfect wilderness balance - predator populations control prey numbers while terrain provides exactly the resources needed.',
-                        'Four of a Kind': ' Legendary natural convergence - four sacred groves unite, four elemental forces align, or four ancient beasts awaken simultaneously.',
-                        'Straight Flush': ' Ultimate natural harmony - all creatures, weather, and terrain work in perfect ecological balance.',
-                        'High Card': ' Apex emergence - single alpha predator, dominant weather pattern, or master of wilderness rises above all other natural forces.'
-                    };
-                } else if (currentMode === 'dungeon') {
-                    pokerInterpretations = {
-                        'One Pair': ' Matched threats emerge - twin guardians protect chamber, paired traps work together, or two treasure caches complement each other.',
-                        'Two Pair': ' Dual defense systems - magical and mechanical traps combine, while undead and construct guardians coordinate attacks.',
-                        'Three of a Kind': ' Trinity of dungeon power - trap, monster, and treasure form perfect deadly triangle in chamber design.',
-                        'Straight': ' Sequential challenges unfold - each chamber leads logically to next, traps build in complexity, guardians increase in power.',
-                        'Flush': ' Unified dungeon theme - all elements serve single purpose: undead dominion, draconic hoard protection, or elemental containment.',
-                        'Full House': ' Perfect dungeon design - architectural strength combines with magical complexity as physical and supernatural defenses unite.',
-                        'Four of a Kind': ' Legendary dungeon convergence - four keystones unlock final chamber, four guardian types unite, or four treasure hoards merge.',
-                        'Straight Flush': ' Ultimate dungeon mastery - all chambers, traps, monsters, and treasures work in perfect harmony toward single grand purpose.',
-                        'High Card': ' Supreme dungeon authority - single powerful entity (lich lord, dragon, demon prince) dominates all lesser dungeon elements.'
-                    };
-                }
-                
-                interpretation += pokerInterpretations[namedCombo] || '';
-            } else {
-                // Standard combination patterns for non-poker hands
-                const cardSuits = cardSequence.map(c => c.suit);
-                const ranks = cardSequence.map(c => c.rank);
-                const colors = cardSequence.map(c => suits[c.suit].color);
-                
-                if (cardSuits.every(s => s === cardSuits[0])) {
-                    interpretation += ` — The ${cardSuits[0]} theme intensifies and develops.`;
-                } else if (colors.every(c => c === colors[0])) {
-                    if (colors[0] === 'red') {
-                        interpretation += ' — Harmony and positive energy flow.';
-                    } else {
-                        interpretation += ' — A foreboding atmosphere grows.';
-                    }
-                }
-            }
-            
-            return interpretation;
-        }
-        
-        function updateMode() {
-            currentMode = document.getElementById('locationMode').value;
-            // Refresh the display to show new interpretations
-            updateDisplay();
-        }
-        
-        // Initialize the deck when page loads
-        initializeDeck();
+
+        return interpretation;
+      }
+
+      function updateMode() {
+        currentMode = document.getElementById("locationMode").value;
+        // Refresh the display to show new interpretations
         updateDisplay();
+      }
+
+      // Initialize the deck when page loads
+      initializeDeck();
+      updateDisplay();
     </script>
-</body>
+  </body>
 </html>
